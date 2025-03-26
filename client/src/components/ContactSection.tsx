@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { contactSchema } from "@shared/schema";
+import { z } from "zod";
 import { 
   Form,
   FormControl,
@@ -31,7 +32,7 @@ export default function ContactSection() {
   });
   
   const { mutate, isPending } = useMutation({
-    mutationFn: (values: any) => {
+    mutationFn: (values: Record<string, any>) => {
       return apiRequest("POST", "/api/contact", values);
     },
     onSuccess: () => {
@@ -50,7 +51,7 @@ export default function ContactSection() {
     }
   });
 
-  function onSubmit(values: any) {
+  function onSubmit(values: Record<string, any>) {
     mutate(values);
   }
 
