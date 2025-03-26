@@ -1,5 +1,7 @@
 import { useState } from "react";
 import BookCover from "./BookCover";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart, Truck, Check } from "lucide-react";
 
 export default function BookSection() {
   const [isOrderProcessing, setIsOrderProcessing] = useState(false);
@@ -72,100 +74,203 @@ export default function BookSection() {
   };
 
   return (
-    <section id="book" className="py-5 bg-light">
+    <section id="book" className="py-5 py-lg-6 bg-light">
       <div className="container">
         <div className="row justify-content-center mb-4">
           <div className="col-lg-8 text-center">
             <h2 className="display-5 fw-bold font-montserrat mb-3">
-              <span className="text-lux-red">Luxembourg Pas Chère</span>
+              <span className="text-[#E31837]">Luxembourg Pas Chère</span>
             </h2>
-            <p className="lead mb-0">
+            <p className="lead mb-4">
               Der einzige umfassende Ratgeber für kostengünstiges Leben in Luxemburg
             </p>
           </div>
         </div>
         
-        {/* Book Showcase - Central placement of book cover */}
-        <div className="row justify-content-center mb-5">
-          <div className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 text-center mb-4">
-            <div className="mx-auto" style={{ maxWidth: "350px" }}>
-              <BookCover />
+        {/* Featured Book - Two Column Layout */}
+        <div className="card border-0 shadow-lg overflow-hidden rounded-lg mb-5">
+          <div className="row g-0">
+            {/* Left Column - Book Image */}
+            <div className="col-md-5 bg-gradient-to-r from-[#f8f9fa] to-[#e9ecef] d-flex align-items-center justify-content-center p-4">
+              <div className="book-display position-relative" style={{ maxWidth: "400px" }}>
+                <BookCover />
+                
+                {/* Floating badge */}
+                <div className="position-absolute top-0 end-0 translate-middle">
+                  <div className="bg-[#E31837] text-white rounded-circle py-2 px-3 shadow-lg" 
+                       style={{ transform: "rotate(15deg)" }}>
+                    <span className="d-block text-center fw-bold fs-6">NEW</span>
+                    <span className="d-block text-center small">Edition</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Book Info */}
+            <div className="col-md-7">
+              <div className="card-body p-4 p-lg-5">
+                <h3 className="h3 fw-bold font-montserrat mb-4">
+                  Der ultimative Guide für günstiges Leben in Luxemburg
+                </h3>
+                
+                <div className="mb-4">
+                  <p className="text-muted mb-4">
+                    Entdecken Sie über 500 Tipps, um in Luxemburg erheblich zu sparen. Diese unverzichtbare Ressource bietet umfassende Informationen zu günstigen Optionen in allen Lebensbereichen - von Einkaufen und Wohnen bis hin zu Freizeit und Bildung.
+                  </p>
+                  
+                  <div className="d-flex flex-wrap gap-3 mb-4">
+                    <div className="badge bg-light text-dark border px-3 py-2 d-flex align-items-center gap-2">
+                      <Check size={16} className="text-[#E31837]" /> 
+                      <span>500+ Spartipps</span>
+                    </div>
+                    <div className="badge bg-light text-dark border px-3 py-2 d-flex align-items-center gap-2">
+                      <Check size={16} className="text-[#E31837]" /> 
+                      <span>Aktualisierte Angebote</span>
+                    </div>
+                    <div className="badge bg-light text-dark border px-3 py-2 d-flex align-items-center gap-2">
+                      <Check size={16} className="text-[#E31837]" /> 
+                      <span>Expertenwissen</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Price Display */}
+                <div className="bg-light rounded-lg p-4 mb-4">
+                  <div className="d-flex align-items-baseline gap-2">
+                    <span className="text-[#E31837] fw-bold fs-1">€24.99</span>
+                    <span className="text-decoration-line-through text-muted fs-4">€34.99</span>
+                    <span className="badge bg-[#E31837] text-white px-2 py-1 fs-6">SAVE 28%</span>
+                  </div>
+                  
+                  <div className="d-flex align-items-center mt-2">
+                    <Truck className="text-[#00A4E0] me-2" size={18} />
+                    <p className="mb-0 text-muted">
+                      <span className="fw-medium">Kostenloser Versand in Luxemburg</span>
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Alert placeholder for order confirmation */}
+                <div id="orderAlertPlaceholder" className="mb-3"></div>
+                
+                {/* Order Button - Red and prominent */}
+                <Button
+                  className="w-100 py-3 text-lg bg-[#E31837] hover:bg-[#c01530] text-white shadow-lg transition-transform hover:scale-105"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#orderModal"
+                >
+                  <ShoppingCart className="me-2" size={20} />
+                  Jetzt bestellen
+                </Button>
+                
+                <div className="bg-[#f8f9fa] rounded-lg p-3 mt-4 border border-dashed">
+                  <p className="mb-0 text-center text-muted small">
+                    <span className="fw-medium">Im Preis enthalten:</span> 384 Seiten Vollfarbe, Hardcover-Format, 
+                    Sparkalender für 12 Monate und exklusiver Online-Zugang zu aktualisierten Angeboten
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
-        {/* Book Description */}
-        <div className="row justify-content-center mb-5">
+        {/* Book Details - Collapsible sections */}
+        <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-4 p-lg-5">
-                <h3 className="h4 fw-bold font-montserrat mb-4 text-center">
-                  Buchbeschreibung
-                </h3>
-                
-                <p className="mb-4">
-                  Unser Ratgeber ist einzigartig, da er als einziger alle Informationen zusammenfasst, die benötigt werden, um Geld zu sparen. Dies macht ihn nützlich und wertvoll für die Leser.
-                </p>
-                
-                <h4 className="h5 fw-bold font-montserrat mb-3">Der Ratgeber hat ein dreifaches Ziel:</h4>
-                
-                <div className="mb-4">
-                  <div className="d-flex align-items-start gap-3 mb-3">
-                    <div className="flex-shrink-0 mt-1">
-                      <i className="fas fa-check-circle text-lux-blue fa-lg"></i>
-                    </div>
-                    <div>
-                      <p className="mb-0">Familien in prekären Situationen helfen, ihre Würde zu bewahren, indem sie aktiv nach Lösungen für ihre finanziellen Schwierigkeiten suchen und den Alltag meistern.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="d-flex align-items-start gap-3 mb-3">
-                    <div className="flex-shrink-0 mt-1">
-                      <i className="fas fa-check-circle text-lux-blue fa-lg"></i>
-                    </div>
-                    <div>
-                      <p className="mb-0">Familien Zeit sparen, indem alle benötigten Informationen an einem Ort bereitgestellt werden.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="d-flex align-items-start gap-3 mb-3">
-                    <div className="flex-shrink-0 mt-1">
-                      <i className="fas fa-check-circle text-lux-blue fa-lg"></i>
-                    </div>
-                    <div>
-                      <p className="mb-0">Verantwortungsvollen Konsum fördern, indem die Sozial- und Solidarwirtschaft unterstützt wird.</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <p className="mb-4">
-                  Der Ratgeber bietet zugängliche Informationen zu Ressourcen, die bei einem sparsamen Konsum und der Budgetverwaltung helfen. Er stellt eine einzigartige Plattform dar, die das Großherzogtum (Tourismus, Soziales, Kultur usw.) aus der Perspektive der wirtschaftlichen Zugänglichkeit für alle präsentiert.
-                </p>
-                
-                {/* About Project Leader */}
-                <div className="card bg-light border-0 mb-4">
-                  <div className="card-body p-4">
-                    <h4 className="h5 fw-bold font-montserrat mb-3">Über die Projektleiterin:</h4>
-                    <p className="mb-0">
-                      Mein Name ist Pascale ZAOUROU. Ich bin eine alleinerziehende Mutter von drei Kindern, 49 Jahre alt, mit einem Abschluss in Erziehungswissenschaften und einem Diplom in Sozialwissenschaften und Mediation. Ich lebe seit über fünfzehn Jahren in Luxemburg. Dieses Projekt basiert auf meinen persönlichen Erfahrungen, gefolgt von Interviews mit Studenten und Alleinerziehenden, um deren beste Tipps zu erfahren, sowie Gesprächen mit Vereinsführern und Schlüsselakteuren der luxemburgischen Sozial- und Solidarwirtschaft.
+            <div className="accordion" id="bookDetailsAccordion">
+              <div className="accordion-item border mb-3 rounded-lg shadow-sm">
+                <h2 className="accordion-header">
+                  <button 
+                    className="accordion-button font-montserrat fw-semibold" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#collapseOne" 
+                    aria-expanded="true" 
+                    aria-controls="collapseOne"
+                  >
+                    Über diesen Guide
+                  </button>
+                </h2>
+                <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#bookDetailsAccordion">
+                  <div className="accordion-body">
+                    <p className="mb-4">
+                      Unser Ratgeber ist einzigartig, da er als einziger alle Informationen zusammenfasst, die benötigt werden, um Geld zu sparen. Dies macht ihn nützlich und wertvoll für die Leser.
                     </p>
+                    
+                    <h4 className="h5 fw-bold font-montserrat mb-3">Der Ratgeber hat ein dreifaches Ziel:</h4>
+                    
+                    <div className="mb-4">
+                      <div className="d-flex align-items-start gap-3 mb-3">
+                        <div className="flex-shrink-0 mt-1">
+                          <i className="fas fa-check-circle text-[#00A4E0] fa-lg"></i>
+                        </div>
+                        <div>
+                          <p className="mb-0">Familien in prekären Situationen helfen, ihre Würde zu bewahren, indem sie aktiv nach Lösungen für ihre finanziellen Schwierigkeiten suchen und den Alltag meistern.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="d-flex align-items-start gap-3 mb-3">
+                        <div className="flex-shrink-0 mt-1">
+                          <i className="fas fa-check-circle text-[#00A4E0] fa-lg"></i>
+                        </div>
+                        <div>
+                          <p className="mb-0">Familien Zeit sparen, indem alle benötigten Informationen an einem Ort bereitgestellt werden.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="d-flex align-items-start gap-3 mb-3">
+                        <div className="flex-shrink-0 mt-1">
+                          <i className="fas fa-check-circle text-[#00A4E0] fa-lg"></i>
+                        </div>
+                        <div>
+                          <p className="mb-0">Verantwortungsvollen Konsum fördern, indem die Sozial- und Solidarwirtschaft unterstützt wird.</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                
-                {/* Context */}
-                <div className="card bg-light border-0 mb-4">
-                  <div className="card-body p-4">
-                    <h4 className="h5 fw-bold font-montserrat mb-3">Kontext:</h4>
-                    <p className="mb-0">
-                      Heute kommen 45% der Arbeitnehmer in Luxemburg von jenseits der Grenzen, und 75% der aktiven Bevölkerung sind nicht einheimisch. Wir adressieren auch das Problem der Working Poor. Verschiedene Gesundheits-, Klima- und Sicherheitskrisen haben die Haushaltsbudgets geschwächt. Das Phänomen der Working Poor hat sich in Luxemburg verstärkt. Während das Land darauf abzielt, Talente anzuziehen, behindert die hohe Lebenshaltungskosten seine Attraktivität. Eine gründliche Marktstudie zeigt aktuelle Lücken in den Informationen zu erschwinglichen Tipps und Verbraucherbedürfnissen sowie beim Zugang zu sozialen Maßnahmen. Im Durchschnitt haben zwischen 50% und 80% der potenziellen Begünstigten keinen Zugang zu sozialen Maßnahmen, weil sie nicht informiert sind.
-                    </p>
+              </div>
+              
+              {/* Additional accordion items for other content */}
+              <div className="accordion-item border mb-3 rounded-lg shadow-sm">
+                <h2 className="accordion-header">
+                  <button 
+                    className="accordion-button collapsed font-montserrat fw-semibold" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#collapseTwo" 
+                    aria-expanded="false" 
+                    aria-controls="collapseTwo"
+                  >
+                    Inhalt des Ratgebers
+                  </button>
+                </h2>
+                <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#bookDetailsAccordion">
+                  <div className="accordion-body">
+                    <ul className="mb-0">
+                      <li>Abschnitte zum täglichen Leben (wie in der ersten Ausgabe: Essen, Wohnen, Ausgehen, Besichtigen, Einkaufen usw.)</li>
+                      <li>Neue Abschnitte zu Schulbildung, Ausbildung und Studium</li>
+                      <li>Förderung der Sozial- und Solidarwirtschaft</li>
+                    </ul>
                   </div>
                 </div>
-                
-                {/* Target Audience */}
-                <div className="card bg-light border-0 mb-4">
-                  <div className="card-body p-4">
-                    <h4 className="h5 fw-bold font-montserrat mb-3">Zielgruppe:</h4>
+              </div>
+              
+              <div className="accordion-item border mb-3 rounded-lg shadow-sm">
+                <h2 className="accordion-header">
+                  <button 
+                    className="accordion-button collapsed font-montserrat fw-semibold" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#collapseThree" 
+                    aria-expanded="false" 
+                    aria-controls="collapseThree"
+                  >
+                    Zielgruppe
+                  </button>
+                </h2>
+                <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#bookDetailsAccordion">
+                  <div className="accordion-body">
                     <div className="row">
                       <div className="col-md-6">
                         <ul className="mb-md-0">
@@ -191,55 +296,25 @@ export default function BookSection() {
                     </div>
                   </div>
                 </div>
-                
-                {/* Innovation */}
-                <div className="card bg-light border-0 mb-4">
-                  <div className="card-body p-4">
-                    <h4 className="h5 fw-bold font-montserrat mb-3">Innovation:</h4>
-                    <p className="mb-3">Die Innovation des Projekts liegt in mehreren Aspekten:</p>
-                    <ul className="mb-0">
-                      <li>Die Vielfalt der behandelten Themen. Unser Projekt ist das einzige, das alle Bereiche des täglichen Lebens behandelt: Finanzen, Kultur, Möbel, Unternehmertum, Ernährung, und trägt so zur Senkung der Haushaltsausgaben bei und bietet eine wirtschaftliche Alternative.</li>
-                      <li>Eine Antwort auf die hohen Lebenshaltungskosten in Luxemburg</li>
-                      <li>Einzigartig</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="card bg-light border-0 mb-4">
-                  <div className="card-body p-4">
-                    <h4 className="h5 fw-bold font-montserrat mb-3">Inhalt des Ratgebers:</h4>
-                    <ul className="mb-0">
-                      <li>Abschnitte zum täglichen Leben (wie in der ersten Ausgabe: Essen, Wohnen, Ausgehen, Besichtigen, Einkaufen usw.)</li>
-                      <li>Neue Abschnitte zu Schulbildung, Ausbildung und Studium</li>
-                      <li>Förderung der Sozial- und Solidarwirtschaft</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                {/* Price and Order Button */}
-                <div className="text-center mb-4">
-                  <div className="d-flex justify-content-center align-items-center gap-3 mb-4">
-                    <div className="text-lux-red fw-bold fs-1">€24.99</div>
-                    <div className="text-decoration-line-through text-muted fs-4">€34.99</div>
-                    <div className="badge bg-lux-red px-2 py-1 fs-6 fw-bold">SAVE 28%</div>
-                  </div>
-                  
-                  {/* Alert placeholder for order confirmation */}
-                  <div id="orderAlertPlaceholder" className="mb-3"></div>
-                  
-                  {/* Order Button - Visually distinct and noticeable */}
-                  <div className="d-grid gap-2 col-md-6 mx-auto">
-                    <button 
-                      className="btn btn-lg btn-danger py-3 shadow-sm" 
-                      style={{ backgroundColor: '#E31837', borderColor: '#E31837' }}
-                      data-bs-toggle="modal" 
-                      data-bs-target="#orderModal"
-                    >
-                      <i className="fas fa-shopping-cart me-2"></i> Jetzt bestellen
-                    </button>
-                    <p className="text-muted small mt-2">
-                      <i className="fas fa-truck me-1"></i> Kostenloser Versand in Luxemburg. Internationaler Versand möglich.
+              </div>
+              
+              <div className="accordion-item border rounded-lg shadow-sm">
+                <h2 className="accordion-header">
+                  <button 
+                    className="accordion-button collapsed font-montserrat fw-semibold" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#collapseFour" 
+                    aria-expanded="false" 
+                    aria-controls="collapseFour"
+                  >
+                    Über die Autorin
+                  </button>
+                </h2>
+                <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#bookDetailsAccordion">
+                  <div className="accordion-body">
+                    <p className="mb-0">
+                      Mein Name ist Pascale ZAOUROU. Ich bin eine alleinerziehende Mutter von drei Kindern, 49 Jahre alt, mit einem Abschluss in Erziehungswissenschaften und einem Diplom in Sozialwissenschaften und Mediation. Ich lebe seit über fünfzehn Jahren in Luxemburg. Dieses Projekt basiert auf meinen persönlichen Erfahrungen, gefolgt von Interviews mit Studenten und Alleinerziehenden, um deren beste Tipps zu erfahren, sowie Gesprächen mit Vereinsführern und Schlüsselakteuren der luxemburgischen Sozial- und Solidarwirtschaft.
                     </p>
                   </div>
                 </div>
@@ -249,11 +324,11 @@ export default function BookSection() {
         </div>
       </div>
       
-      {/* Order Modal */}
+      {/* Order Modal - Unchanged */}
       <div className="modal fade" id="orderModal" tabIndex={-1} aria-labelledby="orderModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
-            <div className="modal-header bg-lux-blue text-white">
+            <div className="modal-header text-white" style={{ backgroundColor: '#E31837' }}>
               <h5 className="modal-title" id="orderModalLabel">Bestellung abschließen</h5>
               <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -333,30 +408,32 @@ export default function BookSection() {
                   </div>
                 </div>
                 
-                <div className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
-                  <span className="fw-bold">Gesamtbetrag:</span>
-                  <span className="text-lux-red fw-bold fs-4">€24.99</span>
+                <div className="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
+                  <div>
+                    <div className="text-[#E31837] fw-bold">€24.99</div>
+                    <div className="text-muted small">inkl. MwSt.</div>
+                    <div className="text-success small fw-medium">
+                      <Truck className="me-1" size={14} />
+                      Kostenloser Versand
+                    </div>
+                  </div>
+                  <button 
+                    type="submit" 
+                    className="btn btn-danger"
+                    style={{ backgroundColor: '#E31837', borderColor: '#E31837' }}
+                    disabled={isOrderProcessing}
+                  >
+                    {isOrderProcessing ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Wird bearbeitet...
+                      </>
+                    ) : (
+                      <>Jetzt kostenpflichtig bestellen</>
+                    )}
+                  </button>
                 </div>
               </form>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Abbrechen</button>
-              <button 
-                type="submit" 
-                form="orderForm" 
-                className="btn btn-danger"
-                style={{ backgroundColor: '#E31837', borderColor: '#E31837' }}
-                disabled={isOrderProcessing}
-              >
-                {isOrderProcessing ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                    Verarbeitung...
-                  </>
-                ) : (
-                  'Kauf abschließen'
-                )}
-              </button>
             </div>
           </div>
         </div>
