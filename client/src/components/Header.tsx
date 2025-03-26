@@ -3,11 +3,23 @@ import { useState, useEffect, FormEvent } from "react";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [language, setLanguage] = useState("de"); // Default language: German
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    // Implement search functionality here
+    
+    // Basic search functionality implementation
+    if (searchQuery.trim()) {
+      // Normally this would navigate to search results, for now just alert
+      alert(`Searching for: ${searchQuery}`);
+    }
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+    // In a real application, this would update i18n settings or reload content
+    console.log("Language changed to:", lang);
   };
 
   // Add scroll event listener to detect when to add shadow
@@ -81,43 +93,130 @@ export default function Header() {
               </li>
             </ul>
 
-            {/* Search Form */}
-            <form className="d-flex" onSubmit={handleSearch}>
+            {/* Search and Language Selection */}
+            <div className="d-flex align-items-center">
+              {/* Search Form */}
+              <form className="d-flex me-2" onSubmit={handleSearch}>
+                <div className="input-group">
+                  <input 
+                    type="search" 
+                    className="form-control" 
+                    placeholder="Search for deals, places, activities..." 
+                    aria-label="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
+                    <i className="fas fa-search"></i>
+                  </button>
+                </div>
+              </form>
+              
+              {/* Language Dropdown */}
+              <div className="dropdown">
+                <button 
+                  className="btn btn-sm btn-outline-secondary dropdown-toggle" 
+                  type="button" 
+                  id="languageDropdown" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false"
+                >
+                  {language === 'de' && <><i className="fas fa-globe me-1"></i> DE</>}
+                  {language === 'fr' && <><i className="fas fa-globe me-1"></i> FR</>}
+                  {language === 'en' && <><i className="fas fa-globe me-1"></i> EN</>}
+                </button>
+                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                  <li>
+                    <button 
+                      className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
+                      onClick={() => handleLanguageChange('de')}
+                    >
+                      <span className="fi fi-de me-2"></span> Deutsch
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
+                      onClick={() => handleLanguageChange('fr')}
+                    >
+                      <span className="fi fi-fr me-2"></span> Français
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
+                      onClick={() => handleLanguageChange('en')}
+                    >
+                      <span className="fi fi-gb me-2"></span> English
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Search and Language - Visible only on small screens */}
+      <div className="container d-block d-lg-none mb-2">
+        <div className="row g-2">
+          <div className="col-9">
+            <form onSubmit={handleSearch}>
               <div className="input-group">
                 <input 
                   type="search" 
-                  className="form-control" 
+                  className="form-control form-control-sm" 
                   placeholder="Search for deals, places, activities..." 
                   aria-label="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
+                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
                   <i className="fas fa-search"></i>
                 </button>
               </div>
             </form>
           </div>
-        </div>
-      </nav>
-
-      {/* Mobile Search - Visible only on small screens */}
-      <div className="container d-block d-lg-none mb-2">
-        <form onSubmit={handleSearch}>
-          <div className="input-group">
-            <input 
-              type="search" 
-              className="form-control form-control-sm" 
-              placeholder="Search for deals, places, activities..." 
-              aria-label="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
-              <i className="fas fa-search"></i>
-            </button>
+          <div className="col-3">
+            <div className="dropdown w-100">
+              <button 
+                className="btn btn-sm btn-outline-secondary dropdown-toggle w-100" 
+                type="button" 
+                id="mobileLanguageDropdown" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+              >
+                {language.toUpperCase()}
+              </button>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="mobileLanguageDropdown">
+                <li>
+                  <button 
+                    className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
+                    onClick={() => handleLanguageChange('de')}
+                  >
+                    Deutsch
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
+                    onClick={() => handleLanguageChange('fr')}
+                  >
+                    Français
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
+                    onClick={() => handleLanguageChange('en')}
+                  >
+                    English
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
     </header>
   );
