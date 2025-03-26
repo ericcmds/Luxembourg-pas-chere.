@@ -11,7 +11,7 @@ type BlogPost = {
 
 export default function BlogSection() {
   const [activePostId, setActivePostId] = useState<number | null>(null);
-  
+
   const blogPosts: BlogPost[] = [
     {
       id: 1,
@@ -52,15 +52,15 @@ export default function BlogSection() {
   const handleShare = (e: React.MouseEvent, platform: string, postId: number) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const post = blogPosts.find(p => p.id === postId);
     if (!post) return;
-    
+
     const shareUrl = getShareUrl(postId);
     const shareText = post.title;
-    
+
     let shareLink = '';
-    
+
     switch (platform) {
       case 'facebook':
         shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -77,7 +77,7 @@ export default function BlogSection() {
       default:
         return;
     }
-    
+
     window.open(shareLink, '_blank');
   };
 
@@ -86,15 +86,15 @@ export default function BlogSection() {
       <div className="container">
         <div className="row align-items-center mb-4">
           <div className="col">
-            <h2 className="display-6 fw-bold font-montserrat mb-0">Aktuelle Blog-Beiträge</h2>
+            <h2 className="display-6 fw-bold font-montserrat mb-0 section-title">Aktuelle Blog-Beiträge</h2>
           </div>
           <div className="col-auto">
-            <a href="#" className="text-decoration-none text-lux-blue fw-bold">
+            <a href="#" className="text-decoration-none text-lux-blue fw-bold highlight-text">
               Alle Beiträge anzeigen <i className="fas fa-arrow-right ms-1 small"></i>
             </a>
           </div>
         </div>
-        
+
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {blogPosts.map((post) => (
             <div key={post.id} className="col">
@@ -111,15 +111,15 @@ export default function BlogSection() {
                     <span className="mx-2">•</span>
                     <span><i className="far fa-clock me-1"></i> {post.readTime}</span>
                   </div>
-                  <h3 className="card-title h5 fw-bold font-montserrat mb-3">{post.title}</h3>
+                  <h3 className="card-title h5 fw-bold font-montserrat mb-3 highlight-text">{post.title}</h3>
                   <p className="card-text text-muted mb-3">{post.description}</p>
-                  
+
                   {/* Actions row */}
                   <div className="d-flex align-items-center justify-content-between">
-                    <a href="#" className="text-decoration-none text-lux-blue fw-bold">
+                    <a href="#" className="text-decoration-none text-lux-blue fw-bold highlight-text">
                       Weiterlesen <i className="fas fa-chevron-right ms-1 small"></i>
                     </a>
-                    
+
                     {/* Share dropdown */}
                     <div className="dropdown">
                       <button 
@@ -129,7 +129,7 @@ export default function BlogSection() {
                       >
                         <i className="fas fa-share-alt"></i>
                       </button>
-                      
+
                       {activePostId === post.id && (
                         <div className="share-popup">
                           <div className="d-flex gap-2 mt-2">
@@ -171,7 +171,7 @@ export default function BlogSection() {
             </div>
           ))}
         </div>
-        
+
         {/* Mobile Carousel View - Only visible on small screens */}
         <div className="d-block d-md-none mt-4">
           <div className="text-center mb-3">
@@ -194,15 +194,15 @@ export default function BlogSection() {
                         <span className="mx-2">•</span>
                         <span><i className="far fa-clock me-1"></i> {post.readTime}</span>
                       </div>
-                      <h3 className="card-title h5 fw-bold font-montserrat mb-3">{post.title}</h3>
+                      <h3 className="card-title h5 fw-bold font-montserrat mb-3 highlight-text">{post.title}</h3>
                       <p className="card-text text-muted mb-3">{post.description}</p>
-                      
+
                       {/* Actions row */}
                       <div className="d-flex align-items-center justify-content-between">
-                        <a href="#" className="text-decoration-none text-lux-blue fw-bold">
+                        <a href="#" className="text-decoration-none text-lux-blue fw-bold highlight-text">
                           Weiterlesen <i className="fas fa-chevron-right ms-1 small"></i>
                         </a>
-                        
+
                         {/* Share button */}
                         <button 
                           className="btn btn-sm btn-outline-secondary rounded-circle p-2"
@@ -231,3 +231,16 @@ export default function BlogSection() {
     </section>
   );
 }
+
+<style>
+  .section-title {
+    font-size: 2.5rem; /* Increased font size */
+    color: #333; /* Darker color for better contrast */
+    margin-bottom: 2rem; /* Added margin for spacing */
+  }
+
+  .highlight-text {
+    font-weight: bold;
+    color: #007bff; /* Example highlight color */
+  }
+</style>

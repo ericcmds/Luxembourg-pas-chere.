@@ -40,7 +40,9 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">About Luxembourg on a Budget</h2>
+        <h2 className="section-title text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+          <span className="highlight-text">About Luxembourg on a Budget</span>
+        </h2>
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -72,7 +74,7 @@ export default function AboutSection() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-500 mb-4">
               {tabData[activeTab as keyof typeof tabData].icon}
             </div>
-            <h3 className="text-2xl font-semibold">{tabData[activeTab as keyof typeof tabData].title}</h3>
+            <h3 className="text-2xl font-semibold text-gray-800">{tabData[activeTab as keyof typeof tabData].title}</h3>
           </div>
           <p className="text-gray-600 text-lg leading-relaxed">
             {tabData[activeTab as keyof typeof tabData].content}
@@ -93,7 +95,7 @@ export default function AboutSection() {
                 } mb-4 transition-all duration-300`}>
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-semibold">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-800">{value.title}</h3>
               </div>
               <p className="text-gray-600">
                 {value.content.substring(0, 100)}...

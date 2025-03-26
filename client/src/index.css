@@ -44,8 +44,26 @@
     @apply font-opensans antialiased bg-background text-foreground scroll-smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-montserrat;
+  /* Enhanced headings with better visual hierarchy */
+  h1 {
+    @apply font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 text-lux-dark;
+  }
+
+  h2 {
+    @apply font-montserrat font-semibold text-2xl md:text-3xl leading-snug mb-4 text-lux-dark relative;
+  }
+  
+  h2::after {
+    content: '';
+    @apply block w-16 h-1 bg-lux-red mt-2;
+  }
+
+  h3 {
+    @apply font-montserrat font-medium text-xl md:text-2xl leading-normal mb-3 text-lux-dark;
+  }
+
+  h4, h5, h6 {
+    @apply font-montserrat font-medium;
   }
 }
 
@@ -98,6 +116,60 @@
   .hover\:text-lux-blue:hover {
     color: #00A4E0;
   }
+
+/* Visual hierarchy enhancements */
+.section-title {
+  @apply text-center mb-10 relative;
+}
+
+.section-title::after {
+  content: '';
+  @apply block w-20 h-1 bg-lux-red mx-auto mt-3;
+}
+
+.highlight-text {
+  @apply relative inline-block;
+}
+
+.highlight-text::before {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-2 bg-lux-red opacity-30 -z-10;
+}
+
+.card {
+  @apply transition-all duration-300 hover:shadow-lg rounded-md overflow-hidden bg-white border border-border;
+}
+
+.card-title {
+  @apply font-montserrat font-semibold text-lg text-lux-dark mb-2;
+}
+
+.btn-primary {
+  @apply py-2.5 px-5 bg-lux-red text-white font-medium rounded-md hover:bg-red-700 transition-colors shadow-md;
+}
+
+.btn-secondary {
+  @apply py-2.5 px-5 bg-lux-blue text-white font-medium rounded-md hover:bg-blue-600 transition-colors shadow-md;
+}
+
+.btn-outline {
+  @apply py-2.5 px-5 bg-transparent border-2 border-lux-red text-lux-red font-medium rounded-md hover:bg-lux-red hover:text-white transition-colors;
+}
+
+.feature-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center text-white bg-lux-red mb-4;
+}
+
+/* Important content highlight */
+.important-content {
+  @apply border-l-4 border-lux-red pl-4 py-2 bg-gray-50;
+}
+
+/* Add visual focus to containers */
+.focus-container {
+  @apply p-6 rounded-lg shadow-md bg-white border-t-4 border-lux-red;
+}
+
 }
 
 /* Bootstrap overrides and utilities */

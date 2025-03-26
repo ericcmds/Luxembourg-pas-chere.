@@ -78,9 +78,9 @@ export default function BookSection() {
       <div className="container">
         <div className="row justify-content-center mb-4">
           <div className="col-lg-8 text-center">
-            <h2 className="display-5 fw-bold font-montserrat mb-3">
-              <span className="text-[#E31837]">Luxembourg Pas Chère</span>
-            </h2>
+            <h2 className="display-6 fw-bold font-montserrat mb-3 section-title"> {/* Added section-title class */}
+              <span className="text-[#E31837] highlight-text">Luxembourg Pas Chère</span>
+            </h2> {/* Added highlight-text class */}
             <p className="lead mb-4">
               Der einzige umfassende Ratgeber für kostengünstiges Leben in Luxemburg
             </p>
@@ -106,7 +106,7 @@ export default function BookSection() {
             <div className="col-md-7 p-4">
               <div className="h-100 d-flex flex-column justify-content-between">
                 <div>
-                  <h3 className="font-montserrat mb-3">Your Complete Guide to Luxembourg on a Budget</h3>
+                  <h3 className="font-montserrat mb-3 section-subtitle"> {/* Added section-subtitle class */}Your Complete Guide to Luxembourg on a Budget</h3>
                   <p className="text-muted">Discover insider tips and practical advice for enjoying Luxembourg without breaking the bank.</p>
                   <p className="mb-4">
                     Der umfassende Guide "Luxembourg Pas Chère" zeigt Ihnen, wie Sie in Luxemburg günstig leben können, ohne auf Qualität zu verzichten.

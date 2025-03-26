@@ -24,7 +24,7 @@ export default function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  
+
   // Initialize the form with react-hook-form
   const {
     register,
@@ -40,7 +40,7 @@ export default function ContactSection() {
       privacyCheck: false
     }
   });
-  
+
   // Reset the form when submission is successful
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -53,7 +53,7 @@ export default function ContactSection() {
       return () => clearTimeout(timer);
     }
   }, [isSubmitSuccessful, reset]);
-  
+
   // Setup the mutation for form submission
   const { mutate } = useMutation({
     mutationFn: (values: ContactFormValues) => {
@@ -94,13 +94,13 @@ export default function ContactSection() {
             <p className="lead text-muted">Haben Sie Fragen? Möchten Sie mit uns zusammenarbeiten? Kontaktieren Sie uns über das Formular unten.</p>
           </div>
         </div>
-        
+
         <div className="row g-5 justify-content-center">
           <div className="col-md-6">
             <div className="card shadow-sm border-0 rounded-4">
               <div className="card-body p-4 p-md-5">
                 <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktieren Sie uns</h3>
-                
+
                 {/* Success message that appears after form submission */}
                 {formSubmitted && (
                   <div className="alert alert-success mb-4" role="alert">
@@ -115,7 +115,7 @@ export default function ContactSection() {
                     </div>
                   </div>
                 )}
-                
+
                 <form onSubmit={handleSubmit(onSubmit)} aria-label="Kontaktformular" noValidate>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label fw-semibold">Ihr Name <span className="text-danger" aria-hidden="true">*</span></label>
@@ -134,7 +134,7 @@ export default function ContactSection() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label fw-semibold">Ihre E-Mail <span className="text-danger" aria-hidden="true">*</span></label>
                     <input 
@@ -152,7 +152,7 @@ export default function ContactSection() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="mb-4">
                     <label htmlFor="message" className="form-label fw-semibold">Ihre Nachricht <span className="text-danger" aria-hidden="true">*</span></label>
                     <textarea 
@@ -169,7 +169,7 @@ export default function ContactSection() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="mb-4 form-check">
                     <input
                       type="checkbox"
@@ -187,7 +187,7 @@ export default function ContactSection() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="d-grid">
                     <button 
                       type="submit" 
@@ -203,7 +203,7 @@ export default function ContactSection() {
                       ) : <span>Nachricht senden</span>}
                     </button>
                   </div>
-                  
+
                   <div className="mt-3 small text-muted">
                     <span className="text-danger">*</span> Pflichtfelder
                   </div>
@@ -211,10 +211,10 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
-          
+
           <div className="col-md-5">
             <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktinformationen</h3>
-            
+
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
                 <i className="fas fa-envelope fs-5" aria-hidden="true"></i>
@@ -228,7 +228,7 @@ export default function ContactSection() {
                 </p>
               </div>
             </div>
-            
+
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
                 <i className="fas fa-phone fs-5" aria-hidden="true"></i>
@@ -242,7 +242,7 @@ export default function ContactSection() {
                 </p>
               </div>
             </div>
-            
+
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
                 <i className="fas fa-map-marker-alt fs-5" aria-hidden="true"></i>
@@ -256,9 +256,9 @@ export default function ContactSection() {
                 </address>
               </div>
             </div>
-            
+
             <hr className="my-4" />
-            
+
             <div className="mb-4">
               <h4 className="h6 fw-semibold mb-3">Folgen Sie uns</h4>
               <div className="d-flex gap-3" role="list" aria-label="Social Media Links">
@@ -284,7 +284,7 @@ export default function ContactSection() {
                 </a>
               </div>
             </div>
-            
+
             <div className="card shadow-sm border-0 rounded-4 p-4 mt-5">
               <h4 className="h6 fw-semibold mb-3">Geschäftszeiten</h4>
               <div className="d-flex justify-content-between mb-2">

@@ -24,7 +24,7 @@ interface OfferCardProps {
 
 export default function OffersSection() {
   const [activePostId, setActivePostId] = useState<number | null>(null);
-  
+
   const offers: Offer[] = [
     {
       id: 1,
@@ -63,7 +63,7 @@ export default function OffersSection() {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-    
+
     return (
       <div className="star-rating">
         {[...Array(fullStars)].map((_, i) => (
@@ -85,15 +85,15 @@ export default function OffersSection() {
   const handleShare = (e: React.MouseEvent, platform: string, offerId: number) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const offer = offers.find(o => o.id === offerId);
     if (!offer) return;
-    
+
     const shareUrl = `https://luxembourgpaschère.com/offers/${offerId}`;
     const shareText = `${offer.title} - ${offer.discount} | Luxembourg Pas Chère`;
-    
+
     let shareLink = '';
-    
+
     switch (platform) {
       case 'facebook':
         shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -110,7 +110,7 @@ export default function OffersSection() {
       default:
         return;
     }
-    
+
     window.open(shareLink, '_blank');
   };
 
@@ -119,7 +119,7 @@ export default function OffersSection() {
       <div className="container">
         <div className="row align-items-center mb-4">
           <div className="col">
-            <h2 className="display-6 fw-bold font-montserrat mb-0">Aktuelle Angebote</h2>
+            <h2 className="display-6 fw-bold font-montserrat mb-0 text-primary">Aktuelle Angebote</h2> {/* Added text-primary for emphasis */}
           </div>
           <div className="col-auto">
             <a href="#" className="text-decoration-none text-lux-blue fw-bold">
@@ -127,7 +127,7 @@ export default function OffersSection() {
             </a>
           </div>
         </div>
-        
+
         {/* Desktop View */}
         <div className="row row-cols-1 row-cols-md-3 g-4 d-none d-md-flex">
           {offers.map((offer) => (
@@ -161,7 +161,7 @@ export default function OffersSection() {
                 </div>
                 <div className="card-body p-4">
                   <div className="d-flex justify-content-between align-items-start mb-2">
-                    <h3 className="card-title h5 fw-bold font-montserrat mb-0">{offer.title}</h3>
+                    <h3 className="card-title h5 fw-bold font-montserrat mb-0 text-dark"> {/* Added text-dark for contrast */} {offer.title}</h3>
                     {/* Share button */}
                     <div className="dropdown">
                       <button 
@@ -171,7 +171,7 @@ export default function OffersSection() {
                       >
                         <i className="fas fa-share-alt"></i>
                       </button>
-                      
+
                       {activePostId === offer.id && (
                         <div className="share-popup">
                           <div className="d-flex gap-2 mt-2">
@@ -208,13 +208,13 @@ export default function OffersSection() {
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Rating */}
                   <div className="d-flex align-items-center mb-3">
                     {renderStars(offer.rating)}
                     <span className="ms-2 text-muted small">({offer.reviewCount})</span>
                   </div>
-                  
+
                   <p className="card-text text-muted mb-3">{offer.description}</p>
                   <div className="d-flex align-items-center text-muted mb-3">
                     <i className="fas fa-map-marker-alt me-2"></i>
@@ -234,7 +234,7 @@ export default function OffersSection() {
             </div>
           ))}
         </div>
-        
+
         {/* Mobile Carousel View - Only visible on small screens */}
         <div className="d-block d-md-none mt-4">
           <div className="text-center mb-3">
@@ -264,20 +264,20 @@ export default function OffersSection() {
                       </div>
                     </div>
                     <div className="card-body p-4">
-                      <h3 className="card-title h5 fw-bold font-montserrat mb-2">{offer.title}</h3>
-                      
+                      <h3 className="card-title h5 fw-bold font-montserrat mb-2 text-dark"> {/* Added text-dark for contrast */} {offer.title}</h3>
+
                       {/* Rating */}
                       <div className="d-flex align-items-center mb-3">
                         {renderStars(offer.rating)}
                         <span className="ms-2 text-muted small">({offer.reviewCount})</span>
                       </div>
-                      
+
                       <p className="card-text text-muted mb-3">{offer.description}</p>
                       <div className="d-flex align-items-center text-muted mb-3">
                         <i className="fas fa-map-marker-alt me-2"></i>
                         <small>{offer.location}</small>
                       </div>
-                      
+
                       <div className="row g-2">
                         <div className="col-8">
                           <a 
