@@ -7,6 +7,7 @@ import BookSection from "@/components/BookSection";
 import OffersSection from "@/components/OffersSection";
 import BlogSection from "@/components/BlogSection";
 import AboutSection from "@/components/AboutSection";
+import AboutProjectSection from "@/components/AboutProjectSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import ContactSection from "@/components/ContactSection";
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Hero />
         <CategorySection />
         <BookSection />
+        <AboutProjectSection />
         <OffersSection />
         <BlogSection />
         <AboutSection />
