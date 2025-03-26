@@ -31,7 +31,7 @@ export default function CategorySection() {
   ];
 
   return (
-    <section className="bg-white py-16">
+    <section id="category" className="bg-white py-16">
       <div className="container mx-auto px-6">
         <h2 className="font-montserrat font-bold text-3xl text-center mb-12">What Are You Looking For?</h2>
         
