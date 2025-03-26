@@ -776,3 +776,54 @@ body.user-is-tabbing a:focus {
 .bg-white.bg-opacity-20:nth-child(4) {
   animation-delay: 0.9s;
 }
+/* Footer styling */
+.footer-link {
+  position: relative;
+  transition: all 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.back-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+footer h3 {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+footer h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--lux-blue);
+}

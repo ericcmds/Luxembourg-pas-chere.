@@ -52,3 +52,46 @@ export default function BackToTop() {
     </>
   );
 }
+import { useEffect, useState } from 'react';
+import { ChevronUp } from 'lucide-react';
+
+export default function BackToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Show button when page is scrolled past a certain point
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+
+    // Clean up listener
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="back-to-top fixed bottom-8 right-8 bg-lux-blue hover:bg-blue-700 transition-colors text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg animate-fadeIn z-50"
+          aria-label="Back to top"
+        >
+          <ChevronUp size={24} />
+        </button>
+      )}
+    </>
+  );
+}

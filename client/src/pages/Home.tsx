@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import Hero from "@/components/Hero";
 import CategorySection from "@/components/CategorySection";
 import BookSection from "@/components/BookSection";
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
+      <BackToTop />
       <main>
         <Hero />
         <CategorySection />
