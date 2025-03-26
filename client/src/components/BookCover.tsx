@@ -1,120 +1,140 @@
 export default function BookCover() {
   return (
-    <svg
-      className="w-full h-full max-w-xs mx-auto drop-shadow-xl"
-      viewBox="0 0 240 340"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Book background */}
-      <defs>
-        <linearGradient id="bookSpineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#b31c1c" />
-          <stop offset="100%" stopColor="#e11d48" />
-        </linearGradient>
-        <linearGradient id="bookCoverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#e11d48" />
-          <stop offset="100%" stopColor="#b91c1c" />
-        </linearGradient>
-        <filter id="shadowEffect" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="3" dy="3" stdDeviation="5" floodOpacity="0.3" />
-        </filter>
-      </defs>
+    <div className="book-cover-container position-relative" style={{ maxWidth: '350px' }}>
+      <svg
+        className="w-100 h-100 mx-auto"
+        viewBox="0 0 240 340"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{
+          filter: 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))',
+          transform: 'perspective(1200px) rotateY(10deg)',
+          transformOrigin: 'left center'
+        }}
+      >
+        {/* Book background */}
+        <defs>
+          <linearGradient id="bookSpineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#b31c1c" />
+            <stop offset="100%" stopColor="#e11d48" />
+          </linearGradient>
+          <linearGradient id="bookCoverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#e11d48" />
+            <stop offset="100%" stopColor="#b91c1c" />
+          </linearGradient>
+          <filter id="shadowEffect" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="3" dy="3" stdDeviation="5" floodOpacity="0.3" />
+          </filter>
+        </defs>
 
-      {/* Book spine */}
-      <rect x="0" y="10" width="20" height="320" rx="2" fill="url(#bookSpineGradient)" filter="url(#shadowEffect)" />
-      
-      {/* Book cover */}
-      <rect x="20" y="10" width="220" height="320" rx="3" fill="url(#bookCoverGradient)" filter="url(#shadowEffect)" />
-      
-      {/* Book spine detail */}
-      <rect x="5" y="20" width="10" height="300" rx="1" fill="#ffffff" fillOpacity="0.1" />
-      
-      {/* Luxembourg flag colors - horizontal stripes on top of book */}
-      <rect x="30" y="30" width="200" height="20" fill="#00A1DE" />
-      <rect x="30" y="50" width="200" height="20" fill="#FFFFFF" />
-      <rect x="30" y="70" width="200" height="20" fill="#E60023" />
-      
-      {/* Book title */}
-      <text 
-        x="130" 
-        y="140" 
-        fontFamily="Arial" 
-        fontSize="22" 
-        fontWeight="bold" 
-        fill="white" 
-        textAnchor="middle"
-      >
-        LUXEMBOURG
-      </text>
-      <text 
-        x="130" 
-        y="170" 
-        fontFamily="Arial" 
-        fontSize="22" 
-        fontWeight="bold" 
-        fill="white" 
-        textAnchor="middle"
-      >
-        PAS CHÈRE
-      </text>
-      
-      {/* Subtitle */}
-      <text 
-        x="130" 
-        y="200" 
-        fontFamily="Arial" 
-        fontSize="12" 
-        fill="white" 
-        textAnchor="middle"
-      >
-        Guide to Affordable Living
-      </text>
-      
-      {/* Euro sign */}
-      <circle cx="130" cy="240" r="30" fill="white" fillOpacity="0.2" />
-      <text 
-        x="130" 
-        y="250" 
-        fontFamily="Arial" 
-        fontSize="32" 
-        fontWeight="bold" 
-        fill="white" 
-        textAnchor="middle"
-      >
-        €
-      </text>
-      
-      {/* Author name */}
-      <text 
-        x="130" 
-        y="300" 
-        fontFamily="Arial" 
-        fontSize="12" 
-        fill="white" 
-        textAnchor="middle"
-      >
-        The Ultimate Savings Guide
-      </text>
-      
-      {/* Book page effect */}
-      <path 
-        d="M240,10 C235,15 235,325 240,330" 
-        stroke="#f8f8f8" 
-        strokeWidth="1" 
-        fill="none" 
-      />
-      {/* Page lines */}
-      {[...Array(10)].map((_, i) => (
-        <line 
-          key={i} 
-          x1="240" 
-          y1={40 + i * 30} 
-          x2="235" 
-          y2={40 + i * 30} 
+        {/* Book spine */}
+        <rect x="0" y="10" width="20" height="320" rx="2" fill="url(#bookSpineGradient)" filter="url(#shadowEffect)" />
+        
+        {/* Book cover */}
+        <rect x="20" y="10" width="220" height="320" rx="3" fill="url(#bookCoverGradient)" filter="url(#shadowEffect)" />
+        
+        {/* Book spine detail */}
+        <rect x="5" y="20" width="10" height="300" rx="1" fill="#ffffff" fillOpacity="0.1" />
+        
+        {/* Luxembourg flag colors - horizontal stripes on top of book */}
+        <rect x="30" y="30" width="200" height="20" fill="#00A1DE" />
+        <rect x="30" y="50" width="200" height="20" fill="#FFFFFF" />
+        <rect x="30" y="70" width="200" height="20" fill="#E60023" />
+        
+        {/* Book title */}
+        <text 
+          x="130" 
+          y="140" 
+          fontFamily="Montserrat, Arial, sans-serif" 
+          fontSize="22" 
+          fontWeight="bold" 
+          fill="white" 
+          textAnchor="middle"
+        >
+          LUXEMBOURG
+        </text>
+        <text 
+          x="130" 
+          y="170" 
+          fontFamily="Montserrat, Arial, sans-serif" 
+          fontSize="22" 
+          fontWeight="bold" 
+          fill="white" 
+          textAnchor="middle"
+        >
+          PAS CHÈRE
+        </text>
+        
+        {/* Subtitle */}
+        <text 
+          x="130" 
+          y="200" 
+          fontFamily="Open Sans, Arial, sans-serif" 
+          fontSize="12" 
+          fill="white" 
+          textAnchor="middle"
+        >
+          Guide to Affordable Living
+        </text>
+        
+        {/* Euro sign */}
+        <circle cx="130" cy="240" r="30" fill="white" fillOpacity="0.2" />
+        <text 
+          x="130" 
+          y="250" 
+          fontFamily="Montserrat, Arial, sans-serif" 
+          fontSize="32" 
+          fontWeight="bold" 
+          fill="white" 
+          textAnchor="middle"
+        >
+          €
+        </text>
+        
+        {/* Author name */}
+        <text 
+          x="130" 
+          y="300" 
+          fontFamily="Open Sans, Arial, sans-serif" 
+          fontSize="12" 
+          fill="white" 
+          textAnchor="middle"
+        >
+          The Ultimate Savings Guide
+        </text>
+        
+        {/* Book page effect */}
+        <path 
+          d="M240,10 C235,15 235,325 240,330" 
           stroke="#f8f8f8" 
-          strokeWidth="0.5" 
+          strokeWidth="1" 
+          fill="none" 
         />
-      ))}
-    </svg>
+        {/* Page lines */}
+        {[...Array(10)].map((_, i) => (
+          <line 
+            key={i} 
+            x1="240" 
+            y1={40 + i * 30} 
+            x2="235" 
+            y2={40 + i * 30} 
+            stroke="#f8f8f8" 
+            strokeWidth="0.5" 
+          />
+        ))}
+      </svg>
+      
+      {/* Book reflection effect */}
+      <div className="book-reflection position-absolute bottom-0 start-50 translate-middle-x w-75" 
+           style={{ height: '20px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)', 
+                   borderTopLeftRadius: '50%', borderTopRightRadius: '50%', transform: 'scaleY(-1)', opacity: 0.3 }}>
+      </div>
+      
+      {/* Sticker */}
+      <div className="position-absolute top-0 end-0 translate-middle-x" 
+           style={{ backgroundColor: '#E31837', color: 'white', padding: '10px', borderRadius: '50%', 
+                   transform: 'rotate(15deg) translateY(-20px)', boxShadow: '0 2px 10px rgba(0,0,0,0.2)' }}>
+        <span className="fw-bold">NEW</span>
+      </div>
+    </div>
   );
 }
