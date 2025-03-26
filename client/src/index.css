@@ -197,3 +197,27 @@
 .transition {
   transition: all 0.3s ease;
 }
+
+/* Category section specific styles */
+.category-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+.divider-custom {
+  width: 80%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.divider-custom-line {
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+}
+.divider-custom-icon {
+  color: #00A4E0;
+}
