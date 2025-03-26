@@ -72,6 +72,27 @@ export default function HeroSection() {
             </div>
           </div>
 
+          <div className="flex flex-col md:flex-row gap-4 mb-8">
+            <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 flex-1 flex items-center border border-white border-opacity-20 hover:bg-opacity-30 transition-all">
+              <div className="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                <MapPin className="h-6 w-6 text-white" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-3xl font-bold">100+</p>
+                <p className="text-sm">Hidden spots</p>
+              </div>
+            </div>
+            <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 flex-1 flex items-center border border-white border-opacity-20 hover:bg-opacity-30 transition-all">
+              <div className="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                <PiggyBank className="h-6 w-6 text-white" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-3xl font-bold">€1000+</p>
+                <p className="text-sm">Annual savings</p>
+              </div>
+            </div>
+          </div>
+
           {/* Feature badges */}
           <div className="flex flex-wrap gap-4 mb-8">
             <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center">
