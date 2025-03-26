@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Target, Eye, BookOpen, Users, Map, Calendar } from 'lucide-react';
 
 export default function AboutSection() {
