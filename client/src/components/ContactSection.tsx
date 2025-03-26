@@ -66,8 +66,8 @@ export default function ContactSection() {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-5 fw-bold font-montserrat mb-3">Contact Us</h2>
-            <p className="lead text-muted">Have questions? Want to work with us? Reach out using the form below.</p>
+            <h2 className="display-5 fw-bold font-montserrat mb-3">Kontakt</h2>
+            <p className="lead text-muted">Haben Sie Fragen? Möchten Sie mit uns zusammenarbeiten? Kontaktieren Sie uns über das Formular unten.</p>
           </div>
         </div>
         
@@ -75,110 +75,181 @@ export default function ContactSection() {
           <div className="col-md-6">
             <div className="card shadow-sm border-0 rounded-4">
               <div className="card-body p-4 p-md-5">
-                <h3 className="h4 fw-bold font-montserrat mb-4">Get In Touch</h3>
+                <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktieren Sie uns</h3>
                 
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} aria-label="Kontaktformular" noValidate>
                   <div className="mb-3">
-                    <label htmlFor="name" className="form-label fw-semibold">Your Name</label>
+                    <label htmlFor="name" className="form-label fw-semibold">Ihr Name <span className="text-danger" aria-hidden="true">*</span></label>
                     <input 
                       type="text" 
                       className="form-control form-control-lg" 
                       id="name" 
                       name="name" 
-                      placeholder="Enter your name"
+                      placeholder="Geben Sie Ihren Namen ein"
                       required 
+                      aria-required="true"
+                      autoComplete="name"
                     />
+                    <div className="invalid-feedback">Bitte geben Sie Ihren Namen ein.</div>
                   </div>
                   
                   <div className="mb-3">
-                    <label htmlFor="email" className="form-label fw-semibold">Your Email</label>
+                    <label htmlFor="email" className="form-label fw-semibold">Ihre E-Mail <span className="text-danger" aria-hidden="true">*</span></label>
                     <input 
                       type="email" 
                       className="form-control form-control-lg" 
                       id="email" 
                       name="email" 
-                      placeholder="Enter your email"
+                      placeholder="Geben Sie Ihre E-Mail ein"
                       required 
+                      aria-required="true"
+                      autoComplete="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     />
+                    <div className="invalid-feedback">Bitte geben Sie eine gültige E-Mail-Adresse ein.</div>
                   </div>
                   
                   <div className="mb-4">
-                    <label htmlFor="message" className="form-label fw-semibold">Your Message</label>
+                    <label htmlFor="message" className="form-label fw-semibold">Ihre Nachricht <span className="text-danger" aria-hidden="true">*</span></label>
                     <textarea 
                       className="form-control form-control-lg" 
                       id="message" 
                       name="message" 
                       rows={5} 
-                      placeholder="Enter your message"
+                      placeholder="Geben Sie Ihre Nachricht ein"
                       required
+                      aria-required="true"
+                      minLength={10}
                     ></textarea>
+                    <div className="invalid-feedback">Bitte geben Sie eine Nachricht mit mindestens 10 Zeichen ein.</div>
                   </div>
                   
-                  <button 
-                    type="submit" 
-                    className="btn btn-lg bg-lux-blue text-white fw-semibold" 
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Sending...
-                      </>
-                    ) : "Send Message"}
-                  </button>
+                  <div className="mb-4 form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="privacyCheck"
+                      required
+                      aria-required="true"
+                    />
+                    <label className="form-check-label" htmlFor="privacyCheck">
+                      Ich stimme der <a href="#" className="text-lux-blue">Datenschutzerklärung</a> zu <span className="text-danger" aria-hidden="true">*</span>
+                    </label>
+                    <div className="invalid-feedback">
+                      Sie müssen der Datenschutzerklärung zustimmen, um fortzufahren.
+                    </div>
+                  </div>
+                  
+                  <div className="d-grid">
+                    <button 
+                      type="submit" 
+                      className="btn btn-lg bg-lux-blue text-white fw-semibold" 
+                      disabled={isSubmitting}
+                      aria-busy={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          <span>Wird gesendet...</span>
+                        </>
+                      ) : <span>Nachricht senden</span>}
+                    </button>
+                  </div>
+                  
+                  <div className="mt-3 small text-muted">
+                    <span className="text-danger">*</span> Pflichtfelder
+                  </div>
                 </form>
               </div>
             </div>
           </div>
           
           <div className="col-md-5">
-            <h3 className="h4 fw-bold font-montserrat mb-4">Contact Information</h3>
+            <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktinformationen</h3>
             
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
-                <i className="fas fa-envelope fs-5"></i>
+                <i className="fas fa-envelope fs-5" aria-hidden="true"></i>
               </div>
               <div>
-                <h4 className="h6 fw-semibold mb-1">Email</h4>
-                <p className="text-muted mb-0">info@luxembourgpaschère.lu</p>
+                <h4 className="h6 fw-semibold mb-1">E-Mail</h4>
+                <p className="text-muted mb-0">
+                  <a href="mailto:info@luxembourgpaschère.lu" className="text-decoration-none text-muted hover-text-lux-blue">
+                    info@luxembourgpaschère.lu
+                  </a>
+                </p>
               </div>
             </div>
             
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
-                <i className="fas fa-phone fs-5"></i>
+                <i className="fas fa-phone fs-5" aria-hidden="true"></i>
               </div>
               <div>
-                <h4 className="h6 fw-semibold mb-1">Phone</h4>
-                <p className="text-muted mb-0">+352 123 456 789</p>
+                <h4 className="h6 fw-semibold mb-1">Telefon</h4>
+                <p className="text-muted mb-0">
+                  <a href="tel:+352123456789" className="text-decoration-none text-muted hover-text-lux-blue">
+                    +352 123 456 789
+                  </a>
+                </p>
+              </div>
+            </div>
+            
+            <div className="d-flex mb-4">
+              <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
+                <i className="fas fa-map-marker-alt fs-5" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h4 className="h6 fw-semibold mb-1">Adresse</h4>
+                <address className="text-muted mb-0" style={{fontStyle: 'normal'}}>
+                  Luxembourg Pas Chère<br />
+                  123 Rue du Commerce<br />
+                  L-1040 Luxembourg
+                </address>
               </div>
             </div>
             
             <hr className="my-4" />
             
             <div className="mb-4">
-              <h4 className="h6 fw-semibold mb-3">Follow Us</h4>
-              <div className="d-flex gap-3">
-                <a href="#" className="social-icon" aria-label="Facebook">
+              <h4 className="h6 fw-semibold mb-3">Folgen Sie uns</h4>
+              <div className="d-flex gap-3" role="list" aria-label="Social Media Links">
+                <a href="#" className="social-icon" aria-label="Besuchen Sie uns auf Facebook">
                   <div className="rounded-circle bg-light p-3 text-center">
-                    <i className="fab fa-facebook-f text-lux-blue"></i>
+                    <i className="fab fa-facebook-f text-lux-blue" aria-hidden="true"></i>
                   </div>
                 </a>
-                <a href="#" className="social-icon" aria-label="Twitter">
+                <a href="#" className="social-icon" aria-label="Folgen Sie uns auf Twitter">
                   <div className="rounded-circle bg-light p-3 text-center">
-                    <i className="fab fa-twitter text-lux-blue"></i>
+                    <i className="fab fa-twitter text-lux-blue" aria-hidden="true"></i>
                   </div>
                 </a>
-                <a href="#" className="social-icon" aria-label="Instagram">
+                <a href="#" className="social-icon" aria-label="Folgen Sie uns auf Instagram">
                   <div className="rounded-circle bg-light p-3 text-center">
-                    <i className="fab fa-instagram text-lux-blue"></i>
+                    <i className="fab fa-instagram text-lux-blue" aria-hidden="true"></i>
                   </div>
                 </a>
-                <a href="#" className="social-icon" aria-label="LinkedIn">
+                <a href="#" className="social-icon" aria-label="Verbinden Sie sich mit uns auf LinkedIn">
                   <div className="rounded-circle bg-light p-3 text-center">
-                    <i className="fab fa-linkedin-in text-lux-blue"></i>
+                    <i className="fab fa-linkedin-in text-lux-blue" aria-hidden="true"></i>
                   </div>
                 </a>
+              </div>
+            </div>
+            
+            <div className="card shadow-sm border-0 rounded-4 p-4 mt-5">
+              <h4 className="h6 fw-semibold mb-3">Geschäftszeiten</h4>
+              <div className="d-flex justify-content-between mb-2">
+                <span>Montag - Freitag:</span>
+                <span>9:00 - 18:00 Uhr</span>
+              </div>
+              <div className="d-flex justify-content-between mb-2">
+                <span>Samstag:</span>
+                <span>10:00 - 15:00 Uhr</span>
+              </div>
+              <div className="d-flex justify-content-between">
+                <span>Sonntag:</span>
+                <span>Geschlossen</span>
               </div>
             </div>
           </div>

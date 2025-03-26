@@ -26,15 +26,27 @@ export default function BackToTop() {
     });
   };
 
+  // Handle keyboard accessibility
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      scrollToTop();
+    }
+  };
+
   return (
     <>
       {isVisible && (
         <button 
           onClick={scrollToTop} 
-          className="back-to-top btn btn-lux-blue rounded-circle shadow"
-          aria-label="Back to top"
+          onKeyDown={handleKeyDown}
+          className="back-to-top btn bg-lux-blue text-white rounded-circle shadow"
+          aria-label="Zum Seitenanfang"
+          title="Zum Seitenanfang"
+          tabIndex={0}
         >
-          <i className="fas fa-arrow-up"></i>
+          <i className="fas fa-arrow-up" aria-hidden="true"></i>
+          <span className="visually-hidden">Zum Seitenanfang</span>
         </button>
       )}
     </>
