@@ -23,7 +23,14 @@ export default defineConfig({
       : []),
   ],
   server: {
-    allowedHosts: ['cacb4935-ed61-4c2a-9a5f-dbaf271a9137-00-1cyyybjqfpe24.spock.replit.dev', 'all'],
+    host: '0.0.0.0',
+    hmr: {
+      host: '0.0.0.0',
+      clientPort: 443,
+      protocol: 'wss'
+    },
+    cors: true,
+    allowedHosts: 'all',
   },
   resolve: {
     alias: {
