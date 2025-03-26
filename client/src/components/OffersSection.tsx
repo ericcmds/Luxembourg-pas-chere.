@@ -1,7 +1,3 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin } from "lucide-react";
-
 type Offer = {
   id: number;
   title: string;
@@ -40,47 +36,56 @@ export default function OffersSection() {
   ];
 
   return (
-    <section id="offers" className="bg-lux-light py-16">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-          <h2 className="font-montserrat font-bold text-3xl">Latest Offers</h2>
-          <div className="mt-4 md:mt-0">
-            <a href="#" className="font-montserrat text-lux-blue hover:text-lux-red transition-colors flex items-center">
-              View all offers
-              <ArrowRight className="ml-2 h-4 w-4" />
+    <section id="offers" className="py-5 py-md-6 bg-light">
+      <div className="container">
+        <div className="row align-items-center mb-4">
+          <div className="col">
+            <h2 className="display-6 fw-bold font-montserrat mb-0">Latest Offers</h2>
+          </div>
+          <div className="col-auto">
+            <a href="#" className="text-decoration-none text-lux-blue fw-bold">
+              View all offers <i className="fas fa-arrow-right ms-1 small"></i>
             </a>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 row-cols-md-3 g-4">
           {offers.map((offer) => (
-            <Card key={offer.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-48 w-full">
-                <img 
-                  src={offer.image} 
-                  alt={offer.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-montserrat font-semibold text-xl">{offer.title}</h3>
-                  <span className="bg-lux-red text-white text-sm font-montserrat font-semibold px-3 py-1 rounded-full">
-                    {offer.discount}
-                  </span>
+            <div key={offer.id} className="col">
+              <a href="#" className="text-decoration-none">
+                <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden offer-card">
+                  <div className="position-relative">
+                    <img 
+                      src={offer.image} 
+                      alt={offer.title} 
+                      className="card-img-top object-fit-cover"
+                      style={{ height: "200px" }}
+                    />
+                    <div className="position-absolute top-0 end-0 m-3">
+                      <span className="badge bg-lux-red px-3 py-2 rounded-pill fs-6 fw-bold">
+                        {offer.discount}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="card-body p-4">
+                    <h3 className="card-title h5 fw-bold font-montserrat mb-3">{offer.title}</h3>
+                    <p className="card-text text-muted mb-3">{offer.description}</p>
+                    <div className="d-flex align-items-center text-muted mb-3">
+                      <i className="fas fa-map-marker-alt me-2"></i>
+                      <small>{offer.location}</small>
+                    </div>
+                    <div className="d-grid">
+                      <button 
+                        className="btn btn-primary py-2"
+                        style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}
+                      >
+                        View Deal <i className="fas fa-chevron-right ms-1 small"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-gray-600 mb-4">{offer.description}</p>
-                <div className="flex items-center text-gray-500 mb-4">
-                  <MapPin className="mr-2 h-4 w-4" />
-                  <span>{offer.location}</span>
-                </div>
-                <Button 
-                  className="w-full bg-lux-blue hover:bg-lux-red text-white font-montserrat font-semibold py-2"
-                >
-                  View Deal
-                </Button>
-              </div>
-            </Card>
+              </a>
+            </div>
           ))}
         </div>
       </div>
