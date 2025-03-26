@@ -1,0 +1,51 @@
+Update the existing homepage section to prominently feature the book "Luxembourg Pas Chère". Ensure the book cover image is centrally placed. Below the image, include the following detailed description:
+
+Book Description:
+
+Our guide is unique, being the only one to compile all the information needed to save money. This makes it useful and valuable for readers.
+
+The guide has a triple objective:
+
+Help families in precarious situations maintain their dignity by becoming active in finding solutions to their financial difficulties and managing daily life.
+Save families time by providing all the information they need in one place.
+Encourage responsible consumption by promoting the social and solidarity economy.
+The guide offers accessible information on resources that help with frugal consumption and budget management. It provides a unique platform presenting the Grand Duchy (tourism, social, cultural, etc.) from the perspective of economic accessibility for all.
+
+About the Project Leader:
+
+My name is Pascale ZAOUROU. I am a single mother of three children, aged 49, with a degree in Educational Sciences and a diploma in Social Sciences and Mediation. I have been a resident of Luxembourg for over fifteen years. This project is based on my personal experience, followed by interviews with students, single-parent families to learn about their best tips, and discussions with associative leaders and key players in Luxembourg's social and solidarity economy.
+
+Context:
+
+Today, 45% of workers in Luxembourg come from across the borders, and 75% of the active population is non-native. We also address the issue of working poor. Various health, climate, and security crises have weakened household budgets. The phenomenon of working poor has intensified in Luxembourg. While the country aims to attract talent, the high cost of living hinders its appeal. A thorough market study reveals current gaps in information on affordable tips and consumer needs, as well as access to social measures. On average, between 50% and 80% of potential beneficiaries do not have access to social measures because they are not informed.
+
+Target Audience:
+
+Local residents concerned about managing their budget
+Students, young professionals
+Budget travelers
+Municipalities
+Social services
+Human resources departments
+Non-resident expatriates
+Companies featured in the first edition
+Companies concerned with CSR in the banking or consumer sectors
+Ministries
+Temporary employment agencies
+Daycare centers
+Real estate agencies
+Innovation:
+
+The project's innovation lies in several aspects:
+
+The diversity of topics covered. Our project is the only one to address all areas of daily life: finance, culture, furniture, entrepreneurship, food, contributing to lower household expenses and offering an economic solution alternative.
+A response to the high cost of living in Luxembourg
+Unique
+Content of the Guide:
+
+Sections related to daily life (as in the first edition, covering eating, housing, going out, visiting, shopping, etc.)
+New sections on schooling, training, and studies
+Promotion of the social and solidarity economy
+Underneath the description, add a call-to-action button labeled "Order Now" that allows users to purchase the book. Ensure the button is visually distinct and easily noticeable. When clicked, the button should direct users to a page or a modal where they can complete the purchase.
+
+Style this section to be visually appealing, with the book cover as the focal point. Use a clean layout with ample white space to draw attention to the book and the order button.
