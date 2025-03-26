@@ -1,103 +1,71 @@
-import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#333333] text-white pt-12 pb-6">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-[#E60023] rounded-full flex items-center justify-center">
-                <span className="text-white font-montserrat font-bold text-lg">LPC</span>
-              </div>
-              <div className="font-montserrat font-bold text-white">
-                <span>Luxembourg</span>
-                <span className="text-[#E60023]">Pas Chère</span>
-              </div>
-            </div>
-            <p className="font-opensans mb-6">
-              Your ultimate guide to experiencing Luxembourg on a budget. Discover affordable options for dining, entertainment, travel, and more.
+    <footer className="bg-lux-dark text-white">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="col-span-1 md:col-span-3 lg:col-span-1">
+            <a href="#" className="flex items-center mb-6">
+              <span className="text-lux-red font-montserrat font-bold text-2xl">Luxembourg</span>
+              <span className="text-lux-blue font-montserrat font-bold text-2xl ml-2">Pas Chère</span>
+            </a>
+            <p className="text-gray-400 mb-6">
+              Your guide to enjoying Luxembourg without breaking the bank.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-[#E60023] transition-colors duration-200">
-                <Facebook className="h-5 w-5" />
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook size={18} />
               </a>
-              <a href="#" className="text-white hover:text-[#E60023] transition-colors duration-200">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter size={18} />
               </a>
-              <a href="#" className="text-white hover:text-[#E60023] transition-colors duration-200">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Instagram size={18} />
               </a>
-              <a href="#" className="text-white hover:text-[#E60023] transition-colors duration-200">
-                <Linkedin className="h-5 w-5" />
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
           
           <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3 font-opensans">
-              <li><a href="#home" className="hover:text-[#E60023] transition-colors duration-200">Home</a></li>
-              <li><a href="#offers" className="hover:text-[#E60023] transition-colors duration-200">Offers</a></li>
-              <li><a href="#blog" className="hover:text-[#E60023] transition-colors duration-200">Blog</a></li>
-              <li><a href="#about" className="hover:text-[#E60023] transition-colors duration-200">About Us</a></li>
-              <li><a href="#contact" className="hover:text-[#E60023] transition-colors duration-200">Contact</a></li>
+            <h3 className="font-montserrat font-semibold text-lg mb-6">Explore</h3>
+            <ul className="space-y-4">
+              <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
+              <li><a href="#offers" className="text-gray-400 hover:text-white transition-colors">Offers</a></li>
+              <li><a href="#blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-montserrat font-semibold text-lg mb-6">Categories</h3>
-            <ul className="space-y-3 font-opensans">
-              <li><a href="#" className="hover:text-[#E60023] transition-colors duration-200">Restaurants & Cafés</a></li>
-              <li><a href="#" className="hover:text-[#E60023] transition-colors duration-200">Attractions & Activities</a></li>
-              <li><a href="#" className="hover:text-[#E60023] transition-colors duration-200">Accommodation</a></li>
-              <li><a href="#" className="hover:text-[#E60023] transition-colors duration-200">Transport</a></li>
-              <li><a href="#" className="hover:text-[#E60023] transition-colors duration-200">Shopping</a></li>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Restaurants</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Shopping</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Activities</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Accommodation</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Transportation</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Stay Updated</h3>
-            <p className="font-opensans mb-4">
-              Subscribe to get the latest deals and budget tips straight to your inbox.
-            </p>
-            <form className="mb-4">
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="px-4 py-2 rounded-l-lg w-full focus:outline-none text-[#333333]"
-                />
-                <button 
-                  type="submit" 
-                  className="bg-[#E60023] hover:bg-red-700 px-4 py-2 rounded-r-lg transition-colors duration-200"
-                  aria-label="Subscribe"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 2L11 13"></path>
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
-                  </svg>
-                </button>
-              </div>
-            </form>
-            <p className="text-sm font-opensans text-gray-400">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
+            <h3 className="font-montserrat font-semibold text-lg mb-6">Legal</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Disclaimer</a></li>
+            </ul>
           </div>
         </div>
         
-        <div className="border-t border-gray-700 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm font-opensans text-gray-400 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Luxembourg Pas Chère. All rights reserved.
-            </p>
-            <div className="flex space-x-4 text-sm font-opensans text-gray-400">
-              <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Cookie Policy</a>
-            </div>
-          </div>
+        <div className="border-t border-gray-700 mt-12 pt-8 text-center">
+          <p className="text-gray-400">
+            &copy; {new Date().getFullYear()} Luxembourg Pas Chère. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

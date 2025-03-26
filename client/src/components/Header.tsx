@@ -1,63 +1,75 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
-import MobileMenu from "./ui/MobileMenu";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Add scroll event listener to detect when to add shadow
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
-    <header className={`sticky top-0 bg-white z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center py-4">
+    <header className={`sticky top-0 bg-white z-50 transition-shadow ${isScrolled ? 'shadow-md' : ''}`}>
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="#home" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-[#E60023] rounded-full flex items-center justify-center">
-              <span className="text-white font-montserrat font-bold text-lg">LPC</span>
-            </div>
-            <div className="font-montserrat font-bold text-[#333333]">
-              <span>Luxembourg</span>
-              <span className="text-[#E60023]">Pas Chère</span>
-            </div>
-          </Link>
-
+          <a href="#" className="flex items-center">
+            <span className="text-lux-red font-montserrat font-bold text-2xl">Luxembourg</span>
+            <span className="text-lux-blue font-montserrat font-bold text-2xl ml-2">Pas Chère</span>
+          </a>
+          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="font-montserrat text-[#333333] hover:text-[#E60023] transition-colors duration-200">Home</a>
-            <a href="#offers" className="font-montserrat text-[#333333] hover:text-[#E60023] transition-colors duration-200">Offers</a>
-            <a href="#blog" className="font-montserrat text-[#333333] hover:text-[#E60023] transition-colors duration-200">Blog</a>
-            <a href="#about" className="font-montserrat text-[#333333] hover:text-[#E60023] transition-colors duration-200">About</a>
-            <a href="#contact" className="font-montserrat text-[#333333] hover:text-[#E60023] transition-colors duration-200">Contact</a>
+            <a href="#home" className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Home</a>
+            <a href="#offers" className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Offers</a>
+            <a href="#blog" className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Blog</a>
+            <a href="#about" className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">About</a>
+            <a href="#contact" className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Contact</a>
           </nav>
-
+          
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            className="md:hidden text-[#333333] p-2" 
-            onClick={toggleMobileMenu}
-            aria-label="Menu"
+          <button 
+            aria-label="Toggle menu"
+            className="md:hidden focus:outline-none" 
+            onClick={toggleMenu}
           >
-            <Menu className="h-6 w-6" />
-          </Button>
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-lux-dark" />
+            ) : (
+              <Menu className="h-6 w-6 text-lux-dark" />
+            )}
+          </button>
         </div>
-
+        
         {/* Mobile Navigation */}
-        <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          <div className="flex flex-col space-y-4 mt-4 pb-4">
+            <a href="#home" onClick={closeMenu} className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Home</a>
+            <a href="#offers" onClick={closeMenu} className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Offers</a>
+            <a href="#blog" onClick={closeMenu} className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Blog</a>
+            <a href="#about" onClick={closeMenu} className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">About</a>
+            <a href="#contact" onClick={closeMenu} className="font-montserrat text-lux-dark hover:text-lux-red transition-colors">Contact</a>
+          </div>
+        </div>
       </div>
     </header>
   );

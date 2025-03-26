@@ -1,231 +1,205 @@
 import { useState } from "react";
-import { 
-  Card, 
-  CardContent 
-} from "@/components/ui/card";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+import { contactSchema } from "@shared/schema";
 import { 
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactSection() {
   const { toast } = useToast();
   
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+  const form = useForm({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
-      message: "",
-    },
+      message: ""
+    }
   });
-
-  const { mutate: submitForm, isPending } = useMutation({
-    mutationFn: async (data: FormValues) => {
-      return apiRequest("POST", "/api/contact", data);
+  
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: any) => {
+      return apiRequest("POST", "/api/contact", values);
     },
     onSuccess: () => {
       toast({
         title: "Message sent!",
-        description: "We've received your message and will get back to you soon.",
-        variant: "default",
+        description: "We'll get back to you as soon as possible.",
       });
       form.reset();
     },
-    onError: (error) => {
+    onError: () => {
       toast({
-        title: "Failed to send message",
-        description: error.message || "There was an error sending your message. Please try again.",
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
-    },
+    }
   });
 
-  const onSubmit = (data: FormValues) => {
-    submitForm(data);
-  };
+  function onSubmit(values: any) {
+    mutate(values);
+  }
 
   return (
-    <section id="contact" className="py-16 bg-[#F5F5F5]">
+    <section id="contact" className="bg-white py-16">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-[#333333] mb-6">
-              Get In Touch
-            </h2>
-            <p className="text-lg font-opensans text-[#333333] mb-8">
-              Have questions, suggestions for budget spots, or want to partner with us? We'd love to hear from you!
-            </p>
+        <h2 className="font-montserrat font-bold text-3xl text-center mb-12">Contact Us</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div>
+            <h3 className="font-montserrat font-semibold text-xl mb-6">Get In Touch</h3>
+            
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-montserrat">Your Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your name" 
+                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-montserrat">Your Email</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder="Enter your email"
+                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-montserrat">Your Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Enter your message"
+                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
+                          rows={5}
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <Button 
+                  type="submit"
+                  className="bg-lux-blue hover:bg-lux-red text-white font-montserrat font-semibold"
+                  disabled={isPending}
+                >
+                  {isPending ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </Form>
+          </div>
+          
+          <div>
+            <h3 className="font-montserrat font-semibold text-xl mb-6">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-[#E60023] rounded-full w-10 h-10 flex items-center justify-center text-white mt-1 mr-4">
+                <div className="text-lux-blue mr-4 mt-1">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-semibold text-[#333333]">Our Office</h3>
-                  <p className="text-[#333333] font-opensans">23 Boulevard Royal, Luxembourg City, 2449</p>
+                  <h4 className="font-montserrat font-medium">Address</h4>
+                  <p className="text-gray-600">7 Rue de la Liberté, L-1931 Luxembourg</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-[#E60023] rounded-full w-10 h-10 flex items-center justify-center text-white mt-1 mr-4">
+                <div className="text-lux-blue mr-4 mt-1">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-semibold text-[#333333]">Email Us</h3>
-                  <p className="text-[#333333] font-opensans">info@luxembourgpaschère.lu</p>
+                  <h4 className="font-montserrat font-medium">Email</h4>
+                  <p className="text-gray-600">info@luxembourgpaschère.lu</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-[#E60023] rounded-full w-10 h-10 flex items-center justify-center text-white mt-1 mr-4">
+                <div className="text-lux-blue mr-4 mt-1">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-semibold text-[#333333]">Call Us</h3>
-                  <p className="text-[#333333] font-opensans">+352 28 12 34 56</p>
+                  <h4 className="font-montserrat font-medium">Phone</h4>
+                  <p className="text-gray-600">+352 123 456 789</p>
                 </div>
               </div>
               
-              <div className="flex space-x-4 mt-8">
-                <a href="#" className="bg-[#00A1DE] hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className="bg-[#00A1DE] hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="bg-[#00A1DE] hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className="bg-[#00A1DE] hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200">
-                  <Linkedin className="h-5 w-5" />
-                </a>
+              <div className="pt-6">
+                <h4 className="font-montserrat font-medium mb-4">Follow Us</h4>
+                <div className="flex space-x-4">
+                  <a 
+                    href="#" 
+                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a 
+                    href="#" 
+                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                  <a 
+                    href="#" 
+                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
+                    aria-label="Instagram"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a 
+                    href="#" 
+                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="w-full lg:w-1/2">
-            <Card className="bg-white rounded-lg shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-montserrat font-semibold text-[#333333] mb-6">
-                  Send Us a Message
-                </h3>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#333333] font-montserrat font-semibold">
-                            Your Name
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field}
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A1DE]" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#333333] font-montserrat font-semibold">
-                            Your Email
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              type="email"
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A1DE]" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#333333] font-montserrat font-semibold">
-                            Subject
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A1DE]" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#333333] font-montserrat font-semibold">
-                            Your Message
-                          </FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              {...field} 
-                              rows={4} 
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A1DE]" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <Button 
-                      type="submit"
-                      disabled={isPending}
-                      className="w-full bg-[#E60023] hover:bg-red-700 text-white font-montserrat font-semibold py-3 rounded-lg transition-colors duration-200"
-                    >
-                      {isPending ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

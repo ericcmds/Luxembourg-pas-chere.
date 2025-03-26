@@ -1,24 +1,30 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import CategorySection from "@/components/CategorySection";
 import OffersSection from "@/components/OffersSection";
-import CTABanner from "@/components/CTABanner";
 import BlogSection from "@/components/BlogSection";
 import AboutSection from "@/components/AboutSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Header />
       <main>
-        <HeroSection />
+        <Hero />
+        <CategorySection />
         <OffersSection />
-        <CTABanner />
         <BlogSection />
         <AboutSection />
-        <TestimonialsSection />
+        <NewsletterSection />
         <ContactSection />
       </main>
       <Footer />

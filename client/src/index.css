@@ -3,11 +3,97 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 355 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 198 100% 43%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 82%;
+
+    --radius: 0.5rem;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-opensans antialiased bg-background text-foreground scroll-smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat;
+  }
+}
+
+@layer utilities {
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-opensans {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .text-lux-red {
+    color: #E60023;
+  }
+  
+  .text-lux-blue {
+    color: #00A1DE;
+  }
+  
+  .text-lux-dark {
+    color: #333333;
+  }
+  
+  .bg-lux-red {
+    background-color: #E60023;
+  }
+  
+  .bg-lux-blue {
+    background-color: #00A1DE;
+  }
+  
+  .bg-lux-light {
+    background-color: #F5F5F5;
+  }
+  
+  .hover\:bg-lux-red:hover {
+    background-color: #E60023;
+  }
+  
+  .hover\:bg-lux-blue:hover {
+    background-color: #00A1DE;
+  }
+  
+  .hover\:text-lux-red:hover {
+    color: #E60023;
+  }
+  
+  .hover\:text-lux-blue:hover {
+    color: #00A1DE;
   }
 }
