@@ -230,6 +230,4 @@ export default function BlogSection() {
       </div>
     </section>
   );
-}r */
-  }
-</style>
+}
