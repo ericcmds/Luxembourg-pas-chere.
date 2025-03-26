@@ -6,18 +6,10 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { useEffect } from "react";
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
-function App() {
+export default function App() {
   // Add accessibility focus outline for keyboard users only
   useEffect(() => {
     // This adds a class to the body when user is navigating with keyboard
@@ -36,25 +28,22 @@ function App() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* Skip to main content link - visible only for screen readers and when focused */}
-      <a 
-        href="#main" 
-        className="skip-to-content" 
-        aria-label="Zum Hauptinhalt springen"
-      >
-        Zum Hauptinhalt springen
-      </a>
-      
-      <div id="main" tabIndex={-1} className="main-content">
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
         <Router />
-      </div>
-
-      <BackToTop />
-      <CookieBanner />
-      <Toaster />
-    </QueryClientProvider>
+        <Toaster />
+        <BackToTop />
+        <CookieBanner />
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
-export default App;
+function Router() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route component={NotFound} />
+    </Switch>
+  );
+}

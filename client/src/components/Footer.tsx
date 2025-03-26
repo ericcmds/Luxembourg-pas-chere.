@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "wouter";
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
+            <Link href="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
               <img src="/logo.svg" alt="Luxembourg" className="h-8" />
               <span className="text-lux-blue font-bold text-xl ml-1">Pas Chère</span>
             </Link>
