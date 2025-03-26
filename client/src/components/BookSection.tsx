@@ -105,30 +105,83 @@ export default function BookSection() {
             </div>
             
             <div className="price-tag-container text-center mb-4">
-              <div className="d-flex justify-content-center align-items-center gap-3">
-                <div>
-                  <span className="d-block fs-6 text-decoration-line-through text-muted">Regulär: €34.99</span>
-                  <span className="d-block fs-2 fw-bold text-danger">Jetzt nur: €24.99</span>
+              <div className="position-relative bg-white rounded-lg p-4 shadow-lg mx-auto" style={{ maxWidth: "300px", border: "2px dashed #E31837" }}>
+                <div className="position-absolute" style={{ top: "-15px", right: "-15px" }}>
+                  <div className="bg-[#E31837] text-white px-3 py-2 rounded-circle shadow-lg" style={{ transform: "rotate(15deg)" }}>
+                    <span className="fw-bold">SAVE<br/>28%</span>
+                  </div>
                 </div>
-                <div className="bg-success text-white px-3 py-1 rounded-pill">
-                  <span className="fw-bold">29% RABATT</span>
+                
+                <div className="mb-2">
+                  <span className="d-block fs-6 text-decoration-line-through text-muted mb-1">Regulär: €34.99</span>
+                  <span className="d-block fs-1 fw-bold text-[#E31837]">€24.99</span>
+                  <div className="mt-2 d-inline-block bg-success text-white px-3 py-1 rounded-pill">
+                    <span className="fw-bold">LIMITIERTES ANGEBOT</span>
+                  </div>
+                </div>
+                
+                <div className="mt-3 d-flex justify-content-center gap-2">
+                  <div className="bg-light rounded p-2 text-center">
+                    <Truck className="mb-1 text-[#E31837]" size={20} />
+                    <p className="mb-0 small">Kostenloser<br/>Versand</p>
+                  </div>
+                  <div className="bg-light rounded p-2 text-center">
+                    <Check className="mb-1 text-[#E31837]" size={20} />
+                    <p className="mb-0 small">500+ Tipps<br/>inklusive</p>
+                  </div>
+                  <div className="bg-light rounded p-2 text-center">
+                    <BookOpen className="mb-1 text-[#E31837]" size={20} />
+                    <p className="mb-0 small">2023<br/>Edition</p>
+                  </div>
                 </div>
               </div>
-              <p className="text-muted mt-2 small">
-                <Truck className="me-1" size={14} />
-                Kostenloser Versand in Luxemburg
-              </p>
             </div>
 
             <div className="d-grid gap-2 col-lg-6 mx-auto">
-              <button 
-                className="btn btn-danger btn-lg rounded-pill shadow-lg px-5 py-3 fw-bold cta-button-animation" 
-                data-bs-toggle="modal" 
-                data-bs-target="#orderModal"
-              >
-                <ShoppingCart className="me-2" />
-                JETZT BESTELLEN
-              </button>
+              <div className="position-relative">
+                <div className="position-absolute" style={{ top: "-45px", left: "50%", transform: "translateX(-50%)" }}>
+                  <div className="bg-white rounded-circle shadow-lg py-2 px-3 mb-2 mx-auto" style={{ width: "fit-content" }}>
+                    <div className="text-center text-[#E31837]">
+                      <i className="fas fa-arrow-down fa-2x"></i>
+                    </div>
+                  </div>
+                </div>
+                
+                <button 
+                  className="btn btn-danger btn-lg rounded-pill shadow-lg px-5 py-3 fw-bold cta-button-animation position-relative overflow-hidden" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#orderModal"
+                  style={{ 
+                    background: "linear-gradient(45deg, #E31837, #c01530)",
+                    border: "none",
+                    transform: "scale(1.05)"
+                  }}
+                >
+                  <span className="position-absolute top-0 start-0 w-100 h-100" 
+                    style={{
+                      background: "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0))",
+                      transform: "translateX(-100%)",
+                      animation: "shine 3s infinite"
+                    }}></span>
+                  <ShoppingCart className="me-2" />
+                  JETZT BESTELLEN
+                </button>
+                
+                <style jsx>{`
+                  @keyframes shine {
+                    0% { transform: translateX(-100%); }
+                    60% { transform: translateX(100%); }
+                    100% { transform: translateX(100%); }
+                  }
+                  .cta-button-animation {
+                    transition: all 0.3s ease;
+                  }
+                  .cta-button-animation:hover {
+                    transform: scale(1.1) !important;
+                    box-shadow: 0 10px 25px rgba(227, 24, 55, 0.4) !important;
+                  }
+                `}</style>
+              </div>
             </div>
           </div>
         </div>
