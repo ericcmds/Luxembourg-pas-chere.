@@ -1,11 +1,13 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
+import MobileMenu from './ui/MobileMenu';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [language, setLanguage] = useState("de"); // Default language: German
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleSearch = (e: FormEvent) => {
+  const handleSearch = (e: any) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
 
@@ -53,17 +55,16 @@ export default function Header() {
           <button 
             className="navbar-toggler" 
             type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarContent" 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} // Toggle mobile menu
             aria-controls="navbarContent" 
-            aria-expanded="false" 
+            aria-expanded={mobileMenuOpen} // Update aria-expanded
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
           {/* Collapsible Navigation Content */}
-          <div className="collapse navbar-collapse" id="navbarContent">
+          <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`} id="navbarContent"> {/* Add show class when open */}
             {/* Navigation Links */}
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -232,6 +233,7 @@ export default function Header() {
           </div>
         </div>
       </div>
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </header>
   );
 }

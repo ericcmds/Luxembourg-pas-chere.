@@ -230,17 +230,6 @@ export default function BlogSection() {
       </div>
     </section>
   );
-}
-
-<style>
-  .section-title {
-    font-size: 2.5rem; /* Increased font size */
-    color: #333; /* Darker color for better contrast */
-    margin-bottom: 2rem; /* Added margin for spacing */
-  }
-
-  .highlight-text {
-    font-weight: bold;
-    color: #007bff; /* Example highlight color */
+}r */
   }
 </style>
