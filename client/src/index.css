@@ -730,6 +730,35 @@ body.user-is-tabbing a:focus {
   }
 }
 
+/* Feature badge animations */
+@keyframes badgeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.flex.flex-wrap.gap-4.mb-8 > div {
+  animation: badgeSlideIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.flex.flex-wrap.gap-4.mb-8 > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.flex.flex-wrap.gap-4.mb-8 > div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.flex.flex-wrap.gap-4.mb-8 > div:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
 .bg-white.bg-opacity-20 {
   animation: statsAppear 0.8s ease-out forwards;
   animation-delay: 0.3s;

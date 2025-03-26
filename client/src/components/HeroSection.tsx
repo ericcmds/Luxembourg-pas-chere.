@@ -95,19 +95,19 @@ export default function HeroSection() {
 
           {/* Feature badges */}
           <div className="flex flex-wrap gap-4 mb-8">
-            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center">
-              <MapPin className="h-5 w-5 mr-2" aria-hidden="true" /> {/*Increased icon size*/}
-              <span className="text-lg font-medium">Local secrets</span> {/*Increased font size*/}
+            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center hover:bg-opacity-25 transition-all transform hover:scale-105">
+              <MapPin className="h-5 w-5 mr-2 text-white" aria-hidden="true" />
+              <span className="text-lg font-medium">Local secrets</span>
             </div>
-            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center">
-              <Tag className="h-5 w-5 mr-2" aria-hidden="true" /> {/*Increased icon size*/}
-              <span className="text-lg font-medium">Exclusive deals</span> {/*Increased font size*/}
+            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center hover:bg-opacity-25 transition-all transform hover:scale-105">
+              <Tag className="h-5 w-5 mr-2 text-white" aria-hidden="true" />
+              <span className="text-lg font-medium">Exclusive deals</span>
             </div>
-            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center">
-              <PiggyBank className="h-5 w-5 mr-2" aria-hidden="true" /> {/*Increased icon size*/}
-              <span className="text-lg font-medium">Budget friendly</span> {/*Increased font size*/}
+            <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-full px-4 py-2 flex items-center hover:bg-opacity-25 transition-all transform hover:scale-105">
+              <PiggyBank className="h-5 w-5 mr-2 text-white" aria-hidden="true" />
+              <span className="text-lg font-medium">Budget friendly</span>
             </div>
-          </div>
+          </div>v>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Button 
