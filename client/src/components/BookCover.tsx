@@ -128,13 +128,6 @@ export default function BookCover() {
            style={{ height: '20px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)', 
                    borderTopLeftRadius: '50%', borderTopRightRadius: '50%', transform: 'scaleY(-1)', opacity: 0.3 }}>
       </div>
-      
-      {/* Sticker */}
-      <div className="position-absolute top-0 end-0 translate-middle-x" 
-           style={{ backgroundColor: '#E31837', color: 'white', padding: '10px', borderRadius: '50%', 
-                   transform: 'rotate(15deg) translateY(-20px)', boxShadow: '0 2px 10px rgba(0,0,0,0.2)' }}>
-        <span className="fw-bold">NEW</span>
-      </div>
     </div>
   );
 }
