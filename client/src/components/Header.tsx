@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import MobileMenu from './ui/MobileMenu';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [language, setLanguage] = useState("de"); // Default language: German
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const handleSearch = (e: any) => {
     e.preventDefault();
@@ -20,8 +21,6 @@ export default function Header() {
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
-    // In a real application, this would update i18n settings or reload content
-    console.log("Language changed to:", lang);
   };
 
   // Add scroll event listener to detect when to add shadow
@@ -104,12 +103,12 @@ export default function Header() {
                     id="desktopSearchInput"
                     type="search" 
                     className="form-control" 
-                    placeholder="Suche nach Angeboten, Orten, Aktivitäten..." 
-                    aria-label="Suche"
+                    placeholder={`${t('search')}...`} 
+                    aria-label={t('search')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label="Suchen">
+                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label={t('searchButton')}>
                     <i className="fas fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
@@ -170,17 +169,17 @@ export default function Header() {
           <div className="col-9">
             <form onSubmit={handleSearch} role="search">
               <div className="input-group">
-                <label htmlFor="mobileSearchInput" className="visually-hidden">Suche nach Angeboten, Orten, Aktivitäten</label>
+                <label htmlFor="mobileSearchInput" className="visually-hidden">{t('search')}</label>
                 <input 
                   id="mobileSearchInput"
                   type="search" 
                   className="form-control form-control-sm" 
-                  placeholder="Suche..." 
-                  aria-label="Suche"
+                  placeholder={`${t('search')}...`} 
+                  aria-label={t('search')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label="Suchen">
+                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label={t('searchButton')}>
                   <i className="fas fa-search" aria-hidden="true"></i>
                 </button>
               </div>

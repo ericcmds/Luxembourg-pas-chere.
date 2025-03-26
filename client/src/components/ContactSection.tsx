@@ -6,6 +6,8 @@ import { apiRequest } from "@/lib/queryClient";
 import { contactSchema } from "@shared/schema";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
+import { useTranslation } from '@/hooks/useTranslation'; // Added import for translation hook
+
 
 // Extend the contactSchema with more validation requirements
 const extendedContactSchema = contactSchema.extend({
@@ -21,6 +23,7 @@ const extendedContactSchema = contactSchema.extend({
 type ContactFormValues = z.infer<typeof extendedContactSchema>;
 
 export default function ContactSection() {
+  const { t } = useTranslation(); // Added translation hook usage
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -63,15 +66,15 @@ export default function ContactSection() {
     },
     onSuccess: () => {
       toast({
-        title: "Nachricht gesendet!",
-        description: "Wir werden uns so schnell wie möglich bei Ihnen melden.",
+        title: t("messageSent"), //Using translation for success message
+        description: t("weWillContactYou"), //Using translation for success message
       });
       setIsSubmitting(false);
     },
     onError: () => {
       toast({
-        title: "Fehler",
-        description: "Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.",
+        title: t("error"), //Using translation for error message
+        description: t("errorSendingMessage"), //Using translation for error message
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -90,8 +93,8 @@ export default function ContactSection() {
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8 text-center">
-            <h2 className="display-5 fw-bold font-montserrat mb-3">Kontakt</h2>
-            <p className="lead text-muted">Haben Sie Fragen? Möchten Sie mit uns zusammenarbeiten? Kontaktieren Sie uns über das Formular unten.</p>
+            <h2 className="display-5 fw-bold font-montserrat mb-3">{t("contact")}</h2> {/*Using translation for title*/}
+            <p className="lead text-muted">{t("contactQuestion")}</p> {/*Using translation for description*/}
           </div>
         </div>
 
@@ -99,7 +102,7 @@ export default function ContactSection() {
           <div className="col-md-6">
             <div className="card shadow-sm border-0 rounded-4">
               <div className="card-body p-4 p-md-5">
-                <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktieren Sie uns</h3>
+                <h3 className="h4 fw-bold font-montserrat mb-4">{t("contactUs")}</h3> {/*Using translation for title*/}
 
                 {/* Success message that appears after form submission */}
                 {formSubmitted && (
@@ -109,8 +112,8 @@ export default function ContactSection() {
                         <i className="fas fa-check-circle fa-lg me-2"></i>
                       </div>
                       <div>
-                        <h4 className="alert-heading h5 mb-1">Nachricht erfolgreich gesendet!</h4>
-                        <p className="mb-0">Vielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+                        <h4 className="alert-heading h5 mb-1">{t("messageSentSuccessfully")}</h4> {/*Using translation for title*/}
+                        <p className="mb-0">{t("thankYouForYourInquiry")}</p> {/*Using translation for description*/}
                       </div>
                     </div>
                   </div>
@@ -118,12 +121,12 @@ export default function ContactSection() {
 
                 <form onSubmit={handleSubmit(onSubmit)} aria-label="Kontaktformular" noValidate>
                   <div className="mb-3">
-                    <label htmlFor="name" className="form-label fw-semibold">Ihr Name <span className="text-danger" aria-hidden="true">*</span></label>
+                    <label htmlFor="name" className="form-label fw-semibold">{t("yourName")} <span className="text-danger" aria-hidden="true">*</span></label> {/*Using translation for label*/}
                     <input 
                       type="text" 
                       className={`form-control form-control-lg ${errors.name ? 'is-invalid' : ''}`}
                       id="name" 
-                      placeholder="Geben Sie Ihren Namen ein"
+                      placeholder={t("enterYourName")} {/*Using translation for placeholder*/}
                       aria-required="true"
                       autoComplete="name"
                       {...register("name")}
@@ -136,12 +139,12 @@ export default function ContactSection() {
                   </div>
 
                   <div className="mb-3">
-                    <label htmlFor="email" className="form-label fw-semibold">Ihre E-Mail <span className="text-danger" aria-hidden="true">*</span></label>
+                    <label htmlFor="email" className="form-label fw-semibold">{t("yourEmail")} <span className="text-danger" aria-hidden="true">*</span></label> {/*Using translation for label*/}
                     <input 
                       type="email" 
                       className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
                       id="email" 
-                      placeholder="Geben Sie Ihre E-Mail-Adresse ein"
+                      placeholder={t("enterYourEmail")} {/*Using translation for placeholder*/}
                       aria-required="true"
                       autoComplete="email"
                       {...register("email")}
@@ -152,16 +155,16 @@ export default function ContactSection() {
                         {errors.email.message}
                       </div>
                     )}
-                    <div className="form-text mt-1 small">Wir werden Ihre E-Mail-Adresse niemals an Dritte weitergeben.</div>
+                    <div className="form-text mt-1 small">{t("weWillNeverShareYourEmail")}</div> {/*Using translation for description*/}
                   </div>
 
                   <div className="mb-3">
-                    <label htmlFor="message" className="form-label fw-semibold">Ihre Nachricht <span className="text-danger" aria-hidden="true">*</span></label>
+                    <label htmlFor="message" className="form-label fw-semibold">{t("yourMessage")} <span className="text-danger" aria-hidden="true">*</span></label> {/*Using translation for label*/}
                     <textarea 
                       className={`form-control form-control-lg ${errors.message ? 'is-invalid' : ''}`}
                       id="message" 
                       rows={5}
-                      placeholder="Womit können wir Ihnen helfen?"
+                      placeholder={t("howCanWeHelpYou")} {/*Using translation for placeholder*/}
                       aria-required="true"
                       {...register("message")}
                     ></textarea>
@@ -173,7 +176,7 @@ export default function ContactSection() {
                     )}
                     <div className="form-text mt-1 small text-end">
                       <span id="message-counter" className={errors.message ? 'text-danger' : ''}>
-                        Mindestens 10 Zeichen erforderlich
+                        {t("minimum10CharactersRequired")} {/*Using translation for description*/}
                       </span>
                     </div>
                   </div>
@@ -187,7 +190,7 @@ export default function ContactSection() {
                         {...register("privacyCheck")}
                       />
                       <label className="form-check-label" htmlFor="privacyCheck">
-                        Ich stimme der <a href="#privacy" className="text-decoration-underline" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> zu <span className="text-danger" aria-hidden="true">*</span>
+                        {t("iAgreeToThe")} <a href="#privacy" className="text-decoration-underline" target="_blank" rel="noopener noreferrer">{t("privacyPolicy")}</a> {t("required")} <span className="text-danger" aria-hidden="true">*</span>
                       </label>
                       {errors.privacyCheck && (
                         <div className="invalid-feedback d-block mt-1" role="alert">
@@ -208,29 +211,30 @@ export default function ContactSection() {
                       {isSubmitting ? (
                         <>
                           <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                          <span>Wird gesendet...</span>
+                          <span>{t("sending")}</span> {/*Using translation for button text*/}
                         </>
-                      ) : <span>Nachricht senden</span>}
+                      ) : <span>{t("sendMessage")}</span>} {/*Using translation for button text*/}
                     </button>
                   </div>
 
                   <div className="mt-3 small text-muted">
-                    <span className="text-danger">*</span> Pflichtfelder
+                    <span className="text-danger">*</span> {t("requiredFields")} {/*Using translation for description*/}
                   </div>
                 </form>
               </div>
             </div>
           </div>
 
+          {/*Rest of the component remains unchanged*/}
           <div className="col-md-5">
-            <h3 className="h4 fw-bold font-montserrat mb-4">Kontaktinformationen</h3>
+            <h3 className="h4 fw-bold font-montserrat mb-4">{t("contactInformation")}</h3> {/*Using translation for title*/}
 
             <div className="d-flex mb-4">
               <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
                 <i className="fas fa-envelope fs-5" aria-hidden="true"></i>
               </div>
               <div>
-                <h4 className="h6 fw-semibold mb-1">E-Mail</h4>
+                <h4 className="h6 fw-semibold mb-1">{t("email")}</h4> {/*Using translation for title*/}
                 <p className="text-muted mb-0">
                   <a href="mailto:info@luxembourgpaschère.lu" className="text-decoration-none text-muted hover-text-lux-blue">
                     info@luxembourgpaschère.lu
@@ -244,7 +248,7 @@ export default function ContactSection() {
                 <i className="fas fa-phone fs-5" aria-hidden="true"></i>
               </div>
               <div>
-                <h4 className="h6 fw-semibold mb-1">Telefon</h4>
+                <h4 className="h6 fw-semibold mb-1">{t("phone")}</h4> {/*Using translation for title*/}
                 <p className="text-muted mb-0">
                   <a href="tel:+352123456789" className="text-decoration-none text-muted hover-text-lux-blue">
                     +352 123 456 789
@@ -258,7 +262,7 @@ export default function ContactSection() {
                 <i className="fas fa-map-marker-alt fs-5" aria-hidden="true"></i>
               </div>
               <div>
-                <h4 className="h6 fw-semibold mb-1">Adresse</h4>
+                <h4 className="h6 fw-semibold mb-1">{t("address")}</h4> {/*Using translation for title*/}
                 <address className="text-muted mb-0" style={{fontStyle: 'normal'}}>
                   Luxembourg Pas Chère<br />
                   123 Rue du Commerce<br />
@@ -270,7 +274,7 @@ export default function ContactSection() {
             <hr className="my-4" />
 
             <div className="mb-4">
-              <h4 className="h6 fw-semibold mb-3">Folgen Sie uns</h4>
+              <h4 className="h6 fw-semibold mb-3">{t("followUs")}</h4> {/*Using translation for title*/}
               <div className="d-flex gap-3" role="list" aria-label="Social Media Links">
                 <a href="#" className="social-icon" aria-label="Besuchen Sie uns auf Facebook">
                   <div className="rounded-circle bg-light p-3 text-center">
@@ -296,18 +300,18 @@ export default function ContactSection() {
             </div>
 
             <div className="card shadow-sm border-0 rounded-4 p-4 mt-5">
-              <h4 className="h6 fw-semibold mb-3">Geschäftszeiten</h4>
+              <h4 className="h6 fw-semibold mb-3">{t("businessHours")}</h4> {/*Using translation for title*/}
               <div className="d-flex justify-content-between mb-2">
-                <span>Montag - Freitag:</span>
+                <span>{t("mondayToFriday")}</span> {/*Using translation for description*/}
                 <span>9:00 - 18:00 Uhr</span>
               </div>
               <div className="d-flex justify-content-between mb-2">
-                <span>Samstag:</span>
+                <span>{t("saturday")}</span> {/*Using translation for description*/}
                 <span>10:00 - 15:00 Uhr</span>
               </div>
               <div className="d-flex justify-content-between">
-                <span>Sonntag:</span>
-                <span>Geschlossen</span>
+                <span>{t("sunday")}</span> {/*Using translation for description*/}
+                <span>{t("closed")}</span> {/*Using translation for description*/}
               </div>
             </div>
           </div>

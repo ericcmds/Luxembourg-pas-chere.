@@ -1,17 +1,51 @@
 import { Button } from "@/components/ui/button";
-import { 
-  Percent, 
-  BookOpen, 
-  MapPin, 
-  Tag, 
-  PiggyBank 
+import {
+  Percent,
+  BookOpen,
+  MapPin,
+  Tag,
+  PiggyBank
 } from "lucide-react";
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, createContext, useContext } from 'react';
+
+// Translation context
+const TranslationContext = createContext<{ t: (key: string) => string }>({ t: (key) => key });
+
+// Translation hook (placeholder implementation)
+const useTranslation = () => {
+  const { t } = useContext(TranslationContext);
+  return { t };
+};
+
+// Placeholder translations (replace with actual translations)
+const translations = {
+  en: {
+    heroTitle: "Discover Luxembourg Without Breaking the Bank",
+    heroSubtitle: "Your ultimate guide to enjoying Luxembourg's beauty, culture, and cuisine on a budget.",
+    getStarted: "Discover Now",
+    learnMore: "Learn More"
+  },
+  fr: {
+    heroTitle: "Découvrez le Luxembourg sans vous ruiner",
+    heroSubtitle: "Votre guide ultime pour profiter de la beauté, de la culture et de la gastronomie du Luxembourg à petit prix.",
+    getStarted: "Découvrir maintenant",
+    learnMore: "En savoir plus"
+  },
+  de: {
+    heroTitle: "Entdecken Sie Luxemburg ohne Ihr Budget zu sprengen",
+    heroSubtitle: "Ihr umfassender Leitfaden für erschwingliche Erlebnisse im Herzen Europas.",
+    getStarted: "Jetzt entdecken",
+    learnMore: "Mehr erfahren"
+  }
+};
+
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
+  const language = 'en'; // Replace with actual language selection logic
 
   // Track scroll position for parallax effect
   useEffect(() => {
@@ -29,25 +63,25 @@ export default function HeroSection() {
   };
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       ref={heroRef}
       className="relative bg-gradient-to-r from-[#E60023] to-[#00A1DE] text-white py-20 overflow-hidden"
     >
-      <div 
+      <div
         className="absolute inset-0 bg-black opacity-30"
         style={{ transform: `translateY(${calculateParallax(0.05)}px)` }}
       ></div>
       <div className="container mx-auto px-6 relative z-10">
-        <div 
+        <div
           className="max-w-3xl"
           style={{ transform: `translateY(${calculateParallax(-0.1)}px)` }}
         >
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-montserrat font-extrabold mb-6 animate-fadeIn text-shadow-lg"> {/*Increased font size and added text shadow*/}
-            Discover Luxembourg Without Breaking the Bank
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-montserrat font-extrabold mb-6 animate-fadeIn text-shadow-lg">
+            {t(translations[language].heroTitle)}
           </h1>
-          <p className="text-xl md:text-2xl mb-6 font-opensans animate-slideUp font-medium"> {/*Increased font size and added font weight*/}
-            Your ultimate guide to enjoying Luxembourg's beauty, culture, and cuisine on a budget.
+          <p className="text-xl md:text-2xl mb-6 font-opensans animate-slideUp font-medium">
+            {t(translations[language].heroSubtitle)}
           </p>
 
           {/* Statistics boxes */}
@@ -57,7 +91,7 @@ export default function HeroSection() {
                 <Percent className="h-6 w-6 text-white" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-3xl font-bold">40%</p> {/*Increased font size*/}
+                <p className="text-3xl font-bold">40%</p>
                 <p className="text-sm">Average savings</p>
               </div>
             </div>
@@ -66,7 +100,7 @@ export default function HeroSection() {
                 <BookOpen className="h-6 w-6 text-white" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-3xl font-bold">500+</p> {/*Increased font size*/}
+                <p className="text-3xl font-bold">500+</p>
                 <p className="text-sm">Money-saving tips</p>
               </div>
             </div>
@@ -107,23 +141,27 @@ export default function HeroSection() {
               <PiggyBank className="h-5 w-5 mr-2 text-white" aria-hidden="true" />
               <span className="text-lg font-medium">Budget friendly</span>
             </div>
-          </div>v>
+          </div>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button 
+            <Button
               asChild
               size="lg"
               className="bg-[#E31837] text-white hover:bg-[#c01530] font-montserrat font-semibold px-8 py-3 rounded-full shadow-lg transform transition hover:scale-105 text-shadow-lg"
-            > {/*Added text shadow*/}
-              <a href="#offers" aria-label="Discover money-saving offers now">Discover Now</a>
+            >
+              <a href="#offers" aria-label="Discover money-saving offers now">
+                {t(translations[language].getStarted)}
+              </a>
             </Button>
-            <Button 
+            <Button
               asChild
               variant="outline"
               size="lg"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#00A1DE] font-montserrat font-semibold px-8 py-3 rounded-full text-shadow-lg"
-            > {/*Added text shadow*/}
-              <a href="#contact">Get Updates</a>
+            >
+              <a href="#contact">
+                {t(translations[language].learnMore)}
+              </a>
             </Button>
           </div>
         </div>
@@ -131,3 +169,15 @@ export default function HeroSection() {
     </section>
   );
 }
+
+function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguage] = useState('en'); // Default language
+  const contextValue = { t: (key) => translations[language][key] || key };
+  return (
+    <TranslationContext.Provider value={contextValue}>
+      {children}
+    </TranslationContext.Provider>
+  );
+}
+
+export {LanguageProvider, useTranslation};
