@@ -759,6 +759,40 @@ body.user-is-tabbing a:focus {
   animation-delay: 0.5s;
 }
 
+/* Form animations */
+@keyframes formHighlight {
+  0% {
+    border-color: #ccc;
+    box-shadow: none;
+  }
+  50% {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+  100% {
+    border-color: #ccc;
+    box-shadow: none;
+  }
+}
+
+.form-control:focus, .form-check-input:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.alert-success {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.invalid-feedback {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
 .bg-white.bg-opacity-20 {
   animation: statsAppear 0.8s ease-out forwards;
   animation-delay: 0.3s;

@@ -141,51 +141,61 @@ export default function ContactSection() {
                       type="email" 
                       className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
                       id="email" 
-                      placeholder="Geben Sie Ihre E-Mail ein"
+                      placeholder="Geben Sie Ihre E-Mail-Adresse ein"
                       aria-required="true"
                       autoComplete="email"
                       {...register("email")}
                     />
                     {errors.email && (
                       <div className="invalid-feedback" role="alert">
+                        <i className="fas fa-exclamation-circle me-1"></i>
                         {errors.email.message}
                       </div>
                     )}
+                    <div className="form-text mt-1 small">Wir werden Ihre E-Mail-Adresse niemals an Dritte weitergeben.</div>
                   </div>
 
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <label htmlFor="message" className="form-label fw-semibold">Ihre Nachricht <span className="text-danger" aria-hidden="true">*</span></label>
                     <textarea 
                       className={`form-control form-control-lg ${errors.message ? 'is-invalid' : ''}`}
                       id="message" 
-                      rows={5} 
-                      placeholder="Geben Sie Ihre Nachricht ein"
+                      rows={5}
+                      placeholder="Womit können wir Ihnen helfen?"
                       aria-required="true"
                       {...register("message")}
                     ></textarea>
                     {errors.message && (
                       <div className="invalid-feedback" role="alert">
+                        <i className="fas fa-exclamation-circle me-1"></i>
                         {errors.message.message}
                       </div>
                     )}
+                    <div className="form-text mt-1 small text-end">
+                      <span id="message-counter" className={errors.message ? 'text-danger' : ''}>
+                        Mindestens 10 Zeichen erforderlich
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="mb-4 form-check">
-                    <input
-                      type="checkbox"
-                      className={`form-check-input ${errors.privacyCheck ? 'is-invalid' : ''}`}
-                      id="privacyCheck"
-                      aria-required="true"
-                      {...register("privacyCheck")}
-                    />
-                    <label className="form-check-label" htmlFor="privacyCheck">
-                      Ich stimme der <a href="#" className="text-lux-blue">Datenschutzerklärung</a> zu <span className="text-danger" aria-hidden="true">*</span>
-                    </label>
-                    {errors.privacyCheck && (
-                      <div className="invalid-feedback" role="alert">
-                        {errors.privacyCheck.message}
-                      </div>
-                    )}
+                  <div className="mb-4">
+                    <div className="form-check">
+                      <input 
+                        className={`form-check-input ${errors.privacyCheck ? 'is-invalid' : ''}`}
+                        type="checkbox" 
+                        id="privacyCheck"
+                        {...register("privacyCheck")}
+                      />
+                      <label className="form-check-label" htmlFor="privacyCheck">
+                        Ich stimme der <a href="#privacy" className="text-decoration-underline" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> zu <span className="text-danger" aria-hidden="true">*</span>
+                      </label>
+                      {errors.privacyCheck && (
+                        <div className="invalid-feedback d-block mt-1" role="alert">
+                          <i className="fas fa-exclamation-circle me-1"></i>
+                          {errors.privacyCheck.message}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="d-grid">
