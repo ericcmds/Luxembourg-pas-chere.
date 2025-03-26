@@ -248,3 +248,14 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
+
+/* Social media icon hover effect */
+.social-icon div {
+  transition: all 0.3s ease;
+}
+.social-icon:hover div {
+  background-color: var(--lux-blue) !important;
+}
+.social-icon:hover i {
+  color: white !important;
+}

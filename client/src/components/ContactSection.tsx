@@ -1,26 +1,14 @@
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { contactSchema } from "@shared/schema";
-import { z } from "zod";
-import { 
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage
-} from "@/components/ui/form";
 import { useMutation } from "@tanstack/react-query";
-import { MapPin, Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm({
     resolver: zodResolver(contactSchema),
@@ -31,7 +19,7 @@ export default function ContactSection() {
     }
   });
   
-  const { mutate, isPending } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: (values: Record<string, any>) => {
       return apiRequest("POST", "/api/contact", values);
     },
@@ -41,6 +29,7 @@ export default function ContactSection() {
         description: "We'll get back to you as soon as possible.",
       });
       form.reset();
+      setIsSubmitting(false);
     },
     onError: () => {
       toast({
@@ -48,157 +37,148 @@ export default function ContactSection() {
         description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
+      setIsSubmitting(false);
     }
   });
 
-  function onSubmit(values: Record<string, any>) {
-    mutate(values);
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    
+    if (!name || !email || !message) {
+      toast({
+        title: "Error",
+        description: "Please fill out all fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    mutate({ name, email, message });
   }
 
   return (
-    <section id="contact" className="bg-white py-16">
-      <div className="container mx-auto px-6">
-        <h2 className="font-montserrat font-bold text-3xl text-center mb-12">Contact Us</h2>
+    <section id="contact" className="py-5 py-md-6 bg-white">
+      <div className="container">
+        <div className="row justify-content-center mb-5">
+          <div className="col-lg-8 text-center">
+            <h2 className="display-5 fw-bold font-montserrat mb-3">Contact Us</h2>
+            <p className="lead text-muted">Have questions? Want to work with us? Reach out using the form below.</p>
+          </div>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          <div>
-            <h3 className="font-montserrat font-semibold text-xl mb-6">Get In Touch</h3>
-            
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-montserrat">Your Name</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="Enter your name" 
-                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+        <div className="row g-5 justify-content-center">
+          <div className="col-md-6">
+            <div className="card shadow-sm border-0 rounded-4">
+              <div className="card-body p-4 p-md-5">
+                <h3 className="h4 fw-bold font-montserrat mb-4">Get In Touch</h3>
                 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-montserrat">Your Email</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="email"
-                          placeholder="Enter your email"
-                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-montserrat">Your Message</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Enter your message"
-                          className="px-4 py-3 rounded-md border focus:border-lux-blue"
-                          rows={5}
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <Button 
-                  type="submit"
-                  className="bg-lux-blue hover:bg-lux-red text-white font-montserrat font-semibold"
-                  disabled={isPending}
-                >
-                  {isPending ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
-            </Form>
+                <form onSubmit={onSubmit}>
+                  <div className="mb-3">
+                    <label htmlFor="name" className="form-label fw-semibold">Your Name</label>
+                    <input 
+                      type="text" 
+                      className="form-control form-control-lg" 
+                      id="name" 
+                      name="name" 
+                      placeholder="Enter your name"
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label fw-semibold">Your Email</label>
+                    <input 
+                      type="email" 
+                      className="form-control form-control-lg" 
+                      id="email" 
+                      name="email" 
+                      placeholder="Enter your email"
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="mb-4">
+                    <label htmlFor="message" className="form-label fw-semibold">Your Message</label>
+                    <textarea 
+                      className="form-control form-control-lg" 
+                      id="message" 
+                      name="message" 
+                      rows={5} 
+                      placeholder="Enter your message"
+                      required
+                    ></textarea>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    className="btn btn-lg bg-lux-blue text-white fw-semibold" 
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Sending...
+                      </>
+                    ) : "Send Message"}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
           
-          <div>
-            <h3 className="font-montserrat font-semibold text-xl mb-6">Contact Information</h3>
+          <div className="col-md-5">
+            <h3 className="h4 fw-bold font-montserrat mb-4">Contact Information</h3>
             
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="text-lux-blue mr-4 mt-1">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="font-montserrat font-medium">Address</h4>
-                  <p className="text-gray-600">7 Rue de la Liberté, L-1931 Luxembourg</p>
-                </div>
+            <div className="d-flex mb-4">
+              <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
+                <i className="fas fa-envelope fs-5"></i>
               </div>
-              
-              <div className="flex items-start">
-                <div className="text-lux-blue mr-4 mt-1">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="font-montserrat font-medium">Email</h4>
-                  <p className="text-gray-600">info@luxembourgpaschère.lu</p>
-                </div>
+              <div>
+                <h4 className="h6 fw-semibold mb-1">Email</h4>
+                <p className="text-muted mb-0">info@luxembourgpaschère.lu</p>
               </div>
-              
-              <div className="flex items-start">
-                <div className="text-lux-blue mr-4 mt-1">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="font-montserrat font-medium">Phone</h4>
-                  <p className="text-gray-600">+352 123 456 789</p>
-                </div>
+            </div>
+            
+            <div className="d-flex mb-4">
+              <div className="flex-shrink-0 text-lux-blue me-3 mt-1">
+                <i className="fas fa-phone fs-5"></i>
               </div>
-              
-              <div className="pt-6">
-                <h4 className="font-montserrat font-medium mb-4">Follow Us</h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="#" 
-                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="bg-lux-light text-lux-blue hover:bg-lux-blue hover:text-white transition-colors p-3 rounded-full"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                </div>
+              <div>
+                <h4 className="h6 fw-semibold mb-1">Phone</h4>
+                <p className="text-muted mb-0">+352 123 456 789</p>
+              </div>
+            </div>
+            
+            <hr className="my-4" />
+            
+            <div className="mb-4">
+              <h4 className="h6 fw-semibold mb-3">Follow Us</h4>
+              <div className="d-flex gap-3">
+                <a href="#" className="social-icon" aria-label="Facebook">
+                  <div className="rounded-circle bg-light p-3 text-center">
+                    <i className="fab fa-facebook-f text-lux-blue"></i>
+                  </div>
+                </a>
+                <a href="#" className="social-icon" aria-label="Twitter">
+                  <div className="rounded-circle bg-light p-3 text-center">
+                    <i className="fab fa-twitter text-lux-blue"></i>
+                  </div>
+                </a>
+                <a href="#" className="social-icon" aria-label="Instagram">
+                  <div className="rounded-circle bg-light p-3 text-center">
+                    <i className="fab fa-instagram text-lux-blue"></i>
+                  </div>
+                </a>
+                <a href="#" className="social-icon" aria-label="LinkedIn">
+                  <div className="rounded-circle bg-light p-3 text-center">
+                    <i className="fab fa-linkedin-in text-lux-blue"></i>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
