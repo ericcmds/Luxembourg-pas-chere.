@@ -20,7 +20,7 @@ export default function OffersSection() {
       title: "Bella Italia Restaurant",
       description: "Genießen Sie authentische italienische Küche zu einem Bruchteil des Preises mit unserem exklusiven Rabatt.",
       location: "Kirchberg, Luxemburg-Stadt",
-      discount: "30% RABATT",
+      discount: "30% OFF",
       image: "https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
       rating: 4.5,
       reviewCount: 128
@@ -30,7 +30,7 @@ export default function OffersSection() {
       title: "Philharmonie Konzert",
       description: "Erleben Sie Musik von Weltklasse in der Philharmonie Luxemburg mit einem Sonderrabatt auf Tickets.",
       location: "Place de l'Europe, Kirchberg",
-      discount: "20% RABATT",
+      discount: "20% OFF",
       image: "https://images.unsplash.com/photo-1607460256908-a44d43651db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
       rating: 4.8,
       reviewCount: 94
@@ -40,7 +40,7 @@ export default function OffersSection() {
       title: "City Shopping Pass",
       description: "Erhalten Sie Rabatte in über 30 Geschäften in Luxemburg-Stadt mit unserem exklusiven Shopping-Pass.",
       location: "Stadtzentrum, Luxemburg",
-      discount: "NUR €25",
+      discount: "€25 ONLY",
       image: "https://images.unsplash.com/photo-1629207338691-a731a3b88cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
       rating: 4.2,
       reviewCount: 76
@@ -112,7 +112,7 @@ export default function OffersSection() {
           </div>
           <div className="col-auto">
             <a href="#" className="text-decoration-none text-lux-blue fw-bold">
-              Alle Angebote anzeigen <i className="fas fa-arrow-right ms-1 small"></i>
+              View all offers <i className="fas fa-arrow-right ms-1 small"></i>
             </a>
           </div>
         </div>
@@ -121,7 +121,20 @@ export default function OffersSection() {
         <div className="row row-cols-1 row-cols-md-3 g-4 d-none d-md-flex">
           {offers.map((offer) => (
             <div key={offer.id} className="col">
-              <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden offer-card">
+              <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden offer-card"
+                style={{ 
+                  transition: 'all 0.3s ease-in-out',
+                  transform: 'translateY(0)'
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-10px)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 0.125rem 0.25rem rgba(0,0,0,0.075)';
+                }}
+              >
                 <div className="position-relative">
                   <img 
                     src={offer.image} 
@@ -202,7 +215,7 @@ export default function OffersSection() {
                       className="btn btn-primary py-2"
                       style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}
                     >
-                      Angebot anzeigen <i className="fas fa-chevron-right ms-1 small"></i>
+                      View Deal <i className="fas fa-chevron-right ms-1 small"></i>
                     </a>
                   </div>
                 </div>
@@ -214,13 +227,18 @@ export default function OffersSection() {
         {/* Mobile Carousel View - Only visible on small screens */}
         <div className="d-block d-md-none mt-4">
           <div className="text-center mb-3">
-            <span className="text-muted small">Wischen Sie nach links für mehr Angebote</span>
+            <span className="text-muted small">Swipe left for more offers</span>
           </div>
           <div id="offersCarouselMobile" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
               {offers.map((offer, index) => (
                 <div key={offer.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                  <div className="card border-0 shadow-sm rounded-4 overflow-hidden offer-card mx-2">
+                  <div className="card border-0 shadow-sm rounded-4 overflow-hidden offer-card mx-2"
+                    style={{ 
+                      transition: 'all 0.3s ease-in-out',
+                      transform: 'translateY(0)'
+                    }}
+                  >
                     <div className="position-relative">
                       <img 
                         src={offer.image} 
@@ -256,7 +274,7 @@ export default function OffersSection() {
                             className="btn btn-primary w-100 py-2"
                             style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}
                           >
-                            Angebot anzeigen
+                            View Deal
                           </a>
                         </div>
                         <div className="col-4">
