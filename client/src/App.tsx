@@ -4,6 +4,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import BackToTop from "@/components/BackToTop";
+import CookieBanner from "@/components/CookieBanner";
 
 function Router() {
   return (
@@ -18,6 +20,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router />
+      <BackToTop />
+      <CookieBanner />
       <Toaster />
     </QueryClientProvider>
   );
