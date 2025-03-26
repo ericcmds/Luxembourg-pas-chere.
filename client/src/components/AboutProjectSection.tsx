@@ -66,6 +66,28 @@ export default function AboutProjectSection() {
         </div>
 
         {/* Tab Content */}
+        <div className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+          {Object.entries(tabData).map(([key, value]) => (
+            <div
+              key={key}
+              className={`transition-opacity duration-300 ${
+                activeTab === key ? 'block' : 'hidden'
+              }`}
+              role="tabpanel"
+              aria-labelledby={`${key}-tab`}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-blue-600">{value.icon}</div>
+                <h3 className="text-2xl font-semibold text-gray-800">{value.title}</h3>
+              </div>
+              <p className="text-gray-600 leading-relaxed">{value.content}</p>
+            </div>
+          ))}
+        </div>
+          ))}
+        </div>
+
+        {/* Tab Content */}
         <div className="bg-white p-6 rounded-lg shadow-md">
           {Object.entries(tabData).map(([key, value]) => (
             <div 
