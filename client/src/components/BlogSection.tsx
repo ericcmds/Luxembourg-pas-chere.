@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-
 type BlogPost = {
   id: number;
   title: string;
@@ -38,42 +36,45 @@ export default function BlogSection() {
   ];
 
   return (
-    <section id="blog" className="bg-white py-16">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-          <h2 className="font-montserrat font-bold text-3xl">Latest Blog Posts</h2>
-          <div className="mt-4 md:mt-0">
-            <a href="#" className="font-montserrat text-lux-blue hover:text-lux-red transition-colors flex items-center">
-              View all posts
-              <ArrowRight className="ml-2 h-4 w-4" />
+    <section id="blog" className="py-5 py-md-6 bg-white">
+      <div className="container">
+        <div className="row align-items-center mb-4">
+          <div className="col">
+            <h2 className="display-6 fw-bold font-montserrat mb-0">Latest Blog Posts</h2>
+          </div>
+          <div className="col-auto">
+            <a href="#" className="text-decoration-none text-lux-blue fw-bold">
+              View all posts <i className="fas fa-arrow-right ms-1 small"></i>
             </a>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="row row-cols-1 row-cols-md-3 g-4">
           {blogPosts.map((post) => (
-            <article key={post.id} className="bg-lux-light rounded-lg overflow-hidden transition-transform transform hover:-translate-y-1">
-              <div className="relative h-48 w-full">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-3">
-                  <span>{post.date}</span>
-                  <span className="mx-2">•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h3 className="font-montserrat font-semibold text-xl mb-3">{post.title}</h3>
-                <p className="text-gray-600 mb-4">{post.description}</p>
-                <a href="#" className="font-montserrat text-lux-blue hover:text-lux-red transition-colors flex items-center">
-                  Read more
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </div>
-            </article>
+            <div key={post.id} className="col">
+              <a href="#" className="text-decoration-none text-dark">
+                <article className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden blog-card">
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="card-img-top object-fit-cover"
+                    style={{ height: "200px" }}
+                  />
+                  <div className="card-body p-4">
+                    <div className="d-flex align-items-center text-muted mb-3 small">
+                      <span><i className="far fa-calendar-alt me-1"></i> {post.date}</span>
+                      <span className="mx-2">•</span>
+                      <span><i className="far fa-clock me-1"></i> {post.readTime}</span>
+                    </div>
+                    <h3 className="card-title h5 fw-bold font-montserrat mb-3">{post.title}</h3>
+                    <p className="card-text text-muted mb-3">{post.description}</p>
+                    <div className="text-lux-blue fw-bold">
+                      Read more <i className="fas fa-chevron-right ms-1 small"></i>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
           ))}
         </div>
       </div>
