@@ -126,7 +126,7 @@ export default function ContactSection() {
                       type="text" 
                       className={`form-control form-control-lg ${errors.name ? 'is-invalid' : ''}`}
                       id="name" 
-                      placeholder={t("enterYourName")} {/*Using translation for placeholder*/}
+                      placeholder={t("enterYourName")} {/* Using translation for placeholder */}
                       aria-required="true"
                       autoComplete="name"
                       {...register("name")}
