@@ -38,14 +38,14 @@ export default function Header() {
 
   return (
     <header className={`sticky-top ${isScrolled ? 'shadow' : ''}`} style={{ transition: 'all 0.3s ease', background: 'white', zIndex: 1030 }}>
-      <nav className="navbar navbar-expand-lg navbar-light py-2">
+      <nav className="navbar navbar-expand-lg navbar-light py-2" aria-label="Site Navigation">
         <div className="container">
           {/* Logo */}
-          <a className="navbar-brand d-flex align-items-center" href="#home">
+          <a className="navbar-brand d-flex align-items-center" href="#home" aria-label="Luxembourg Pas Chère Homepage">
             <div className="position-relative">
               <span className="font-montserrat fw-bold fs-4 text-lux-red">Luxembourg</span>
               <span className="font-montserrat fw-bold fs-4 text-lux-blue ms-2">Pas Chère</span>
-              <div className="position-absolute" style={{ top: '-5px', right: '-12px', background: '#E31837', color: 'white', padding: '0 4px', borderRadius: '50%', transform: 'rotate(12deg)', fontSize: '12px', fontWeight: 'bold' }}>€</div>
+              <div className="position-absolute" style={{ top: '-5px', right: '-12px', background: '#E31837', color: 'white', padding: '0 4px', borderRadius: '50%', transform: 'rotate(12deg)', fontSize: '12px', fontWeight: 'bold' }} aria-hidden="true">€</div>
             </div>
           </a>
 
@@ -68,27 +68,27 @@ export default function Header() {
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link font-montserrat fw-medium" href="#home">
-                  <i className="fas fa-home me-1"></i> Home
+                  <i className="fas fa-home me-1" aria-hidden="true"></i> <span>Home</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link font-montserrat fw-medium" href="#offers">
-                  <i className="fas fa-tags me-1"></i> Offers
+                  <i className="fas fa-tags me-1" aria-hidden="true"></i> <span>Angebote</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link font-montserrat fw-medium" href="#blog">
-                  <i className="fas fa-blog me-1"></i> Blog
+                  <i className="fas fa-blog me-1" aria-hidden="true"></i> <span>Blog</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link font-montserrat fw-medium" href="#about">
-                  <i className="fas fa-info-circle me-1"></i> About Us
+                  <i className="fas fa-info-circle me-1" aria-hidden="true"></i> <span>Über uns</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link font-montserrat fw-medium" href="#contact">
-                  <i className="fas fa-envelope me-1"></i> Contact
+                  <i className="fas fa-envelope me-1" aria-hidden="true"></i> <span>Kontakt</span>
                 </a>
               </li>
             </ul>
@@ -96,18 +96,20 @@ export default function Header() {
             {/* Search and Language Selection */}
             <div className="d-flex align-items-center">
               {/* Search Form */}
-              <form className="d-flex me-2" onSubmit={handleSearch}>
+              <form className="d-flex me-2" onSubmit={handleSearch} role="search">
                 <div className="input-group">
+                  <label htmlFor="desktopSearchInput" className="visually-hidden">Suche nach Angeboten, Orten, Aktivitäten</label>
                   <input 
+                    id="desktopSearchInput"
                     type="search" 
                     className="form-control" 
-                    placeholder="Search for deals, places, activities..." 
-                    aria-label="Search"
+                    placeholder="Suche nach Angeboten, Orten, Aktivitäten..." 
+                    aria-label="Suche"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
-                    <i className="fas fa-search"></i>
+                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label="Suchen">
+                    <i className="fas fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
               </form>
@@ -120,34 +122,38 @@ export default function Header() {
                   id="languageDropdown" 
                   data-bs-toggle="dropdown" 
                   aria-expanded="false"
+                  aria-label="Sprache ändern"
                 >
-                  {language === 'de' && <><i className="fas fa-globe me-1"></i> DE</>}
-                  {language === 'fr' && <><i className="fas fa-globe me-1"></i> FR</>}
-                  {language === 'en' && <><i className="fas fa-globe me-1"></i> EN</>}
+                  {language === 'de' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>DE</span></>}
+                  {language === 'fr' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>FR</span></>}
+                  {language === 'en' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>EN</span></>}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
                       onClick={() => handleLanguageChange('de')}
+                      aria-label="Sprache zu Deutsch wechseln"
                     >
-                      <span className="fi fi-de me-2"></span> Deutsch
+                      <span className="fi fi-de me-2" aria-hidden="true"></span> Deutsch
                     </button>
                   </li>
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
                       onClick={() => handleLanguageChange('fr')}
+                      aria-label="Changer la langue en français"
                     >
-                      <span className="fi fi-fr me-2"></span> Français
+                      <span className="fi fi-fr me-2" aria-hidden="true"></span> Français
                     </button>
                   </li>
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
                       onClick={() => handleLanguageChange('en')}
+                      aria-label="Change language to English"
                     >
-                      <span className="fi fi-gb me-2"></span> English
+                      <span className="fi fi-gb me-2" aria-hidden="true"></span> English
                     </button>
                   </li>
                 </ul>
@@ -161,18 +167,20 @@ export default function Header() {
       <div className="container d-block d-lg-none mb-2">
         <div className="row g-2">
           <div className="col-9">
-            <form onSubmit={handleSearch}>
+            <form onSubmit={handleSearch} role="search">
               <div className="input-group">
+                <label htmlFor="mobileSearchInput" className="visually-hidden">Suche nach Angeboten, Orten, Aktivitäten</label>
                 <input 
+                  id="mobileSearchInput"
                   type="search" 
                   className="form-control form-control-sm" 
-                  placeholder="Search for deals, places, activities..." 
-                  aria-label="Search"
+                  placeholder="Suche..." 
+                  aria-label="Suche"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}>
-                  <i className="fas fa-search"></i>
+                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label="Suchen">
+                  <i className="fas fa-search" aria-hidden="true"></i>
                 </button>
               </div>
             </form>
@@ -185,6 +193,7 @@ export default function Header() {
                 id="mobileLanguageDropdown" 
                 data-bs-toggle="dropdown" 
                 aria-expanded="false"
+                aria-label="Sprache ändern"
               >
                 {language.toUpperCase()}
               </button>
@@ -193,6 +202,7 @@ export default function Header() {
                   <button 
                     className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
                     onClick={() => handleLanguageChange('de')}
+                    aria-label="Sprache zu Deutsch wechseln"
                   >
                     Deutsch
                   </button>
@@ -201,6 +211,7 @@ export default function Header() {
                   <button 
                     className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
                     onClick={() => handleLanguageChange('fr')}
+                    aria-label="Changer la langue en français"
                   >
                     Français
                   </button>
@@ -209,6 +220,7 @@ export default function Header() {
                   <button 
                     className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
                     onClick={() => handleLanguageChange('en')}
+                    aria-label="Change language to English"
                   >
                     English
                   </button>
