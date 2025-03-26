@@ -15,7 +15,7 @@ localPort = 5000
 externalPort = 80
 
 [workflows]
-runButton = "Start Development Server"
+runButton = "Dev Server"
 
 [[workflows.workflow]]
 name = "Project"
@@ -70,3 +70,20 @@ args = "pkill -f \"tsx server/index.ts\" || true"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NODE_ENV=development tsx server/index.ts"
+
+[[workflows.workflow]]
+name = "Dev Server"
+author = 40586667
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm ci --quiet || npm install --quiet"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pkill -f \"tsx server/index.ts\" || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NODE_ENV=development PORT=5000 tsx --inspect server/index.ts"

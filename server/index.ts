@@ -133,5 +133,14 @@ app.use((req, res, next) => {
   }, () => {
     log(`serving on port ${port}`);
     console.log(`Server running at http://0.0.0.0:${port}`);
+    console.log('WebSocket server ready');
+  });
+
+  process.on('SIGTERM', () => {
+    console.log('Shutting down server...');
+    server.close(() => {
+      console.log('Server shut down');
+      process.exit(0);
+    });
   });
 })();
