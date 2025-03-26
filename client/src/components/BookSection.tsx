@@ -49,10 +49,10 @@ export default function BookSection() {
   };
 
   return (
-    <section id="book" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-4 text-lux-dark">
+    <section id="book" className="py-5 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-5">
+          <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-3 text-lux-dark">
             The Only Guide to <span className="text-lux-red">Affordable Living</span> in Luxembourg
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
@@ -60,64 +60,63 @@ export default function BookSection() {
           </p>
         </div>
         
-        {/* Book Showcase */}
-        <div className="max-w-6xl mx-auto mb-16">
-          {/* Book Cover and Main Info */}
-          <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
-            {/* Book Cover - Central for mobile, Left for desktop */}
-            <div className="flex justify-center lg:justify-start lg:w-1/3">
-              <div className="w-64 md:w-72 transform transition-transform duration-500 hover:rotate-[-1deg] hover:scale-105">
+        {/* Book Showcase using Bootstrap Grid */}
+        <div className="container mb-5">
+          <div className="row align-items-center mb-5">
+            {/* Book Cover - Bootstrap Column */}
+            <div className="col-12 col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+              <div className="mx-auto" style={{ maxWidth: "300px", transition: "transform 0.5s" }}>
                 <BookCover />
               </div>
             </div>
             
-            {/* Book Info */}
-            <div className="text-center lg:text-left lg:w-2/3">
-              <div className="inline-block bg-lux-red px-3 py-1 rounded-full mb-4">
-                <span className="text-white font-medium text-sm">The Essential Guide</span>
+            {/* Book Info - Bootstrap Column */}
+            <div className="col-12 col-lg-8 text-center text-lg-start">
+              <div className="d-inline-block bg-lux-red px-3 py-1 rounded-pill mb-3">
+                <span className="text-white fw-medium fs-6">The Essential Guide</span>
               </div>
               
-              <h3 className="font-montserrat font-bold text-2xl md:text-3xl mb-4 text-lux-dark">
+              <h3 className="font-montserrat fw-bold fs-2 mb-3 text-lux-dark">
                 Luxembourg Pas Chère: <span className="text-lux-red">Your Key to Affordable Living</span>
               </h3>
               
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 mb-4">
                 Our guide is unique, being the only one to compile all the information needed to save money. This makes it useful and valuable for readers looking to maintain their quality of life in Luxembourg while spending less.
               </p>
               
-              <h4 className="font-montserrat font-semibold text-xl mb-3 text-lux-dark">The Guide Has a Triple Objective:</h4>
+              <h4 className="font-montserrat fw-semibold fs-5 mb-3 text-lux-dark">The Guide Has a Triple Objective:</h4>
               
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
+              <div className="mb-4">
+                <div className="d-flex align-items-start gap-2 mb-2">
                   <div className="mt-1 flex-shrink-0">
-                    <CheckCircle2 size={18} className="text-lux-blue" />
+                    <i className="fas fa-check-circle text-lux-blue"></i>
                   </div>
                   <p className="text-gray-700">
-                    <span className="font-medium">Help families in precarious situations</span> maintain their dignity by becoming active in finding solutions to their financial difficulties and managing daily life.
+                    <span className="fw-medium">Help families in precarious situations</span> maintain their dignity by becoming active in finding solutions to their financial difficulties and managing daily life.
                   </p>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="d-flex align-items-start gap-2 mb-2">
                   <div className="mt-1 flex-shrink-0">
-                    <CheckCircle2 size={18} className="text-lux-blue" />
+                    <i className="fas fa-check-circle text-lux-blue"></i>
                   </div>
                   <p className="text-gray-700">
-                    <span className="font-medium">Save families time</span> by providing all the information they need in one place.
+                    <span className="fw-medium">Save families time</span> by providing all the information they need in one place.
                   </p>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="d-flex align-items-start gap-2">
                   <div className="mt-1 flex-shrink-0">
-                    <CheckCircle2 size={18} className="text-lux-blue" />
+                    <i className="fas fa-check-circle text-lux-blue"></i>
                   </div>
                   <p className="text-gray-700">
-                    <span className="font-medium">Encourage responsible consumption</span> by promoting the social and solidarity economy.
+                    <span className="fw-medium">Encourage responsible consumption</span> by promoting the social and solidarity economy.
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
-                <div className="text-lux-red font-bold text-3xl">€24.99</div>
-                <div className="line-through text-gray-400 text-lg">€34.99</div>
-                <div className="bg-lux-red text-white px-2 py-1 rounded-md text-sm font-bold">
+              <div className="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 mb-4">
+                <div className="text-lux-red fw-bold fs-2">€24.99</div>
+                <div className="text-decoration-line-through text-gray-400 fs-5">€34.99</div>
+                <div className="bg-lux-red text-white px-2 py-1 rounded fs-6 fw-bold">
                   SAVE 28%
                 </div>
               </div>
@@ -129,7 +128,7 @@ export default function BookSection() {
                     size="lg" 
                     className="bg-lux-red hover:bg-lux-red/90 text-white font-bold px-10 py-7 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    Order Now
+                    <i className="fas fa-shopping-cart me-2"></i> Order Now
                   </Button>
                 </DialogTrigger>
                 
@@ -144,61 +143,64 @@ export default function BookSection() {
                       </DialogHeader>
                       
                       <form onSubmit={handleOrder} className="space-y-4 py-4">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-2">
+                        <div className="row g-3">
+                          <div className="col-md-6">
                             <Label htmlFor="first-name">First name</Label>
-                            <Input id="first-name" required />
+                            <Input id="first-name" className="form-control" required />
                           </div>
-                          <div className="space-y-2">
+                          <div className="col-md-6">
                             <Label htmlFor="last-name">Last name</Label>
-                            <Input id="last-name" required />
+                            <Input id="last-name" className="form-control" required />
                           </div>
                         </div>
                         
-                        <div className="space-y-2">
+                        <div className="mb-3">
                           <Label htmlFor="email">Email</Label>
-                          <Input id="email" type="email" required />
+                          <Input id="email" type="email" className="form-control" required />
                         </div>
                         
-                        <div className="space-y-2">
+                        <div className="mb-3">
                           <Label htmlFor="address">Delivery Address</Label>
-                          <Input id="address" required />
+                          <Input id="address" className="form-control" required />
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-2">
+                        <div className="row g-3">
+                          <div className="col-md-6">
                             <Label htmlFor="city">City</Label>
-                            <Input id="city" required />
+                            <Input id="city" className="form-control" required />
                           </div>
-                          <div className="space-y-2">
+                          <div className="col-md-6">
                             <Label htmlFor="postal-code">Postal Code</Label>
-                            <Input id="postal-code" required />
+                            <Input id="postal-code" className="form-control" required />
                           </div>
                         </div>
                         
                         <div className="pt-4">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="font-medium">Total:</span>
-                            <span className="font-bold text-lux-red text-xl">€24.99</span>
+                          <div className="d-flex align-items-center justify-content-between mb-3">
+                            <span className="fw-medium">Total:</span>
+                            <span className="fw-bold text-lux-red fs-4">€24.99</span>
                           </div>
                           
                           <Button 
                             type="submit" 
-                            className="w-full bg-lux-blue"
+                            className="w-100 bg-lux-blue"
                             disabled={isOrderProcessing}
                           >
-                            {isOrderProcessing ? "Processing..." : "Complete Purchase"}
+                            {isOrderProcessing ? 
+                              <><span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...</> : 
+                              <>Complete Purchase</>
+                            }
                           </Button>
                         </div>
                       </form>
                     </>
                   ) : (
-                    <div className="flex flex-col items-center py-8 text-center">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <CheckCircle2 size={32} className="text-green-600" />
+                    <div className="d-flex flex-column align-items-center py-4 text-center">
+                      <div className="bg-success bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center mb-3" style={{ width: "64px", height: "64px" }}>
+                        <i className="fas fa-check-circle text-success fs-2"></i>
                       </div>
-                      <h3 className="text-xl font-bold mb-2">Order Successful!</h3>
-                      <p className="text-gray-600 mb-6">
+                      <h3 className="fs-4 fw-bold mb-2">Order Successful!</h3>
+                      <p className="text-gray-600 mb-4">
                         Thank you for your purchase. You will receive an email confirmation shortly.
                       </p>
                       <DialogClose asChild>
@@ -209,8 +211,8 @@ export default function BookSection() {
                 </DialogContent>
               </Dialog>
               
-              <p className="text-sm text-gray-500 mt-4">
-                Free shipping in Luxembourg. International shipping available.
+              <p className="text-sm text-gray-500 mt-3">
+                <i className="fas fa-truck me-1"></i> Free shipping in Luxembourg. International shipping available.
               </p>
             </div>
           </div>

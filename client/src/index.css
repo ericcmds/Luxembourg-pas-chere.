@@ -13,10 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 20%;
 
-    --primary: 355 100% 45%;
+    /* Updated colors based on the requested palette */
+    --primary: 352 79% 49%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 198 100% 43%;
+    --secondary: 197 100% 44%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96%;
@@ -57,12 +58,13 @@
     font-family: 'Open Sans', sans-serif;
   }
   
+  /* Updated color utility classes based on the requested palette */
   .text-lux-red {
-    color: #E60023;
+    color: #E31837;
   }
   
   .text-lux-blue {
-    color: #00A1DE;
+    color: #00A4E0;
   }
   
   .text-lux-dark {
@@ -70,11 +72,11 @@
   }
   
   .bg-lux-red {
-    background-color: #E60023;
+    background-color: #E31837;
   }
   
   .bg-lux-blue {
-    background-color: #00A1DE;
+    background-color: #00A4E0;
   }
   
   .bg-lux-light {
@@ -82,18 +84,18 @@
   }
   
   .hover\:bg-lux-red:hover {
-    background-color: #E60023;
+    background-color: #E31837;
   }
   
   .hover\:bg-lux-blue:hover {
-    background-color: #00A1DE;
+    background-color: #00A4E0;
   }
   
   .hover\:text-lux-red:hover {
-    color: #E60023;
+    color: #E31837;
   }
   
   .hover\:text-lux-blue:hover {
-    color: #00A1DE;
+    color: #00A4E0;
   }
 }
