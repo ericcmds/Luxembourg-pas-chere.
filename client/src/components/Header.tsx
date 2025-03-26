@@ -8,7 +8,7 @@ export default function Header() {
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-
+    
     // Basic search functionality implementation
     if (searchQuery.trim()) {
       // Normally this would navigate to search results, for now just alert
@@ -113,7 +113,7 @@ export default function Header() {
                   </button>
                 </div>
               </form>
-
+              
               {/* Language Dropdown */}
               <div className="dropdown">
                 <button 
@@ -188,15 +188,14 @@ export default function Header() {
           <div className="col-3">
             <div className="dropdown w-100">
               <button 
-                className="btn btn-sm btn-outline-secondary dropdown-toggle w-100 d-flex align-items-center justify-content-center gap-2" 
+                className="btn btn-sm btn-outline-secondary dropdown-toggle w-100" 
                 type="button" 
                 id="mobileLanguageDropdown" 
                 data-bs-toggle="dropdown" 
                 aria-expanded="false"
-                aria-label="Change language"
+                aria-label="Sprache ändern"
               >
-                <i className="fas fa-globe" aria-hidden="true"></i>
-                <span>{language.toUpperCase()}</span>
+                {language.toUpperCase()}
               </button>
               <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="mobileLanguageDropdown">
                 <li>
