@@ -1,51 +1,39 @@
 import { useEffect } from 'react';
 
-// Diese Komponente versucht, das Host-Einschränkungsproblem zu umgehen
+/**
+ * Diese Komponente versucht, Host-Einschränkungen im Browser zu umgehen
+ * Einbinden als erste Komponente in App.tsx
+ */
 export default function NoHostRestriction() {
   useEffect(() => {
-    console.log('NoHostRestriction-Komponente wird aktiviert...');
-    
-    // Versuche, Vite Host-Check-Einstellungen zu überschreiben
+    // In der Client-Umgebung Einstellungen anwenden
     if (typeof window !== 'undefined') {
+      console.log('🛠️ Aktiviere Host-Einschränkungen-Bypass...');
+      
+      // Globale Fenster-Eigenschaften setzen
+      (window as any).VITE_ALLOWED_HOSTS = '*';
+      (window as any).VITE_DISABLE_HOST_CHECK = true;
+      (window as any).VITE_HOST_CHECK = false;
+      (window as any).VITE_ALLOW_ALL_HOSTS = true;
+      
+      // Lokal gespeicherte Eigenschaften setzen
       try {
-        // Deaktiviere Host-Überprüfungen für Vite
-        (window as any).VITE_DISABLE_HOST_CHECK = true;
-        (window as any).VITE_HOST_CHECK = false;
-        (window as any).VITE_ALLOWED_HOSTS = '*';
-        (window as any).VITE_ALLOW_ALL_HOSTS = true;
-        
-        // Für Vite Hot Module Replacement
-        if ((window as any).__vite_plugin_react_preamble_installed__) {
-          console.log('Vite React Plugin erkannt - HMR-Einstellungen angepasst');
-        }
-        
-        console.log('NoHostRestriction: Vite Konfigurationen wurden angepasst');
-      } catch (err) {
-        console.error('Fehler beim Konfigurieren von Vite-Einstellungen:', err);
+        localStorage.setItem('vite:allow-host-check', 'false');
+        localStorage.setItem('vite:allowed-hosts', '*');
+      } catch (e) {
+        console.warn('Konnte LocalStorage nicht aktualisieren:', e);
       }
+      
+      // Meta-Injektion versuchen
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'vite:disable-host-check';
+      metaTag.content = 'true';
+      document.head.appendChild(metaTag);
+      
+      console.log('✅ Host-Einschränkungen-Bypass aktiviert');
     }
-    
-    // Host-Überprüfung in der localStorage umgehen
-    try {
-      localStorage.setItem('vite:allow-host-check', 'false');
-      localStorage.setItem('vite:allowed-hosts', '*');
-      console.log('NoHostRestriction: localStorage-Einstellungen wurden angepasst');
-    } catch (err) {
-      console.error('Fehler beim Schreiben in localStorage:', err);
-    }
-    
-    // Prüfe Website-Konnektivität über Fetch
-    fetch('/api/cors-test')
-      .then(response => response.json())
-      .then(data => {
-        console.log('API Test erfolgreich:', data);
-      })
-      .catch(err => {
-        console.error('API Test fehlgeschlagen:', err);
-      });
-    
-    console.log('NoHostRestriction: Komponente vollständig geladen und aktiv');
   }, []);
-  
+
+  // Diese Komponente rendert nichts sichtbares
   return null;
 }

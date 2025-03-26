@@ -3,12 +3,22 @@ import { registerRoutes } from "./routes";
 import { setupVite, log, serveStatic } from "./vite";
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
+import { bypassHostCheck } from "./allowedHosts";
 
 // Force development mode for Vite
 process.env.NODE_ENV = 'development';
 
+// Spezifische Vite-Host-Einstellungen
+process.env.VITE_ALLOWED_HOSTS = "*";
+process.env.VITE_DISABLE_HOST_CHECK = "true";
+process.env.VITE_HOST_CHECK = "false";
+process.env.VITE_ALLOW_ALL_HOSTS = "true";
+
 const app = express();
 app.set('trust proxy', 1);
+
+// Host-Bypass-Middleware als erstes einbinden
+app.use(bypassHostCheck);
 
 // Maximale CORS-Flexibilität für alle Hosts
 app.use(cors({
