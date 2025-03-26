@@ -1,70 +1,81 @@
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-
 export default function Footer() {
   return (
-    <footer className="bg-lux-dark text-white">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-3 lg:col-span-1">
-            <a href="#" className="flex items-center mb-6">
-              <span className="text-lux-red font-montserrat font-bold text-2xl">Luxembourg</span>
-              <span className="text-lux-blue font-montserrat font-bold text-2xl ml-2">Pas Chère</span>
-            </a>
-            <p className="text-gray-400 mb-6">
-              Your guide to enjoying Luxembourg without breaking the bank.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook size={18} />
+    <footer className="bg-lux-dark text-white py-5 py-lg-6">
+      <div className="container">
+        <div className="row g-4 g-xl-5">
+          {/* Logo and Description */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <div className="mb-4">
+              <a href="#" className="d-inline-block text-decoration-none mb-3">
+                <span className="text-lux-red font-montserrat fw-bold fs-3">Luxembourg</span>
+                <span className="text-lux-blue font-montserrat fw-bold fs-3 ms-1">Pas Chère</span>
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin size={18} />
-              </a>
+              <p className="text-light-gray mb-3">
+                Your guide to enjoying Luxembourg without breaking the bank.
+              </p>
+              <div className="d-flex gap-2">
+                <a href="#" className="btn btn-sm btn-outline-light rounded-circle p-2" aria-label="Facebook">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="btn btn-sm btn-outline-light rounded-circle p-2" aria-label="Twitter">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="btn btn-sm btn-outline-light rounded-circle p-2" aria-label="Instagram">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="#" className="btn btn-sm btn-outline-light rounded-circle p-2" aria-label="LinkedIn">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div>
             </div>
           </div>
           
-          <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Explore</h3>
-            <ul className="space-y-4">
-              <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-              <li><a href="#offers" className="text-gray-400 hover:text-white transition-colors">Offers</a></li>
-              <li><a href="#blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-            </ul>
+          {/* Main Navigation */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <div className="mb-4">
+              <h3 className="font-montserrat fw-semibold fs-5 mb-3">Main Navigation</h3>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-2"><a href="#home" className="text-light-gray footer-link">Home</a></li>
+                <li className="mb-2"><a href="#offers" className="text-light-gray footer-link">Offers</a></li>
+                <li className="mb-2"><a href="#blog" className="text-light-gray footer-link">Blog</a></li>
+                <li className="mb-2"><a href="#about" className="text-light-gray footer-link">About</a></li>
+                <li className="mb-2"><a href="#contact" className="text-light-gray footer-link">Contact</a></li>
+              </ul>
+            </div>
           </div>
           
-          <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Categories</h3>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Restaurants</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Shopping</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Activities</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Accommodation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Transportation</a></li>
-            </ul>
+          {/* Categories */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <div className="mb-4">
+              <h3 className="font-montserrat fw-semibold fs-5 mb-3">Categories</h3>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Restaurants</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Shopping</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Activities</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Accommodation</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Transportation</a></li>
+              </ul>
+            </div>
           </div>
           
-          <div>
-            <h3 className="font-montserrat font-semibold text-lg mb-6">Legal</h3>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Disclaimer</a></li>
-            </ul>
+          {/* Legal */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <div className="mb-4">
+              <h3 className="font-montserrat fw-semibold fs-5 mb-3">Legal</h3>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Terms of Service</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Privacy Policy</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Cookie Policy</a></li>
+                <li className="mb-2"><a href="#" className="text-light-gray footer-link">Disclaimer</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-          <p className="text-gray-400">
-            &copy; {new Date().getFullYear()} Luxembourg Pas Chère. All rights reserved.
+        {/* Copyright */}
+        <div className="border-top border-secondary mt-4 pt-4 text-center">
+          <p className="text-light-gray mb-0">
+            © 2025 Luxembourg Pas Chère. All rights reserved.
           </p>
         </div>
       </div>

@@ -259,3 +259,18 @@
 .social-icon:hover i {
   color: white !important;
 }
+
+/* Footer styles */
+.text-light-gray {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-link {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: white !important;
+  text-decoration: none;
+}
