@@ -1,15 +1,26 @@
 import { useState } from 'react';
 
-type Offer = {
+interface BaseOffer {
   id: number;
   title: string;
   description: string;
   location: string;
   discount: string;
   image: string;
+}
+
+interface RatedOffer extends BaseOffer {
   rating: number;
   reviewCount: number;
-};
+  lastUpdated: Date;
+}
+
+type Offer = RatedOffer;
+
+interface OfferCardProps {
+  offer: Offer;
+  onSelect?: (offerId: number) => void;
+}
 
 export default function OffersSection() {
   const [activePostId, setActivePostId] = useState<number | null>(null);
