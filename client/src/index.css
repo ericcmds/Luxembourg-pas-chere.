@@ -99,3 +99,101 @@
     color: #00A4E0;
   }
 }
+
+/* Bootstrap overrides and utilities */
+.btn-primary {
+  background-color: #00A4E0 !important;
+  border-color: #00A4E0 !important;
+}
+
+.btn-primary:hover {
+  background-color: #0088be !important;
+  border-color: #0088be !important;
+}
+
+.btn-danger {
+  background-color: #E31837 !important;
+  border-color: #E31837 !important;
+}
+
+.btn-danger:hover {
+  background-color: #c21530 !important;
+  border-color: #c21530 !important;
+}
+
+.nav-link {
+  color: #333333;
+}
+
+.nav-link:hover {
+  color: #E31837;
+}
+
+.bg-opacity-10 {
+  --bs-bg-opacity: 0.1;
+}
+
+.bg-opacity-20 {
+  --bs-bg-opacity: 0.2;
+}
+
+.text-opacity-80 {
+  opacity: 0.8;
+}
+
+.hover-opacity-100:hover {
+  opacity: 1 !important;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Custom padding utilities for Bootstrap */
+.py-6 {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.py-7 {
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
+}
+
+/* Background with backdrop filter for transparent cards */
+.backdrop-blur {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Rounded corners utilities */
+.rounded-4 {
+  border-radius: 1rem !important;
+}
+
+/* Additional utilities for border width */
+.border-2 {
+  border-width: 2px !important;
+}
+
+/* Transitions */
+.transition {
+  transition: all 0.3s ease;
+}
