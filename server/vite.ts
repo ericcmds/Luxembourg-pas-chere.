@@ -23,9 +23,10 @@ export function log(message: string, source = "express") {
 }
 
 export async function setupVite(app: Express, server: Server) {
+  const PORT = 3000; // Added: Define port explicitly
   const serverOptions = {
     middlewareMode: true,
-    hmr: { server },
+    hmr: { server, host: '0.0.0.0', clientPort: PORT }, // Added: host for hmr
     allowedHosts: true,
   };
 
@@ -39,7 +40,10 @@ export async function setupVite(app: Express, server: Server) {
         process.exit(1);
       },
     },
-    server: serverOptions,
+    server: {
+      ...serverOptions, // Use serverOptions for consistency
+      host: '0.0.0.0', // Added: host for the server
+    },
     appType: "custom",
   });
 
