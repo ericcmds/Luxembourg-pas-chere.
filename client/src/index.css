@@ -53,48 +53,48 @@
   .font-montserrat {
     font-family: 'Montserrat', sans-serif;
   }
-  
+
   .font-opensans {
     font-family: 'Open Sans', sans-serif;
   }
-  
+
   /* Updated color utility classes based on the requested palette */
   .text-lux-red {
     color: #E31837;
   }
-  
+
   .text-lux-blue {
     color: #00A4E0;
   }
-  
+
   .text-lux-dark {
     color: #333333;
   }
-  
+
   .bg-lux-red {
     background-color: #E31837;
   }
-  
+
   .bg-lux-blue {
     background-color: #00A4E0;
   }
-  
+
   .bg-lux-light {
     background-color: #F5F5F5;
   }
-  
+
   .hover\:bg-lux-red:hover {
     background-color: #E31837;
   }
-  
+
   .hover\:bg-lux-blue:hover {
     background-color: #00A4E0;
   }
-  
+
   .hover\:text-lux-red:hover {
     color: #E31837;
   }
-  
+
   .hover\:text-lux-blue:hover {
     color: #00A4E0;
   }
@@ -104,6 +104,7 @@
 .btn-primary {
   background-color: #00A4E0 !important;
   border-color: #00A4E0 !important;
+  transition: background-color 0.3s ease; /* Added transition */
 }
 
 .btn-primary:hover {
@@ -114,6 +115,7 @@
 .btn-danger {
   background-color: #E31837 !important;
   border-color: #E31837 !important;
+  transition: background-color 0.3s ease; /* Added transition */
 }
 
 .btn-danger:hover {
@@ -123,6 +125,7 @@
 
 .nav-link {
   color: #333333;
+  transition: color 0.3s ease; /* Added transition */
 }
 
 .nav-link:hover {
@@ -288,6 +291,54 @@
 .invalid-feedback {
   color: #dc3545;
   font-weight: 500;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 1s ease-out 0.3s both;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Interactive tabs styling */
+.tab-button {
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  transform: translateY(-2px);
 }
 
 /* Footer styles */

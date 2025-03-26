@@ -1,13 +1,56 @@
+import { useState, useEffect, useRef } from 'react';
+
 export default function BookCover() {
+  const [rotation, setRotation] = useState({ x: 0, y: 10 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Handle mouse movement for 3D effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Calculate rotation based on mouse position
+    const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 15;
+    const rotateX = ((e.clientY - centerY) / (rect.height / 2)) * -10;
+    
+    setRotation({ x: rotateX, y: rotateY });
+  };
+  
+  // Reset rotation when mouse leaves
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 10 });
+  };
+  
+  // Add subtle animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation(prev => ({
+        x: prev.x + (Math.random() * 0.8 - 0.4),
+        y: prev.y + (Math.random() * 0.8 - 0.4)
+      }));
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="book-cover-container position-relative" style={{ maxWidth: '350px' }}>
+    <div 
+      ref={containerRef}
+      className="book-cover-container position-relative" 
+      style={{ maxWidth: '350px', cursor: 'pointer' }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <svg
-        className="w-100 h-100 mx-auto"
+        className="w-100 h-100 mx-auto transition-all duration-300"
         viewBox="0 0 240 340"
         xmlns="http://www.w3.org/2000/svg"
         style={{
           filter: 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))',
-          transform: 'perspective(1200px) rotateY(10deg)',
+          transform: `perspective(1200px) rotateY(${rotation.y}deg) rotateX(${rotation.x}deg)`,
           transformOrigin: 'left center'
         }}
       >

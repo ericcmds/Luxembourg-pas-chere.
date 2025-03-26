@@ -7,16 +7,46 @@ import {
   PiggyBank 
 } from "lucide-react";
 
+import { useEffect, useState, useRef } from 'react';
+
 export default function HeroSection() {
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  
+  // Track scroll position for parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Calculate parallax transformations
+  const calculateParallax = (factor: number) => {
+    return scrollY * factor;
+  };
+  
   return (
-    <section id="home" className="relative bg-gradient-to-r from-[#E60023] to-[#00A1DE] text-white py-20">
-      <div className="absolute inset-0 bg-black opacity-30"></div>
+    <section 
+      id="home" 
+      ref={heroRef}
+      className="relative bg-gradient-to-r from-[#E60023] to-[#00A1DE] text-white py-20 overflow-hidden"
+    >
+      <div 
+        className="absolute inset-0 bg-black opacity-30"
+        style={{ transform: `translateY(${calculateParallax(0.05)}px)` }}
+      ></div>
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold mb-6">
+        <div 
+          className="max-w-3xl"
+          style={{ transform: `translateY(${calculateParallax(-0.1)}px)` }}
+        >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold mb-6 animate-fadeIn">
             Discover Luxembourg Without Breaking the Bank
           </h1>
-          <p className="text-lg md:text-xl mb-6 font-opensans">
+          <p className="text-lg md:text-xl mb-6 font-opensans animate-slideUp">
             Your ultimate guide to enjoying Luxembourg's beauty, culture, and cuisine on a budget.
           </p>
           
