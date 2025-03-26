@@ -84,29 +84,6 @@ export default function AboutProjectSection() {
             </div>
           ))}
         </div>
-          ))}
-        </div>
-
-        {/* Tab Content */}
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          {Object.entries(tabData).map(([key, value]) => (
-            <div 
-              key={key}
-              className={`tab-content ${activeTab === key ? 'block' : 'hidden'}`}
-              role="tabpanel"
-            >
-              <div className="flex items-center mb-4">
-                <div className="bg-blue-100 p-3 rounded-full text-blue-600 mr-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold">{value.title}</h3>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                {value.content}
-              </p>
-            </div>
-          ))}
-        </div>
 
         {/* Additional Information Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
