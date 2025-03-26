@@ -25,11 +25,11 @@ export default function BookSection() {
   const handleOrder = (e: React.FormEvent) => {
     e.preventDefault();
     setIsOrderProcessing(true);
-    
+
     // Simulate order processing
     setTimeout(() => {
       setIsOrderProcessing(false);
-      
+
       // Reset form
       setFormData({
         firstName: '',
@@ -39,7 +39,7 @@ export default function BookSection() {
         city: '',
         postalCode: ''
       });
-      
+
       // Show success alert via Bootstrap
       const alertPlaceholder = document.getElementById('orderAlertPlaceholder');
       if (alertPlaceholder) {
@@ -51,7 +51,7 @@ export default function BookSection() {
           </div>
         `;
         alertPlaceholder.append(wrapper);
-        
+
         // Auto-dismiss after 5 seconds
         setTimeout(() => {
           const alert = document.querySelector('.alert');
@@ -60,7 +60,7 @@ export default function BookSection() {
           }
         }, 5000);
       }
-      
+
       // Close modal using Bootstrap's JS API
       const modalElement = document.getElementById('orderModal');
       if (modalElement && typeof window !== 'undefined') {
@@ -108,6 +108,53 @@ export default function BookSection() {
                 <div>
                   <h3 className="font-montserrat mb-3">Your Complete Guide to Luxembourg on a Budget</h3>
                   <p className="text-muted">Discover insider tips and practical advice for enjoying Luxembourg without breaking the bank.</p>
+                  <p className="mb-4">
+                    Der umfassende Guide "Luxembourg Pas Chère" zeigt Ihnen, wie Sie in Luxemburg günstig leben können, ohne auf Qualität zu verzichten.
+                  </p>
+
+                  <div className="mb-4">
+                    <h5 className="fw-bold mb-3">Was Sie erwartet:</h5>
+                    <ul className="list-unstyled">
+                      <li className="mb-2 d-flex align-items-center">
+                        <i className="fas fa-check-circle text-success me-2"></i>
+                        <span>Über 200 Spartipps für alle Lebensbereiche</span>
+                      </li>
+                      <li className="mb-2 d-flex align-items-center">
+                        <i className="fas fa-check-circle text-success me-2"></i>
+                        <span>Geheime Rabatte und lokale Angebote</span>
+                      </li>
+                      <li className="mb-2 d-flex align-items-center">
+                        <i className="fas fa-check-circle text-success me-2"></i>
+                        <span>Günstiger Wohnraum und Transportmöglichkeiten</span>
+                      </li>
+                      <li className="mb-2 d-flex align-items-center">
+                        <i className="fas fa-check-circle text-success me-2"></i>
+                        <span>Kostenlose Freizeitaktivitäten für die ganze Familie</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="price-tag-container mb-4">
+                    <div className="d-flex align-items-center gap-3">
+                      <div>
+                        <span className="d-block fs-6 text-decoration-line-through text-muted">Regulär: €34.99</span>
+                        <span className="d-block fs-2 fw-bold text-danger">Jetzt nur: €24.99</span>
+                      </div>
+                      <div className="bg-success text-white px-3 py-1 rounded-pill">
+                        <span className="fw-bold">29% RABATT</span>
+                      </div>
+                    </div>
+                    <p className="text-muted mt-2 small"><i className="fas fa-truck me-1"></i> Kostenloser Versand in Luxemburg</p>
+                  </div>
+
+                  <button 
+                    className="btn btn-danger btn-lg rounded-pill shadow-lg px-5 py-3 fw-bold cta-button-animation" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#orderModal"
+                  >
+                    <i className="fas fa-shopping-cart me-2"></i>
+                    JETZT BESTELLEN
+                  </button>
                 </div>
               </div>
             </div>
@@ -149,7 +196,7 @@ export default function BookSection() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">E-Mail</label>
                     <input 
@@ -161,7 +208,7 @@ export default function BookSection() {
                       required 
                     />
                   </div>
-                  
+
                   <div className="mb-3">
                     <label htmlFor="address" className="form-label">Lieferadresse</label>
                     <input 
@@ -173,7 +220,7 @@ export default function BookSection() {
                       required 
                     />
                   </div>
-                  
+
                   <div className="row g-3 mb-3">
                     <div className="col-md-6">
                       <label htmlFor="city" className="form-label">Stadt</label>
@@ -198,7 +245,7 @@ export default function BookSection() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="d-flex justify-content-between align-items-center border-top pt-3 mt-4">
                     <div>
                       <div className="text-[#E31837] fw-bold">€24.99</div>
