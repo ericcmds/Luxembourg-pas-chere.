@@ -61,8 +61,12 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
+args = "npm ci --quiet || npm install --quiet"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
 args = "pkill -f \"tsx server/index.ts\" || true"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev"
+args = "NODE_ENV=development npm run dev"

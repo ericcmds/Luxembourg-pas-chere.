@@ -1,8 +1,11 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { setupVite, log, serveStatic } from "./vite";
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
+
+// Force development mode for Vite
+process.env.NODE_ENV = 'development';
 
 const app = express();
 app.set('trust proxy', 1);
