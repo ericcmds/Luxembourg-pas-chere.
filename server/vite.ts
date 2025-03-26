@@ -32,8 +32,16 @@ export async function setupVite(app: Express, server: Server) {
       protocol: 'wss',
       timeout: 120000
     },
-    cors: true,
-    allowedHosts: 'all',
+    cors: {
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      credentials: true
+    },
+    fs: {
+      strict: false,
+      allow: ['..']
+    },
+    allowedHosts: '*'
   };
 
   const vite = await createViteServer({
