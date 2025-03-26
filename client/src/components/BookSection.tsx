@@ -218,276 +218,374 @@ export default function BookSection() {
           </div>
           
           {/* Additional Detailed Information */}
-          <div className="mt-12">
+          <div className="mt-5">
             <Tabs defaultValue="about" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="about">About</TabsTrigger>
-                <TabsTrigger value="target">Target Audience</TabsTrigger>
-                <TabsTrigger value="innovation">Innovation</TabsTrigger>
-                <TabsTrigger value="content">Content</TabsTrigger>
+                <TabsTrigger value="about">
+                  <i className="fas fa-info-circle me-2"></i> About
+                </TabsTrigger>
+                <TabsTrigger value="target">
+                  <i className="fas fa-users me-2"></i> Target Audience
+                </TabsTrigger>
+                <TabsTrigger value="innovation">
+                  <i className="fas fa-lightbulb me-2"></i> Innovation
+                </TabsTrigger>
+                <TabsTrigger value="content">
+                  <i className="fas fa-book-open me-2"></i> Content
+                </TabsTrigger>
               </TabsList>
               
               {/* About the Project Tab */}
-              <TabsContent value="about" className="pt-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-montserrat font-semibold text-xl mb-4 text-lux-dark flex items-center">
-                      <BookOpen className="mr-2 text-lux-blue" size={20} />
-                      About the Project Leader
-                    </h4>
-                    <div className="bg-lux-light p-6 rounded-lg">
-                      <p className="text-gray-700 mb-4">
-                        <span className="font-medium">My name is Pascale ZAOUROU.</span> I am a single mother of three children, aged 49, with a degree in Educational Sciences and a diploma in Social Sciences and Mediation. I have been a resident of Luxembourg for over fifteen years.
-                      </p>
-                      <p className="text-gray-700">
-                        This project is based on my personal experience, followed by interviews with students, single-parent families to learn about their best tips, and discussions with associative leaders and key players in Luxembourg's social and solidarity economy.
-                      </p>
+              <TabsContent value="about" className="pt-4">
+                <div className="row g-4">
+                  <div className="col-md-6">
+                    <div className="card border-0 h-100">
+                      <div className="card-header bg-lux-red text-white py-3">
+                        <h4 className="m-0 font-montserrat fw-semibold d-flex align-items-center">
+                          <i className="fas fa-user me-2"></i>
+                          About the Project Leader
+                        </h4>
+                      </div>
+                      <div className="card-body bg-lux-light">
+                        <p className="card-text mb-3">
+                          <span className="fw-medium">My name is Pascale ZAOUROU.</span> I am a single mother of three children, aged 49, with a degree in Educational Sciences and a diploma in Social Sciences and Mediation. I have been a resident of Luxembourg for over fifteen years.
+                        </p>
+                        <p className="card-text">
+                          This project is based on my personal experience, followed by interviews with students, single-parent families to learn about their best tips, and discussions with associative leaders and key players in Luxembourg's social and solidarity economy.
+                        </p>
+                      </div>
                     </div>
                   </div>
                   
-                  <div>
-                    <h4 className="font-montserrat font-semibold text-xl mb-4 text-lux-dark flex items-center">
-                      <Building className="mr-2 text-lux-blue" size={20} />
-                      Context
-                    </h4>
-                    <div className="bg-lux-light p-6 rounded-lg">
-                      <p className="text-gray-700 mb-4">
-                        Today, 45% of workers in Luxembourg come from across the borders, and 75% of the active population is non-native. We also address the issue of working poor.
-                      </p>
-                      <p className="text-gray-700 mb-4">
-                        Various health, climate, and security crises have weakened household budgets. The phenomenon of working poor has intensified in Luxembourg.
-                      </p>
-                      <p className="text-gray-700">
-                        While the country aims to attract talent, the high cost of living hinders its appeal. A thorough market study reveals current gaps in information on affordable tips and consumer needs.
-                      </p>
+                  <div className="col-md-6">
+                    <div className="card border-0 h-100">
+                      <div className="card-header bg-lux-blue text-white py-3">
+                        <h4 className="m-0 font-montserrat fw-semibold d-flex align-items-center">
+                          <i className="fas fa-landmark me-2"></i>
+                          Context
+                        </h4>
+                      </div>
+                      <div className="card-body bg-lux-light">
+                        <p className="card-text mb-3">
+                          Today, 45% of workers in Luxembourg come from across the borders, and 75% of the active population is non-native. We also address the issue of working poor.
+                        </p>
+                        <p className="card-text mb-3">
+                          Various health, climate, and security crises have weakened household budgets. The phenomenon of working poor has intensified in Luxembourg.
+                        </p>
+                        <p className="card-text">
+                          While the country aims to attract talent, the high cost of living hinders its appeal. A thorough market study reveals current gaps in information on affordable tips and consumer needs.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </TabsContent>
               
               {/* Target Audience Tab */}
-              <TabsContent value="target" className="pt-6">
-                <h4 className="font-montserrat font-semibold text-xl mb-4 text-lux-dark flex items-center">
-                  <Target className="mr-2 text-lux-blue" size={20} />
-                  Who This Guide Is For
-                </h4>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className="bg-lux-light p-4 rounded-lg">
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Local residents concerned about managing their budget</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Students, young professionals</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Budget travelers</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Municipalities</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Social services</span>
-                      </li>
-                    </ul>
+              <TabsContent value="target" className="pt-4">
+                <div className="card border-0 mb-4">
+                  <div className="card-header bg-lux-red text-white py-3">
+                    <h4 className="m-0 font-montserrat fw-semibold d-flex align-items-center">
+                      <i className="fas fa-bullseye me-2"></i>
+                      Who This Guide Is For
+                    </h4>
                   </div>
-                  
-                  <div className="bg-lux-light p-4 rounded-lg">
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Human resources departments</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Non-resident expatriates</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Companies featured in the first edition</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Companies concerned with CSR in banking or consumer sectors</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Ministries</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-lux-light p-4 rounded-lg">
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Temporary employment agencies</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Daycare centers</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Real estate agencies</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>New residents and families</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="text-lux-blue mt-1 flex-shrink-0" />
-                        <span>Anyone wanting to save on daily expenses</span>
-                      </li>
-                    </ul>
+                  <div className="card-body bg-lux-light">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                      <div className="col">
+                        <div className="card h-100">
+                          <div className="card-body">
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Local residents concerned about managing their budget</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Students, young professionals</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Budget travelers</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Municipalities</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Social services</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="col">
+                        <div className="card h-100">
+                          <div className="card-body">
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Human resources departments</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Non-resident expatriates</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Companies featured in the first edition</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Companies concerned with CSR in banking or consumer sectors</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Ministries</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="col">
+                        <div className="card h-100">
+                          <div className="card-body">
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Temporary employment agencies</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Daycare centers</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Real estate agencies</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>New residents and families</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Anyone wanting to save on daily expenses</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </TabsContent>
               
               {/* Innovation Tab */}
-              <TabsContent value="innovation" className="pt-6">
-                <h4 className="font-montserrat font-semibold text-xl mb-4 text-lux-dark flex items-center">
-                  <Lightbulb className="mr-2 text-lux-blue" size={20} />
-                  What Makes This Guide Unique
-                </h4>
-                
-                <div className="bg-lux-light p-6 rounded-lg">
-                  <p className="text-gray-700 mb-4">
-                    The project's innovation lies in several aspects:
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        <CheckCircle2 size={18} className="text-lux-blue" />
+              <TabsContent value="innovation" className="pt-4">
+                <div className="card border-0">
+                  <div className="card-header bg-lux-blue text-white py-3">
+                    <h4 className="m-0 font-montserrat fw-semibold d-flex align-items-center">
+                      <i className="fas fa-lightbulb me-2"></i>
+                      What Makes This Guide Innovative
+                    </h4>
+                  </div>
+                  <div className="card-body bg-lux-light">
+                    <p className="card-text mb-4">
+                      The project's innovation lies in several aspects:
+                    </p>
+                    <div className="accordion" id="innovationAccordion">
+                      <div className="accordion-item border-0 mb-3">
+                        <h2 className="accordion-header">
+                          <button className="accordion-button bg-white shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                            <span className="fw-medium">Comprehensive coverage</span>
+                          </button>
+                        </h2>
+                        <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#innovationAccordion">
+                          <div className="accordion-body">
+                            Our project is the only one to address all areas of daily life: finance, culture, furniture, entrepreneurship, food, contributing to lower household expenses and offering an economic solution alternative.
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Comprehensive coverage:</span> Our project is the only one to address all areas of daily life: finance, culture, furniture, entrepreneurship, food, contributing to lower household expenses and offering an economic solution alternative.
-                      </p>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        <CheckCircle2 size={18} className="text-lux-blue" />
+                      <div className="accordion-item border-0 mb-3">
+                        <h2 className="accordion-header">
+                          <button className="accordion-button bg-white shadow-sm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                            <span className="fw-medium">Direct response to high costs</span>
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#innovationAccordion">
+                          <div className="accordion-body">
+                            A practical solution to the high cost of living in Luxembourg, which is often a barrier for newcomers and longtime residents alike.
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Direct response to high costs:</span> A practical solution to the high cost of living in Luxembourg, which is often a barrier for newcomers and longtime residents alike.
-                      </p>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        <CheckCircle2 size={18} className="text-lux-blue" />
+                      <div className="accordion-item border-0">
+                        <h2 className="accordion-header">
+                          <button className="accordion-button bg-white shadow-sm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                            <span className="fw-medium">Uniquely local</span>
+                          </button>
+                        </h2>
+                        <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#innovationAccordion">
+                          <div className="accordion-body">
+                            Created by a long-term resident with first-hand experience of the challenges and opportunities in Luxembourg, incorporating real insights from interviews with various community members.
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-700">
-                        <span className="font-medium">Uniquely local:</span> Created by a long-term resident with first-hand experience of the challenges and opportunities in Luxembourg, incorporating real insights from interviews with various community members.
-                      </p>
                     </div>
                   </div>
                 </div>
               </TabsContent>
               
               {/* Content Tab */}
-              <TabsContent value="content" className="pt-6">
-                <h4 className="font-montserrat font-semibold text-xl mb-4 text-lux-dark flex items-center">
-                  <BookOpen className="mr-2 text-lux-blue" size={20} />
-                  What's Inside the Guide
-                </h4>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-lux-light rounded-lg overflow-hidden">
-                    <div className="bg-lux-blue text-white py-3 px-4 font-medium">
-                      Daily Life Sections
-                    </div>
-                    <div className="p-4">
-                      <ul className="space-y-2">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Eating affordably</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Budget housing options</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Entertainment & recreation</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Affordable tourism</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Discount shopping</span>
-                        </li>
-                      </ul>
-                    </div>
+              <TabsContent value="content" className="pt-4">
+                <div className="card border-0">
+                  <div className="card-header bg-lux-red text-white py-3">
+                    <h4 className="m-0 font-montserrat fw-semibold d-flex align-items-center">
+                      <i className="fas fa-book-open me-2"></i>
+                      What's Inside the Guide
+                    </h4>
                   </div>
-                  
-                  <div className="bg-lux-light rounded-lg overflow-hidden">
-                    <div className="bg-lux-blue text-white py-3 px-4 font-medium">
-                      New Sections
+                  <div className="card-body bg-lux-light">
+                    <div className="nav nav-tabs mb-4" id="tab-content" role="tablist">
+                      <button className="nav-link active" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily" type="button" role="tab" aria-controls="daily" aria-selected="true">
+                        <span className="badge rounded-pill bg-lux-red me-2">1</span>
+                        Daily Life Sections
+                      </button>
+                      <button className="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab" aria-controls="education" aria-selected="false">
+                        <span className="badge rounded-pill bg-lux-red me-2">2</span>
+                        Education
+                      </button>
+                      <button className="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social" type="button" role="tab" aria-controls="social" aria-selected="false">
+                        <span className="badge rounded-pill bg-lux-red me-2">3</span>
+                        Social Economy
+                      </button>
                     </div>
-                    <div className="p-4">
-                      <ul className="space-y-2">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Schooling options</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Training opportunities</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Higher education</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Professional development</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Lifelong learning</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-lux-light rounded-lg overflow-hidden">
-                    <div className="bg-lux-blue text-white py-3 px-4 font-medium">
-                      Social & Solidarity Economy
-                    </div>
-                    <div className="p-4">
-                      <ul className="space-y-2">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Community initiatives</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Cooperative businesses</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Social enterprises</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Ethical consumption</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-lux-blue" />
-                          <span>Sustainable options</span>
-                        </li>
-                      </ul>
+                    
+                    <div className="tab-content" id="tabContent">
+                      <div className="tab-pane fade show active" id="daily" role="tabpanel" aria-labelledby="daily-tab">
+                        <div className="card border-0 shadow-sm">
+                          <div className="card-body">
+                            <p className="card-text mb-4">
+                              As in the first edition, we cover essential aspects of daily living including:
+                            </p>
+                            <div className="row row-cols-1 row-cols-md-3 g-4">
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Affordable food options</span>
+                                </div>
+                              </div>
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Budget housing solutions</span>
+                                </div>
+                              </div>
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Entertainment on a budget</span>
+                                </div>
+                              </div>
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Free/low-cost tourism</span>
+                                </div>
+                              </div>
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Discount shopping</span>
+                                </div>
+                              </div>
+                              <div className="col">
+                                <div className="d-flex align-items-center mb-2">
+                                  <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                  <span>Budget-friendly transport</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
+                        <div className="card border-0 shadow-sm">
+                          <div className="card-body">
+                            <p className="card-text mb-4">
+                              The guide now includes comprehensive information on:
+                            </p>
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Affordable schooling options in Luxembourg</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Scholarships and financial aid opportunities</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Low-cost training programs</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Budget student living tips</span>
+                              </li>
+                              <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                <span>Educational resources and discounts</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+                        <div className="card border-0 shadow-sm">
+                          <div className="card-body">
+                            <p className="card-text mb-4">
+                              Special attention is given to promoting social and economic initiatives:
+                            </p>
+                            <div className="row">
+                              <div className="col-md-6">
+                                <ul className="list-group list-group-flush">
+                                  <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                    <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                    <span>Community-based economic initiatives</span>
+                                  </li>
+                                  <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                    <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                    <span>Cooperative businesses and services</span>
+                                  </li>
+                                  <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                    <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                    <span>Ethical consumption options</span>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className="col-md-6">
+                                <ul className="list-group list-group-flush">
+                                  <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                    <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                    <span>Sustainable and affordable living solutions</span>
+                                  </li>
+                                  <li className="list-group-item border-0 d-flex align-items-center ps-0">
+                                    <i className="fas fa-check-circle text-lux-blue me-2"></i>
+                                    <span>Social services and resources</span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
