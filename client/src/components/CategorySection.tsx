@@ -1,53 +1,113 @@
-import { Utensils, ShoppingBag, Ticket, Bed } from "lucide-react";
-
 type Category = {
-  icon: React.ReactNode;
+  icon: string;
   title: string;
   href: string;
+  color: string;
 };
 
 export default function CategorySection() {
   const categories: Category[] = [
     {
-      icon: <Utensils className="h-6 w-6" />,
+      icon: "fas fa-utensils",
       title: "Restaurants",
-      href: "#",
+      href: "#restaurants",
+      color: "#20c997", // Türkis
     },
     {
-      icon: <ShoppingBag className="h-6 w-6" />,
+      icon: "fas fa-shopping-bag",
       title: "Shopping",
-      href: "#",
+      href: "#shopping",
+      color: "#e83e8c", // Rosa
     },
     {
-      icon: <Ticket className="h-6 w-6" />,
+      icon: "fas fa-ticket-alt",
       title: "Activities",
-      href: "#",
+      href: "#activities",
+      color: "#0dcaf0", // Hellblau
     },
     {
-      icon: <Bed className="h-6 w-6" />,
+      icon: "fas fa-bed",
       title: "Accommodation",
-      href: "#",
+      href: "#accommodation",
+      color: "#E31837", // Rot
     },
   ];
 
   return (
-    <section id="category" className="bg-white py-16">
-      <div className="container mx-auto px-6">
-        <h2 className="font-montserrat font-bold text-3xl text-center mb-12">What Are You Looking For?</h2>
+    <section id="category" className="bg-white py-5 py-md-6 py-lg-7">
+      <div className="container">
+        <div className="row justify-content-center mb-5">
+          <div className="col-lg-6 text-center">
+            <h2 className="display-6 fw-bold font-montserrat mb-3">What Are You Looking For?</h2>
+            <div className="divider-custom mx-auto mb-4">
+              <div className="divider-custom-line bg-lux-red"></div>
+              <div className="divider-custom-icon"><i className="fas fa-star text-lux-blue mx-2"></i></div>
+              <div className="divider-custom-line bg-lux-blue"></div>
+            </div>
+          </div>
+        </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
           {categories.map((category, index) => (
-            <a key={index} href={category.href} className="group">
-              <div className="bg-lux-light rounded-lg p-6 flex flex-col items-center transition-transform transform group-hover:-translate-y-1">
-                <div className="bg-lux-blue text-white p-4 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
-                  {category.icon}
+            <div key={index} className="col">
+              <a href={category.href} className="text-decoration-none">
+                <div className="card h-100 border-0 shadow-sm category-card transition"
+                  style={{
+                    borderRadius: '0.75rem',
+                    overflow: 'hidden'
+                  }}>
+                  <div className="card-body text-center p-4 p-xxl-5">
+                    <div className="category-icon-wrapper mb-3 mx-auto"
+                      style={{
+                        backgroundColor: category.color,
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                      <i className={`${category.icon} fa-lg text-white`}></i>
+                    </div>
+                    <h3 className="card-title h5 font-montserrat fw-bold">{category.title}</h3>
+                    <p className="card-text small text-muted mt-2">Find the best deals</p>
+                    <div className="mt-3">
+                      <span className="btn btn-sm btn-outline-secondary rounded-pill py-1 px-3">
+                        Explore <i className="fas fa-chevron-right ms-1 small"></i>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-montserrat font-semibold text-lg text-center">{category.title}</h3>
-              </div>
-            </a>
+              </a>
+            </div>
           ))}
         </div>
       </div>
+      
+      <style jsx>{`
+        .category-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        .divider-custom {
+          width: 80%;
+          max-width: 300px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .divider-custom-line {
+          width: 100%;
+          height: 2px;
+          border-radius: 1px;
+        }
+        .divider-custom-icon {
+          color: #00A4E0;
+        }
+      `}</style>
     </section>
   );
 }
