@@ -24,8 +24,8 @@ export default function Home() {
       <BackToTop />
       <main>
         <Hero />
-        <CategorySection />
         <BookSection />
+        <CategorySection />
         <AboutProjectSection />
         <OffersSection />
         <BlogSection />

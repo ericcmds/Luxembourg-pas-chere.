@@ -9,7 +9,45 @@ process.env.NODE_ENV = 'development';
 
 const app = express();
 app.set('trust proxy', 1);
-app.use(cors());
+
+// Maximale CORS-Flexibilität für alle Hosts
+app.use(cors({
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept', 'Access-Control-Allow-Origin'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}));
+
+// Erweiterte CORS-Header für alle Anfragen
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Origin');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('X-Frame-Options', 'ALLOWALL');
+  
+  // Content Security Policy für WebViews
+  res.header('Content-Security-Policy', "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';");
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+  next();
+});
+
+// Test-Route für CORS
+app.get('/api/cors-test', (req, res) => {
+  res.json({
+    success: true,
+    message: 'CORS-Test erfolgreich',
+    headers: req.headers,
+    origin: req.headers.origin || 'Keine Origin',
+    host: req.headers.host,
+    timestamp: new Date().toISOString()
+  });
+});
 app.use(rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs

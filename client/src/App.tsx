@@ -9,6 +9,7 @@ import CookieBanner from "@/components/CookieBanner";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { useEffect } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import NoHostRestriction from "@/components/ui/NoHostRestriction";
 
 export default function App() {
   // Add accessibility focus outline for keyboard users only
@@ -32,6 +33,7 @@ export default function App() {
     <ErrorBoundary>
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
+          <NoHostRestriction />
           <Router />
           <Toaster />
           <BackToTop />
