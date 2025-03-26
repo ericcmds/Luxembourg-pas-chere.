@@ -1,4 +1,6 @@
+
 import { useState } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface BaseOffer {
   id: number;
@@ -12,7 +14,6 @@ interface BaseOffer {
 interface RatedOffer extends BaseOffer {
   rating: number;
   reviewCount: number;
-  lastUpdated: Date;
 }
 
 type Offer = RatedOffer;
@@ -23,6 +24,7 @@ interface OfferCardProps {
 }
 
 export default function OffersSection() {
+  const { t } = useTranslation();
   const [activePostId, setActivePostId] = useState<number | null>(null);
 
   const offers: Offer[] = [
@@ -55,43 +57,96 @@ export default function OffersSection() {
       image: "https://images.unsplash.com/photo-1629207338691-a731a3b88cc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
       rating: 4.2,
       reviewCount: 76
+    },
+    {
+      id: 4,
+      title: "Sportspalast Luxembourg",
+      description: "Exklusiver Mitgliedschaftsrabatt für eines der besten Fitnessstudios in Luxemburg mit Zugang zu allen Einrichtungen.",
+      location: "Strassen, Luxemburg",
+      discount: "50% OFF First Month",
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.3,
+      reviewCount: 112
+    },
+    {
+      id: 5,
+      title: "Vianden Castle Tour",
+      description: "Entdecken Sie eines der beeindruckendsten Schlösser Europas mit einem Sonderrabatt für Führungen und Ausstellungen.",
+      location: "Vianden, Luxemburg",
+      discount: "2-FOR-1 TICKETS",
+      image: "https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.9,
+      reviewCount: 203
+    },
+    {
+      id: 6,
+      title: "Kulturpass Luxembourg",
+      description: "Ein Jahr kostenloser Eintritt zu über 60 Museen und Kulturstätten in ganz Luxemburg - perfekt für Kulturliebhaber!",
+      location: "Landesweit, Luxemburg",
+      discount: "€15 ONLY",
+      image: "https://images.unsplash.com/photo-1566049220874-6e98f7c02b83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.7,
+      reviewCount: 89
+    },
+    {
+      id: 7,
+      title: "Luxemburg Transit-Pass",
+      description: "Vergünstigter Monatspass für den öffentlichen Nahverkehr in ganz Luxemburg - eine Alternative zum kostenlosen ÖPNV für Besucher.",
+      location: "Landesweit, Luxemburg",
+      discount: "15% OFF",
+      image: "https://images.unsplash.com/photo-1533651180995-3b8dcd33e834?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.4,
+      reviewCount: 156
+    },
+    {
+      id: 8,
+      title: "Brunch am Sonntag",
+      description: "Genießen Sie ein luxuriöses Sonntagsbrunch-Erlebnis im historischen Hotel Bel Air mit atemberaubendem Blick auf die Luxemburger Landschaft.",
+      location: "Echternach, Luxemburg",
+      discount: "25% OFF",
+      image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.6,
+      reviewCount: 78
+    },
+    {
+      id: 9,
+      title: "Weinprobe Mosel-Region",
+      description: "Entdecken Sie die besten Weine der Mosel-Region Luxemburgs mit einer vergünstigten Weinprobe-Tour inklusive Transport.",
+      location: "Mosel-Tal, Luxemburg",
+      discount: "GROUP DISCOUNT 40%",
+      image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80",
+      rating: 4.8,
+      reviewCount: 92
     }
   ];
 
-  // Generate star rating HTML
+  // Function to render star ratings
   const renderStars = (rating: number) => {
+    const stars = [];
     const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    const hasHalfStar = rating % 1 >= 0.5;
 
-    return (
-      <div className="star-rating">
-        {[...Array(fullStars)].map((_, i) => (
-          <i key={`full-${i}`} className="fas fa-star text-warning"></i>
-        ))}
-        {halfStar && <i className="fas fa-star-half-alt text-warning"></i>}
-        {[...Array(emptyStars)].map((_, i) => (
-          <i key={`empty-${i}`} className="far fa-star text-warning"></i>
-        ))}
-      </div>
-    );
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i key={`star-${i}`} className="fas fa-star text-warning"></i>);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<i key="half-star" className="fas fa-star-half-alt text-warning"></i>);
+    }
+
+    const emptyStars = 5 - stars.length;
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<i key={`empty-star-${i}`} className="far fa-star text-warning"></i>);
+    }
+
+    return stars;
   };
 
-  const handleShareClick = (e: React.MouseEvent, offerId: number) => {
-    e.preventDefault();
-    setActivePostId(activePostId === offerId ? null : offerId);
-  };
-
-  const handleShare = (e: React.MouseEvent, platform: string, offerId: number) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const offer = offers.find(o => o.id === offerId);
-    if (!offer) return;
-
-    const shareUrl = `https://luxembourgpaschère.com/offers/${offerId}`;
-    const shareText = `${offer.title} - ${offer.discount} | Luxembourg Pas Chère`;
-
+  // Function to share an offer on social media
+  const shareOffer = (platform: string) => {
+    // Implement share functionality
+    const shareUrl = window.location.href;
+    const shareText = 'Check out this amazing deal on Luxembourg Pas Chère!';
     let shareLink = '';
 
     switch (platform) {
@@ -114,23 +169,26 @@ export default function OffersSection() {
     window.open(shareLink, '_blank');
   };
 
+  // Display only the first 6 offers in the main view
+  const displayedOffers = offers.slice(0, 6);
+
   return (
     <section id="offers" className="py-5 py-md-6 bg-light">
       <div className="container">
         <div className="row align-items-center mb-4">
           <div className="col">
-            <h2 className="display-6 fw-bold font-montserrat mb-0 text-primary">Aktuelle Angebote</h2> {/* Added text-primary for emphasis */}
+            <h2 className="display-6 fw-bold font-montserrat mb-0 text-primary">{t('currentOffers')}</h2>
           </div>
           <div className="col-auto">
             <a href="#" className="text-decoration-none text-lux-blue fw-bold">
-              View all offers <i className="fas fa-arrow-right ms-1 small"></i>
+              {t('viewAllOffers')} <i className="fas fa-arrow-right ms-1 small"></i>
             </a>
           </div>
         </div>
 
         {/* Desktop View */}
         <div className="row row-cols-1 row-cols-md-3 g-4 d-none d-md-flex">
-          {offers.map((offer) => (
+          {displayedOffers.map((offer) => (
             <div key={offer.id} className="col">
               <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden offer-card"
                 style={{ 
@@ -160,55 +218,8 @@ export default function OffersSection() {
                   </div>
                 </div>
                 <div className="card-body p-4">
-                  <div className="d-flex justify-content-between align-items-start mb-2">
-                    <h3 className="card-title h5 fw-bold font-montserrat mb-0 text-dark"> {/* Added text-dark for contrast */} {offer.title}</h3>
-                    {/* Share button */}
-                    <div className="dropdown">
-                      <button 
-                        className="btn btn-sm btn-outline-secondary rounded-circle p-2"
-                        onClick={(e) => handleShareClick(e, offer.id)}
-                        aria-expanded={activePostId === offer.id}
-                      >
-                        <i className="fas fa-share-alt"></i>
-                      </button>
-
-                      {activePostId === offer.id && (
-                        <div className="share-popup">
-                          <div className="d-flex gap-2 mt-2">
-                            <button 
-                              className="btn btn-sm btn-outline-primary rounded-circle"
-                              onClick={(e) => handleShare(e, 'facebook', offer.id)}
-                              aria-label="Share on Facebook"
-                            >
-                              <i className="fab fa-facebook-f"></i>
-                            </button>
-                            <button 
-                              className="btn btn-sm btn-outline-info rounded-circle"
-                              onClick={(e) => handleShare(e, 'twitter', offer.id)}
-                              aria-label="Share on Twitter"
-                            >
-                              <i className="fab fa-twitter"></i>
-                            </button>
-                            <button 
-                              className="btn btn-sm btn-outline-primary rounded-circle"
-                              onClick={(e) => handleShare(e, 'linkedin', offer.id)}
-                              aria-label="Share on LinkedIn"
-                            >
-                              <i className="fab fa-linkedin-in"></i>
-                            </button>
-                            <button 
-                              className="btn btn-sm btn-outline-success rounded-circle"
-                              onClick={(e) => handleShare(e, 'whatsapp', offer.id)}
-                              aria-label="Share on WhatsApp"
-                            >
-                              <i className="fab fa-whatsapp"></i>
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
+                  <h5 className="card-title fw-bold mb-2">{offer.title}</h5>
+                  
                   {/* Rating */}
                   <div className="d-flex align-items-center mb-3">
                     {renderStars(offer.rating)}
@@ -226,7 +237,7 @@ export default function OffersSection() {
                       className="btn btn-primary py-2"
                       style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}
                     >
-                      View Deal <i className="fas fa-chevron-right ms-1 small"></i>
+                      {t('viewDeal')} <i className="fas fa-chevron-right ms-1 small"></i>
                     </a>
                   </div>
                 </div>
@@ -238,7 +249,7 @@ export default function OffersSection() {
         {/* Mobile Carousel View - Only visible on small screens */}
         <div className="d-block d-md-none mt-4">
           <div className="text-center mb-3">
-            <span className="text-muted small">Swipe left for more offers</span>
+            <span className="text-muted small">{t('swipeLeftForMore')}</span>
           </div>
           <div id="offersCarouselMobile" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
@@ -264,8 +275,8 @@ export default function OffersSection() {
                       </div>
                     </div>
                     <div className="card-body p-4">
-                      <h3 className="card-title h5 fw-bold font-montserrat mb-2 text-dark"> {/* Added text-dark for contrast */} {offer.title}</h3>
-
+                      <h5 className="card-title fw-bold mb-2">{offer.title}</h5>
+                      
                       {/* Rating */}
                       <div className="d-flex align-items-center mb-3">
                         {renderStars(offer.rating)}
@@ -277,7 +288,6 @@ export default function OffersSection() {
                         <i className="fas fa-map-marker-alt me-2"></i>
                         <small>{offer.location}</small>
                       </div>
-
                       <div className="row g-2">
                         <div className="col-8">
                           <a 
@@ -285,7 +295,7 @@ export default function OffersSection() {
                             className="btn btn-primary w-100 py-2"
                             style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }}
                           >
-                            View Deal
+                            {t('viewDeal')}
                           </a>
                         </div>
                         <div className="col-4">
@@ -311,6 +321,41 @@ export default function OffersSection() {
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
+          </div>
+        </div>
+
+        {/* View More Button */}
+        <div className="text-center mt-5">
+          <a href="#" className="btn btn-outline-primary btn-lg px-4 fw-bold">
+            {t('exploreMoreDeals')} <i className="fas fa-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+        {/* Share Modal */}
+        <div className="modal fade" id="shareModal" tabIndex={-1} aria-labelledby="shareModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content rounded-4 border-0">
+              <div className="modal-header border-0">
+                <h5 className="modal-title fw-bold" id="shareModalLabel">{t('shareThisOffer')}</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <div className="d-flex justify-content-around">
+                  <button onClick={() => shareOffer('facebook')} className="btn btn-outline-primary rounded-circle p-3">
+                    <i className="fab fa-facebook-f"></i>
+                  </button>
+                  <button onClick={() => shareOffer('twitter')} className="btn btn-outline-info rounded-circle p-3">
+                    <i className="fab fa-twitter"></i>
+                  </button>
+                  <button onClick={() => shareOffer('linkedin')} className="btn btn-outline-secondary rounded-circle p-3">
+                    <i className="fab fa-linkedin-in"></i>
+                  </button>
+                  <button onClick={() => shareOffer('whatsapp')} className="btn btn-outline-success rounded-circle p-3">
+                    <i className="fab fa-whatsapp"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
