@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import CategorySection from "@/components/CategorySection";
+import BookSection from "@/components/BookSection";
 import OffersSection from "@/components/OffersSection";
 import BlogSection from "@/components/BlogSection";
 import AboutSection from "@/components/AboutSection";
@@ -21,6 +22,7 @@ export default function Home() {
       <main>
         <Hero />
         <CategorySection />
+        <BookSection />
         <OffersSection />
         <BlogSection />
         <AboutSection />
