@@ -1,0 +1,41 @@
+I. User Experience (UX) Enhancement Prompts
+1. Interactive Tab Navigation Implementation
+Context: The About section of the Luxembourg Pas Chère website needs an interactive tab system to organize information about the project, target audience, innovation, and content.
+
+Specific Requirement: Implement a tab navigation system with four tabs labeled "About", "Target Audience", "Innovation", and "Content". Each tab should display different content when clicked, with the active tab visually highlighted.
+
+Desired Outcome: A fully functional tab system that allows users to switch between different information sections without page reloads. The active tab should be visually distinct with a bottom border in the primary red color (#E31837) and its content should be displayed while other content is hidden.
+
+Technical Constraints: Use vanilla JavaScript for the tab functionality. Ensure the implementation is responsive and works on all screen sizes. The tab content should be accessible via keyboard navigation.
+
+Design Reference: Reference the tab implementation on Bootstrap's documentation (https://getbootstrap.com/docs/5.0/components/navs-tabs/)  for interaction patterns, but implement the styling to match the Luxembourg Pas Chère brand colors and design language.
+2. Responsive Hero Section Enhancement
+Context: The hero section is the first impression users get of the Luxembourg Pas Chère website and needs to be visually appealing and informative across all devices.
+
+Specific Requirement: Enhance the hero section with a full-width background image, overlay gradient, prominent headline, descriptive subtitle, call-to-action buttons, and statistical information boxes.
+
+Desired Outcome: A compelling hero section that clearly communicates the website's purpose with "Welcome to Luxembourg Pas Chère" as a two-color heading (Luxembourg in red #E31837, Pas Chère in blue #00A4E0), a descriptive subtitle, two call-to-action buttons ("Discover Now" in red and "Learn More" with blue border), and two semi-transparent statistic boxes showing "40% Average savings" and "500+ Money-saving tips".
+
+Technical Constraints: Implement using flexbox or CSS grid for layout. Ensure text remains readable over the background image by using an appropriate overlay gradient. Optimize the background image for fast loading.
+
+Design Reference: Use a high-quality image of Luxembourg City as background. Reference modern travel or cost-saving websites like Booking.com or Groupon for the layout of statistical information and call-to-action placement.
+3. Mobile-First Navigation Implementation
+Context: The Luxembourg Pas Chère website needs a navigation system that works seamlessly across all devices, especially on mobile.
+
+Specific Requirement: Implement a responsive navigation menu that transforms into a hamburger menu on mobile devices. When clicked, the hamburger icon should reveal a full-screen or slide-in navigation menu.
+
+Desired Outcome: A navigation system that provides easy access to all main sections of the website (Home, Offers, Blog, About Us, Contact) on any device. On desktop, the navigation should appear as horizontal links in the header. On mobile, it should collapse into a hamburger icon that, when tapped, reveals the navigation options in a user-friendly manner.
+
+Technical Constraints: Use CSS media queries for responsive behavior. Implement smooth animations for the mobile menu opening/closing using CSS transitions. Ensure the hamburger menu is accessible with proper ARIA attributes.
+
+Design Reference: Reference the navigation patterns on websites like Airbnb or Uber for clean, effective mobile navigation implementations. The expanded mobile menu should use the site's color scheme with adequate contrast for readability.
+4. Intuitive Category Card Design
+Context: The category section of the Luxembourg Pas Chère website needs to clearly present different categories of cost-saving options.
+
+Specific Requirement: Create four visually distinct category cards for Restaurants, Shopping, Activities, and Accommodation, each with an appropriate icon, title, and hover effect.
+
+Desired Outcome: Four equally-sized, visually appealing cards arranged in a row (on desktop) or column (on mobile) that clearly represent each category. Each card should have a distinct background color (Restaurants: turquoise, Shopping: pink, Activities: light blue, Accommodation: red), an appropriate icon centered above the category name, and a subtle hover effect that indicates interactivity.
+
+Technical Constraints: Use CSS flexbox or grid for layout. Implement hover effects using CSS transitions for smooth animation. Ensure adequate color contrast between the background color and text for accessibility.
+
+Design Reference: Reference the category card design on websites like Airbnb or Tripadvisor for effective visual hierarchy and hover states. Use Font Awesome or similar icon library for consistent, high-quality icons.
