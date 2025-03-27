@@ -1,0 +1,41 @@
+III. Functional Feature Implementation Prompts
+1. Newsletter Subscription Implementation
+Context: The Luxembourg Pas Chère website needs a newsletter subscription feature to build an email list and keep users informed about new content and offers.
+
+Specific Requirement: Implement a newsletter subscription form in the footer or as a non-intrusive popup. The form should include an email input field, a submit button, and clear messaging about what subscribers will receive.
+
+Desired Outcome: A functional newsletter subscription system that validates email addresses, provides appropriate feedback messages (success, error), and has a visually appealing design consistent with the website's branding. The form should be prominently placed but not disruptive to the user experience.
+
+Technical Constraints: Implement client-side email validation using JavaScript. Design the form to be responsive and accessible. If possible, integrate with a service like Formspree for handling form submissions without backend code.
+
+Design Reference: Reference newsletter subscription forms on websites like The New York Times or Airbnb for effective design and placement. Note how they use clear messaging and minimal required fields to reduce friction.
+2. Multilingual Support Implementation
+Context: Luxembourg is a multilingual country, so the website should support multiple languages to reach a wider audience.
+
+Specific Requirement: Implement a language selector in the header that allows users to switch between English, French, and German versions of the website. The selected language preference should be remembered for return visits.
+
+Desired Outcome: A functional language switching mechanism that changes all text content on the website to the selected language without page reload. The current language should be visually indicated in the language selector, and the user's preference should be stored in localStorage.
+
+Technical Constraints: Implement using JavaScript with a JSON-based translation system. Store all text content in separate language files. Ensure that the language selector is accessible and works with keyboard navigation.
+
+Design Reference: Reference multilingual websites like Switzerland's official tourism site (myswitzerland.com) or Luxembourg's official portal (luxembourg.public.lu) for effective language selector design and placement.
+3. Interactive Guide Preview Implementation
+Context: The Luxembourg Pas Chère guide is a key product being promoted on the website and needs an engaging preview to encourage purchases.
+
+Specific Requirement: Implement an interactive preview of the guide that shows sample pages or key information when users interact with the guide image or click a "Preview" button.
+
+Desired Outcome: An engaging preview experience that gives users a taste of the guide's content without giving everything away. This could be implemented as a modal lightbox showing sample pages, a flip-book style animation, or an expandable section revealing key highlights from the guide.
+
+Technical Constraints: Implement using JavaScript for the interaction and CSS for animations. Ensure the preview is responsive and works on touch devices. Optimize any images used in the preview for fast loading.
+
+Design Reference: Reference book preview features on Amazon or interactive product previews on Apple's website. Pay attention to how they balance showing enough content to generate interest while still encouraging purchase.
+4. Search Functionality Implementation
+Context: Users of the Luxembourg Pas Chère website need a way to quickly find specific deals, tips, or information.
+
+Specific Requirement: Implement a functional search feature that allows users to search across all content on the website. The search should be accessible from the header and should display results in a clear, organized manner.
+
+Desired Outcome: A responsive search system that provides real-time feedback as users type, with results categorized by type (offers, blog posts, general information). The search results should show relevant snippets and direct links to the full content. If no results are found, helpful suggestions should be provided.
+
+Technical Constraints: Implement using JavaScript for client-side searching. For a static site, consider using a library like Lunr.js that enables searching without a server. Ensure the search is keyboard accessible and works on all devices.
+
+Design Reference: Reference search implementations on websites like Airbnb or Google for effective input design and results presentation. Note how they handle empty states and provide suggestions when no exact matches are found.
