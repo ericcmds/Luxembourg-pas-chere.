@@ -1,0 +1,41 @@
+II. Design and Aesthetic Improvement Prompts
+1. Visual Hierarchy Implementation
+Context: The Luxembourg Pas Chère website needs a clear visual hierarchy to guide users through the content and highlight the most important elements.
+
+Specific Requirement: Implement a consistent visual hierarchy across the website using typography, color, size, and spacing to distinguish between primary, secondary, and tertiary content elements.
+
+Desired Outcome: A website where users can easily identify the most important information at a glance. Headings should be clearly distinguished from body text, with primary headings (H1) in larger size and possibly the two-color treatment (red/blue). Call-to-action buttons should stand out, and related content should be visually grouped together.
+
+Technical Constraints: Use the existing font families (Montserrat for headings, Open Sans for body text) but implement a more structured type scale. Maintain adequate contrast ratios for accessibility (minimum 4.5:1 for normal text, 3:1 for large text).
+
+Design Reference: Reference websites like Apple or Stripe for effective visual hierarchy. Pay special attention to their use of whitespace, typography scale, and color to create clear distinctions between content types.
+2. Color Scheme and Branding Consistency
+Context: The Luxembourg Pas Chère website needs consistent application of its brand colors and visual identity throughout all elements.
+
+Specific Requirement: Implement a consistent color scheme across the entire website, using the primary colors (Red #E31837, Blue #00A4E0) for key elements, with supporting neutral colors (White #FFFFFF, Light Gray #F5F5F5, Dark Gray #333333) for backgrounds and text.
+
+Desired Outcome: A visually cohesive website where colors are used consistently and purposefully: red for primary buttons and key highlights, blue for secondary elements and accents, white for main backgrounds, light gray for section backgrounds, and dark gray for text. The logo should consistently display "Luxembourg" in red and "Pas Chère" in blue with a red € symbol.
+
+Technical Constraints: Define CSS custom properties (variables) for all brand colors to ensure consistency. Ensure all color combinations meet WCAG 2.1 AA accessibility standards for contrast.
+
+Design Reference: Reference the color usage patterns on websites like Coca-Cola or IBM that have strong, consistent brand color applications. Note how they limit their color palette and use their brand colors strategically for emphasis.
+3. Micro-interaction Implementation
+Context: The Luxembourg Pas Chère website needs subtle micro-interactions to enhance user engagement and provide feedback on user actions.
+
+Specific Requirement: Implement sophisticated micro-interactions for interactive elements including buttons, links, form fields, and navigation items. These should provide visual feedback when users hover, focus, or click on elements.
+
+Desired Outcome: A more engaging user experience where interactive elements respond visually to user actions. Buttons should have hover and active states, form fields should indicate focus, navigation items should show hover and active states, and card elements should have subtle hover effects.
+
+Technical Constraints: Implement using CSS transitions for smooth animations. Keep animations subtle and quick (200-300ms) to avoid disrupting the user experience. Ensure all interactive states are also keyboard-accessible.
+
+Design Reference: Reference micro-interactions on websites like Google Material Design or Apple's website. Pay attention to how they use subtle scale changes, color shifts, and shadow adjustments to create responsive, but not distracting, interactions.
+4. Typography Enhancement
+Context: The Luxembourg Pas Chère website needs refined typography to improve readability and visual appeal.
+
+Specific Requirement: Implement a comprehensive typography system using Montserrat for headings and Open Sans for body text, with appropriate sizing, line height, letter spacing, and hierarchy for different content types.
+
+Desired Outcome: A typographically refined website with clear hierarchy between different text elements. Headings should use Montserrat in various weights (Bold for H1, SemiBold for H2-H3), while body text should use Open Sans Regular. Text should be properly sized and spaced for optimal readability on all devices.
+
+Technical Constraints: Define a type scale using relative units (rem) for responsive sizing. Set appropriate line heights (1.5 for body text, 1.2 for headings). Ensure text remains readable on all background colors with sufficient contrast.
+
+Design Reference: Reference typography systems on websites like Medium or The New York Times for effective hierarchy and readability. Note their use of spacing, line length, and font size relationships between different text elements.
