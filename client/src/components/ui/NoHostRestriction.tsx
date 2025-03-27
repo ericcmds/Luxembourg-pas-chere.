@@ -73,7 +73,10 @@ export default function NoHostRestriction() {
             const originalCreateElement = document.createElement;
             document.createElement = function(tagName: string, options?: ElementCreationOptions): HTMLElement {
               const element = originalCreateElement.call(document, tagName, options);
-              if (tagName.toLowerCase() === 'script' && element.src?.includes('/@vite/client')) {
+              if (tagName.toLowerCase() === 'script' && 
+                  element instanceof HTMLScriptElement && 
+                  element.src && 
+                  element.src.includes('/@vite/client')) {
                 console.log('🔄 Vite-Client-Skript erkannt, aktiviere WebSocket-Proxy');
                 // Hier fügen wir unseren WebSocket-Proxy hinzu
                 const script = document.createElement('script');

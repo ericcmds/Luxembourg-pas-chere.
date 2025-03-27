@@ -167,7 +167,7 @@ export default function BookSection() {
                   JETZT BESTELLEN
                 </button>
                 
-                <style jsx>{`
+                <style>{`
                   @keyframes shine {
                     0% { transform: translateX(-100%); }
                     60% { transform: translateX(100%); }

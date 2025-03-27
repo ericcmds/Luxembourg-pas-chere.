@@ -50,12 +50,18 @@ function setupGlobalErrorHandlers() {
     
     // Speziell für CORS-Fehler
     const originalXHROpen = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function(...args) {
+    XMLHttpRequest.prototype.open = function(
+      method: string, 
+      url: string | URL, 
+      async: boolean = true, 
+      username?: string | null, 
+      password?: string | null
+    ) {
       this.addEventListener('error', (event) => {
         event.stopPropagation();
         console.warn('XHR-Fehler abgefangen, verhindere Weiterleitung:', event);
       });
-      return originalXHROpen.apply(this, args);
+      return originalXHROpen.call(this, method, url, async, username || null, password || null);
     };
   }
 }
