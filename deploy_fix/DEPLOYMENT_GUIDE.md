@@ -23,7 +23,10 @@ In diesem Verzeichnis finden Sie:
 ### Schritt 2: Dateien anpassen
 1. Gehen Sie im Deployment-Interface zum Tab "Files"
 2. Ersetzen Sie die `package.json` im Hauptverzeichnis mit dem Inhalt von `deploy_fix/deploy_package.json`
-3. Falls nicht automatisch im Build-Prozess kopiert: Kopieren Sie `deploy_fix/server.cjs` in das `dist/`-Verzeichnis
+3. Falls nicht automatisch im Build-Prozess kopiert: 
+   - Kopieren Sie `deploy_fix/server.cjs` in das `dist/`-Verzeichnis
+   - Kopieren Sie `client/public/service-worker.js` in das `dist/public/`-Verzeichnis
+   - Kopieren Sie `client/public/offline.html` in das `dist/public/`-Verzeichnis
 
 ### Schritt 3: Deployment abschließen
 1. Speichern Sie alle Änderungen
@@ -36,5 +39,7 @@ In diesem Verzeichnis finden Sie:
 - Alle erforderlichen Funktionen und Endpunkte werden weiterhin unterstützt
 - Die API-Endpunkte `/api/contact` und `/api/newsletter` funktionieren wie erwartet
 - Die statischen Dateien werden korrekt aus dem `dist/public`-Verzeichnis bereitgestellt
+- Der Service Worker ermöglicht Offline-Funktionalität und ein verbessertes Benutzererlebnis
+- Die Seite wird als Progressive Web App (PWA) bereitgestellt, die auf Mobilgeräten installiert werden kann
 
 Bei weiteren Problemen kontaktieren Sie bitte den Support.

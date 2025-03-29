@@ -99,6 +99,19 @@
         window.VITE_ALLOW_ALL_HOSTS = true;
         window.VITE_DISABLE_HOST_CHECK = true;
         console.log("✅ Host-Einschränkungen-Bypass aktiviert");
+        
+        // Service Worker registrieren
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js')
+              .then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              })
+              .catch(function(error) {
+                console.log('ServiceWorker registration failed: ', error);
+              });
+          });
+        }
       });
     </script>
 

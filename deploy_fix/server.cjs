@@ -74,6 +74,19 @@ app.get('/api/cors-test', (req, res) => {
   });
 });
 
+// Set custom headers for Service Worker
+app.use((req, res, next) => {
+  // Service Worker kann auf allen Seiten ausgeführt werden
+  res.setHeader('Service-Worker-Allowed', '/');
+  next();
+});
+
+// Serve service worker (special case to set correct content-type)
+app.get('/service-worker.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(path.join(__dirname, 'public/service-worker.js'));
+});
+
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'public')));
 

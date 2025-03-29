@@ -1,0 +1,743 @@
+1. Critical CSS (css/critical.css)
+css
+/* 
+ * Luxembourg Pas Chere - Critical CSS
+ * Inlined critical styles for above-the-fold content
+ */
+
+/* Base Variables */
+:root {
+  --color-primary: #e74c3c;
+  --color-primary-light: rgba(231, 76, 60, 0.1);
+  --color-secondary: #3498db;
+  --color-accent: #2ecc71;
+  --color-dark: #2c3e50;
+  --color-light: #ecf0f1;
+  --color-gray: #bdc3c7;
+  --color-gray-light: #f5f5f5;
+  --color-text: #333333;
+  --color-text-light: #7f8c8d;
+  
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 5rem;
+  
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Base Styles */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Header */
+.site-header {
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--spacing-sm) 0;
+}
+
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.logo-text {
+  margin-right: 4px;
+}
+
+.logo-text.accent {
+  color: var(--color-primary);
+}
+
+.logo-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+/* Navigation */
+.mobile-menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.hamburger-icon {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-dark);
+  margin: 0 auto;
+  transition: background-color var(--transition-fast);
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-dark);
+  left: 0;
+  transition: transform var(--transition-fast);
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  bottom: -8px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon {
+  background-color: transparent;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+.main-navigation {
+  display: none;
+  width: 100%;
+  padding: var(--spacing-md) 0;
+}
+
+.main-navigation.active {
+  display: block;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-bottom: var(--spacing-sm);
+}
+
+.nav-link {
+  display: block;
+  padding: var(--spacing-sm) 0;
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .main-navigation {
+    display: block;
+    width: auto;
+    padding: 0;
+  }
+  
+  .nav-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+  
+  .nav-item {
+    margin-bottom: 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Prevent Layout Shifts */
+.hero-image img,
+.region-image img,
+.testimonial-author img,
+.about-image img,
+.location-card img {
+  aspect-ratio: attr(width) / attr(height);
+  width: 100%;
+  height: auto;
+  contain: layout paint;
+}
+2. Critical JavaScript (js/critical.js)
+javascript
+/**
+ * Luxembourg Pas Chere - Critical JavaScript
+ * Essential JavaScript for initial page functionality
+ */
+
+// Feature detection and browser support
+(function() {
+  // Remove no-js class
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+  
+  // Check WebP support
+  const supportsWebP = localStorage.getItem('supportsWebP');
+  if (supportsWebP === null) {
+    const webpTest = new Image();
+    webpTest.onload = function() {
+      localStorage.setItem('supportsWebP', webpTest.width === 1);
+      document.documentElement.classList.add('webp');
+    };
+    webpTest.onerror = function() {
+      localStorage.setItem('supportsWebP', 'false');
+      document.documentElement.classList.add('no-webp');
+    };
+    webpTest.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+  } else if (supportsWebP === 'true') {
+    document.documentElement.classList.add('webp');
+  } else {
+    document.documentElement.classList.add('no-webp');
+  }
+  
+  // Check for reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('reduced-motion');
+  }
+  
+  // Initialize mobile navigation
+  initMobileNavigation();
+  
+  // Initialize language selector
+  initLanguageSelector();
+  
+  // Initialize cookie consent
+  initCookieConsent();
+})();
+
+/**
+ * Initialize mobile navigation
+ */
+function initMobileNavigation() {
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const mainNavigation = document.querySelector('.main-navigation');
+  
+  if (menuToggle && mainNavigation) {
+    menuToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      mainNavigation.classList.toggle('active');
+      
+      // Prevent body scrolling when menu is open
+      document.body.classList.toggle('menu-open', !isExpanded);
+    });
+  }
+}
+
+/**
+ * Initialize language selector
+ */
+function initLanguageSelector() {
+  const languageSelector = document.querySelector('.language-selector button');
+  const languageDropdown = document.querySelector('.language-dropdown');
+  
+  if (languageSelector && languageDropdown) {
+    // Toggle dropdown on click
+    languageSelector.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      languageDropdown.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.language-selector')) {
+        languageSelector.setAttribute('aria-expanded', 'false');
+        languageDropdown.classList.remove('active');
+      }
+    });
+    
+    // Handle language selection
+    const langLinks = languageDropdown.querySelectorAll('a');
+    langLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const lang = this.getAttribute('hreflang');
+        if (lang) {
+          // Update URL with new language parameter
+          const url = new URL(window.location);
+          url.searchParams.set('lang', lang);
+          
+          // Store language preference
+          localStorage.setItem('preferredLanguage', lang);
+          
+          // Navigate to URL with new language
+          window.location.href = url.toString();
+        }
+      });
+    });
+  }
+}
+
+/**
+ * Initialize cookie consent
+ */
+function initCookieConsent() {
+  const cookieConsent = document.getElementById('cookie-consent');
+  const acceptButton = document.querySelector('.btn-cookie-accept');
+  const declineButton = document.querySelector('.btn-cookie-decline');
+  
+  if (cookieConsent && acceptButton && declineButton) {
+    // Check if user has already made a choice
+    const cookieChoice = localStorage.getItem('cookieConsent');
+    
+    if (!cookieChoice) {
+      // Show cookie consent banner
+      setTimeout(() => {
+        cookieConsent.classList.add('active');
+      }, 1000);
+      
+      // Handle accept button
+      acceptButton.addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        localStorage.setItem('locationConsent', 'true');
+        cookieConsent.classList.remove('active');
+      });
+      
+      // Handle decline button
+      declineButton.addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'declined');
+        localStorage.setItem('locationConsent', 'false');
+        cookieConsent.classList.remove('active');
+      });
+    }
+  }
+}
+
+/**
+ * Register service worker if supported
+ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('ServiceWorker registration failed: ', error);
+      });
+  });
+}
+3. Service Worker (service-worker.js)
+javascript
+/**
+ * Service Worker for Luxembourg Pas Chere Website
+ * Provides offline support and caching for improved performance
+ */
+
+const CACHE_NAME = 'luxembourg-pas-chere-v1';
+const URLS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/css/critical.css',
+  '/css/styles.css',
+  '/css/home.css',
+  '/js/critical.js',
+  '/js/main.js',
+  '/js/home.js',
+  '/fonts/roboto-v20-latin-regular.woff2',
+  '/fonts/roboto-v20-latin-700.woff2',
+  '/images/hero-image.jpg',
+  '/images/logo.svg',
+  '/offline.html'
+];
+
+// Install event - cache assets
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(URLS_TO_CACHE);
+      })
+  );
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.filter(cacheName => {
+          return cacheName.startsWith('luxembourg-pas-chere-') && 
+                 cacheName !== CACHE_NAME;
+        }).map(cacheName => {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
+
+// Fetch event - serve from cache, fall back to network
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        
+        // Clone the request
+        const fetchRequest = event.request.clone();
+        
+        return fetch(fetchRequest).then(response => {
+          // Check if valid response
+          if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+          
+          // Clone the response
+          const responseToCache = response.clone();
+          
+          // Cache the fetched response
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+            
+          return response;
+        }).catch(() => {
+          // If fetch fails (offline), show offline page for navigation requests
+          if (event.request.mode === 'navigate') {
+            return caches.match('/offline.html');
+          }
+        });
+      })
+  );
+});
+4. Offline Page (offline.html)
+html
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxembourg Pas Chère - Offline</title>
+  <style>
+    :root {
+      --color-primary: #e74c3c;
+      --color-dark: #2c3e50;
+      --color-light: #ecf0f1;
+      --spacing-md: 1rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: #333;
+      background-color: var(--color-light);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .offline-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .offline-icon {
+      font-size: 4rem;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-primary);
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-dark);
+    }
+    
+    p {
+      margin-bottom: var(--spacing-lg);
+      font-size: 1.125rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 44px;
+      text-decoration: none;
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .btn:hover {
+      background-color: #c0392b;
+    }
+    
+    .cached-content {
+      margin-top: var(--spacing-xl);
+      padding: var(--spacing-lg);
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    
+    .cached-content h2 {
+      margin-bottom: var(--spacing-md);
+      color: var(--color-dark);
+    }
+    
+    .cached-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .cached-list li {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cached-list a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    .cached-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-content">
+    <div class="container">
+      <div class="offline-icon">📶</div>
+      <h1>Sie sind offline</h1>
+      <p>Es scheint, dass Sie keine Internetverbindung haben. Einige Funktionen sind möglicherweise nicht verfügbar.</p>
+      <a href="/" class="btn">Erneut versuchen</a>
+      
+      <div class="cached-content">
+        <h2>Verfügbare Offline-Inhalte</h2>
+        <p>Sie können auf diese zuvor besuchten Seiten zugreifen:</p>
+        <ul class="cached-list" id="cached-pages">
+          <li><a href="/">Startseite</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dynamically populate cached pages if service worker is active
+    if ('serviceWorker' in navigator && 'caches' in window) {
+      caches.open('luxembourg-pas-chere-v1').then(function(cache) {
+        cache.keys().then(function(requests) {
+          const cachedList = document.getElementById('cached-pages');
+          const cachedUrls = [];
+          
+          requests.forEach(function(request) {
+            const url = new URL(request.url);
+            const path = url.pathname;
+            
+            // Skip service worker and non-HTML resources
+            if (path === '/service-worker.js' || 
+                path.endsWith('.css') || 
+                path.endsWith('.js') || 
+                path.endsWith('.jpg') || 
+                path.endsWith('.webp') || 
+                path.endsWith('.png') || 
+                path.endsWith('.svg') || 
+                path.endsWith('.woff') || 
+                path.endsWith('.woff2')) {
+              return;
+            }
+            
+            // Skip duplicates
+            if (cachedUrls.includes(path)) {
+              return;
+            }
+            
+            cachedUrls.push(path);
+            
+            // Create list item for HTML pages
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = path;
+            
+            // Create friendly name based on path
+            let pageName = path === '/' ? 'Startseite' : path.split('/').pop();
+            pageName = pageName === '' ? path.split('/').slice(-2, -1)[0] : pageName;
+            pageName = pageName.replace(/-/g, ' ').replace('.html', '');
+            pageName = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+            
+            link.textContent = pageName;
+            listItem.appendChild(link);
+            cachedList.appendChild(listItem);
+          });
+          
+          // If no cached pages found other than home
+          if (cachedUrls.length <= 1) {
+            const message = document.createElement('p');
+            message.textContent = 'Keine weiteren Seiten im Cache gefunden.';
+            cachedList.appendChild(message);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
