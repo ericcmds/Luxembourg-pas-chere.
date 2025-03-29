@@ -75,11 +75,11 @@ app.get('/api/cors-test', (req, res) => {
 });
 
 // Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, '../dist/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Serve the HTML file for all routes for client-side routing
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/public/index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // Error handler
@@ -98,4 +98,3 @@ const port = process.env.PORT || 5000;
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running in production mode at http://0.0.0.0:${port}`);
 });
-
