@@ -4,86 +4,222 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Offline - Luxembourg Pas Chère</title>
+  <meta name="description" content="Entdecken Sie kostengünstige Optionen und Angebote in Luxemburg - derzeit offline.">
+  
   <style>
-    /* Critical offline page styles */
+    /* Inline critical styles */
     :root {
-      --color-primary: #E31837;
+      --color-primary: #e31837;
+      --color-primary-light: rgba(227, 24, 55, 0.1);
+      --color-secondary: #00a4e0;
       --color-dark: #2c3e50;
-      --color-light: #ecf0f1;
+      --color-gray: #bdc3c7;
+      --color-gray-light: #f5f5f5;
       --color-text: #333333;
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
       --spacing-md: 1rem;
       --spacing-lg: 2rem;
       --spacing-xl: 3rem;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --border-radius-sm: 4px;
       --border-radius-md: 8px;
+      --transition-fast: 0.2s ease;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     
+    html {
+      font-size: 16px;
+    }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      line-height: 1.6;
       color: var(--color-text);
-      background-color: var(--color-light);
+      background-color: white;
+      -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .offline-header {
+      background-color: white;
+      box-shadow: var(--shadow-sm);
+      padding: var(--spacing-md) 0;
+    }
+    
+    .offline-logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-dark);
+      text-decoration: none;
+    }
+    
+    .offline-logo-accent {
+      color: var(--color-primary);
+    }
+    
+    .offline-main {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: var(--spacing-lg);
       text-align: center;
-    }
-    
-    .offline-container {
-      max-width: 500px;
-      background-color: white;
-      border-radius: var(--border-radius-md);
-      padding: var(--spacing-xl);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: var(--spacing-xl) var(--spacing-md);
     }
     
     .offline-icon {
-      font-size: 4rem;
-      margin-bottom: var(--spacing-md);
+      width: 120px;
+      height: 120px;
+      margin-bottom: var(--spacing-lg);
       color: var(--color-primary);
     }
     
-    h1 {
+    .offline-title {
+      font-size: 2rem;
+      font-weight: 700;
       margin-bottom: var(--spacing-md);
       color: var(--color-dark);
     }
     
-    p {
+    .offline-message {
+      max-width: 600px;
       margin-bottom: var(--spacing-lg);
-      color: #666;
+      color: var(--color-dark);
     }
     
     .btn {
       display: inline-block;
+      padding: var(--spacing-sm) var(--spacing-lg);
       background-color: var(--color-primary);
       color: white;
-      padding: var(--spacing-md) var(--spacing-lg);
-      border-radius: 4px;
       text-decoration: none;
+      border-radius: var(--border-radius-md);
       font-weight: 600;
-      transition: background-color 0.3s ease;
+      transition: background-color var(--transition-fast);
     }
     
     .btn:hover {
-      background-color: #c0142e;
+      background-color: #c0392b;
+    }
+    
+    .offline-footer {
+      background-color: var(--color-dark);
+      color: white;
+      padding: var(--spacing-md) 0;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+    
+    .offline-footer p {
+      opacity: 0.8;
+    }
+    
+    .connection-status {
+      background-color: var(--color-primary);
+      color: white;
+      text-align: center;
+      padding: var(--spacing-sm);
+      font-size: 0.875rem;
+      display: none;
+    }
+    
+    .connection-status.visible {
+      display: block;
+    }
+    
+    @media (min-width: 768px) {
+      .offline-title {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="offline-container">
-    <div class="offline-icon">⚠️</div>
-    <h1>Sie sind offline</h1>
-    <p>Es sieht so aus, als ob Sie keine Internetverbindung haben. Überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.</p>
-    <p>Einige Funktionen sind möglicherweise verfügbar, wenn Sie zu einer zuvor besuchten Seite zurückkehren.</p>
-    <a href="/" class="btn">Zurück zur Startseite</a>
+  <div id="connection-status" class="connection-status">
+    Sie sind offline. Einige Funktionen sind möglicherweise eingeschränkt.
   </div>
+  
+  <header class="offline-header">
+    <div class="container">
+      <div class="offline-logo">
+        <span>Luxembourg </span>
+        <span class="offline-logo-accent">Pas Chère</span>
+      </div>
+    </div>
+  </header>
+  
+  <main class="offline-main">
+    <div class="container">
+      <svg class="offline-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C9.87827 2 7.84344 2.84285 6.34315 4.34315C4.84285 5.84344 4 7.87827 4 10L4 19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V10C20 7.87827 19.1571 5.84344 17.6569 4.34315C16.1566 2.84285 14.1217 2 12 2ZM12 2V21M8 12H16"></path>
+      </svg>
+      
+      <h1 class="offline-title">Sie sind offline</h1>
+      
+      <p class="offline-message">
+        Es scheint, dass Sie keine Internetverbindung haben. Die Luxembourg Pas Chère Website benötigt eine Internetverbindung, um alle Funktionen anzuzeigen. Wir haben jedoch einige Inhalte für Sie zwischengespeichert, damit Sie trotzdem auf grundlegende Informationen zugreifen können.
+      </p>
+      
+      <div class="offline-actions">
+        <a href="/" class="btn retry-button">Erneut versuchen</a>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="offline-footer">
+    <div class="container">
+      <p>&copy; 2025 Luxembourg Pas Chère. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Check connection status and update UI
+    function updateConnectionStatus() {
+      const connectionStatus = document.getElementById('connection-status');
+      
+      if (navigator.onLine) {
+        connectionStatus.classList.remove('visible');
+        // Try to reload the page automatically when connection is restored
+        window.location.reload();
+      } else {
+        connectionStatus.classList.add('visible');
+      }
+    }
+    
+    // Initial check
+    updateConnectionStatus();
+    
+    // Add event listeners for online/offline events
+    window.addEventListener('online', updateConnectionStatus);
+    window.addEventListener('offline', updateConnectionStatus);
+    
+    // Add event listener for retry button
+    document.querySelector('.retry-button').addEventListener('click', function(e) {
+      if (!navigator.onLine) {
+        e.preventDefault();
+        alert('Sie sind immer noch offline. Bitte stellen Sie eine Internetverbindung her, um fortzufahren.');
+      }
+    });
+  </script>
 </body>
 </html>
