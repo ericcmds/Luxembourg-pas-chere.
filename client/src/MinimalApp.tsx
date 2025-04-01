@@ -182,28 +182,16 @@ export default function MinimalApp() {
               margin: '0 auto',
               position: 'relative'
             }}>
-              {/* Book Cover Placeholder */}
-              <div style={{ 
-                width: '100%', 
-                paddingBottom: '140%', 
-                background: 'linear-gradient(45deg, #E31837, #00A4E0)',
-                borderRadius: '4px',
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontSize: '1.5rem',
-                  textAlign: 'center',
-                  width: '80%'
-                }}>
-                  LUXEMBOURG<br/>PAS CHÈRE
-                </div>
-              </div>
+              {/* Echtes Buchcover */}
+              <img 
+                src="/assets/cover.png" 
+                alt="Luxembourg Pas Cher - Guide Pratique" 
+                style={{ 
+                  width: '100%', 
+                  borderRadius: '4px',
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+                }} 
+              />
               
               {/* Price Badge */}
               <div style={{ 
