@@ -302,10 +302,16 @@ a:hover {
   background-color: rgba(227, 24, 55, 0.1);
 }
 
-/* Enhanced Instagram Link */
+/* Enhanced Instagram Link - Optimized for all devices */
 .instagram-link {
   position: relative;
   overflow: hidden;
+  /* Ensure clickable area is optimal across devices */
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .instagram-link:before {
@@ -319,18 +325,33 @@ a:hover {
   transform: rotate(45deg);
   transition: all 0.5s ease;
   z-index: 1;
+  /* Ensure animation performance is optimized for mobile */
+  will-change: transform, left;
 }
 
-.instagram-link:hover:before {
+/* Prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  .instagram-link:before {
+    transition: none;
+  }
+}
+
+.instagram-link:hover:before,
+.instagram-link:focus:before {
   left: 120%;
 }
 
 .instagram-link i {
   background: -webkit-linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
   position: relative;
   z-index: 2;
+  /* Adjust size responsively */
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 /* Hero Section - Enhanced */
@@ -362,6 +383,29 @@ a:hover {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e31837' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
   z-index: 0;
+  /* Optimize rendering performance */
+  will-change: opacity;
+  /* Ensure pattern renders correctly on all devices */
+  background-size: 60px 60px;
+  /* Apply gentle animation for non-reduced motion users */
+  animation: subtle-fade 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-fade {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-pattern {
+    animation: none;
+    opacity: 0.5;
+  }
 }
 
 .hero-content {
@@ -373,6 +417,14 @@ a:hover {
   box-shadow: var(--shadow-md);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  /* Optimize width for all screen sizes */
+  width: 100%;
+  max-width: 100%;
+  /* Ensure proper spacing on all devices */
+  margin: 0 auto;
+  /* Prevent text overflow issues */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-tagline {
@@ -960,17 +1012,56 @@ a:hover {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   opacity: 0;
   transition: opacity var(--transition-normal);
+  /* Optimize for touchscreens */
+  touch-action: manipulation;
+  /* Improve rendering performance */
+  will-change: opacity;
+  /* Ensure it's accessible */
+  pointer-events: none;
 }
 
-.instagram-item:hover img {
-  transform: scale(1.1);
+/* Make parent maintain pointer events for interaction */
+.instagram-item {
+  pointer-events: auto;
 }
 
-.instagram-item:hover .instagram-overlay {
+/* Optimize animations based on motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .instagram-overlay {
+    transition: none;
+  }
+  
+  .instagram-item img {
+    transition: none;
+  }
+}
+
+/* Handle both mouse hover and touch interaction */
+.instagram-item:hover img,
+.instagram-item:focus img,
+.instagram-item:active img {
+  transform: scale(1.05);
+}
+
+.instagram-item:hover .instagram-overlay,
+.instagram-item:focus .instagram-overlay,
+.instagram-item:active .instagram-overlay {
   opacity: 1;
+}
+
+/* Special handling for touch devices */
+@media (hover: none) {
+  /* Show a hint of the overlay by default */
+  .instagram-overlay {
+    opacity: 0.1;
+  }
+  
+  .instagram-item:active .instagram-overlay {
+    opacity: 1;
+  }
 }
 
 /* Footer */
