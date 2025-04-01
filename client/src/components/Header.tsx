@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MobileMenu from './ui/MobileMenu';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Instagram } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,181 +63,82 @@ export default function Header() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Collapsible Navigation Content */}
+          {/* Collapsible Navigation Content - Rechts ausgerichtet wie im Whiteboard-Design */}
           <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`} id="navbarContent"> {/* Add show class when open */}
-            {/* Navigation Links */}
-            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+            {/* Navigation Links - Rechtsausgerichtet */}
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="#home">
-                  <i className="fas fa-home me-1" aria-hidden="true"></i> <span>Home</span>
+                <a className="nav-link font-montserrat fw-medium px-3" href="#home">
+                  Accueil
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="#offers">
-                  <i className="fas fa-tags me-1" aria-hidden="true"></i> <span>Angebote</span>
+                <a className="nav-link font-montserrat fw-medium px-3" href="#about">
+                  À propos
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="#blog">
-                  <i className="fas fa-blog me-1" aria-hidden="true"></i> <span>Blog</span>
+                <a className="nav-link font-montserrat fw-medium px-3" href="#book">
+                  Livre
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="#about">
-                  <i className="fas fa-info-circle me-1" aria-hidden="true"></i> <span>Über uns</span>
+                <a className="nav-link font-montserrat fw-medium px-3" href="#contact">
+                  Contact
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="#contact">
-                  <i className="fas fa-envelope me-1" aria-hidden="true"></i> <span>Kontakt</span>
+              {/* Instagram Icon gemäß dem Whiteboard-Design */}
+              <li className="nav-item d-none d-lg-block">
+                <a className="nav-link px-3" href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <div className="social-icon instagram-gradient rounded-circle d-flex align-items-center justify-content-center" style={{ width: "32px", height: "32px", background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}>
+                    <Instagram size={16} color="white" />
+                  </div>
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link font-montserrat fw-medium" href="/design-assistant">
-                  <i className="fas fa-magic me-1" aria-hidden="true"></i> <span>Design Assistant</span>
-                </a>
-              </li>
-            </ul>
-
-            {/* Search and Language Selection */}
-            <div className="d-flex align-items-center">
-              {/* Search Form */}
-              <form className="d-flex me-2" onSubmit={handleSearch} role="search">
-                <div className="input-group">
-                  <label htmlFor="desktopSearchInput" className="visually-hidden">Suche nach Angeboten, Orten, Aktivitäten</label>
-                  <input 
-                    id="desktopSearchInput"
-                    type="search" 
-                    className="form-control" 
-                    placeholder={`${t('search')}...`} 
-                    aria-label={t('search')}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  <button className="btn btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label={t('searchButton')}>
-                    <i className="fas fa-search" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </form>
-
-              {/* Language Dropdown */}
-              <div className="dropdown">
-                <button 
-                  className="btn btn-sm btn-outline-secondary dropdown-toggle" 
-                  type="button" 
+              {/* Sprachauswahl */}
+              <li className="nav-item dropdown">
+                <a 
+                  className="nav-link dropdown-toggle font-montserrat fw-medium px-3" 
+                  href="#" 
                   id="languageDropdown" 
+                  role="button" 
                   data-bs-toggle="dropdown" 
                   aria-expanded="false"
-                  aria-label="Sprache ändern"
                 >
-                  {language === 'de' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>DE</span></>}
-                  {language === 'fr' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>FR</span></>}
-                  {language === 'en' && <><i className="fas fa-globe me-1" aria-hidden="true"></i> <span>EN</span></>}
-                </button>
+                  {language.toUpperCase()}
+                </a>
                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                  <li>
-                    <button 
-                      className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
-                      onClick={() => handleLanguageChange('de')}
-                      aria-label="Sprache zu Deutsch wechseln"
-                    >
-                      <span className="fi fi-de me-2" aria-hidden="true"></span> Deutsch
-                    </button>
-                  </li>
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
                       onClick={() => handleLanguageChange('fr')}
-                      aria-label="Changer la langue en français"
                     >
-                      <span className="fi fi-fr me-2" aria-hidden="true"></span> Français
+                      Français
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
+                      onClick={() => handleLanguageChange('de')}
+                    >
+                      Deutsch
                     </button>
                   </li>
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
                       onClick={() => handleLanguageChange('en')}
-                      aria-label="Change language to English"
                     >
-                      <span className="fi fi-gb me-2" aria-hidden="true"></span> English
+                      English
                     </button>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Search and Language - Visible only on small screens */}
-      <div className="container d-block d-lg-none mb-2">
-        <div className="row g-2">
-          <div className="col-9">
-            <form onSubmit={handleSearch} role="search">
-              <div className="input-group">
-                <label htmlFor="mobileSearchInput" className="visually-hidden">{t('search')}</label>
-                <input 
-                  id="mobileSearchInput"
-                  type="search" 
-                  className="form-control form-control-sm" 
-                  placeholder={`${t('search')}...`} 
-                  aria-label={t('search')}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button className="btn btn-sm btn-primary" type="submit" style={{ backgroundColor: '#00A4E0', borderColor: '#00A4E0' }} aria-label={t('searchButton')}>
-                  <i className="fas fa-search" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="col-3">
-            <div className="dropdown w-100">
-              <button 
-                className="btn btn-sm btn-outline-secondary dropdown-toggle w-100 d-flex align-items-center justify-content-center gap-2" 
-                type="button" 
-                id="mobileLanguageDropdown" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false"
-                aria-label={`Change language, current language is ${language}`}
-                role="combobox"
-                aria-controls="languageDropdownList"
-              >
-                {language.toUpperCase()}
-              </button>
-              <ul className="dropdown-menu dropdown-menu-end" id="languageDropdownList" aria-labelledby="mobileLanguageDropdown">
-                <li>
-                  <button 
-                    className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
-                    onClick={() => handleLanguageChange('de')}
-                    aria-label="Sprache zu Deutsch wechseln"
-                  >
-                    Deutsch
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
-                    onClick={() => handleLanguageChange('fr')}
-                    aria-label="Changer la langue en français"
-                  >
-                    Français
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
-                    onClick={() => handleLanguageChange('en')}
-                    aria-label="Change language to English"
-                  >
-                    English
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
       <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </header>
   );
