@@ -9,7 +9,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
 
@@ -18,10 +18,6 @@ export default function Header() {
       // Normally this would navigate to search results, for now just alert
       alert(`Searching for: ${searchQuery}`);
     }
-  };
-
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
   };
 
   // Add scroll event listener to detect when to add shadow
@@ -111,7 +107,7 @@ export default function Header() {
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'fr' ? 'active' : ''}`} 
-                      onClick={() => handleLanguageChange('fr')}
+                      onClick={() => setLanguage('fr')}
                     >
                       Français
                     </button>
@@ -119,7 +115,7 @@ export default function Header() {
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'de' ? 'active' : ''}`} 
-                      onClick={() => handleLanguageChange('de')}
+                      onClick={() => setLanguage('de')}
                     >
                       Deutsch
                     </button>
@@ -127,7 +123,7 @@ export default function Header() {
                   <li>
                     <button 
                       className={`dropdown-item ${language === 'en' ? 'active' : ''}`} 
-                      onClick={() => handleLanguageChange('en')}
+                      onClick={() => setLanguage('en')}
                     >
                       English
                     </button>

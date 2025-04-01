@@ -2,7 +2,9 @@
 import "./lib/bypassHostRestriction";
 
 import { createRoot } from "react-dom/client";
-import App from "./App";
+// Temporäre Lösung: Wir verwenden eine minimale App-Version für Tests
+// import App from "./App";
+import MinimalApp from "./MinimalApp";
 import "./index.css";
 
 // Initialisiere den Bypass
@@ -15,7 +17,10 @@ import "./index.css";
 try {
   console.log("🚀 Anwendung wird gestartet...");
   const root = createRoot(document.getElementById("root")!);
-  root.render(<App />);
+  
+  // Temporär ersetzen wir die Haupt-App durch eine einfachere Version
+  root.render(<MinimalApp />);
+  
   console.log("✅ Anwendung erfolgreich gerendert!");
 } catch (error) {
   console.error("❌ Fehler beim Rendern der Anwendung:", error);

@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { contactSchema, newsletterSchema } from "@shared/schema";
 import rateLimit from 'express-rate-limit';
+import { ZodError } from "zod";
 
 const contactLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
@@ -18,14 +19,14 @@ const newsletterLimiter = rateLimit({
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form endpoint
-  app.post("/api/contact", async (req: Request, res: Response) => {
+  app.post("/api/contact", contactLimiter, async (req: Request, res: Response) => {
     try {
       const validatedData = contactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
       res.status(201).json({ success: true, message: "Contact form submitted successfully", data: contact });
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Contact form submission error:", error);
-      if (error.name === 'ZodError') {
+      if (error instanceof ZodError) {
         return res.status(400).json({ 
           success: false, 
           message: "Validation error", 
@@ -40,13 +41,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Newsletter subscription endpoint
-  app.post("/api/newsletter", async (req: Request, res: Response) => {
+  app.post("/api/newsletter", newsletterLimiter, async (req: Request, res: Response) => {
     try {
       const validatedData = newsletterSchema.parse(req.body);
       const newsletter = await storage.createNewsletter(validatedData);
       res.status(201).json({ success: true, message: "Newsletter subscription successful", data: newsletter });
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Newsletter subscription error:", error);
+      if (error instanceof ZodError) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      }
       res.status(400).json({ success: false, message: "Invalid newsletter subscription data" });
     }
   });
