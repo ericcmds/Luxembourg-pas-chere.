@@ -117,7 +117,7 @@
                 </a>
               </li>
               <li class="nav-item social-icon" role="none">
-                <a class="nav-link" href="https://www.instagram.com/luxembourgpaschere/" target="_blank" aria-label="Suivez-nous sur Instagram" rel="noopener noreferrer" role="menuitem">
+                <a class="nav-link instagram-link" href="https://www.instagram.com/luxembourgpaschere/" target="_blank" aria-label="Suivez-nous sur Instagram" rel="noopener noreferrer" role="menuitem">
                   <i class="fab fa-instagram" aria-hidden="true"></i>
                   <span class="visually-hidden">Instagram</span>
                 </a>
@@ -130,16 +130,19 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- Hero Section with Book Showcase -->
+    <!-- Hero Section with Enhanced Book Showcase -->
     <section id="hero" class="hero">
-      <div class="container">
+      <div class="container position-relative">
+        <!-- Background Pattern -->
+        <div class="hero-pattern"></div>
+        
         <div class="row align-items-center">
           <div class="col-lg-6 order-lg-2">
-            <div class="book-showcase">
+            <div class="book-showcase-enhanced">
               <div class="book-cover">
-                <div class="book-badge">NOUVEAU</div>
+                <div class="book-badge pulse-animation">NOUVEAU</div>
                 <div class="book-image">
-                  <!-- 3D Book Mockup -->
+                  <!-- 3D Book Mockup with improved shadows -->
                   <div class="book-3d">
                     <div class="book-spine"></div>
                     <div class="book-front">
@@ -148,13 +151,21 @@
                     </div>
                   </div>
                 </div>
+                <!-- Book reflection effect -->
+                <div class="book-reflection"></div>
               </div>
             </div>
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="hero-content">
+              <span class="hero-tagline">Guide officiellement reconnu</span>
               <h1 class="hero-title">Découvrez Luxembourg Pas Chère</h1>
               <p class="hero-subtitle">Le guide indispensable pour vivre et économiser au Luxembourg sans se ruiner.</p>
+              <ul class="hero-features">
+                <li><i class="fas fa-check-circle"></i> Plus de 500 astuces d'économies</li>
+                <li><i class="fas fa-check-circle"></i> Guide complet et mis à jour</li>
+                <li><i class="fas fa-check-circle"></i> Conseils d'experts locaux</li>
+              </ul>
               <div class="hero-actions">
                 <a href="#order" class="btn btn-primary btn-lg action-button">
                   <i class="fas fa-shopping-cart me-2"></i>Commander
@@ -163,6 +174,13 @@
               </div>
             </div>
           </div>
+        </div>
+        
+        <!-- Fixed CTA on mobile -->
+        <div class="mobile-cta-container">
+          <a href="#order" class="btn btn-primary btn-lg mobile-cta-button">
+            <i class="fas fa-shopping-cart me-2"></i>Commander
+          </a>
         </div>
       </div>
     </section>
@@ -353,7 +371,7 @@
                 </li>
               </ul>
               <div class="social-links">
-                <a href="https://www.instagram.com/luxembourgpaschere/" class="social-link" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/luxembourgpaschere/" class="social-link instagram-link" target="_blank" aria-label="Instagram">
                   <i class="fab fa-instagram"></i>
                 </a>
                 <a href="#" class="social-link" target="_blank" aria-label="Facebook">
@@ -584,7 +602,7 @@
         <div class="col-md-3">
           <h4 class="footer-title">Suivez-nous</h4>
           <div class="footer-social">
-            <a href="https://www.instagram.com/luxembourgpaschere/" class="social-link" target="_blank" aria-label="Instagram">
+            <a href="https://www.instagram.com/luxembourgpaschere/" class="social-link instagram-link" target="_blank" aria-label="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
             <a href="#" class="social-link" target="_blank" aria-label="Facebook">
