@@ -20,7 +20,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const firstItemRef = useRef<HTMLAnchorElement>(null);
   const lastItemRef = useRef<HTMLAnchorElement>(null);
-  const { t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   // Navigation items data
   const navItems: NavItem[] = [
@@ -35,9 +35,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   // Social media links
   const socialLinks = [
-    { id: 'facebook', label: 'Facebook', icon: <Facebook size={20} strokeWidth={1.5} />, href: '#' },
-    { id: 'instagram', label: 'Instagram', icon: <Instagram size={20} strokeWidth={1.5} />, href: '#' },
-    { id: 'twitter', label: 'Twitter', icon: <Twitter size={20} strokeWidth={1.5} />, href: '#' },
+    { id: 'facebook', label: 'Facebook', icon: <Facebook size={20} strokeWidth={1.5} />, href: 'https://www.facebook.com/' },
+    { id: 'instagram', label: 'Instagram', icon: <Instagram size={20} strokeWidth={1.5} />, href: 'https://www.instagram.com/luxembourgpaschere/' },
+    { id: 'twitter', label: 'Twitter', icon: <Twitter size={20} strokeWidth={1.5} />, href: 'https://twitter.com/' },
   ];
 
   // Close mobile menu when clicking on a link
@@ -172,20 +172,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <div className="p-4 border-t border-gray-200">
           <div className="flex justify-center space-x-2 py-2">
             <button 
-              className="px-3 py-1 rounded border border-gray-300 hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent"
+              className={`px-3 py-1 rounded border ${language === 'de' ? 'border-[#E31837] bg-[#E31837] text-white' : 'border-gray-300'} hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent`}
               aria-label="Switch language to German"
+              onClick={() => setLanguage('de')}
             >
               DE
             </button>
             <button 
-              className="px-3 py-1 rounded border border-gray-300 hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent"
+              className={`px-3 py-1 rounded border ${language === 'fr' ? 'border-[#E31837] bg-[#E31837] text-white' : 'border-gray-300'} hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent`}
               aria-label="Switch language to French"
+              onClick={() => setLanguage('fr')}
             >
               FR
             </button>
             <button 
-              className="px-3 py-1 rounded border border-gray-300 hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent"
+              className={`px-3 py-1 rounded border ${language === 'en' ? 'border-[#E31837] bg-[#E31837] text-white' : 'border-gray-300'} hover:border-[#E31837] focus:outline-none focus:ring-2 focus:ring-[#E31837] focus:border-transparent`}
               aria-label="Switch language to English"
+              onClick={() => setLanguage('en')}
             >
               EN
             </button>

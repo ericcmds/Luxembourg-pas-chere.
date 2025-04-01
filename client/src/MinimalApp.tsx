@@ -184,13 +184,28 @@ export default function MinimalApp() {
             }}>
               {/* Echtes Buchcover */}
               <img 
+                // Verwenden eines Bild-Imports mit direktem Pfad zur public/assets Ordner
                 src="/assets/cover.png" 
                 alt="Luxembourg Pas Cher - Guide Pratique" 
                 style={{ 
                   width: '100%', 
+                  maxWidth: '100%',
                   borderRadius: '4px',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                  objectFit: 'contain'
                 }} 
+                onError={(e) => {
+                  console.error('Bildfehler:', e);
+                  // Fallback zu einer Text-Repräsentation, wenn das Bild nicht geladen werden kann
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null; // Verhindern einer Fehler-Schleife
+                  target.style.background = 'linear-gradient(45deg, #E31837, #00A4E0)';
+                  target.style.aspectRatio = '0.7/1';
+                  target.style.display = 'flex';
+                  target.style.alignItems = 'center';
+                  target.style.justifyContent = 'center';
+                  target.alt = 'LUXEMBOURG PAS CHÈRE';
+                }}
               />
               
               {/* Price Badge */}

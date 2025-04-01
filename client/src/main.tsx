@@ -2,8 +2,7 @@
 import "./lib/bypassHostRestriction";
 
 import { createRoot } from "react-dom/client";
-// Temporäre Lösung: Wir verwenden eine minimale App-Version für Tests
-// import App from "./App";
+// Nur MinimalApp verwenden, da dies die stabilste Version ist
 import MinimalApp from "./MinimalApp";
 import "./index.css";
 
@@ -18,10 +17,23 @@ try {
   console.log("🚀 Anwendung wird gestartet...");
   const root = createRoot(document.getElementById("root")!);
   
-  // Temporär ersetzen wir die Haupt-App durch eine einfachere Version
+  // Direkt die MinimalApp rendern, die ohne komplexen Context funktioniert
   root.render(<MinimalApp />);
+  console.log("✅ Minimale Anwendung erfolgreich gerendert!");
   
-  console.log("✅ Anwendung erfolgreich gerendert!");
 } catch (error) {
-  console.error("❌ Fehler beim Rendern der Anwendung:", error);
+  console.error("❌ Kritischer Fehler beim Starten der Anwendung:", error);
+  
+  // Zeige eine Fehlermeldung im DOM
+  const errorDiv = document.createElement('div');
+  errorDiv.style.padding = '20px';
+  errorDiv.style.margin = '20px';
+  errorDiv.style.backgroundColor = '#ffebee';
+  errorDiv.style.border = '1px solid #f44336';
+  errorDiv.style.borderRadius = '4px';
+  errorDiv.innerHTML = `
+    <h2 style="color: #d32f2f;">Die Anwendung konnte nicht geladen werden</h2>
+    <p>Es ist ein kritischer Fehler aufgetreten. Bitte laden Sie die Seite neu oder kontaktieren Sie den Support.</p>
+  `;
+  document.body.appendChild(errorDiv);
 }
