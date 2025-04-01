@@ -1,223 +1,197 @@
 /**
- * Service Worker for Luxembourg Pas Chere Website
- * Provides offline support and caching for improved performance
+ * Luxembourg Pas Chere - Service Worker
+ * Provides offline functionality and background sync
  */
 
-// Cache names
-const CACHE_CORE = 'luxembourg-pas-chere-core-v1';
-const CACHE_ASSETS = 'luxembourg-pas-chere-assets-v1';
-const CACHE_PAGES = 'luxembourg-pas-chere-pages-v1';
-const CACHE_API = 'luxembourg-pas-chere-api-v1';
+const CACHE_NAME = 'luxembourg-pas-chere-v1';
+const OFFLINE_URL = '/offline.html';
 
-// Resources to cache immediately on installation
-const CORE_ASSETS = [
+// Assets to cache
+const ASSETS_TO_CACHE = [
   '/',
-  '/offline.html',
+  OFFLINE_URL,
   '/css/critical.css',
+  '/css/styles.css',
+  '/css/home.css',
   '/js/critical.js',
-  '/manifest.json',
+  '/js/main.js',
+  '/images/logo.svg',
+  '/images/book-cover.svg',
+  '/images/hero-background.svg',
+  '/images/about-image.svg',
+  '/images/favicon.svg',
+  '/images/press/rtl.svg',
+  '/images/press/wort.svg',
+  '/images/press/paperjam.svg',
   '/images/icons/icon-192x192.png',
-  '/images/icons/icon-512x512.png'
+  '/manifest.json'
 ];
 
-// Assets to cache when they're requested
-const CACHE_FIRST_EXTENSIONS = [
-  '.css',
-  '.js',
-  '.woff2',
-  '.woff',
-  '.ttf',
-  '.svg',
-  '.png',
-  '.jpg',
-  '.jpeg',
-  '.gif',
-  '.webp',
-  '.ico'
-];
-
-// Routes for API calls (network first)
-const API_ROUTES = [
-  '/api/'
-];
-
-// Install event - cache core assets
+// Install event - cache assets
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installing...');
+  console.log('[Service Worker] Installing Service Worker');
   
   event.waitUntil(
-    caches.open(CACHE_CORE)
-      .then(cache => {
-        console.log('[Service Worker] Caching core assets');
-        return cache.addAll(CORE_ASSETS);
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('[Service Worker] Caching app shell and assets');
+        return cache.addAll(ASSETS_TO_CACHE);
       })
       .then(() => {
-        console.log('[Service Worker] Installation complete');
         return self.skipWaiting();
-      })
-      .catch(error => {
-        console.error('[Service Worker] Install error:', error);
       })
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating...');
-  
-  const cacheWhitelist = [CACHE_CORE, CACHE_ASSETS, CACHE_PAGES, CACHE_API];
+  console.log('[Service Worker] Activating Service Worker');
   
   event.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            if (!cacheWhitelist.includes(cacheName)) {
-              console.log('[Service Worker] Deleting old cache:', cacheName);
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-      .then(() => {
-        console.log('[Service Worker] Activation complete');
-        return self.clients.claim();
-      })
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== CACHE_NAME) {
+          console.log('[Service Worker] Removing old cache', key);
+          return caches.delete(key);
+        }
+      }));
+    })
+    .then(() => {
+      return self.clients.claim();
+    })
   );
 });
 
-// Fetch event - handle caching strategy
+// Fetch event - serve from cache or network
 self.addEventListener('fetch', (event) => {
-  const request = event.request;
-  const url = new URL(request.url);
-  
   // Skip cross-origin requests
-  if (url.origin !== self.location.origin) {
+  if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
   
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  // Handle API requests
+  if (event.request.url.includes('/api/')) {
+    event.respondWith(networkFirstStrategy(event.request));
     return;
   }
   
-  // For API requests - Network first, fallback to cache
-  if (API_ROUTES.some(route => request.url.includes(route))) {
-    event.respondWith(networkFirstStrategy(request));
+  // HTML requests - network first with offline page fallback
+  if (event.request.mode === 'navigate') {
+    event.respondWith(pageStrategy(event.request));
     return;
   }
   
-  // For HTML pages - Network first with offline fallback
-  if (request.headers.get('Accept').includes('text/html')) {
-    event.respondWith(pageStrategy(request));
-    return;
-  }
-  
-  // For assets with cache-first extensions
-  if (CACHE_FIRST_EXTENSIONS.some(ext => request.url.endsWith(ext))) {
-    event.respondWith(cacheFirstStrategy(request));
-    return;
-  }
-  
-  // Default: Network first
-  event.respondWith(networkFirstStrategy(request));
+  // For all other requests - cache first with network fallback
+  event.respondWith(cacheFirstStrategy(event.request));
 });
 
-// Handle background sync events
-self.addEventListener('sync', event => {
+// Cache First Strategy
+async function cacheFirstStrategy(request) {
+  try {
+    // Try to get from cache
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    
+    // If not in cache, get from network
+    const networkResponse = await fetch(request);
+    
+    // Clone the response
+    const responseToCache = networkResponse.clone();
+    
+    // Cache the new response
+    const cache = await caches.open(CACHE_NAME);
+    cache.put(request, responseToCache);
+    
+    return networkResponse;
+  } catch (error) {
+    console.error('[Service Worker] Fetch failed:', error);
+    
+    // For image requests, return a placeholder if available
+    if (request.destination === 'image') {
+      return caches.match('/images/placeholder.svg')
+        .then((placeholderResponse) => {
+          return placeholderResponse || new Response('Image not available', {
+            status: 404,
+            headers: { 'Content-Type': 'text/plain' }
+          });
+        });
+    }
+    
+    // For other resources, return a simple error
+    return new Response('Network error occurred', {
+      status: 500,
+      headers: { 'Content-Type': 'text/plain' }
+    });
+  }
+}
+
+// Network First Strategy
+async function networkFirstStrategy(request) {
+  try {
+    // Try network first
+    const networkResponse = await fetch(request);
+    
+    // Clone the response
+    const responseToCache = networkResponse.clone();
+    
+    // Cache the network response for future offline use
+    const cache = await caches.open(CACHE_NAME);
+    cache.put(request, responseToCache);
+    
+    return networkResponse;
+  } catch (error) {
+    console.error('[Service Worker] Fetch failed:', error);
+    
+    // If network fails, try to get from cache
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    
+    // If not in cache, return an appropriate error
+    return new Response(JSON.stringify({
+      error: 'Network error occurred. You appear to be offline.'
+    }), {
+      status: 503,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+}
+
+// Page navigation strategy
+async function pageStrategy(request) {
+  try {
+    // Try network first for pages
+    const networkResponse = await fetch(request);
+    return networkResponse;
+  } catch (error) {
+    console.error('[Service Worker] Page fetch failed:', error);
+    
+    // If network fails, try to get from cache
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    
+    // If not in cache, return the offline page
+    return caches.match(OFFLINE_URL);
+  }
+}
+
+// Background sync for form submissions
+self.addEventListener('sync', (event) => {
   console.log('[Service Worker] Background Sync:', event.tag);
+  
+  if (event.tag === 'sync-contact') {
+    event.waitUntil(syncContactData());
+  }
   
   if (event.tag === 'sync-newsletter') {
     event.waitUntil(syncNewsletterData());
-  } else if (event.tag === 'sync-contact') {
-    event.waitUntil(syncContactData());
   }
 });
-
-// Cache-first strategy (for static assets)
-async function cacheFirstStrategy(request) {
-  const cachedResponse = await caches.match(request);
-  
-  if (cachedResponse) {
-    return cachedResponse;
-  }
-  
-  try {
-    const networkResponse = await fetch(request);
-    
-    // Cache valid responses
-    if (networkResponse.ok) {
-      const cache = await caches.open(CACHE_ASSETS);
-      cache.put(request, networkResponse.clone());
-    }
-    
-    return networkResponse;
-  } catch (error) {
-    console.error('[Service Worker] Cache first fetch failed:', error);
-    
-    // No specific fallback for assets
-    return new Response('Network error occurred', {
-      status: 408,
-      headers: { 'Content-Type': 'text/plain' }
-    });
-  }
-}
-
-// Network-first strategy (for API and dynamic content)
-async function networkFirstStrategy(request) {
-  try {
-    const networkResponse = await fetch(request);
-    
-    // Cache successful responses
-    if (networkResponse.ok) {
-      const cache = await caches.open(CACHE_API);
-      cache.put(request, networkResponse.clone());
-    }
-    
-    return networkResponse;
-  } catch (error) {
-    console.log('[Service Worker] Network first fetch failed, falling back to cache:', error);
-    
-    const cachedResponse = await caches.match(request);
-    
-    if (cachedResponse) {
-      return cachedResponse;
-    }
-    
-    // No cached response for API calls
-    return new Response('Network error occurred and no cache available', {
-      status: 408,
-      headers: { 'Content-Type': 'text/plain' }
-    });
-  }
-}
-
-// Page strategy (for HTML requests)
-async function pageStrategy(request) {
-  try {
-    const networkResponse = await fetch(request);
-    
-    // Cache successful responses
-    if (networkResponse.ok) {
-      const cache = await caches.open(CACHE_PAGES);
-      cache.put(request, networkResponse.clone());
-    }
-    
-    return networkResponse;
-  } catch (error) {
-    console.log('[Service Worker] Page fetch failed, falling back to cache:', error);
-    
-    const cachedResponse = await caches.match(request);
-    
-    if (cachedResponse) {
-      return cachedResponse;
-    }
-    
-    // If no cached version, show offline page
-    console.log('[Service Worker] No cached page available, serving offline page');
-    return caches.match('/offline.html');
-  }
-}
 
 // Sync contact form data
 async function syncContactData() {
@@ -227,46 +201,43 @@ async function syncContactData() {
     return;
   }
   
-  console.log('[Service Worker] Syncing contact data:', contactData.length, 'items');
+  let successCount = 0;
+  let remainingCount = contactData.length;
   
-  // Process each stored contact form submission
-  const successfulIds = [];
-  
-  for (const item of contactData) {
+  for (const data of contactData) {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(item.data)
+        body: JSON.stringify(data)
       });
       
       if (response.ok) {
-        successfulIds.push(item.id);
+        await removeStoredContactData(data.id);
+        successCount++;
+        remainingCount--;
       }
     } catch (error) {
-      console.error('[Service Worker] Failed to sync contact item:', error);
+      console.error('[Service Worker] Contact sync failed:', error);
     }
   }
   
-  // Remove successfully synced items
-  await Promise.all(successfulIds.map(id => removeStoredContactData(id)));
-  
-  console.log('[Service Worker] Contact sync complete, synced', successfulIds.length, 'items');
-  
-  // Notify clients about the sync
-  const clients = await self.clients.matchAll({ type: 'window' });
-  clients.forEach(client => {
-    client.postMessage({
-      type: 'CONTACT_SYNC_COMPLETE',
-      successCount: successfulIds.length,
-      remainingCount: contactData.length - successfulIds.length
+  // Notify the client about the sync results
+  if (successCount > 0) {
+    const clients = await self.clients.matchAll();
+    clients.forEach(client => {
+      client.postMessage({
+        type: 'CONTACT_SYNC_COMPLETE',
+        successCount,
+        remainingCount
+      });
     });
-  });
+  }
 }
 
-// Sync newsletter data
+// Sync newsletter form data
 async function syncNewsletterData() {
   const newsletterData = await getStoredNewsletterData();
   
@@ -274,68 +245,66 @@ async function syncNewsletterData() {
     return;
   }
   
-  console.log('[Service Worker] Syncing newsletter data:', newsletterData.length, 'items');
+  let successCount = 0;
+  let remainingCount = newsletterData.length;
   
-  // Process each stored newsletter subscription
-  const successfulIds = [];
-  
-  for (const item of newsletterData) {
+  for (const data of newsletterData) {
     try {
       const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(item.data)
+        body: JSON.stringify(data)
       });
       
       if (response.ok) {
-        successfulIds.push(item.id);
+        await removeStoredNewsletterData(data.id);
+        successCount++;
+        remainingCount--;
       }
     } catch (error) {
-      console.error('[Service Worker] Failed to sync newsletter item:', error);
+      console.error('[Service Worker] Newsletter sync failed:', error);
     }
   }
   
-  // Remove successfully synced items
-  await Promise.all(successfulIds.map(id => removeStoredNewsletterData(id)));
-  
-  console.log('[Service Worker] Newsletter sync complete, synced', successfulIds.length, 'items');
-  
-  // Notify clients about the sync
-  const clients = await self.clients.matchAll({ type: 'window' });
-  clients.forEach(client => {
-    client.postMessage({
-      type: 'NEWSLETTER_SYNC_COMPLETE',
-      successCount: successfulIds.length,
-      remainingCount: newsletterData.length - successfulIds.length
+  // Notify the client about the sync results
+  if (successCount > 0) {
+    const clients = await self.clients.matchAll();
+    clients.forEach(client => {
+      client.postMessage({
+        type: 'NEWSLETTER_SYNC_COMPLETE',
+        successCount,
+        remainingCount
+      });
     });
-  });
+  }
 }
 
 // Get stored contact data from IndexedDB
 function getStoredContactData() {
   return new Promise((resolve, reject) => {
-    if (!('indexedDB' in self)) {
-      resolve([]);
-      return;
-    }
-    
     const request = indexedDB.open('luxembourg-pas-chere-db', 1);
     
-    request.onerror = event => {
-      console.error('[Service Worker] IndexedDB error:', event.target.error);
+    request.onerror = () => {
+      console.error('[Service Worker] IndexedDB open failed');
       resolve([]);
     };
     
-    request.onsuccess = event => {
+    request.onupgradeneeded = (event) => {
       const db = event.target.result;
       
       if (!db.objectStoreNames.contains('contact-store')) {
-        resolve([]);
-        return;
+        db.createObjectStore('contact-store', { keyPath: 'id' });
       }
       
+      if (!db.objectStoreNames.contains('newsletter-store')) {
+        db.createObjectStore('newsletter-store', { keyPath: 'id' });
+      }
+    };
+    
+    request.onsuccess = (event) => {
+      const db = event.target.result;
       const transaction = db.transaction('contact-store', 'readonly');
       const store = transaction.objectStore('contact-store');
       const getAllRequest = store.getAll();
@@ -345,57 +314,36 @@ function getStoredContactData() {
       };
       
       getAllRequest.onerror = () => {
-        console.error('[Service Worker] Error getting stored contact data');
+        console.error('[Service Worker] Get contact data failed');
         resolve([]);
       };
-    };
-    
-    request.onupgradeneeded = event => {
-      const db = event.target.result;
-      
-      if (!db.objectStoreNames.contains('contact-store')) {
-        db.createObjectStore('contact-store', { keyPath: 'id' });
-      }
-      
-      resolve([]);
     };
   });
 }
 
-// Remove stored contact data item
+// Remove stored contact data from IndexedDB
 function removeStoredContactData(id) {
   return new Promise((resolve, reject) => {
-    if (!('indexedDB' in self)) {
-      resolve();
-      return;
-    }
-    
     const request = indexedDB.open('luxembourg-pas-chere-db', 1);
     
-    request.onerror = event => {
-      console.error('[Service Worker] IndexedDB error:', event.target.error);
-      resolve();
+    request.onerror = () => {
+      console.error('[Service Worker] IndexedDB open failed');
+      resolve(false);
     };
     
-    request.onsuccess = event => {
+    request.onsuccess = (event) => {
       const db = event.target.result;
-      
-      if (!db.objectStoreNames.contains('contact-store')) {
-        resolve();
-        return;
-      }
-      
       const transaction = db.transaction('contact-store', 'readwrite');
       const store = transaction.objectStore('contact-store');
       const deleteRequest = store.delete(id);
       
       deleteRequest.onsuccess = () => {
-        resolve();
+        resolve(true);
       };
       
       deleteRequest.onerror = () => {
-        console.error('[Service Worker] Error removing contact data');
-        resolve();
+        console.error('[Service Worker] Delete contact data failed');
+        resolve(false);
       };
     };
   });
@@ -404,26 +352,23 @@ function removeStoredContactData(id) {
 // Get stored newsletter data from IndexedDB
 function getStoredNewsletterData() {
   return new Promise((resolve, reject) => {
-    if (!('indexedDB' in self)) {
-      resolve([]);
-      return;
-    }
-    
     const request = indexedDB.open('luxembourg-pas-chere-db', 1);
     
-    request.onerror = event => {
-      console.error('[Service Worker] IndexedDB error:', event.target.error);
+    request.onerror = () => {
+      console.error('[Service Worker] IndexedDB open failed');
       resolve([]);
     };
     
-    request.onsuccess = event => {
+    request.onupgradeneeded = (event) => {
       const db = event.target.result;
       
       if (!db.objectStoreNames.contains('newsletter-store')) {
-        resolve([]);
-        return;
+        db.createObjectStore('newsletter-store', { keyPath: 'id' });
       }
-      
+    };
+    
+    request.onsuccess = (event) => {
+      const db = event.target.result;
       const transaction = db.transaction('newsletter-store', 'readonly');
       const store = transaction.objectStore('newsletter-store');
       const getAllRequest = store.getAll();
@@ -433,58 +378,86 @@ function getStoredNewsletterData() {
       };
       
       getAllRequest.onerror = () => {
-        console.error('[Service Worker] Error getting stored newsletter data');
+        console.error('[Service Worker] Get newsletter data failed');
         resolve([]);
       };
-    };
-    
-    request.onupgradeneeded = event => {
-      const db = event.target.result;
-      
-      if (!db.objectStoreNames.contains('newsletter-store')) {
-        db.createObjectStore('newsletter-store', { keyPath: 'id' });
-      }
-      
-      resolve([]);
     };
   });
 }
 
-// Remove stored newsletter data item
+// Remove stored newsletter data from IndexedDB
 function removeStoredNewsletterData(id) {
   return new Promise((resolve, reject) => {
-    if (!('indexedDB' in self)) {
-      resolve();
-      return;
-    }
-    
     const request = indexedDB.open('luxembourg-pas-chere-db', 1);
     
-    request.onerror = event => {
-      console.error('[Service Worker] IndexedDB error:', event.target.error);
-      resolve();
+    request.onerror = () => {
+      console.error('[Service Worker] IndexedDB open failed');
+      resolve(false);
     };
     
-    request.onsuccess = event => {
+    request.onsuccess = (event) => {
       const db = event.target.result;
-      
-      if (!db.objectStoreNames.contains('newsletter-store')) {
-        resolve();
-        return;
-      }
-      
       const transaction = db.transaction('newsletter-store', 'readwrite');
       const store = transaction.objectStore('newsletter-store');
       const deleteRequest = store.delete(id);
       
       deleteRequest.onsuccess = () => {
-        resolve();
+        resolve(true);
       };
       
       deleteRequest.onerror = () => {
-        console.error('[Service Worker] Error removing newsletter data');
-        resolve();
+        console.error('[Service Worker] Delete newsletter data failed');
+        resolve(false);
       };
     };
   });
 }
+
+// Listen for push notifications
+self.addEventListener('push', (event) => {
+  let notificationData = {};
+  
+  try {
+    notificationData = event.data.json();
+  } catch (e) {
+    notificationData = {
+      title: 'Nouvelle notification',
+      message: event.data ? event.data.text() : 'No data'
+    };
+  }
+  
+  const title = notificationData.title || 'Luxembourg Pas Chère';
+  const options = {
+    body: notificationData.message || 'Vous avez une nouvelle notification',
+    icon: '/images/icons/icon-192x192.png',
+    badge: '/images/icons/icon-96x96.png',
+    data: notificationData.data || {},
+    actions: notificationData.actions || []
+  };
+  
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// Handle notification clicks
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  
+  const urlToOpen = event.notification.data.url || '/';
+  
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window' }).then((clientList) => {
+      // Check if a window is already open
+      for (const client of clientList) {
+        if (client.url.includes(urlToOpen) && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      // If no window is open, open a new one
+      if (self.clients.openWindow) {
+        return self.clients.openWindow(urlToOpen);
+      }
+    })
+  );
+});

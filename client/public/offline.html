@@ -1,225 +1,222 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offline - Luxembourg Pas Chère</title>
-  <meta name="description" content="Entdecken Sie kostengünstige Optionen und Angebote in Luxemburg - derzeit offline.">
-  
+  <title>Hors connexion - Luxembourg Pas Chère</title>
   <style>
-    /* Inline critical styles */
     :root {
       --color-primary: #e31837;
-      --color-primary-light: rgba(227, 24, 55, 0.1);
       --color-secondary: #00a4e0;
       --color-dark: #2c3e50;
-      --color-gray: #bdc3c7;
-      --color-gray-light: #f5f5f5;
       --color-text: #333333;
-      --spacing-xs: 0.25rem;
-      --spacing-sm: 0.5rem;
-      --spacing-md: 1rem;
-      --spacing-lg: 2rem;
-      --spacing-xl: 3rem;
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-      --border-radius-sm: 4px;
-      --border-radius-md: 8px;
-      --transition-fast: 0.2s ease;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --font-primary: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-secondary: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     
-    html {
-      font-size: 16px;
+    html, body {
+      height: 100%;
+      font-family: var(--font-secondary);
+      color: var(--color-text);
+      line-height: 1.6;
     }
     
     body {
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      color: var(--color-text);
-      background-color: white;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--spacing-md);
-    }
-    
-    .offline-header {
-      background-color: white;
-      box-shadow: var(--shadow-sm);
-      padding: var(--spacing-md) 0;
-    }
-    
-    .offline-logo {
-      display: flex;
       align-items: center;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--color-dark);
-      text-decoration: none;
-    }
-    
-    .offline-logo-accent {
-      color: var(--color-primary);
-    }
-    
-    .offline-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      padding: 20px;
       text-align: center;
-      padding: var(--spacing-xl) var(--spacing-md);
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      font-family: var(--font-primary);
+      color: var(--color-primary);
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    
+    p {
+      margin-bottom: 20px;
+      max-width: 600px;
     }
     
     .offline-icon {
-      width: 120px;
-      height: 120px;
-      margin-bottom: var(--spacing-lg);
-      color: var(--color-primary);
-    }
-    
-    .offline-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: var(--spacing-md);
-      color: var(--color-dark);
-    }
-    
-    .offline-message {
-      max-width: 600px;
-      margin-bottom: var(--spacing-lg);
-      color: var(--color-dark);
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      fill: var(--color-primary);
     }
     
     .btn {
       display: inline-block;
-      padding: var(--spacing-sm) var(--spacing-lg);
       background-color: var(--color-primary);
       color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
       text-decoration: none;
-      border-radius: var(--border-radius-md);
-      font-weight: 600;
-      transition: background-color var(--transition-fast);
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background-color 0.3s;
     }
     
     .btn:hover {
       background-color: #c0392b;
     }
     
-    .offline-footer {
-      background-color: var(--color-dark);
-      color: white;
-      padding: var(--spacing-md) 0;
-      text-align: center;
-      font-size: 0.875rem;
+    .cached-content {
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      width: 100%;
+      max-width: 600px;
     }
     
-    .offline-footer p {
-      opacity: 0.8;
+    .cached-content h2 {
+      font-family: var(--font-primary);
+      color: var(--color-dark);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
     }
     
-    .connection-status {
-      background-color: var(--color-primary);
-      color: white;
-      text-align: center;
-      padding: var(--spacing-sm);
-      font-size: 0.875rem;
-      display: none;
+    .cached-links {
+      list-style: none;
+      margin-top: 15px;
     }
     
-    .connection-status.visible {
-      display: block;
+    .cached-links li {
+      margin-bottom: 10px;
     }
     
-    @media (min-width: 768px) {
-      .offline-title {
-        font-size: 2.5rem;
-      }
+    .cached-links a {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+    
+    .cached-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div id="connection-status" class="connection-status">
-    Sie sind offline. Einige Funktionen sind möglicherweise eingeschränkt.
+  <svg class="offline-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M23.64 7c-.45-.34-4.93-4-11.64-4-1.5 0-2.89.19-4.15.48L10.52 6c1.6-.32 3.08-.48 4.48-.48 5.65 0 9.32 2.98 9.32 2.98l.8.66c-.95.84-1.92 1.56-2.92 2.15l1.37 1.37c1.2-.81 2.34-1.79 3.4-2.94a.991.991 0 0 0 0-1.25zM2.71 3.56c-.39.39-.39 1.02 0 1.41l1.76 1.76c-3.06 1.66-5.26 4.01-5.64 4.47a.991.991 0 0 0 0 1.25c.37.36 3.96 3.81 10.02 4.95l1.67 1.67c-.85.11-1.71.17-2.59.17-6.71 0-11.16-3.63-11.63-4.01l.82-.8c1.23.97 3.57 2.47 6.75 2.98L2.71 3.56zm10.84 9.79A2.5 2.5 0 0 1 8.18 9.26l5.37 5.37c-.17.02-.33.02-.48.02zm1.77-1.83c.46-.13.88-.36 1.23-.66l-5.25-5.25c-.3.35-.53.77-.66 1.23l4.68 4.68zM21.54 17.1c.39-.39.39-1.02 0-1.41L4.41 2c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l17.13 17.1c.39.39 1.02.39 1.41 0z"/>
+  </svg>
+  
+  <h1>Vous êtes hors connexion</h1>
+  
+  <p>
+    Vous ne semblez pas être connecté à Internet. Certaines fonctionnalités du site Luxembourg Pas Chère ne sont pas disponibles actuellement.
+  </p>
+  
+  <p>
+    Veuillez vérifier votre connexion et réessayer.
+  </p>
+  
+  <a href="/" class="btn">Réessayer</a>
+  
+  <div class="cached-content">
+    <h2>Contenu disponible hors ligne</h2>
+    <p>Vous pouvez accéder aux pages suivantes qui ont été mises en cache :</p>
+    
+    <ul class="cached-links">
+      <li><a href="/">Page d'accueil</a></li>
+    </ul>
   </div>
   
-  <header class="offline-header">
-    <div class="container">
-      <div class="offline-logo">
-        <span>Luxembourg </span>
-        <span class="offline-logo-accent">Pas Chère</span>
-      </div>
-    </div>
-  </header>
-  
-  <main class="offline-main">
-    <div class="container">
-      <svg class="offline-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C9.87827 2 7.84344 2.84285 6.34315 4.34315C4.84285 5.84344 4 7.87827 4 10L4 19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V10C20 7.87827 19.1571 5.84344 17.6569 4.34315C16.1566 2.84285 14.1217 2 12 2ZM12 2V21M8 12H16"></path>
-      </svg>
-      
-      <h1 class="offline-title">Sie sind offline</h1>
-      
-      <p class="offline-message">
-        Es scheint, dass Sie keine Internetverbindung haben. Die Luxembourg Pas Chère Website benötigt eine Internetverbindung, um alle Funktionen anzuzeigen. Wir haben jedoch einige Inhalte für Sie zwischengespeichert, damit Sie trotzdem auf grundlegende Informationen zugreifen können.
-      </p>
-      
-      <div class="offline-actions">
-        <a href="/" class="btn retry-button">Erneut versuchen</a>
-      </div>
-    </div>
-  </main>
-  
-  <footer class="offline-footer">
-    <div class="container">
-      <p>&copy; 2025 Luxembourg Pas Chère. Alle Rechte vorbehalten.</p>
-    </div>
-  </footer>
-
   <script>
-    // Check connection status and update UI
-    function updateConnectionStatus() {
-      const connectionStatus = document.getElementById('connection-status');
-      
-      if (navigator.onLine) {
-        connectionStatus.classList.remove('visible');
-        // Try to reload the page automatically when connection is restored
-        window.location.reload();
-      } else {
-        connectionStatus.classList.add('visible');
+    // Check if service worker is registered
+    if ('serviceWorker' in navigator) {
+      // Try to update on page load
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+    
+    // Add event listener for when the user comes back online
+    window.addEventListener('online', function() {
+      window.location.reload();
+    });
+    
+    // Function to get list of cached pages
+    async function populateCachedLinks() {
+      if ('caches' in window) {
+        try {
+          const cache = await caches.open('luxembourg-pas-chere-v1');
+          const cachedRequests = await cache.keys();
+          const cachedPages = cachedRequests
+            .filter(request => request.url.endsWith('/') || request.url.endsWith('.html'))
+            .map(request => ({
+              url: request.url,
+              name: getPageNameFromUrl(request.url)
+            }));
+          
+          if (cachedPages.length > 1) { // More than just the homepage
+            const linksList = document.querySelector('.cached-links');
+            
+            // Clear existing links
+            linksList.innerHTML = '';
+            
+            // Add each cached page
+            cachedPages.forEach(page => {
+              if (!page.url.includes('offline.html')) { // Don't include the offline page itself
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = page.url;
+                a.textContent = page.name;
+                li.appendChild(a);
+                linksList.appendChild(li);
+              }
+            });
+          }
+        } catch (error) {
+          console.error('Error retrieving cached pages:', error);
+        }
       }
     }
     
-    // Initial check
-    updateConnectionStatus();
-    
-    // Add event listeners for online/offline events
-    window.addEventListener('online', updateConnectionStatus);
-    window.addEventListener('offline', updateConnectionStatus);
-    
-    // Add event listener for retry button
-    document.querySelector('.retry-button').addEventListener('click', function(e) {
-      if (!navigator.onLine) {
-        e.preventDefault();
-        alert('Sie sind immer noch offline. Bitte stellen Sie eine Internetverbindung her, um fortzufahren.');
+    // Helper to extract page name from URL
+    function getPageNameFromUrl(url) {
+      // Get the pathname
+      const path = new URL(url).pathname;
+      
+      // If it's the root path
+      if (path === '/' || path === '') {
+        return 'Page d\'accueil';
       }
-    });
+      
+      // Get the last segment of the path
+      const segments = path.split('/').filter(segment => segment.length > 0);
+      
+      if (segments.length === 0) {
+        return 'Page d\'accueil';
+      }
+      
+      let pageName = segments[segments.length - 1];
+      
+      // Strip .html if present
+      pageName = pageName.replace('.html', '');
+      
+      // Replace hyphens with spaces and capitalize
+      pageName = pageName.replace(/-/g, ' ')
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      
+      return pageName;
+    }
+    
+    // Call the function when page is loaded
+    document.addEventListener('DOMContentLoaded', populateCachedLinks);
   </script>
 </body>
 </html>
