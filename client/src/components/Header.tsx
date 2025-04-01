@@ -91,6 +91,11 @@ export default function Header() {
                   <i className="fas fa-envelope me-1" aria-hidden="true"></i> <span>Kontakt</span>
                 </a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link font-montserrat fw-medium" href="/design-assistant">
+                  <i className="fas fa-magic me-1" aria-hidden="true"></i> <span>Design Assistant</span>
+                </a>
+              </li>
             </ul>
 
             {/* Search and Language Selection */}

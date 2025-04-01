@@ -30,6 +30,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { id: 'about', label: 'Über uns', href: '#about', icon: <Info size={20} /> },
     { id: 'blog', label: 'Blog', href: '#blog', icon: <MessageCircle size={20} /> },
     { id: 'contact', label: 'Kontakt', href: '#contact', icon: <Mail size={20} /> },
+    { id: 'design-assistant', label: 'Design Assistant', href: '/design-assistant', icon: <span className="lucide-icon"><i className="fas fa-magic"></i></span> },
   ];
 
   // Social media links
