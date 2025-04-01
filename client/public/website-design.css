@@ -214,6 +214,13 @@ a:hover {
   transition: all var(--transition-normal);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .header.scrolled {
@@ -256,6 +263,8 @@ a:hover {
 
 .navbar-nav {
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
@@ -1391,6 +1400,52 @@ a:hover {
   .social-link {
     padding: 0.75rem;
     display: block;
+  }
+  
+  /* Ensure navbar is visible on mobile */
+  .navbar {
+    width: 100%;
+    background-color: var(--color-background);
+    z-index: 100;
+  }
+  
+  .navbar-collapse {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .navbar-toggler {
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(227, 24, 55, 0.25);
+  }
+  
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28227, 24, 55, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
   }
   
   /* Ensure Instagram is visible in footer for mobile */

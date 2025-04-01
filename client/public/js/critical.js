@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initServiceWorker();
   checkNetworkStatus();
   initPerformance();
+  initMobileNavigation();
+  initBootstrapComponents();
 });
 
 /**
@@ -434,6 +436,37 @@ function registerServiceWorker() {
         .catch(function(error) {
           console.error('ServiceWorker registration failed: ', error);
         });
+    });
+  }
+}
+
+/**
+ * Initialize Bootstrap components 
+ */
+function initBootstrapComponents() {
+  // Initialize all Bootstrap tooltips
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+  
+  // Initialize all Bootstrap popovers
+  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
+  
+  // Ensure navbar toggler works correctly
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  if (navbarToggler) {
+    navbarToggler.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-bs-target');
+      if (targetId) {
+        const navbarCollapse = document.querySelector(targetId);
+        if (navbarCollapse) {
+          navbarCollapse.classList.toggle('show');
+        }
+      }
     });
   }
 }
