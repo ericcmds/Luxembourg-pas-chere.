@@ -16,23 +16,23 @@ export default function Hero() {
       {/* Hauptinhalt mit verbesserten responsiven Eigenschaften */}
       <div className="position-relative h-100 w-100" style={{ zIndex: 2 }}>
         <div className="container pt-4 pb-5 min-vh-100 d-flex flex-column justify-content-center">
-          {/* Haupttitel - für alle Geräte vollständig sichtbar */}
-          <div className="text-center mb-5">
+          {/* Haupttitel - garantiert für alle Geräte vollständig sichtbar */}
+          <div className="text-center mb-5 pt-5 mt-4">
             <div className="row justify-content-center">
-              <div className="col-12 col-md-10 col-lg-8">
-                <p className="mb-0 px-2 px-sm-3" style={{ 
-                  fontSize: "clamp(1rem, 2vw, 1.25rem)", 
-                  lineHeight: "1.5",
-                  fontWeight: "400",
-                  letterSpacing: "0.01em"
+              <div className="col-12">
+                <p className="mb-0 w-100 px-4" style={{ 
+                  fontSize: "calc(0.9rem + 0.5vw)",
+                  lineHeight: "1.4",
+                  maxWidth: "600px",
+                  margin: "0 auto"
                 }}>
                   Les meilleurs conseils et offres pour une vie abordable au Luxembourg.
                 </p>
-                <p className="mt-2 px-2 px-sm-3" style={{ 
-                  fontSize: "clamp(1rem, 2vw, 1.25rem)", 
-                  lineHeight: "1.5",
-                  fontWeight: "400",
-                  letterSpacing: "0.01em"
+                <p className="mt-2 w-100 px-4" style={{ 
+                  fontSize: "calc(0.9rem + 0.5vw)", 
+                  lineHeight: "1.4",
+                  maxWidth: "600px",
+                  margin: "0 auto"
                 }}>
                   Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
                 </p>
