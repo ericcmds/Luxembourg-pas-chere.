@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { Instagram } from 'lucide-react';
+import ClaudeDesignAssistant from './components/ClaudeDesignAssistant';
 
 export default function MinimalApp() {
   const [language, setLanguage] = useState('fr');
+  const [showDesignAssistant, setShowDesignAssistant] = useState(false);
   
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
+  };
+
+  const toggleDesignAssistant = () => {
+    setShowDesignAssistant(!showDesignAssistant);
   };
   
   return (
@@ -184,7 +190,6 @@ export default function MinimalApp() {
             }}>
               {/* Echtes Buchcover */}
               <img 
-                // Verwenden eines Bild-Imports mit direktem Pfad zur public/assets Ordner
                 src="/assets/cover.png" 
                 alt="Luxembourg Pas Cher - Guide Pratique" 
                 style={{ 
@@ -280,6 +285,58 @@ export default function MinimalApp() {
               Budget intelligent
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* Design Tools Section */}
+      <section style={{ 
+        padding: '4rem 2rem',
+        background: '#f8f9fa'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <h2 style={{ 
+              fontSize: '2rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              Design-Optimierung mit Claude
+            </h2>
+            <p style={{ 
+              color: '#666',
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}>
+              Nutzen Sie die Kraft der Claude 3.5 KI, um Designvorschläge für unsere Website zu generieren. Helfen Sie uns bei der visuellen Neugestaltung unserer Plattform.
+            </p>
+            <button 
+              onClick={toggleDesignAssistant}
+              style={{ 
+                background: '#E31837',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                marginTop: '1.5rem',
+                transition: 'background-color 0.3s ease'
+              }}
+            >
+              {showDesignAssistant ? 'Design-Assistent ausblenden' : 'Design-Assistent anzeigen'}
+            </button>
+          </div>
+          
+          {showDesignAssistant && (
+            <div style={{ marginTop: '2rem' }}>
+              <ClaudeDesignAssistant 
+                initialDescription="Erstellen Sie ein modernes Design-System für die 'Luxembourg Pas Chère' Website, die Benutzern hilft, bezahlbare Angebote in Luxemburg zu finden. Die Website soll luxemburgische Farben (rot und blau) verwenden, professionell aussehen und ein Buchcover hervorheben."
+              />
+            </div>
+          )}
         </div>
       </section>
     </div>
