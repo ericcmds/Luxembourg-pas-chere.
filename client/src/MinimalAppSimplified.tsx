@@ -11,7 +11,7 @@ const translations = {
     contact: 'Contact',
     order: 'COMMANDER',
     heroTitle: 'Luxembourg Pas Chère',
-    heroDescription: 'Les meilleurs conseils et offres exclusives pour vivre au Luxembourg à moindre coût. Découvrez comment profiter pleinement de ce magnifique pays sans vider votre portefeuille.',
+    heroDescription: 'Les meilleurs conseils et offres exclusives pour vivre au Luxembourg. Découvrez comment profiter pleinement de ce magnifique pays sans vider votre portefeuille.',
     featureTag1: 'Secrets locaux',
     featureTag2: 'Offres exclusives',
     featureTag3: 'Budget intelligent',
