@@ -16,13 +16,11 @@ export default function Hero() {
       {/* Hauptinhalt - präzise ausgerichtet */}
       <div className="position-relative h-100" style={{ zIndex: 2 }}>
         <div className="container py-5 min-vh-100 d-flex flex-column justify-content-center align-items-center">
-          {/* Haupttitel - exakt zentriert und vollständig sichtbar */}
+          {/* Haupttitel - exakt wie im Screenshot */}
           <div className="text-center mb-5 mt-4 px-3">
-            <h1 className="fw-bold font-montserrat" style={{ fontSize: "2rem", lineHeight: "1.3" }}>
-              Le Guide Incontournable pour Économiser au Luxembourg
-            </h1>
-            
-            <p className="lead mt-4 mx-auto" style={{ maxWidth: "700px", opacity: 0.9, fontSize: "1.1rem" }}>
+            <p className="lead mx-auto" style={{ maxWidth: "700px", opacity: 0.9, fontSize: "1.2rem" }}>
+              Les meilleurs conseils et offres pour une vie abordable au Luxembourg.
+              <br />
               Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
             </p>
           </div>
