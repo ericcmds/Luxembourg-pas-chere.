@@ -13,24 +13,40 @@ export default function Hero() {
         }}
       />
       
-      {/* Hauptinhalt - präzise ausgerichtet */}
-      <div className="position-relative h-100" style={{ zIndex: 2 }}>
-        <div className="container py-5 min-vh-100 d-flex flex-column justify-content-center align-items-center">
-          {/* Haupttitel - exakt wie im Screenshot */}
-          <div className="text-center mb-5 mt-4 px-3">
-            <p className="lead mx-auto" style={{ maxWidth: "700px", opacity: 0.9, fontSize: "1.2rem" }}>
-              Les meilleurs conseils et offres pour une vie abordable au Luxembourg.
-              <br />
-              Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
-            </p>
+      {/* Hauptinhalt mit verbesserten responsiven Eigenschaften */}
+      <div className="position-relative h-100 w-100" style={{ zIndex: 2 }}>
+        <div className="container pt-4 pb-5 min-vh-100 d-flex flex-column justify-content-center">
+          {/* Haupttitel - für alle Geräte vollständig sichtbar */}
+          <div className="text-center mb-5">
+            <div className="row justify-content-center">
+              <div className="col-12 col-md-10 col-lg-8">
+                <p className="mb-0 px-2 px-sm-3" style={{ 
+                  fontSize: "clamp(1rem, 2vw, 1.25rem)", 
+                  lineHeight: "1.5",
+                  fontWeight: "400",
+                  letterSpacing: "0.01em"
+                }}>
+                  Les meilleurs conseils et offres pour une vie abordable au Luxembourg.
+                </p>
+                <p className="mt-2 px-2 px-sm-3" style={{ 
+                  fontSize: "clamp(1rem, 2vw, 1.25rem)", 
+                  lineHeight: "1.5",
+                  fontWeight: "400",
+                  letterSpacing: "0.01em"
+                }}>
+                  Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Buchcover - exakt zentriert und formatiert wie im Screenshot */}
+          {/* Buchcover - zentriert mit optimierter responsiver Darstellung */}
           <div className="text-center mb-5">
             <div 
               className="position-relative mx-auto shadow-lg" 
               style={{ 
                 maxWidth: "270px", 
+                width: "90%",
                 background: "white", 
                 borderRadius: "8px",
                 padding: "8px",
@@ -41,16 +57,17 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* COMMANDER Button - präzise positioniert wie im Screenshot */}
-          <div className="text-center">
+          {/* COMMANDER Button - optimiert für alle Geräte */}
+          <div className="text-center mt-3">
             <button 
-              className="btn btn-info fw-bold shadow-lg position-relative overflow-hidden" 
+              className="btn fw-bold shadow-lg position-relative overflow-hidden" 
               style={{ 
-                fontSize: "1rem",
+                fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
                 background: "#00A4E0",
+                color: "white",
                 border: "none",
                 borderRadius: "4px",
-                padding: "12px 30px",
+                padding: "clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px)",
                 letterSpacing: "1px",
                 boxShadow: "0 5px 15px rgba(0, 164, 224, 0.4)"
               }}
