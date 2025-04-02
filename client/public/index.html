@@ -2,43 +2,115 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Luxembourg Pas Chère - Découvrez comment économiser au Luxembourg</title>
-  <meta name="description" content="Découvrez les meilleures astuces pour vivre à Luxembourg sans se ruiner. Guide indispensable pour économiser au quotidien.">
   
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="/css/critical.css">
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="Découvrez les meilleures astuces pour vivre à Luxembourg sans se ruiner. Guide indispensable pour économiser au quotidien sur l'alimentation, le logement, les transports et les loisirs.">
+  <meta name="keywords" content="Luxembourg, économie, budget, guide, astuces, bon plan, épargne, vie pas chère, économiser">
+  <meta name="author" content="Luxembourg Pas Chère">
   
-  <!-- Preload fonts -->
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxembourgpaschere.com/">
+  <meta property="og:title" content="Luxembourg Pas Chère - Vivre au Luxembourg sans se ruiner">
+  <meta property="og:description" content="Découvrez les meilleures astuces pour vivre à Luxembourg sans se ruiner. Guide indispensable pour économiser au quotidien.">
+  <meta property="og:image" content="/images/og-image.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Luxembourg Pas Chère">
+  
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://luxembourgpaschere.com/">
+  <meta name="twitter:title" content="Luxembourg Pas Chère - Guide d'économies au Luxembourg">
+  <meta name="twitter:description" content="Découvrez les meilleures astuces pour vivre à Luxembourg sans se ruiner. Guide indispensable pour économiser au quotidien.">
+  <meta name="twitter:image" content="/images/og-image.jpg">
+  
+  <!-- PWA Related Meta Tags -->
+  <meta name="theme-color" content="#E31837">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LuxPasChère">
+  <meta name="application-name" content="Luxembourg Pas Chère">
+  <meta name="msapplication-TileColor" content="#E31837">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/css/critical.css" as="style">
+  <link rel="preload" href="/js/critical.js" as="script">
+  <link rel="preload" href="/images/hero-background.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml">
+  
+  <!-- Performance: DNS Prefetch and Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/images/icons/icon-167x167.png">
+  
+  <!-- Splash Screen Images for iOS -->
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-1668-2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-828-1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-750-1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/images/splash/apple-splash-640-1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  
+  <!-- Critical CSS (inlined for performance) -->
+  <link rel="stylesheet" href="/css/critical.css">
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical CSS -->
   <link rel="stylesheet" href="/css/styles.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/css/home.css" media="print" onload="this.media='all'">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
-  
-  <!-- PWA -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#e31837">
+  <noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/home.css">
+  </noscript>
   
   <!-- Critical JavaScript -->
   <script src="/js/critical.js" defer></script>
   
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        media="print" onload="this.media='all'" crossorigin="anonymous"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
 </head>
 <body>
   <!-- Accessibility Skip Link -->
   <a href="#main" class="skip-link">Aller au contenu principal</a>
   
-  <!-- Loading Indicator -->
+  <!-- Enhanced Loading Indicator with Text -->
   <div class="page-loading">
-    <div class="loading-spinner"></div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <div class="loading-text">Luxembourg Pas Chère</div>
+    <span class="sr-only">Chargement en cours, veuillez patienter...</span>
   </div>
   
   <!-- Header -->
@@ -468,18 +540,250 @@
   <!-- Main JavaScript -->
   <script src="/js/main.js" defer></script>
   
-  <!-- Register Service Worker -->
+  <!-- Enhanced Service Worker Registration with Update Handling -->
   <script>
+    // Initialize Service Worker for PWA functionality
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      // Wait until the page is fully loaded
+      window.addEventListener('load', () => {
+        // Register the service worker from the root path
+        navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+          .then(registration => {
+            console.log('ServiceWorker registered successfully with scope:', registration.scope);
+            
+            // Check for updates to the Service Worker
+            registration.addEventListener('updatefound', () => {
+              // An updated service worker has appeared in registration.installing!
+              const newWorker = registration.installing;
+              console.log('New service worker installing:', newWorker);
+              
+              newWorker.addEventListener('statechange', () => {
+                // Has service worker state changed?
+                console.log('Service worker state changed to:', newWorker.state);
+                
+                // When the service worker is installed, show a notification
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('New content is available, please refresh');
+                  
+                  // Show update notification to the user
+                  showUpdateNotification();
+                }
+              });
+            });
           })
-          .catch(function(error) {
-            console.error('ServiceWorker registration failed: ', error);
+          .catch(error => {
+            console.error('ServiceWorker registration failed:', error);
           });
+        
+        // Handle service worker controlled changes
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            // Avoid refreshing the page multiple times
+            refreshing = true;
+            console.log('Service worker has been updated and is now controlling the page');
+          }
+        });
       });
+    }
+    
+    // Function to show update notification
+    function showUpdateNotification() {
+      // Create update notification element
+      const updateBanner = document.createElement('div');
+      updateBanner.className = 'update-notification';
+      updateBanner.innerHTML = `
+        <div class="update-notification-content">
+          <span class="update-notification-message">
+            Une nouvelle version est disponible! 
+          </span>
+          <div class="update-notification-actions">
+            <button class="update-notification-button update-now">Mettre à jour maintenant</button>
+            <button class="update-notification-button update-later">Plus tard</button>
+          </div>
+        </div>
+      `;
+      
+      // Style the notification
+      Object.assign(updateBanner.style, {
+        position: 'fixed',
+        bottom: '0',
+        left: '0',
+        right: '0',
+        padding: '10px',
+        backgroundColor: '#E31837',
+        color: 'white',
+        textAlign: 'center',
+        zIndex: '9999',
+        boxShadow: '0 -2px 10px rgba(0,0,0,0.2)',
+        display: 'flex',
+        justifyContent: 'center',
+        transition: 'transform 0.3s ease-in-out',
+        transform: 'translateY(0)'
+      });
+      
+      // Add event listeners to buttons
+      updateBanner.querySelector('.update-now').addEventListener('click', () => {
+        // Refresh the page to activate the new service worker
+        window.location.reload();
+      });
+      
+      updateBanner.querySelector('.update-later').addEventListener('click', () => {
+        // Hide the notification
+        updateBanner.style.transform = 'translateY(100%)';
+        // Remove it after animation completes
+        setTimeout(() => {
+          if (document.body.contains(updateBanner)) {
+            document.body.removeChild(updateBanner);
+          }
+        }, 300);
+      });
+      
+      // Add to page
+      document.body.appendChild(updateBanner);
+    }
+    
+    // Handle online/offline events
+    window.addEventListener('online', handleNetworkChange);
+    window.addEventListener('offline', handleNetworkChange);
+    
+    function handleNetworkChange(event) {
+      const isOnline = navigator.onLine;
+      console.log('Network status changed:', isOnline ? 'online' : 'offline');
+      
+      // Show appropriate notification
+      if (isOnline) {
+        showConnectedNotification();
+      } else {
+        showOfflineNotification();
+      }
+    }
+    
+    function showOfflineNotification() {
+      // Only create notification if it doesn't already exist
+      if (document.querySelector('.network-notification')) return;
+      
+      const offlineNotification = document.createElement('div');
+      offlineNotification.className = 'network-notification offline';
+      offlineNotification.innerHTML = `
+        <div class="network-notification-content">
+          <i class="fas fa-wifi"></i>
+          <span class="network-message">Vous êtes hors ligne. Certaines fonctionnalités peuvent être limitées.</span>
+          <button class="notification-close" aria-label="Fermer">×</button>
+        </div>
+      `;
+      
+      styleNetworkNotification(offlineNotification, '#f44336');
+      document.body.appendChild(offlineNotification);
+      
+      // Automatically remove after 5 seconds
+      setTimeout(() => {
+        if (document.body.contains(offlineNotification)) {
+          offlineNotification.style.opacity = '0';
+          setTimeout(() => {
+            if (document.body.contains(offlineNotification)) {
+              document.body.removeChild(offlineNotification);
+            }
+          }, 300);
+        }
+      }, 5000);
+      
+      // Add close button handler
+      offlineNotification.querySelector('.notification-close').addEventListener('click', () => {
+        offlineNotification.style.opacity = '0';
+        setTimeout(() => {
+          if (document.body.contains(offlineNotification)) {
+            document.body.removeChild(offlineNotification);
+          }
+        }, 300);
+      });
+    }
+    
+    function showConnectedNotification() {
+      // Only create notification if it doesn't already exist
+      if (document.querySelector('.network-notification')) return;
+      
+      const onlineNotification = document.createElement('div');
+      onlineNotification.className = 'network-notification online';
+      onlineNotification.innerHTML = `
+        <div class="network-notification-content">
+          <i class="fas fa-wifi"></i>
+          <span class="network-message">Connexion rétablie! Toutes les fonctionnalités sont disponibles.</span>
+          <button class="notification-close" aria-label="Fermer">×</button>
+        </div>
+      `;
+      
+      styleNetworkNotification(onlineNotification, '#4CAF50');
+      document.body.appendChild(onlineNotification);
+      
+      // Automatically remove after 3 seconds
+      setTimeout(() => {
+        if (document.body.contains(onlineNotification)) {
+          onlineNotification.style.opacity = '0';
+          setTimeout(() => {
+            if (document.body.contains(onlineNotification)) {
+              document.body.removeChild(onlineNotification);
+            }
+          }, 300);
+        }
+      }, 3000);
+      
+      // Add close button handler
+      onlineNotification.querySelector('.notification-close').addEventListener('click', () => {
+        onlineNotification.style.opacity = '0';
+        setTimeout(() => {
+          if (document.body.contains(onlineNotification)) {
+            document.body.removeChild(onlineNotification);
+          }
+        }, 300);
+      });
+    }
+    
+    function styleNetworkNotification(element, bgColor) {
+      Object.assign(element.style, {
+        position: 'fixed',
+        top: '0',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: bgColor,
+        color: 'white',
+        padding: '10px 20px',
+        borderRadius: '0 0 5px 5px',
+        zIndex: '9999',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+        maxWidth: '90%',
+        width: '400px',
+        textAlign: 'center',
+        opacity: '1',
+        transition: 'opacity 0.3s ease-in-out'
+      });
+      
+      const content = element.querySelector('.network-notification-content');
+      Object.assign(content.style, {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      });
+      
+      const icon = element.querySelector('i');
+      Object.assign(icon.style, {
+        marginRight: '10px'
+      });
+      
+      const closeBtn = element.querySelector('.notification-close');
+      Object.assign(closeBtn.style, {
+        background: 'transparent',
+        border: 'none',
+        color: 'white',
+        fontSize: '24px',
+        cursor: 'pointer',
+        marginLeft: '10px'
+      });
+    }
+    
+    // Initial network check 
+    if (!navigator.onLine) {
+      showOfflineNotification();
     }
   </script>
 </body>

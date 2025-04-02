@@ -8,7 +8,7 @@
 import { useState, useEffect } from 'react';
 
 // API Key configuration
-const ANTHROPIC_API_KEY = import.meta.env.ANTHROPIC_API_KEY || '';
+const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY || '';
 const API_URL = 'https://api.anthropic.com/v1/messages';
 
 // Error types for better error handling

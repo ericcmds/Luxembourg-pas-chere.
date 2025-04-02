@@ -1,30 +1,92 @@
 /**
- * Luxembourg Pas Chere - Critical CSS
- * Critical CSS for initial page render
+ * Luxembourg Pas Chere - Enhanced Critical CSS
+ * Critical CSS for initial page render with performance optimizations
+ * Version 2.0
  */
-
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
 
 /* Critical Variables */
 :root {
+  /* Brand Colors */
   --color-primary: #e31837;
+  --color-primary-dark: #c0142e;
   --color-primary-light: rgba(227, 24, 55, 0.1);
   --color-secondary: #00a4e0;
+  --color-secondary-dark: #0085b7;
+  --color-secondary-light: rgba(0, 164, 224, 0.1);
   --color-dark: #2c3e50;
   --color-gray: #bdc3c7;
   --color-gray-light: #f5f5f5;
+  --color-gray-dark: #7f8c8d;
   --color-text: #333333;
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --color-text-light: #666666;
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-error: #e74c3c;
+  --color-info: #3498db;
+  
+  /* Layout */
+  --max-width: 1200px;
+  --side-padding: 1rem;
+  --content-padding: 3rem;
+  --header-height: 70px;
+  --footer-height: 250px;
+  --mobile-header-height: 60px;
+  
+  /* Spacing System */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-xxl: 5rem;     /* 80px */
+  
+  /* Typography */
+  --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem;  /* 20px */
+  --font-size-xxl: 1.5rem;  /* 24px */
+  --font-size-display: 3rem; /* 48px */
+  --line-height-normal: 1.5;
+  --line-height-tight: 1.2;
+  
+  /* Borders & Shadows */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-pill: 9999px;
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+  --shadow-focus: 0 0 0 3px rgba(227, 24, 55, 0.3);
+  
+  /* Transitions & Animations */
   --transition-fast: 0.2s ease;
-  --font-primary: 'Montserrat', sans-serif;
-  --font-secondary: 'Open Sans', sans-serif;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Layering (z-index) */
+  --z-modal: 1000;
+  --z-dropdown: 900;
+  --z-header: 800;
+  --z-footer: 700;
+  --z-fixed: 600;
+  --z-above: 10;
+  --z-default: 1;
+  --z-below: -1;
+  
+  /* Container Queries */
+  --content-xs: 30rem;    /* 480px */
+  --content-sm: 40rem;    /* 640px */
+  --content-md: 48rem;    /* 768px */
+  --content-lg: 64rem;    /* 1024px */
+  --content-xl: 75rem;    /* 1200px */
 }
 
 /* Critical Reset */
@@ -178,7 +240,7 @@ body {
   bottom: -8px;
 }
 
-/* Loading State */
+/* Enhanced Loading State with Progressive Animations */
 .page-loading {
   position: fixed;
   top: 0;
@@ -187,30 +249,126 @@ body {
   height: 100%;
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: var(--z-modal);
   opacity: 1;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.5s cubic-bezier(0.3, 0, 0.3, 1), 
+              visibility 0.5s cubic-bezier(0.3, 0, 0.3, 1);
+  will-change: opacity, visibility;
 }
 
 .page-loading.loaded {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(227, 24, 55, 0.3);
-  border-radius: 50%;
-  border-top-color: var(--color-primary);
-  animation: spin 1s linear infinite;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  transform: translateZ(0); /* Force GPU acceleration */
+  will-change: transform;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.loading-spinner:before,
+.loading-spinner:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0.6;
+  animation: loading-pulse 2s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+.loading-spinner:after {
+  animation-delay: -1s;
+}
+
+.loading-text {
+  margin-top: var(--spacing-md);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--color-primary);
+  opacity: 0.9;
+  font-size: var(--font-size-md);
+  letter-spacing: 0.5px;
+  animation: loading-text-fade 1.5s infinite ease-in-out;
+  will-change: opacity;
+}
+
+/* Loading animations with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes loading-pulse {
+    0%, 100% {
+      transform: scale(0);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes loading-text-fade {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes spinner-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Fallback spinner animation for older browsers */
+  @supports not (backdrop-filter: blur(10px)) {
+    .loading-spinner {
+      border: 3px solid rgba(227, 24, 55, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--color-primary);
+      animation: spinner-rotate 1s linear infinite;
+    }
+
+    .loading-spinner:before,
+    .loading-spinner:after {
+      content: none;
+    }
+  }
+}
+
+/* Reduced motion alternative */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner:before {
+    animation: none;
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+  
+  .loading-spinner:after {
+    animation: none;
+    opacity: 0.3;
+    transform: scale(0.4);
+  }
+  
+  .loading-text {
+    animation: none;
+    opacity: 0.9;
+  }
 }
 
 /* Critical Hero */
