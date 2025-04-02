@@ -16,16 +16,14 @@ export default function Hero() {
       {/* Hauptinhalt - präzise ausgerichtet */}
       <div className="position-relative h-100" style={{ zIndex: 2 }}>
         <div className="container py-5 min-vh-100 d-flex flex-column justify-content-center align-items-center">
-          {/* Haupttitel - exakt zentriert wie im Screenshot */}
-          <div className="text-center mb-5 mt-4">
-            <h1 className="display-4 fw-bold font-montserrat">
-              <span className="d-block mb-2">Le Guide Incontournable pour Économiser</span>
-              <span className="d-block">au Luxembourg</span>
+          {/* Haupttitel - exakt zentriert und vollständig sichtbar */}
+          <div className="text-center mb-5 mt-4 px-3">
+            <h1 className="fw-bold font-montserrat" style={{ fontSize: "2rem", lineHeight: "1.3" }}>
+              Le Guide Incontournable pour Économiser au Luxembourg
             </h1>
             
-            <p className="lead mt-4 mx-auto" style={{ maxWidth: "700px", opacity: 0.9 }}>
-              Découvrez comment profiter de ce magnifique pays sans vider votre
-              portefeuille.
+            <p className="lead mt-4 mx-auto" style={{ maxWidth: "700px", opacity: 0.9, fontSize: "1.1rem" }}>
+              Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
             </p>
           </div>
 
