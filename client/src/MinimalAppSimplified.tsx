@@ -211,13 +211,7 @@ export default function MinimalAppSimplified() {
           {/* Mobile Menu Button */}
           <button 
             onClick={toggleMobileMenu}
-            style={{ 
-              display: 'none',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '0.5rem'
-            }}
+            className="mobile-nav-button"
             aria-label="Toggle mobile menu"
           >
             {showMobileMenu ? <X size={24} /> : <Menu size={24} />}
@@ -300,22 +294,7 @@ export default function MinimalAppSimplified() {
         </div>
         
         {/* Mobile Navigation Overlay */}
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          backgroundColor: 'white',
-          zIndex: 99,
-          opacity: showMobileMenu ? 1 : 0,
-          visibility: showMobileMenu ? 'visible' : 'hidden',
-          transition: 'opacity 0.3s ease, visibility 0.3s ease',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '2rem',
-          paddingTop: '5rem'
-        }}>
+        <div className={`mobile-nav-overlay ${showMobileMenu ? 'open' : ''}`}>
           <ul style={{ 
             listStyle: 'none', 
             margin: 0, 
@@ -487,96 +466,44 @@ export default function MinimalAppSimplified() {
       </header>
       
       {/* Hero Section */}
-      <section id="home" style={{ 
-        position: 'relative', 
-        color: 'white',
-        height: '100vh',
-        overflow: 'hidden'
-      }}>
+      <section id="home" className="hero">
         {/* Background Image */}
-        <div style={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          width: '100%', 
-          height: '100%',
-          zIndex: -2
-        }}>
+        <div className="hero-bg">
           <img 
             src="https://images.unsplash.com/photo-1580846961439-725c18a67d53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" 
             alt="Luxembourg City View" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            className="hero-bg-img"
           />
         </div>
         
         {/* Gradient Overlay */}
-        <div style={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          width: '100%', 
-          height: '100%',
-          background: 'linear-gradient(135deg, rgba(227, 24, 55, 0.85) 0%, rgba(0, 164, 224, 0.75) 100%)',
-          zIndex: -1
-        }} />
+        <div className="hero-overlay" />
         
         {/* Content */}
-        <div style={{ 
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '2rem',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          textAlign: 'center'
-        }}>
-          <div style={{ marginBottom: '2rem' }}>
-            <div style={{ 
-              display: 'inline-block',
-              background: 'white',
-              color: '#E31837',
-              padding: '0.5rem 1rem',
-              borderRadius: '50px',
-              fontSize: '0.9rem',
-              fontWeight: 'bold',
-              marginBottom: '1rem'
-            }}>
+        <div className="hero-content">
+          <div className="hero-header">
+            <div className="date-badge">
               {new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit' })}
             </div>
             
-            <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+            <h1 className="hero-title">
               Luxembourg Pas Chère
             </h1>
             
-            <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+            <p className="hero-subtitle">
               Les meilleurs conseils et offres pour une vie abordable au Luxembourg. 
               Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
             </p>
           </div>
           
           {/* Book Display */}
-          <div style={{ marginBottom: '2rem' }}>
-            <div style={{ 
-              background: 'white', 
-              padding: '1rem', 
-              borderRadius: '8px', 
-              boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-              width: '300px',
-              margin: '0 auto',
-              position: 'relative'
-            }}>
+          <div className="book-display">
+            <div className="book-container">
               {/* Book Cover */}
               <img 
                 src="/assets/cover.png" 
                 alt="Luxembourg Pas Cher - Guide Pratique" 
-                style={{ 
-                  width: '100%', 
-                  maxWidth: '100%',
-                  borderRadius: '4px',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                  objectFit: 'contain'
-                }} 
+                className="book-cover"
                 onError={(e) => {
                   console.error('Image error:', e);
                   const target = e.target as HTMLImageElement;
@@ -591,18 +518,7 @@ export default function MinimalAppSimplified() {
               />
               
               {/* Price Badge */}
-              <div style={{ 
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                transform: 'translate(30%, -30%) rotate(15deg)',
-                background: 'white',
-                color: '#E31837',
-                padding: '0.5rem 1rem',
-                borderRadius: '50%',
-                fontWeight: 'bold',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
-              }}>
+              <div className="price-badge">
                 €24.99
               </div>
             </div>
