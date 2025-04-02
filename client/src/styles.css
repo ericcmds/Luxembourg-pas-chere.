@@ -626,9 +626,14 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  max-width: 700px;
+  font-size: 1.3rem;
+  max-width: 720px;
   margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .book-display {
@@ -1174,6 +1179,8 @@ p {
   .hero-subtitle {
     font-size: var(--font-size-md);
     max-width: 90%;
+    line-height: 1.65;
+    padding: 0 0.25rem;
   }
   
   .mobile-nav-overlay ul {
@@ -1301,6 +1308,10 @@ p {
   
   .hero-subtitle {
     font-size: var(--font-size-sm);
+    line-height: 1.6;
+    font-weight: 500;
+    max-width: 95%;
+    padding: 0 0.25rem;
   }
   
   /* Display utilities */

@@ -11,7 +11,7 @@ const translations = {
     contact: 'Contact',
     order: 'COMMANDER',
     heroTitle: 'Luxembourg Pas Chère',
-    heroDescription: 'Les meilleurs conseils et offres pour une vie abordable au Luxembourg. Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.',
+    heroDescription: 'Les meilleurs conseils et offres exclusives pour vivre au Luxembourg à moindre coût. Découvrez comment profiter pleinement de ce magnifique pays sans vider votre portefeuille.',
     featureTag1: 'Secrets locaux',
     featureTag2: 'Offres exclusives',
     featureTag3: 'Budget intelligent',
@@ -402,8 +402,10 @@ export default function MinimalAppSimplified() {
             </h1>
             
             <p className="hero-subtitle">
-              Les meilleurs conseils et offres pour une vie abordable au Luxembourg. 
-              Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.
+              {t.heroDescription.split('. ')[0]}.
+              <span style={{ display: 'block', marginTop: '0.5rem' }}>
+                {t.heroDescription.split('. ')[1]}
+              </span>
             </p>
           </div>
           
