@@ -525,23 +525,8 @@ export default function MinimalAppSimplified() {
           </div>
           
           {/* Commander Button */}
-          <div style={{ marginBottom: '2rem' }}>
-            <button style={{ 
-              background: 'white',
-              color: '#E31837',
-              border: 'none',
-              padding: '1rem 3rem',
-              borderRadius: '50px',
-              fontSize: '1.25rem',
-              fontWeight: 'bold',
-              boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto'
-            }}>
+          <div className="btn-wrapper">
+            <button className="btn-primary">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '0.5rem' }}>
                 <path d="M8 22C8.55228 22 9 21.5523 9 21C9 20.4477 8.55228 20 8 20C7.44772 20 7 20.4477 7 21C7 21.5523 7.44772 22 8 22Z" fill="#E31837"/>
                 <path d="M19 22C19.5523 22 20 21.5523 20 21C20 20.4477 19.5523 20 19 20C18.4477 20 18 20.4477 18 21C18 21.5523 18.4477 22 19 22Z" fill="#E31837"/>
@@ -552,29 +537,14 @@ export default function MinimalAppSimplified() {
           </div>
           
           {/* Feature Tags */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <span style={{ 
-              background: 'rgba(255,255,255,0.25)', 
-              padding: '0.5rem 1rem', 
-              borderRadius: '50px',
-              fontSize: '0.9rem' 
-            }}>
+          <div className="feature-tags">
+            <span className="tag">
               Secrets locaux
             </span>
-            <span style={{ 
-              background: 'rgba(255,255,255,0.25)', 
-              padding: '0.5rem 1rem', 
-              borderRadius: '50px',
-              fontSize: '0.9rem' 
-            }}>
+            <span className="tag">
               Offres exclusives
             </span>
-            <span style={{ 
-              background: 'rgba(255,255,255,0.25)', 
-              padding: '0.5rem 1rem', 
-              borderRadius: '50px',
-              fontSize: '0.9rem' 
-            }}>
+            <span className="tag">
               Budget intelligent
             </span>
           </div>

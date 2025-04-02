@@ -246,6 +246,10 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+.btn-wrapper {
+  margin-bottom: 2rem;
+}
+
 .btn-primary {
   background: var(--white);
   color: var(--primary);
