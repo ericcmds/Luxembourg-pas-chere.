@@ -38,6 +38,7 @@
   
   <!-- Preload Critical Resources -->
   <link rel="preload" href="/css/critical.css" as="style">
+  <link rel="preload" href="/css/enhanced-design.css" as="style">
   <link rel="preload" href="/js/critical.js" as="script">
   <link rel="preload" href="/images/hero-background.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml">
@@ -83,9 +84,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical CSS -->
+  <link rel="stylesheet" href="/css/enhanced-design.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/css/styles.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/css/home.css" media="print" onload="this.media='all'">
   <noscript>
+    <link rel="stylesheet" href="/css/enhanced-design.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/home.css">
   </noscript>
@@ -264,101 +267,312 @@
       </div>
     </section>
     
-    <!-- À propos Section -->
-    <section id="about" class="about-section">
+    <!-- Categories Section -->
+    <section id="categories" class="section section--light">
       <div class="container">
-        <h2 class="section-title">À propos</h2>
+        <div class="section-header text-center mb-xl">
+          <h2 class="section-title">Économisez dans tous les domaines</h2>
+          <p class="section-subtitle">Des solutions adaptées à chaque aspect de votre vie au Luxembourg</p>
+        </div>
         
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              Luxembourg Pas Chère est né d'une constatation simple : le Luxembourg a la réputation d'être cher, mais il existe de nombreuses façons d'y vivre confortablement sans se ruiner. Notre mission est de vous aider à découvrir ces possibilités.
+        <div class="categories-grid">
+          <div class="category-card slide-up">
+            <div class="category-icon bg-primary">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3 class="category-title">Logement</h3>
+            <p class="category-description">
+              Trouvez des appartements abordables, réduisez vos factures d'énergie et économisez sur l'ameublement.
             </p>
-            <p>
-              Notre équipe a passé des milliers d'heures à rechercher, tester et compiler les meilleures astuces et conseils pour économiser au Luxembourg, que vous soyez résident de longue date ou nouvel arrivant.
-            </p>
-            <h3>Notre mission</h3>
-            <p>
-              Rendre la vie au Luxembourg plus accessible à tous en partageant des informations précieuses sur les économies possibles au quotidien.
-            </p>
+            <a href="/categories/logement" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
           </div>
           
-          <div class="about-image">
-            <img src="/images/about-image.jpg" alt="L'équipe de Luxembourg Pas Chère">
+          <div class="category-card slide-up delay-1">
+            <div class="category-icon bg-secondary">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3 class="category-title">Alimentation</h3>
+            <p class="category-description">
+              Astuces pour faire vos courses à moindre coût et découvrez les restaurants abordables.
+            </p>
+            <a href="/categories/alimentation" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+          
+          <div class="category-card slide-up delay-2">
+            <div class="category-icon bg-accent">
+              <i class="fas fa-bus"></i>
+            </div>
+            <h3 class="category-title">Transport</h3>
+            <p class="category-description">
+              Optimisez vos déplacements quotidiens et découvrez les meilleures offres de mobilité.
+            </p>
+            <a href="/categories/transport" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+          
+          <div class="category-card slide-up delay-3">
+            <div class="category-icon" style="background-color: #6B48FF;">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3 class="category-title">Éducation</h3>
+            <p class="category-description">
+              Bourses d'études, formations gratuites et ressources éducatives à prix réduit.
+            </p>
+            <a href="/categories/education" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+          
+          <div class="category-card slide-up delay-4">
+            <div class="category-icon" style="background-color: #00A389;">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3 class="category-title">Santé</h3>
+            <p class="category-description">
+              Optimisez vos remboursements et accédez à des soins de qualité à moindre coût.
+            </p>
+            <a href="/categories/sante" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+          
+          <div class="category-card slide-up delay-5">
+            <div class="category-icon" style="background-color: #FF6B35;">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <h3 class="category-title">Loisirs</h3>
+            <p class="category-description">
+              Activités gratuites, réductions sur les événements culturels et sorties économiques.
+            </p>
+            <a href="/categories/loisirs" class="category-link">
+              Découvrir
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-center mt-xl">
+          <a href="/toutes-categories" class="btn-primary">
+            Voir toutes les catégories
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- À propos Section -->
+    <section id="about" class="about-section section section--secondary">
+      <div class="container">
+        <div class="section-header text-center text-light mb-xl">
+          <h2 class="section-title">À propos de nous</h2>
+          <p class="section-subtitle">Notre mission est de rendre le Luxembourg accessible à tous</p>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-text fade-in">
+            <p class="text-light">
+              Luxembourg Pas Chère est né d'une constatation simple : le Luxembourg a la réputation d'être cher, mais il existe de nombreuses façons d'y vivre confortablement sans se ruiner. Notre mission est de vous aider à découvrir ces possibilités.
+            </p>
+            <p class="text-light">
+              Notre équipe a passé des milliers d'heures à rechercher, tester et compiler les meilleures astuces et conseils pour économiser au Luxembourg, que vous soyez résident de longue date ou nouvel arrivant.
+            </p>
+            
+            <div class="about-values mt-lg">
+              <div class="value-item zoom-in">
+                <div class="value-icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <div class="value-content">
+                  <h4 class="value-title">Recherche approfondie</h4>
+                  <p class="value-description">Toutes nos recommandations sont basées sur des recherches méticuleuses et des tests réels.</p>
+                </div>
+              </div>
+              
+              <div class="value-item zoom-in delay-1">
+                <div class="value-icon">
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="value-content">
+                  <h4 class="value-title">Mise à jour constante</h4>
+                  <p class="value-description">Nos informations sont régulièrement actualisées pour refléter les dernières opportunités d'économies.</p>
+                </div>
+              </div>
+              
+              <div class="value-item zoom-in delay-2">
+                <div class="value-icon">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="value-content">
+                  <h4 class="value-title">Communauté solidaire</h4>
+                  <p class="value-description">Nous croyons au partage des connaissances pour aider chacun à mieux vivre au Luxembourg.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-image slide-in-right">
+            <img src="/images/about-image.jpg" alt="L'équipe de Luxembourg Pas Chère" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section section section--light">
+      <div class="container">
+        <div class="section-header text-center mb-xl">
+          <h2 class="section-title">Ce que disent nos lecteurs</h2>
+          <p class="section-subtitle">Des milliers de personnes ont déjà amélioré leur vie financière</p>
+        </div>
+        
+        <div class="testimonials-container">
+          <div class="testimonial-card fade-in">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Grâce aux conseils du livre, j'économise plus de 200€ par mois sur mes courses et mes transports. Un investissement qui a été rentabilisé en moins d'une semaine!"
+            </p>
+            <p class="testimonial-author">Marie L., Strassen</p>
+          </div>
+          
+          <div class="testimonial-card fade-in delay-1">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "En tant que nouvel arrivant au Luxembourg, ce guide a été ma bible pour m'installer sans me ruiner. Les astuces pour trouver un logement m'ont fait économiser des milliers d'euros."
+            </p>
+            <p class="testimonial-author">Thomas K., Esch-sur-Alzette</p>
+          </div>
+          
+          <div class="testimonial-card fade-in delay-2">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Je pensais tout connaître du Luxembourg après 15 ans ici, mais ce livre m'a fait découvrir tellement d'astuces que j'ignorais. Maintenant, je profite de la vie sans culpabiliser pour chaque dépense."
+            </p>
+            <p class="testimonial-author">Sophie M., Luxembourg-Ville</p>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Press Section -->
-    <section id="press" class="press-section">
+    <section id="press" class="press-section section section--secondary">
       <div class="container">
-        <h2 class="section-title">Presse</h2>
+        <div class="section-header text-center text-light mb-xl">
+          <h2 class="section-title">Ils parlent de nous</h2>
+          <p class="section-subtitle">Découvrez ce que les médias disent de notre guide</p>
+        </div>
         
-        <div class="press-content">
-          <div class="press-intro">
-            <p>
-              Découvrez ce que les médias disent de notre guide et de notre initiative pour rendre le Luxembourg plus accessible.
-            </p>
+        <div class="press-mentions">
+          <div class="press-item zoom-in">
+            <div class="press-logo">
+              <img src="/images/press/rtl.png" alt="RTL Luxembourg" width="120" height="60">
+            </div>
+            <div class="press-quote">
+              "Un guide indispensable pour tous ceux qui souhaitent maîtriser leur budget au Luxembourg."
+            </div>
+            <div class="press-source">RTL Luxembourg</div>
           </div>
           
-          <div class="press-mentions">
-            <div class="press-item">
-              <div class="press-logo">
-                <img src="/images/press/rtl.png" alt="RTL Luxembourg">
-              </div>
-              <div class="press-quote">
-                "Un guide indispensable pour tous ceux qui souhaitent maîtriser leur budget au Luxembourg."
-              </div>
-              <div class="press-source">RTL Luxembourg</div>
+          <div class="press-item zoom-in delay-1">
+            <div class="press-logo">
+              <img src="/images/press/wort.png" alt="Luxemburger Wort" width="120" height="60">
             </div>
-            
-            <div class="press-item">
-              <div class="press-logo">
-                <img src="/images/press/wort.png" alt="Luxemburger Wort">
-              </div>
-              <div class="press-quote">
-                "Luxembourg Pas Chère révèle des astuces inédites pour économiser dans tous les aspects de la vie quotidienne."
-              </div>
-              <div class="press-source">Luxemburger Wort</div>
+            <div class="press-quote">
+              "Luxembourg Pas Chère révèle des astuces inédites pour économiser dans tous les aspects de la vie quotidienne."
             </div>
-            
-            <div class="press-item">
-              <div class="press-logo">
-                <img src="/images/press/paperjam.png" alt="Paperjam">
-              </div>
-              <div class="press-quote">
-                "Une approche rafraîchissante et pragmatique pour gérer son budget dans l'un des pays les plus chers d'Europe."
-              </div>
-              <div class="press-source">Paperjam</div>
+            <div class="press-source">Luxemburger Wort</div>
+          </div>
+          
+          <div class="press-item zoom-in delay-2">
+            <div class="press-logo">
+              <img src="/images/press/paperjam.png" alt="Paperjam" width="120" height="60">
             </div>
+            <div class="press-quote">
+              "Une approche rafraîchissante et pragmatique pour gérer son budget dans l'un des pays les plus chers d'Europe."
+            </div>
+            <div class="press-source">Paperjam</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section section section--accent">
+      <div class="container">
+        <div class="cta-container text-center">
+          <h2 class="cta-title">Prêt à économiser au Luxembourg?</h2>
+          <p class="cta-subtitle">
+            Rejoignez les milliers de personnes qui améliorent leur qualité de vie tout en réduisant leurs dépenses.
+          </p>
+          <div class="cta-buttons">
+            <a href="#books" class="btn-primary">
+              <i class="fas fa-book"></i>
+              Commander le livre
+            </a>
+            <a href="#categories" class="btn-secondary">
+              <i class="fas fa-lightbulb"></i>
+              Découvrir les astuces
+            </a>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section section section--light">
       <div class="container">
+        <div class="section-header text-center mb-xl">
+          <h2 class="section-title">Contactez-nous</h2>
+          <p class="section-subtitle">Une question? Nous sommes là pour vous aider</p>
+        </div>
+        
         <div class="contact-container">
-          <div class="contact-info">
-            <h2 class="section-title">Contact</h2>
+          <div class="contact-info fade-in">
             <p>
-              Vous avez des questions ou des suggestions? N'hésitez pas à nous contacter. Notre équipe vous répondra dans les plus brefs délais.
+              Vous avez des questions sur notre guide ou des suggestions pour de nouvelles économies à Luxembourg? Notre équipe est à votre disposition et vous répondra dans les plus brefs délais.
             </p>
             
             <div class="contact-details">
-              <div class="contact-detail">
+              <div class="contact-detail slide-up">
                 <div class="contact-detail-icon">
                   <i class="fas fa-envelope"></i>
                 </div>
                 <div class="contact-detail-content">
                   <div class="contact-detail-title">Email</div>
-                  <div class="contact-detail-text">info@luxembourgpaschere.lu</div>
+                  <div class="contact-detail-text">
+                    <a href="mailto:info@luxembourgpaschere.lu">info@luxembourgpaschere.lu</a>
+                  </div>
                 </div>
               </div>
               
-              <div class="contact-detail">
+              <div class="contact-detail slide-up delay-1">
                 <div class="contact-detail-icon">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
@@ -368,7 +582,7 @@
                 </div>
               </div>
               
-              <div class="contact-detail">
+              <div class="contact-detail slide-up delay-2">
                 <div class="contact-detail-icon">
                   <i class="fas fa-clock"></i>
                 </div>
@@ -392,34 +606,54 @@
             </div>
           </div>
           
-          <div class="contact-form-container">
+          <div class="contact-form-container slide-in-right">
             <h3 class="contact-form-title">Envoyez-nous un message</h3>
             
-            <form class="contact-form">
+            <form class="contact-form" id="contact-form">
               <div class="form-group">
                 <label for="name" class="form-label">Nom</label>
                 <input type="text" id="name" name="name" class="form-control" required>
+                <div class="form-error" id="name-error"></div>
               </div>
               
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" name="email" class="form-control" required>
+                <div class="form-error" id="email-error"></div>
               </div>
               
               <div class="form-group">
                 <label for="subject" class="form-label">Sujet</label>
-                <input type="text" id="subject" name="subject" class="form-control" required>
+                <select id="subject" name="subject" class="form-control" required>
+                  <option value="" disabled selected>Sélectionnez un sujet</option>
+                  <option value="question">Question sur le livre</option>
+                  <option value="suggestion">Suggestion d'astuces</option>
+                  <option value="collaboration">Proposition de collaboration</option>
+                  <option value="autre">Autre</option>
+                </select>
+                <div class="form-error" id="subject-error"></div>
               </div>
               
               <div class="form-group">
                 <label for="message" class="form-label">Message</label>
                 <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                <div class="form-error" id="message-error"></div>
               </div>
               
-              <button type="submit" class="form-submit">
-                Envoyer
-                <i class="fas fa-paper-plane"></i>
-              </button>
+              <div class="form-group form-checkbox">
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy">J'accepte la <a href="/politique-confidentialite">politique de confidentialité</a></label>
+                <div class="form-error" id="privacy-error"></div>
+              </div>
+              
+              <div class="form-submit-container">
+                <button type="submit" class="form-submit">
+                  <span>Envoyer</span>
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+              
+              <div class="form-message" id="form-message"></div>
             </form>
           </div>
         </div>
