@@ -186,25 +186,19 @@ export default function MinimalAppSimplified() {
     <div>
       {/* Header */}
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container">
           {/* Logo */}
-          <a href="#home" style={{ textDecoration: 'none' }}>
-            <div style={{ position: 'relative' }}>
-              <span style={{ fontWeight: 'bold', color: '#E31837', fontSize: '1.5rem', transition: 'color 0.3s ease' }}>Luxembourg</span>
-              <span style={{ fontWeight: 'bold', color: '#00A4E0', fontSize: '1.5rem', marginLeft: '8px', transition: 'color 0.3s ease' }}>Pas Chère</span>
-              <div style={{ 
-                position: 'absolute', 
-                top: '-5px', 
-                right: '-12px', 
-                background: '#E31837', 
-                color: 'white', 
-                padding: '0 4px', 
-                borderRadius: '50%', 
-                transform: 'rotate(12deg)', 
-                fontSize: '12px', 
-                fontWeight: 'bold',
-                transition: 'transform 0.3s ease, background 0.3s ease'
-              }}>€</div>
+          <a href="#home" className="site-logo">
+            <div className="logo-text">
+              <span className="logo-primary">Luxembourg</span>
+              <span className="logo-secondary">Pas Chère</span>
+              <div className="logo-badge">€</div>
+            </div>
+            
+            {/* Author and Publication Date */}
+            <div className="author-date">
+              <span className="author-name">PASCAL ZAORUQ</span>
+              <span className="pub-date">02/03/22:5</span>
             </div>
           </a>
           
@@ -254,7 +248,7 @@ export default function MinimalAppSimplified() {
               </li>
               <li>
                 <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="instagram-button">
-                  <Instagram size={18} color="white" />
+                  <Instagram size={18} />
                 </a>
               </li>
               <li>
@@ -295,173 +289,90 @@ export default function MinimalAppSimplified() {
         
         {/* Mobile Navigation Overlay */}
         <div className={`mobile-nav-overlay ${showMobileMenu ? 'open' : ''}`}>
-          <ul style={{ 
-            listStyle: 'none', 
-            margin: 0, 
-            padding: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.5rem',
-            alignItems: 'center'
-          }}>
-            <li style={{ width: '100%' }}>
+          <ul>
+            <li>
               <a 
                 href="#home" 
+                className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
                 onClick={toggleMobileMenu}
-                style={{ 
-                  display: 'block',
-                  textDecoration: 'none', 
-                  color: '#333',
-                  fontWeight: 'bold',
-                  fontSize: '1.5rem',
-                  padding: '0.75rem',
-                  textAlign: 'center',
-                  borderRadius: '8px',
-                  width: '100%'
-                }}
               >
-                Accueil
+                {t.home}
               </a>
             </li>
-            <li style={{ width: '100%' }}>
+            <li>
               <a 
                 href="#about" 
+                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={toggleMobileMenu}
-                style={{ 
-                  display: 'block',
-                  textDecoration: 'none', 
-                  color: '#333',
-                  fontWeight: 'bold',
-                  fontSize: '1.5rem',
-                  padding: '0.75rem',
-                  textAlign: 'center',
-                  borderRadius: '8px',
-                  width: '100%'
-                }}
               >
-                À propos
+                {t.about}
               </a>
             </li>
-            <li style={{ width: '100%' }}>
+            <li>
               <a 
                 href="#book" 
+                className={`nav-link ${activeSection === 'book' ? 'active' : ''}`}
                 onClick={toggleMobileMenu}
-                style={{ 
-                  display: 'block',
-                  textDecoration: 'none', 
-                  color: '#333',
-                  fontWeight: 'bold',
-                  fontSize: '1.5rem',
-                  padding: '0.75rem',
-                  textAlign: 'center',
-                  borderRadius: '8px',
-                  width: '100%'
-                }}
               >
-                Livre
+                {t.book}
               </a>
             </li>
-            <li style={{ width: '100%' }}>
+            <li>
               <a 
                 href="#contact" 
+                className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
                 onClick={toggleMobileMenu}
-                style={{ 
-                  display: 'block',
-                  textDecoration: 'none', 
-                  color: '#333',
-                  fontWeight: 'bold',
-                  fontSize: '1.5rem',
-                  padding: '0.75rem',
-                  textAlign: 'center',
-                  borderRadius: '8px',
-                  width: '100%'
-                }}
               >
-                Contact
+                {t.contact}
               </a>
             </li>
-            <li style={{ width: '100%', marginTop: '1rem' }}>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '1rem'
-              }}>
-                <a 
-                  href="https://www.instagram.com/luxembourgpaschere/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="Instagram"
-                  style={{
-                    padding: '0.75rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#fafafa'
-                  }}
-                >
-                  <div style={{ 
-                    width: "48px", 
-                    height: "48px", 
-                    background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    <Instagram size={24} color="white" />
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li style={{ width: '100%', marginTop: '1rem' }}>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}>
-                <button 
-                  onClick={() => handleLanguageChange('fr')} 
-                  style={{ 
-                    padding: '0.75rem 1.5rem', 
-                    borderRadius: '8px',
-                    border: 'none',
-                    backgroundColor: language === 'fr' ? '#E31837' : '#f0f0f0',
-                    color: language === 'fr' ? 'white' : '#333',
-                    fontWeight: 'bold',
-                    cursor: 'pointer'
-                  }}
-                >
-                  FR
-                </button>
-                <button 
-                  onClick={() => handleLanguageChange('de')} 
-                  style={{ 
-                    padding: '0.75rem 1.5rem', 
-                    borderRadius: '8px',
-                    border: 'none',
-                    backgroundColor: language === 'de' ? '#E31837' : '#f0f0f0',
-                    color: language === 'de' ? 'white' : '#333',
-                    fontWeight: 'bold',
-                    cursor: 'pointer'
-                  }}
-                >
-                  DE
-                </button>
-                <button 
-                  onClick={() => handleLanguageChange('en')} 
-                  style={{ 
-                    padding: '0.75rem 1.5rem', 
-                    borderRadius: '8px',
-                    border: 'none',
-                    backgroundColor: language === 'en' ? '#E31837' : '#f0f0f0',
-                    color: language === 'en' ? 'white' : '#333',
-                    fontWeight: 'bold',
-                    cursor: 'pointer'
-                  }}
-                >
-                  EN
-                </button>
-              </div>
-            </li>
           </ul>
+          
+          <div className="site-info">
+            <span className="author-name">PASCAL ZAORUQ</span>
+            <span className="pub-date">02/03/22:5</span>
+            
+            <div className="mobile-lang-options">
+              <button 
+                onClick={() => {
+                  handleLanguageChange('fr');
+                  toggleMobileMenu();
+                }}
+                className={`mobile-lang-btn ${language === 'fr' ? 'active' : ''}`}
+              >
+                FR
+              </button>
+              <button 
+                onClick={() => {
+                  handleLanguageChange('de');
+                  toggleMobileMenu();
+                }}
+                className={`mobile-lang-btn ${language === 'de' ? 'active' : ''}`}
+              >
+                DE
+              </button>
+              <button 
+                onClick={() => {
+                  handleLanguageChange('en');
+                  toggleMobileMenu();
+                }}
+                className={`mobile-lang-btn ${language === 'en' ? 'active' : ''}`}
+              >
+                EN
+              </button>
+            </div>
+            
+            <div className="mobile-social">
+              <a 
+                href="https://www.instagram.com/luxembourgpaschere/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="instagram-button"
+              >
+                <Instagram size={18} />
+              </a>
+            </div>
+          </div>
         </div>
       </header>
       
