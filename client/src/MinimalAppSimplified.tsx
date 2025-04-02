@@ -406,6 +406,845 @@ export default function MinimalAppSimplified() {
           </div>
         </div>
       </section>
+      
+      {/* Crowdfunding Section */}
+      <section style={{ 
+        padding: '5rem 0',
+        backgroundColor: '#fff'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem'
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem',
+              textTransform: 'uppercase'
+            }}>
+              Aidez-nous - CROWDFUNDING
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem',
+              color: '#666',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Chère.
+            </p>
+          </div>
+          
+          <div style={{ 
+            backgroundColor: '#f8f9fa',
+            borderRadius: '12px',
+            padding: '3rem 2rem',
+            textAlign: 'center',
+            boxShadow: '0 5px 25px rgba(0,0,0,0.05)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              background: '#E31837',
+              color: 'white',
+              padding: '0.5rem 2rem',
+              transform: 'rotate(45deg) translate(1.5rem, -1.5rem)',
+              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              zIndex: 2
+            }}>
+              En cours
+            </div>
+            
+            <h3 style={{ 
+              fontSize: '1.8rem',
+              marginBottom: '1.5rem',
+              color: '#333'
+            }}>
+              Notre nouvelle édition 2025
+            </h3>
+            
+            <p style={{ 
+              fontSize: '1.05rem',
+              lineHeight: '1.7',
+              color: '#555',
+              marginBottom: '2rem',
+              maxWidth: '800px',
+              margin: '0 auto 2rem'
+            }}>
+              Nous préparons une édition enrichie avec encore plus de conseils, d'astuces et de bons plans pour vivre au Luxembourg sans se ruiner. Votre participation nous aidera à financer l'impression et la distribution de ce nouveau guide.
+            </p>
+            
+            <div style={{
+              background: 'white',
+              padding: '1.5rem',
+              borderRadius: '8px',
+              boxShadow: '0 3px 15px rgba(0,0,0,0.05)',
+              marginBottom: '2rem'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '1rem'
+              }}>
+                <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>Objectif: 10,000€</span>
+                <span style={{ color: '#E31837', fontWeight: 'bold' }}>60% atteint</span>
+              </div>
+              
+              <div style={{
+                width: '100%',
+                height: '12px',
+                backgroundColor: '#eee',
+                borderRadius: '6px',
+                overflow: 'hidden'
+              }}>
+                <div style={{
+                  width: '60%',
+                  height: '100%',
+                  backgroundColor: '#E31837',
+                  borderRadius: '6px'
+                }}></div>
+              </div>
+              
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginTop: '0.5rem',
+                fontSize: '0.9rem',
+                color: '#666'
+              }}>
+                <span>6,000€ collectés</span>
+                <span>123 contributeurs</span>
+              </div>
+            </div>
+            
+            <button style={{
+              backgroundColor: '#E31837',
+              color: 'white',
+              border: 'none',
+              padding: '1rem 3rem',
+              borderRadius: '50px',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              boxShadow: '0 5px 15px rgba(227, 24, 55, 0.3)',
+              transition: 'all 0.3s ease'
+            }}>
+              Participer au crowdfunding
+            </button>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1.5rem',
+            marginTop: '3rem'
+          }}>
+            <div style={{
+              padding: '1.5rem',
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              border: '1px solid #eee'
+            }}>
+              <h4 style={{
+                fontSize: '1.2rem',
+                marginBottom: '1rem',
+                color: '#333',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <span style={{
+                  display: 'inline-block',
+                  width: '24px',
+                  height: '24px',
+                  backgroundColor: '#E31837',
+                  color: 'white',
+                  borderRadius: '50%',
+                  textAlign: 'center',
+                  marginRight: '0.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '24px'
+                }}>1</span>
+                Contribution de base
+              </h4>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
+                marginBottom: '1rem'
+              }}>
+                Précommandez le guide 2025 et recevez-le dès sa sortie avec une dédicace personnalisée.
+              </p>
+              <div style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: '#E31837',
+                marginBottom: '1rem'
+              }}>
+                25€
+              </div>
+              <button style={{
+                width: '100%',
+                padding: '0.75rem',
+                backgroundColor: '#f0f0f0',
+                border: 'none',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}>
+                Sélectionner
+              </button>
+            </div>
+            
+            <div style={{
+              padding: '1.5rem',
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              border: '1px solid #E31837',
+              position: 'relative'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '-12px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#E31837',
+                color: 'white',
+                padding: '0.25rem 1rem',
+                borderRadius: '20px',
+                fontSize: '0.8rem',
+                fontWeight: 'bold'
+              }}>
+                Populaire
+              </div>
+              
+              <h4 style={{
+                fontSize: '1.2rem',
+                marginTop: '0.5rem',
+                marginBottom: '1rem',
+                color: '#333',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <span style={{
+                  display: 'inline-block',
+                  width: '24px',
+                  height: '24px',
+                  backgroundColor: '#E31837',
+                  color: 'white',
+                  borderRadius: '50%',
+                  textAlign: 'center',
+                  marginRight: '0.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '24px'
+                }}>2</span>
+                Pack Supporter
+              </h4>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
+                marginBottom: '1rem'
+              }}>
+                Le guide + un tote bag exclusif + accès à notre communauté privée avec des conseils mensuels.
+              </p>
+              <div style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: '#E31837',
+                marginBottom: '1rem'
+              }}>
+                45€
+              </div>
+              <button style={{
+                width: '100%',
+                padding: '0.75rem',
+                backgroundColor: '#E31837',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}>
+                Sélectionner
+              </button>
+            </div>
+            
+            <div style={{
+              padding: '1.5rem',
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              border: '1px solid #eee'
+            }}>
+              <h4 style={{
+                fontSize: '1.2rem',
+                marginBottom: '1rem',
+                color: '#333',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <span style={{
+                  display: 'inline-block',
+                  width: '24px',
+                  height: '24px',
+                  backgroundColor: '#E31837',
+                  color: 'white',
+                  borderRadius: '50%',
+                  textAlign: 'center',
+                  marginRight: '0.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '24px'
+                }}>3</span>
+                Mécène Premium
+              </h4>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
+                marginBottom: '1rem'
+              }}>
+                Pack Supporter + votre nom dans les remerciements + une visite guidée personnalisée de Luxembourg.
+              </p>
+              <div style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: '#E31837',
+                marginBottom: '1rem'
+              }}>
+                100€
+              </div>
+              <button style={{
+                width: '100%',
+                padding: '0.75rem',
+                backgroundColor: '#f0f0f0',
+                border: 'none',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}>
+                Sélectionner
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Media Coverage Section */}
+      <section style={{ 
+        padding: '5rem 0',
+        backgroundColor: '#f8f9fa'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem'
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              On parle de nous
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem',
+              color: '#666',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              Découvrez ce que les médias luxembourgeois et internationaux disent de notre guide.
+            </p>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '2rem',
+            alignItems: 'center',
+            marginBottom: '3rem'
+          }}>
+            <div style={{
+              padding: '1.5rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100px'
+            }}>
+              <div style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                background: 'linear-gradient(135deg, #E31837, #00A4E0)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px'
+              }}>
+                L'ESSENTIEL
+              </div>
+            </div>
+            
+            <div style={{
+              padding: '1.5rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100px'
+            }}>
+              <div style={{
+                fontSize: '1.2rem',
+                fontWeight: '800',
+                letterSpacing: '2px',
+                color: '#333'
+              }}>
+                RTL LUXEMBOURG
+              </div>
+            </div>
+            
+            <div style={{
+              padding: '1.5rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100px'
+            }}>
+              <div style={{
+                fontSize: '1.4rem',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+                color: '#00A4E0'
+              }}>
+                Le Quotidien
+              </div>
+            </div>
+            
+            <div style={{
+              padding: '1.5rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100px'
+            }}>
+              <div style={{
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                color: '#E31837'
+              }}>
+                DELANO
+              </div>
+            </div>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '2rem'
+          }}>
+            <div style={{
+              padding: '2rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)'
+            }}>
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#555',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic'
+              }}>
+                "Un guide indispensable pour tous ceux qui souhaitent profiter de la vie au Luxembourg sans se ruiner. Plein d'astuces intelligentes et d'offres exclusives."
+              </p>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: '#E31837',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.2rem',
+                  fontWeight: 'bold',
+                  marginRight: '1rem'
+                }}>L</div>
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    fontSize: '0.95rem'
+                  }}>L'Essentiel</div>
+                  <div style={{
+                    fontSize: '0.85rem',
+                    color: '#666'
+                  }}>Novembre 2023</div>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{
+              padding: '2rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)'
+            }}>
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#555',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic'
+              }}>
+                "Un concept brillant qui répond parfaitement aux besoins des résidents et des frontaliers. Les recommandations sont pratiques et réellement économiques."
+              </p>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: '#00A4E0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.2rem',
+                  fontWeight: 'bold',
+                  marginRight: '1rem'
+                }}>R</div>
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    fontSize: '0.95rem'
+                  }}>RTL Luxembourg</div>
+                  <div style={{
+                    fontSize: '0.85rem',
+                    color: '#666'
+                  }}>Janvier 2024</div>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{
+              padding: '2rem',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.05)'
+            }}>
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#555',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic'
+              }}>
+                "Luxembourg Pas Chère démystifie l'idée que vivre au Luxembourg est nécessairement coûteux. Un guide bien documenté et pratique pour tous les budgets."
+              </p>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: '#333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.2rem',
+                  fontWeight: 'bold',
+                  marginRight: '1rem'
+                }}>D</div>
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    fontSize: '0.95rem'
+                  }}>Delano</div>
+                  <div style={{
+                    fontSize: '0.85rem',
+                    color: '#666'
+                  }}>Mars 2024</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Discover Section */}
+      <section style={{ 
+        padding: '5rem 0',
+        backgroundColor: '#fff',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          width: '50%',
+          height: '100%',
+          background: 'linear-gradient(135deg, rgba(227, 24, 55, 0.05) 0%, rgba(0, 164, 224, 0.05) 100%)',
+          clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)',
+          zIndex: 0
+        }}></div>
+        
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              Discover
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem',
+              color: '#666',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              Explorez Luxembourg à travers nos sélections thématiques et découvrez les meilleurs plans économiques.
+            </p>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '2rem'
+          }}>
+            <div style={{
+              borderRadius: '8px',
+              overflow: 'hidden',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+              transition: 'transform 0.3s ease',
+              backgroundColor: 'white'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1534771323180-231841f16d15?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                  alt="Restaurants à Luxembourg"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '0',
+                  width: '100%',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                  padding: '1rem',
+                  color: 'white'
+                }}>
+                  <h3 style={{
+                    fontSize: '1.3rem',
+                    fontWeight: 'bold',
+                    margin: 0
+                  }}>Gastronomie</h3>
+                </div>
+              </div>
+              <div style={{
+                padding: '1.5rem'
+              }}>
+                <p style={{
+                  fontSize: '1rem',
+                  lineHeight: '1.6',
+                  color: '#555',
+                  marginBottom: '1.5rem'
+                }}>
+                  Découvrez nos sélections de restaurants offrant un excellent rapport qualité-prix dans tout le Luxembourg.
+                </p>
+                <button style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  backgroundColor: 'transparent',
+                  color: '#E31837',
+                  border: 'none',
+                  padding: 0,
+                  fontSize: '0.95rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}>
+                  Découvrir
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div style={{
+              borderRadius: '8px',
+              overflow: 'hidden',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+              transition: 'transform 0.3s ease',
+              backgroundColor: 'white'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1559523275-95bce95ad6cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                  alt="Loisirs à Luxembourg"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '0',
+                  width: '100%',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                  padding: '1rem',
+                  color: 'white'
+                }}>
+                  <h3 style={{
+                    fontSize: '1.3rem',
+                    fontWeight: 'bold',
+                    margin: 0
+                  }}>Loisirs & Culture</h3>
+                </div>
+              </div>
+              <div style={{
+                padding: '1.5rem'
+              }}>
+                <p style={{
+                  fontSize: '1rem',
+                  lineHeight: '1.6',
+                  color: '#555',
+                  marginBottom: '1.5rem'
+                }}>
+                  Profitez des activités culturelles, sportives et de loisirs à prix réduits grâce à nos conseils et bons plans.
+                </p>
+                <button style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  backgroundColor: 'transparent',
+                  color: '#E31837',
+                  border: 'none',
+                  padding: 0,
+                  fontSize: '0.95rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}>
+                  Découvrir
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div style={{
+              borderRadius: '8px',
+              overflow: 'hidden',
+              boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+              transition: 'transform 0.3s ease',
+              backgroundColor: 'white'
+            }}>
+              <div style={{
+                height: '200px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <img
+                  src="https://images.unsplash.com/photo-1588097237057-9f2780d5709e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                  alt="Shopping à Luxembourg"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '0',
+                  width: '100%',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                  padding: '1rem',
+                  color: 'white'
+                }}>
+                  <h3 style={{
+                    fontSize: '1.3rem',
+                    fontWeight: 'bold',
+                    margin: 0
+                  }}>Shopping</h3>
+                </div>
+              </div>
+              <div style={{
+                padding: '1.5rem'
+              }}>
+                <p style={{
+                  fontSize: '1rem',
+                  lineHeight: '1.6',
+                  color: '#555',
+                  marginBottom: '1.5rem'
+                }}>
+                  Nos meilleures adresses pour faire du shopping malin et économique au Luxembourg, des vêtements à l'électronique.
+                </p>
+                <button style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  backgroundColor: 'transparent',
+                  color: '#E31837',
+                  border: 'none',
+                  padding: 0,
+                  fontSize: '0.95rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}>
+                  Découvrir
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Design Tools Section */}
       <section style={{ 
