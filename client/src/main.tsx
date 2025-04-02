@@ -2,8 +2,8 @@
 import "./lib/bypassHostRestriction";
 
 import { createRoot } from "react-dom/client";
-// Nur MinimalApp verwenden, da dies die stabilste Version ist
-import MinimalApp from "./MinimalApp";
+// Vereinfachte Version der App verwenden
+import MinimalAppSimplified from "./MinimalAppSimplified";
 import "./index.css";
 
 // Initialisiere den Bypass
@@ -17,9 +17,9 @@ try {
   console.log("🚀 Anwendung wird gestartet...");
   const root = createRoot(document.getElementById("root")!);
   
-  // Direkt die MinimalApp rendern, die ohne komplexen Context funktioniert
-  root.render(<MinimalApp />);
-  console.log("✅ Minimale Anwendung erfolgreich gerendert!");
+  // Vereinfachte App ohne komplexe CSS-in-JS Probleme rendern
+  root.render(<MinimalAppSimplified />);
+  console.log("✅ Vereinfachte Anwendung erfolgreich gerendert!");
   
 } catch (error) {
   console.error("❌ Kritischer Fehler beim Starten der Anwendung:", error);
