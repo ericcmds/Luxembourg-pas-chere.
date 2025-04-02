@@ -1,16 +1,96 @@
-import { useState, useEffect } from 'react';
-import { Instagram, ChevronDown, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart } from 'lucide-react';
+import './styles.css';
+
+// Definiere Übersetzungsobjekte
+const translations = {
+  fr: {
+    home: 'Accueil',
+    about: 'À propos',
+    book: 'Livre',
+    contact: 'Contact',
+    order: 'COMMANDER',
+    heroTitle: 'Luxembourg Pas Chère',
+    heroDescription: 'Les meilleurs conseils et offres pour une vie abordable au Luxembourg. Découvrez comment profiter de ce magnifique pays sans vider votre portefeuille.',
+    featureTag1: 'Secrets locaux',
+    featureTag2: 'Offres exclusives',
+    featureTag3: 'Budget intelligent',
+    aboutTitle: 'À propos',
+    aboutSubtitle: 'Découvrez l\'histoire derrière Luxembourg Pas Chère et notre mission pour rendre la vie au Luxembourg plus abordable pour tous.',
+    missionTitle: 'Notre Mission',
+    missionText1: 'Luxembourg Pas Chère est né d\'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.',
+    missionText2: 'Notre équipe de passionnés explore chaque recoin du pays pour dénicher les bons plans, les offres exclusives et les conseils pratiques qui vous permettront d\'économiser au quotidien.',
+    statsSold: 'Exemplaires vendus',
+    statsTips: 'Astuces et bons plans',
+    crowdfundingTitle: 'Aidez-nous - CROWDFUNDING',
+    pressTitle: 'On parle de nous',
+    discoverTitle: 'Découvrir',
+  },
+  de: {
+    home: 'Startseite',
+    about: 'Über uns',
+    book: 'Buch',
+    contact: 'Kontakt',
+    order: 'BESTELLEN',
+    heroTitle: 'Günstiges Luxemburg',
+    heroDescription: 'Die besten Tipps und Angebote für ein erschwingliches Leben in Luxemburg. Entdecken Sie, wie Sie dieses wunderschöne Land genießen können, ohne Ihr Portemonnaie zu leeren.',
+    featureTag1: 'Lokale Geheimnisse',
+    featureTag2: 'Exklusive Angebote',
+    featureTag3: 'Intelligentes Budget',
+    aboutTitle: 'Über uns',
+    aboutSubtitle: 'Entdecken Sie die Geschichte hinter Luxemburg Pas Chère und unsere Mission, das Leben in Luxemburg für alle erschwinglicher zu machen.',
+    missionTitle: 'Unsere Mission',
+    missionText1: 'Luxemburg Pas Chère entstand aus einer einfachen Idee: Die besten Tipps zu teilen, um das Leben in Luxemburg voll zu genießen, ohne sich zu ruinieren.',
+    missionText2: 'Unser Team von Enthusiasten erkundet jeden Winkel des Landes, um die besten Angebote, exklusive Deals und praktische Tipps zu finden, die Ihnen helfen, im Alltag zu sparen.',
+    statsSold: 'Verkaufte Exemplare',
+    statsTips: 'Tipps und Angebote',
+    crowdfundingTitle: 'Helfen Sie uns - CROWDFUNDING',
+    pressTitle: 'Pressestimmen',
+    discoverTitle: 'Entdecken',
+  },
+  en: {
+    home: 'Home',
+    about: 'About',
+    book: 'Book',
+    contact: 'Contact',
+    order: 'ORDER NOW',
+    heroTitle: 'Affordable Luxembourg',
+    heroDescription: 'The best tips and offers for affordable living in Luxembourg. Discover how to enjoy this beautiful country without emptying your wallet.',
+    featureTag1: 'Local secrets',
+    featureTag2: 'Exclusive offers',
+    featureTag3: 'Smart budgeting',
+    aboutTitle: 'About Us',
+    aboutSubtitle: 'Discover the story behind Luxembourg Pas Chère and our mission to make life in Luxembourg more affordable for everyone.',
+    missionTitle: 'Our Mission',
+    missionText1: 'Luxembourg Pas Chère was born from a simple idea: to share the best tips for fully enjoying life in Luxembourg without breaking the bank.',
+    missionText2: 'Our team of enthusiasts explores every corner of the country to uncover the best deals, exclusive offers, and practical advice that will help you save in everyday life.',
+    statsSold: 'Copies sold',
+    statsTips: 'Tips and deals',
+    crowdfundingTitle: 'Help Us - CROWDFUNDING',
+    pressTitle: 'Press Coverage',
+    discoverTitle: 'Discover',
+  }
+};
 
 export default function MinimalAppSimplified() {
   const [language, setLanguage] = useState('fr');
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  
+  // Ref for outside click detection
+  const langDropdownRef = useRef<HTMLDivElement>(null);
+  
+  // Get translations based on selected language
+  const t = translations[language as keyof typeof translations];
   
   // Handler for language change
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     setShowLanguageDropdown(false);
+    localStorage.setItem('preferredLanguage', lang);
   };
   
   // Toggle language dropdown
@@ -21,15 +101,55 @@ export default function MinimalAppSimplified() {
   // Toggle mobile menu
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
+    // Prevent scrolling when mobile menu is open
+    if (!showMobileMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
   };
   
-  // Effect for scroll detection
+  // Handler for order button
+  const handleOrderClick = () => {
+    alert(`Merci de votre intérêt pour le livre "Luxembourg Pas Chère"! Le processus de commande sera bientôt disponible.`);
+  };
+  
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
+  // Effect for scroll detection and section highlighting
   useEffect(() => {
     const handleScroll = () => {
+      // Detect scroll position for header styling
       if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
+      }
+      
+      // Detect scroll position for scroll-to-top button
+      if (window.scrollY > 500) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+      
+      // Detect current section for navigation highlighting
+      const sections = ['home', 'about', 'book', 'contact'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
       }
     };
     
@@ -40,25 +160,33 @@ export default function MinimalAppSimplified() {
     };
   }, []);
   
+  // Effect for outside click (to close language dropdown)
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setShowLanguageDropdown(false);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.addEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  
+  // Effect to load saved language preference
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage && ['fr', 'de', 'en'].includes(savedLanguage)) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+  
   return (
-    <div style={{ fontFamily: '"Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif', margin: 0, padding: 0 }}>
+    <div>
       {/* Header */}
-      <header style={{ 
-        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'white', 
-        boxShadow: scrolled ? '0 4px 12px rgba(0,0,0,0.08)' : '0 2px 4px rgba(0,0,0,0.1)', 
-        padding: scrolled ? '0.75rem 1rem' : '1rem',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        transition: 'all 0.3s ease'
-      }}>
-        <div style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto', 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Logo */}
           <a href="#home" style={{ textDecoration: 'none' }}>
             <div style={{ position: 'relative' }}>
@@ -96,231 +224,71 @@ export default function MinimalAppSimplified() {
           </button>
           
           {/* Desktop Navigation */}
-          <nav style={{
-            display: 'block'
-          }}>
-            <ul style={{ display: 'flex', listStyle: 'none', gap: '1.5rem', margin: 0, padding: 0 }}>
+          <nav className="desktop-nav">
+            <ul>
               <li>
                 <a 
                   href="#home" 
-                  style={{ 
-                    textDecoration: 'none', 
-                    color: '#333',
-                    fontWeight: 500,
-                    position: 'relative',
-                    padding: '0.5rem 0'
-                  }}
+                  className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
                 >
-                  Accueil
+                  {t.home}
                 </a>
               </li>
               <li>
                 <a 
                   href="#about" 
-                  style={{ 
-                    textDecoration: 'none', 
-                    color: '#333',
-                    fontWeight: 500,
-                    position: 'relative',
-                    padding: '0.5rem 0',
-                    ':hover': {
-                      color: '#E31837'
-                    },
-                    ':after': {
-                      content: '""',
-                      position: 'absolute',
-                      width: '0%',
-                      height: '2px',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      backgroundColor: '#E31837',
-                      transition: 'width 0.3s ease'
-                    },
-                    ':hover:after': {
-                      width: '100%'
-                    }
-                  }}
+                  className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 >
-                  À propos
+                  {t.about}
                 </a>
               </li>
               <li>
                 <a 
                   href="#book" 
-                  style={{ 
-                    textDecoration: 'none', 
-                    color: '#333',
-                    fontWeight: 500,
-                    position: 'relative',
-                    padding: '0.5rem 0',
-                    ':hover': {
-                      color: '#E31837'
-                    },
-                    ':after': {
-                      content: '""',
-                      position: 'absolute',
-                      width: '0%',
-                      height: '2px',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      backgroundColor: '#E31837',
-                      transition: 'width 0.3s ease'
-                    },
-                    ':hover:after': {
-                      width: '100%'
-                    }
-                  }}
+                  className={`nav-link ${activeSection === 'book' ? 'active' : ''}`}
                 >
-                  Livre
+                  {t.book}
                 </a>
               </li>
               <li>
                 <a 
                   href="#contact" 
-                  style={{ 
-                    textDecoration: 'none', 
-                    color: '#333',
-                    fontWeight: 500,
-                    position: 'relative',
-                    padding: '0.5rem 0',
-                    ':hover': {
-                      color: '#E31837'
-                    },
-                    ':after': {
-                      content: '""',
-                      position: 'absolute',
-                      width: '0%',
-                      height: '2px',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      backgroundColor: '#E31837',
-                      transition: 'width 0.3s ease'
-                    },
-                    ':hover:after': {
-                      width: '100%'
-                    }
-                  }}
+                  className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
                 >
-                  Contact
+                  {t.contact}
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <div style={{ 
-                    width: "36px", 
-                    height: "36px", 
-                    background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'transform 0.3s ease',
-                    ':hover': {
-                      transform: 'scale(1.1)'
-                    }
-                  }}>
-                    <Instagram size={18} color="white" />
-                  </div>
+                <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="instagram-button">
+                  <Instagram size={18} color="white" />
                 </a>
               </li>
               <li>
-                <div style={{ position: 'relative' }}>
+                <div ref={langDropdownRef} style={{ position: 'relative' }}>
                   <button 
                     onClick={toggleLanguageDropdown}
-                    style={{ 
-                      display: 'flex',
-                      alignItems: 'center',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      padding: '0.5rem',
-                      fontWeight: 500,
-                      borderRadius: '4px',
-                      transition: 'background-color 0.3s ease',
-                      ':hover': {
-                        backgroundColor: 'rgba(0, 0, 0, 0.05)'
-                      }
-                    }}
+                    className="lang-button"
                   >
-                    <span>{language.toUpperCase()}</span>
-                    <ChevronDown size={16} style={{ marginLeft: '4px', transition: 'transform 0.3s ease', transform: showLanguageDropdown ? 'rotate(180deg)' : 'rotate(0)' }} />
+                    <span className={language === 'fr' || language === 'de' || language === 'en' ? 'lang-button-active' : ''}>{language.toUpperCase()}</span>
+                    <ChevronDown className={`chevron-icon ${showLanguageDropdown ? 'open' : ''}`} size={16} />
                   </button>
                   
-                  <div style={{ 
-                    position: 'absolute', 
-                    right: 0,
-                    top: '100%',
-                    backgroundColor: 'white',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                    borderRadius: '4px',
-                    padding: '0.5rem',
-                    minWidth: '120px',
-                    display: showLanguageDropdown ? 'block' : 'none',
-                    opacity: showLanguageDropdown ? 1 : 0,
-                    transform: showLanguageDropdown ? 'translateY(0)' : 'translateY(-10px)',
-                    transition: 'opacity 0.3s ease, transform 0.3s ease',
-                    zIndex: 101
-                  }}>
+                  <div className={`lang-dropdown ${showLanguageDropdown ? 'open' : ''}`}>
                     <button 
                       onClick={() => handleLanguageChange('fr')} 
-                      style={{ 
-                        display: 'block', 
-                        width: '100%', 
-                        textAlign: 'left', 
-                        padding: '0.5rem 1rem', 
-                        border: 'none', 
-                        background: 'none', 
-                        cursor: 'pointer',
-                        borderRadius: '4px',
-                        fontWeight: language === 'fr' ? 'bold' : 'normal',
-                        color: language === 'fr' ? '#E31837' : '#333',
-                        ':hover': {
-                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
-                        }
-                      }}
+                      className={`lang-dropdown-item ${language === 'fr' ? 'active' : ''}`}
                     >
                       Français
                     </button>
                     <button 
                       onClick={() => handleLanguageChange('de')} 
-                      style={{ 
-                        display: 'block', 
-                        width: '100%', 
-                        textAlign: 'left', 
-                        padding: '0.5rem 1rem', 
-                        border: 'none', 
-                        background: 'none', 
-                        cursor: 'pointer',
-                        borderRadius: '4px',
-                        fontWeight: language === 'de' ? 'bold' : 'normal',
-                        color: language === 'de' ? '#E31837' : '#333',
-                        ':hover': {
-                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
-                        }
-                      }}
+                      className={`lang-dropdown-item ${language === 'de' ? 'active' : ''}`}
                     >
                       Deutsch
                     </button>
                     <button 
                       onClick={() => handleLanguageChange('en')} 
-                      style={{ 
-                        display: 'block', 
-                        width: '100%', 
-                        textAlign: 'left', 
-                        padding: '0.5rem 1rem', 
-                        border: 'none', 
-                        background: 'none', 
-                        cursor: 'pointer',
-                        borderRadius: '4px',
-                        fontWeight: language === 'en' ? 'bold' : 'normal',
-                        color: language === 'en' ? '#E31837' : '#333',
-                        ':hover': {
-                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
-                        }
-                      }}
+                      className={`lang-dropdown-item ${language === 'en' ? 'active' : ''}`}
                     >
                       English
                     </button>
