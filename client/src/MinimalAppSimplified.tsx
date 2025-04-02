@@ -1,23 +1,56 @@
-import { useState } from 'react';
-import { Instagram } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Instagram, ChevronDown, Menu, X } from 'lucide-react';
 
 export default function MinimalAppSimplified() {
   const [language, setLanguage] = useState('fr');
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
+  // Handler for language change
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
+    setShowLanguageDropdown(false);
   };
+  
+  // Toggle language dropdown
+  const toggleLanguageDropdown = () => {
+    setShowLanguageDropdown(!showLanguageDropdown);
+  };
+  
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
+  
+  // Effect for scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
     <div style={{ fontFamily: '"Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif', margin: 0, padding: 0 }}>
       {/* Header */}
       <header style={{ 
-        backgroundColor: 'white', 
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)', 
-        padding: '1rem',
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'white', 
+        boxShadow: scrolled ? '0 4px 12px rgba(0,0,0,0.08)' : '0 2px 4px rgba(0,0,0,0.1)', 
+        padding: scrolled ? '0.75rem 1rem' : '1rem',
         position: 'sticky',
         top: 0,
-        zIndex: 100
+        zIndex: 100,
+        transition: 'all 0.3s ease'
       }}>
         <div style={{ 
           maxWidth: '1200px', 
@@ -27,71 +60,268 @@ export default function MinimalAppSimplified() {
           alignItems: 'center'
         }}>
           {/* Logo */}
-          <div style={{ position: 'relative' }}>
-            <span style={{ fontWeight: 'bold', color: '#E31837', fontSize: '1.5rem' }}>Luxembourg</span>
-            <span style={{ fontWeight: 'bold', color: '#00A4E0', fontSize: '1.5rem', marginLeft: '8px' }}>Pas Chère</span>
-            <div style={{ 
-              position: 'absolute', 
-              top: '-5px', 
-              right: '-12px', 
-              background: '#E31837', 
-              color: 'white', 
-              padding: '0 4px', 
-              borderRadius: '50%', 
-              transform: 'rotate(12deg)', 
-              fontSize: '12px', 
-              fontWeight: 'bold'
-            }}>€</div>
-          </div>
+          <a href="#home" style={{ textDecoration: 'none' }}>
+            <div style={{ position: 'relative' }}>
+              <span style={{ fontWeight: 'bold', color: '#E31837', fontSize: '1.5rem', transition: 'color 0.3s ease' }}>Luxembourg</span>
+              <span style={{ fontWeight: 'bold', color: '#00A4E0', fontSize: '1.5rem', marginLeft: '8px', transition: 'color 0.3s ease' }}>Pas Chère</span>
+              <div style={{ 
+                position: 'absolute', 
+                top: '-5px', 
+                right: '-12px', 
+                background: '#E31837', 
+                color: 'white', 
+                padding: '0 4px', 
+                borderRadius: '50%', 
+                transform: 'rotate(12deg)', 
+                fontSize: '12px', 
+                fontWeight: 'bold',
+                transition: 'transform 0.3s ease, background 0.3s ease'
+              }}>€</div>
+            </div>
+          </a>
           
-          {/* Navigation */}
-          <nav>
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMobileMenu}
+            style={{ 
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
+            aria-label="Toggle mobile menu"
+          >
+            {showMobileMenu ? <X size={24} /> : <Menu size={24} />}
+          </button>
+          
+          {/* Desktop Navigation */}
+          <nav style={{
+            display: 'block'
+          }}>
             <ul style={{ display: 'flex', listStyle: 'none', gap: '1.5rem', margin: 0, padding: 0 }}>
-              <li><a href="#home" style={{ textDecoration: 'none', color: '#333' }}>Accueil</a></li>
-              <li><a href="#about" style={{ textDecoration: 'none', color: '#333' }}>À propos</a></li>
-              <li><a href="#book" style={{ textDecoration: 'none', color: '#333' }}>Livre</a></li>
-              <li><a href="#contact" style={{ textDecoration: 'none', color: '#333' }}>Contact</a></li>
+              <li>
+                <a 
+                  href="#home" 
+                  style={{ 
+                    textDecoration: 'none', 
+                    color: '#333',
+                    fontWeight: 500,
+                    position: 'relative',
+                    padding: '0.5rem 0'
+                  }}
+                >
+                  Accueil
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#about" 
+                  style={{ 
+                    textDecoration: 'none', 
+                    color: '#333',
+                    fontWeight: 500,
+                    position: 'relative',
+                    padding: '0.5rem 0',
+                    ':hover': {
+                      color: '#E31837'
+                    },
+                    ':after': {
+                      content: '""',
+                      position: 'absolute',
+                      width: '0%',
+                      height: '2px',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      backgroundColor: '#E31837',
+                      transition: 'width 0.3s ease'
+                    },
+                    ':hover:after': {
+                      width: '100%'
+                    }
+                  }}
+                >
+                  À propos
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#book" 
+                  style={{ 
+                    textDecoration: 'none', 
+                    color: '#333',
+                    fontWeight: 500,
+                    position: 'relative',
+                    padding: '0.5rem 0',
+                    ':hover': {
+                      color: '#E31837'
+                    },
+                    ':after': {
+                      content: '""',
+                      position: 'absolute',
+                      width: '0%',
+                      height: '2px',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      backgroundColor: '#E31837',
+                      transition: 'width 0.3s ease'
+                    },
+                    ':hover:after': {
+                      width: '100%'
+                    }
+                  }}
+                >
+                  Livre
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#contact" 
+                  style={{ 
+                    textDecoration: 'none', 
+                    color: '#333',
+                    fontWeight: 500,
+                    position: 'relative',
+                    padding: '0.5rem 0',
+                    ':hover': {
+                      color: '#E31837'
+                    },
+                    ':after': {
+                      content: '""',
+                      position: 'absolute',
+                      width: '0%',
+                      height: '2px',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      backgroundColor: '#E31837',
+                      transition: 'width 0.3s ease'
+                    },
+                    ':hover:after': {
+                      width: '100%'
+                    }
+                  }}
+                >
+                  Contact
+                </a>
+              </li>
               <li>
                 <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <div style={{ 
-                    width: "32px", 
-                    height: "32px", 
+                    width: "36px", 
+                    height: "36px", 
                     background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    transition: 'transform 0.3s ease',
+                    ':hover': {
+                      transform: 'scale(1.1)'
+                    }
                   }}>
-                    <Instagram size={16} color="white" />
+                    <Instagram size={18} color="white" />
                   </div>
                 </a>
               </li>
               <li>
                 <div style={{ position: 'relative' }}>
-                  <button style={{ 
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: '0.5rem',
-                    fontWeight: 'bold'
-                  }}>
-                    {language.toUpperCase()}
+                  <button 
+                    onClick={toggleLanguageDropdown}
+                    style={{ 
+                      display: 'flex',
+                      alignItems: 'center',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '0.5rem',
+                      fontWeight: 500,
+                      borderRadius: '4px',
+                      transition: 'background-color 0.3s ease',
+                      ':hover': {
+                        backgroundColor: 'rgba(0, 0, 0, 0.05)'
+                      }
+                    }}
+                  >
+                    <span>{language.toUpperCase()}</span>
+                    <ChevronDown size={16} style={{ marginLeft: '4px', transition: 'transform 0.3s ease', transform: showLanguageDropdown ? 'rotate(180deg)' : 'rotate(0)' }} />
                   </button>
+                  
                   <div style={{ 
                     position: 'absolute', 
+                    right: 0,
+                    top: '100%',
                     backgroundColor: 'white',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                     borderRadius: '4px',
                     padding: '0.5rem',
-                    display: 'none' // Hide dropdown by default
+                    minWidth: '120px',
+                    display: showLanguageDropdown ? 'block' : 'none',
+                    opacity: showLanguageDropdown ? 1 : 0,
+                    transform: showLanguageDropdown ? 'translateY(0)' : 'translateY(-10px)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease',
+                    zIndex: 101
                   }}>
-                    <button onClick={() => handleLanguageChange('fr')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '0.5rem', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <button 
+                      onClick={() => handleLanguageChange('fr')} 
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        textAlign: 'left', 
+                        padding: '0.5rem 1rem', 
+                        border: 'none', 
+                        background: 'none', 
+                        cursor: 'pointer',
+                        borderRadius: '4px',
+                        fontWeight: language === 'fr' ? 'bold' : 'normal',
+                        color: language === 'fr' ? '#E31837' : '#333',
+                        ':hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
+                        }
+                      }}
+                    >
                       Français
                     </button>
-                    <button onClick={() => handleLanguageChange('de')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '0.5rem', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <button 
+                      onClick={() => handleLanguageChange('de')} 
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        textAlign: 'left', 
+                        padding: '0.5rem 1rem', 
+                        border: 'none', 
+                        background: 'none', 
+                        cursor: 'pointer',
+                        borderRadius: '4px',
+                        fontWeight: language === 'de' ? 'bold' : 'normal',
+                        color: language === 'de' ? '#E31837' : '#333',
+                        ':hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
+                        }
+                      }}
+                    >
                       Deutsch
                     </button>
-                    <button onClick={() => handleLanguageChange('en')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '0.5rem', border: 'none', background: 'none', cursor: 'pointer' }}>
+                    <button 
+                      onClick={() => handleLanguageChange('en')} 
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        textAlign: 'left', 
+                        padding: '0.5rem 1rem', 
+                        border: 'none', 
+                        background: 'none', 
+                        cursor: 'pointer',
+                        borderRadius: '4px',
+                        fontWeight: language === 'en' ? 'bold' : 'normal',
+                        color: language === 'en' ? '#E31837' : '#333',
+                        ':hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
+                        }
+                      }}
+                    >
                       English
                     </button>
                   </div>
@@ -99,6 +329,192 @@ export default function MinimalAppSimplified() {
               </li>
             </ul>
           </nav>
+        </div>
+        
+        {/* Mobile Navigation Overlay */}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          backgroundColor: 'white',
+          zIndex: 99,
+          opacity: showMobileMenu ? 1 : 0,
+          visibility: showMobileMenu ? 'visible' : 'hidden',
+          transition: 'opacity 0.3s ease, visibility 0.3s ease',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '2rem',
+          paddingTop: '5rem'
+        }}>
+          <ul style={{ 
+            listStyle: 'none', 
+            margin: 0, 
+            padding: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            alignItems: 'center'
+          }}>
+            <li style={{ width: '100%' }}>
+              <a 
+                href="#home" 
+                onClick={toggleMobileMenu}
+                style={{ 
+                  display: 'block',
+                  textDecoration: 'none', 
+                  color: '#333',
+                  fontWeight: 'bold',
+                  fontSize: '1.5rem',
+                  padding: '0.75rem',
+                  textAlign: 'center',
+                  borderRadius: '8px',
+                  width: '100%'
+                }}
+              >
+                Accueil
+              </a>
+            </li>
+            <li style={{ width: '100%' }}>
+              <a 
+                href="#about" 
+                onClick={toggleMobileMenu}
+                style={{ 
+                  display: 'block',
+                  textDecoration: 'none', 
+                  color: '#333',
+                  fontWeight: 'bold',
+                  fontSize: '1.5rem',
+                  padding: '0.75rem',
+                  textAlign: 'center',
+                  borderRadius: '8px',
+                  width: '100%'
+                }}
+              >
+                À propos
+              </a>
+            </li>
+            <li style={{ width: '100%' }}>
+              <a 
+                href="#book" 
+                onClick={toggleMobileMenu}
+                style={{ 
+                  display: 'block',
+                  textDecoration: 'none', 
+                  color: '#333',
+                  fontWeight: 'bold',
+                  fontSize: '1.5rem',
+                  padding: '0.75rem',
+                  textAlign: 'center',
+                  borderRadius: '8px',
+                  width: '100%'
+                }}
+              >
+                Livre
+              </a>
+            </li>
+            <li style={{ width: '100%' }}>
+              <a 
+                href="#contact" 
+                onClick={toggleMobileMenu}
+                style={{ 
+                  display: 'block',
+                  textDecoration: 'none', 
+                  color: '#333',
+                  fontWeight: 'bold',
+                  fontSize: '1.5rem',
+                  padding: '0.75rem',
+                  textAlign: 'center',
+                  borderRadius: '8px',
+                  width: '100%'
+                }}
+              >
+                Contact
+              </a>
+            </li>
+            <li style={{ width: '100%', marginTop: '1rem' }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '1rem'
+              }}>
+                <a 
+                  href="https://www.instagram.com/luxembourgpaschere/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="Instagram"
+                  style={{
+                    padding: '0.75rem',
+                    borderRadius: '8px',
+                    backgroundColor: '#fafafa'
+                  }}
+                >
+                  <div style={{ 
+                    width: "48px", 
+                    height: "48px", 
+                    background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Instagram size={24} color="white" />
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li style={{ width: '100%', marginTop: '1rem' }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '0.5rem'
+              }}>
+                <button 
+                  onClick={() => handleLanguageChange('fr')} 
+                  style={{ 
+                    padding: '0.75rem 1.5rem', 
+                    borderRadius: '8px',
+                    border: 'none',
+                    backgroundColor: language === 'fr' ? '#E31837' : '#f0f0f0',
+                    color: language === 'fr' ? 'white' : '#333',
+                    fontWeight: 'bold',
+                    cursor: 'pointer'
+                  }}
+                >
+                  FR
+                </button>
+                <button 
+                  onClick={() => handleLanguageChange('de')} 
+                  style={{ 
+                    padding: '0.75rem 1.5rem', 
+                    borderRadius: '8px',
+                    border: 'none',
+                    backgroundColor: language === 'de' ? '#E31837' : '#f0f0f0',
+                    color: language === 'de' ? 'white' : '#333',
+                    fontWeight: 'bold',
+                    cursor: 'pointer'
+                  }}
+                >
+                  DE
+                </button>
+                <button 
+                  onClick={() => handleLanguageChange('en')} 
+                  style={{ 
+                    padding: '0.75rem 1.5rem', 
+                    borderRadius: '8px',
+                    border: 'none',
+                    backgroundColor: language === 'en' ? '#E31837' : '#f0f0f0',
+                    color: language === 'en' ? 'white' : '#333',
+                    fontWeight: 'bold',
+                    cursor: 'pointer'
+                  }}
+                >
+                  EN
+                </button>
+              </div>
+            </li>
+          </ul>
         </div>
       </header>
       
