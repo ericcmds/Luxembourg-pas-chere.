@@ -195,11 +195,7 @@ export default function MinimalAppSimplified() {
               <div className="logo-badge">€</div>
             </div>
             
-            {/* Author and Publication Date */}
-            <div className="author-date">
-              <span className="author-name">PASCAL ZAORUQ</span>
-              <span className="pub-date">02/03/22:5</span>
-            </div>
+
           </a>
           
           {/* Mobile Menu Button */}
@@ -329,8 +325,7 @@ export default function MinimalAppSimplified() {
           </ul>
           
           <div className="site-info">
-            <span className="author-name">PASCAL ZAORUQ</span>
-            <span className="pub-date">02/03/22:5</span>
+
             
             <div className="mobile-lang-options">
               <button 
