@@ -10,18 +10,18 @@ const translations = {
     book: 'Livre',
     contact: 'Contact',
     order: 'COMMANDER',
-    heroTitle: 'Luxembourg Pas Chère',
+    heroTitle: 'Luxembourg Pas Cher',
     heroDescription: 'Les meilleurs conseils et offres exclusives pour vivre au Luxembourg. Découvrez comment profiter pleinement de ce magnifique pays sans vider votre portefeuille.',
     featureTag1: 'Secrets locaux',
     featureTag2: 'Offres exclusives',
     featureTag3: 'Budget intelligent',
     aboutTitle: 'À propos',
-    aboutSubtitle: 'Découvrez l\'histoire derrière Luxembourg Pas Chère et notre mission pour rendre la vie au Luxembourg plus abordable pour tous.',
+    aboutSubtitle: 'Découvrez l\'histoire derrière Luxembourg Pas Cher et notre mission pour rendre la vie au Luxembourg plus abordable pour tous.',
     missionTitle: 'Notre Mission',
     crowdfundingTitle: 'Aidez-nous - CROWDFUNDING',
     crowdfundingDescription: 'Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Cher.',
     crowdfundingButton: 'Participer au crowdfunding',
-    missionText1: 'Luxembourg Pas Chère est né d\'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.',
+    missionText1: 'Luxembourg Pas Cher est né d\'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.',
     missionText2: 'Notre équipe de passionnés explore chaque recoin du pays pour dénicher les bons plans, les offres exclusives et les conseils pratiques qui vous permettront d\'économiser au quotidien.',
     statsSold: 'Exemplaires vendus',
     statsTips: 'Astuces et bons plans',
@@ -40,9 +40,9 @@ const translations = {
     featureTag2: 'Exklusive Angebote',
     featureTag3: 'Intelligentes Budget',
     aboutTitle: 'Über uns',
-    aboutSubtitle: 'Entdecken Sie die Geschichte hinter Luxemburg Pas Chère und unsere Mission, das Leben in Luxemburg für alle erschwinglicher zu machen.',
+    aboutSubtitle: 'Entdecken Sie die Geschichte hinter Luxemburg Pas Cher und unsere Mission, das Leben in Luxemburg für alle erschwinglicher zu machen.',
     missionTitle: 'Unsere Mission',
-    missionText1: 'Luxemburg Pas Chère entstand aus einer einfachen Idee: Die besten Tipps zu teilen, um das Leben in Luxemburg voll zu genießen, ohne sich zu ruinieren.',
+    missionText1: 'Luxemburg Pas Cher entstand aus einer einfachen Idee: Die besten Tipps zu teilen, um das Leben in Luxemburg voll zu genießen, ohne sich zu ruinieren.',
     missionText2: 'Unser Team von Enthusiasten erkundet jeden Winkel des Landes, um die besten Angebote, exklusive Deals und praktische Tipps zu finden, die Ihnen helfen, im Alltag zu sparen.',
     statsSold: 'Verkaufte Exemplare',
     statsTips: 'Tipps und Angebote',
@@ -64,9 +64,9 @@ const translations = {
     featureTag2: 'Exclusive offers',
     featureTag3: 'Smart budgeting',
     aboutTitle: 'About Us',
-    aboutSubtitle: 'Discover the story behind Luxembourg Pas Chère and our mission to make life in Luxembourg more affordable for everyone.',
+    aboutSubtitle: 'Discover the story behind Luxembourg Pas Cher and our mission to make life in Luxembourg more affordable for everyone.',
     missionTitle: 'Our Mission',
-    missionText1: 'Luxembourg Pas Chère was born from a simple idea: to share the best tips for fully enjoying life in Luxembourg without breaking the bank.',
+    missionText1: 'Luxembourg Pas Cher was born from a simple idea: to share the best tips for fully enjoying life in Luxembourg without breaking the bank.',
     missionText2: 'Our team of enthusiasts explores every corner of the country to uncover the best deals, exclusive offers, and practical advice that will help you save in everyday life.',
     statsSold: 'Copies sold',
     statsTips: 'Tips and deals',
@@ -117,7 +117,7 @@ export default function MinimalAppSimplified() {
   
   // Handler for order button
   const handleOrderClick = () => {
-    alert(`Merci de votre intérêt pour le livre "Luxembourg Pas Chère"! Le processus de commande sera bientôt disponible.`);
+    alert(`Merci de votre intérêt pour le livre "Luxembourg Pas Cher"! Le processus de commande sera bientôt disponible.`);
   };
   
   // Scroll to top function
@@ -197,7 +197,7 @@ export default function MinimalAppSimplified() {
           <a href="#home" className="site-logo">
             <div className="logo-text">
               <span className="logo-primary">Luxembourg</span>
-              <span className="logo-secondary">Pas Chère</span>
+              <span className="logo-secondary">Pas Cher</span>
               <div className="logo-badge">€</div>
             </div>
             
@@ -431,7 +431,7 @@ export default function MinimalAppSimplified() {
                   target.style.display = 'flex';
                   target.style.alignItems = 'center';
                   target.style.justifyContent = 'center';
-                  target.alt = 'LUXEMBOURG PAS CHÈRE';
+                  target.alt = 'LUXEMBOURG PAS CHER';
                 }}
               />
               
@@ -1186,7 +1186,7 @@ export default function MinimalAppSimplified() {
                 marginBottom: '1.5rem',
                 fontStyle: 'italic'
               }}>
-                "Luxembourg Pas Chère démystifie l'idée que vivre au Luxembourg est nécessairement coûteux. Un guide bien documenté et pratique pour tous les budgets."
+                "Luxembourg Pas Cher démystifie l'idée que vivre au Luxembourg est nécessairement coûteux. Un guide bien documenté et pratique pour tous les budgets."
               </p>
               <div style={{
                 display: 'flex',
