@@ -427,12 +427,21 @@ export default function MinimalAppSimplified() {
 
             
             <p className="hero-subtitle" style={{ 
-              fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
-              lineHeight: '1.5',
-              maxWidth: '100%',
-              padding: '0 1rem',
+              fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+              fontWeight: '500',
+              lineHeight: 'clamp(1.4, 1.6vw, 1.8)',
+              letterSpacing: '0.01em',
+              maxWidth: '42rem',
+              margin: '0 auto',
+              padding: '0.75rem 1.25rem',
+              color: '#333333',
+              textAlign: 'center',
               overflow: 'hidden',
-              textOverflow: 'ellipsis'
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: '3',
+              WebkitBoxOrient: 'vertical',
+              textShadow: '0px 1px 1px rgba(255, 255, 255, 0.8)'
             }}>
               {t.heroDescription}
             </p>
