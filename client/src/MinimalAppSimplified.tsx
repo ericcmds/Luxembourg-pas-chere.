@@ -1865,9 +1865,9 @@ export default function MinimalAppSimplified() {
                 position: 'relative',
                 paddingBottom: '0.5rem'
               }}>
-                {language === 'fr' ? t.usefulLinks : 
-                 language === 'de' ? t.usefulLinks : 
-                 t.usefulLinks}
+                {language === 'fr' ? 'Liens utiles' : 
+                 language === 'de' ? 'Nützliche Links' : 
+                 'Useful Links'}
                 <span style={{
                   position: 'absolute',
                   bottom: 0,
@@ -2335,27 +2335,29 @@ export default function MinimalAppSimplified() {
         </div>
         
         {/* Back to Top Button */}
-        <button 
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          style={{
-            position: 'absolute',
-            right: '30px',
-            bottom: '30px',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            backgroundColor: '#38b6ff',
-            color: 'white',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
-            transition: 'all 0.3s ease'
-          }}
+        {showScrollTop && (
+          <button 
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            style={{
+              position: 'fixed',
+              right: '30px',
+              bottom: '30px',
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: '#38b6ff',
+              color: 'white',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+              transition: 'all 0.3s ease',
+              zIndex: 99
+            }}
           onMouseOver={(e) => {
             e.currentTarget.style.backgroundColor = '#1a9cf0';
             e.currentTarget.style.transform = 'translateY(-5px)';
@@ -2369,6 +2371,7 @@ export default function MinimalAppSimplified() {
             <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
           </svg>
         </button>
+        )}
       </footer>
 
     </div>
