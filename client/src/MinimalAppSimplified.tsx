@@ -472,18 +472,7 @@ export default function MinimalAppSimplified() {
             </button>
           </div>
           
-          {/* Feature Tags */}
-          <div className="feature-tags">
-            <span className="tag">
-              {t.featureTag1}
-            </span>
-            <span className="tag">
-              {t.featureTag2}
-            </span>
-            <span className="tag">
-              {t.featureTag3}
-            </span>
-          </div>
+
         </div>
       </section>
       
