@@ -36,6 +36,7 @@ export const translations = {
     bookTitle: "Luxembourg Pas Chère: Der ultimative Sparguide",
     bookDescription: "Unser Buch bietet umfassende Tipps und Tricks, um Luxemburg zu genießen, ohne Ihr Budget zu überlasten.",
     buyNow: "Jetzt kaufen",
+    order: "Bestellen",
     
     // Crowdfunding Section
     crowdfundingTitle: "Helfen Sie uns - CROWDFUNDING",
@@ -99,6 +100,7 @@ export const translations = {
     bookTitle: "Luxembourg Pas Chère: Le guide ultime des économies",
     bookDescription: "Notre livre offre des conseils complets pour profiter du Luxembourg sans dépasser votre budget.",
     buyNow: "Acheter maintenant",
+    order: "Commander",
     
     // Crowdfunding Section
     crowdfundingTitle: "Aidez-nous - CROWDFUNDING",
@@ -162,6 +164,7 @@ export const translations = {
     bookTitle: "Luxembourg Pas Chère: The Ultimate Savings Guide",
     bookDescription: "Our book offers comprehensive tips and tricks to enjoy Luxembourg without straining your budget.",
     buyNow: "Buy Now",
+    order: "Order Now",
     
     // Crowdfunding Section
     crowdfundingTitle: "Help us - CROWDFUNDING",

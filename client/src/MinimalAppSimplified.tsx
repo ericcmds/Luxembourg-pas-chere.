@@ -477,7 +477,16 @@ export default function MinimalAppSimplified() {
           
           {/* Commander Button */}
           <div className="btn-wrapper">
-            <button className="btn-primary">
+            <button 
+              className="btn-primary"
+              onClick={() => {
+                alert(language === 'fr' ? 
+                  'Merci de votre intérêt ! Vous allez être redirigé vers notre page de commande.' :
+                  language === 'de' ? 
+                  'Vielen Dank für Ihr Interesse! Sie werden zu unserer Bestellseite weitergeleitet.' :
+                  'Thank you for your interest! You will be redirected to our order page.');
+              }}
+            >
               {t.order}
             </button>
           </div>
@@ -748,18 +757,27 @@ export default function MinimalAppSimplified() {
               </div>
             </div>
             
-            <button style={{
-              backgroundColor: '#E31837',
-              color: 'white',
-              border: 'none',
-              padding: '1rem 3rem',
-              borderRadius: '50px',
-              fontSize: '1.1rem',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              boxShadow: '0 5px 15px rgba(227, 24, 55, 0.3)',
-              transition: 'all 0.3s ease'
-            }}>
+            <button 
+              onClick={() => {
+                alert(language === 'fr' ? 
+                  'Merci de votre soutien! Vous serez redirigé vers notre page de crowdfunding.' :
+                  language === 'de' ? 
+                  'Vielen Dank für Ihre Unterstützung! Sie werden zu unserer Crowdfunding-Seite weitergeleitet.' :
+                  'Thank you for your support! You will be redirected to our crowdfunding page.');
+              }}
+              style={{
+                backgroundColor: '#E31837',
+                color: 'white',
+                border: 'none',
+                padding: '1rem 3rem',
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: '0 5px 15px rgba(227, 24, 55, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+            >
               {language === 'fr' ? 'Participer au crowdfunding' : 
                language === 'de' ? 'Am Crowdfunding teilnehmen' : 
                'Join the crowdfunding'}
@@ -819,15 +837,24 @@ export default function MinimalAppSimplified() {
               }}>
                 25€
               </div>
-              <button style={{
-                width: '100%',
-                padding: '0.75rem',
-                backgroundColor: '#f0f0f0',
-                border: 'none',
-                borderRadius: '4px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
+              <button 
+                onClick={() => {
+                  alert(language === 'fr' ? 
+                    'Merci pour votre intérêt pour notre contribution de base! Votre commande sera traitée bientôt.' :
+                    language === 'de' ? 
+                    'Vielen Dank für Ihr Interesse an unserem Basisbeitrag! Ihre Bestellung wird in Kürze bearbeitet.' :
+                    'Thank you for your interest in our basic contribution! Your order will be processed soon.');
+                }}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  backgroundColor: '#f0f0f0',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
                 {language === "fr" ? "Sélectionner" : 
                  language === "de" ? "Auswählen" : 
                  "Select"}
@@ -900,17 +927,28 @@ export default function MinimalAppSimplified() {
               }}>
                 45€
               </div>
-              <button style={{
-                width: '100%',
-                padding: '0.75rem',
-                backgroundColor: '#E31837',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
-                Sélectionner
+              <button 
+                onClick={() => {
+                  alert(language === 'fr' ? 
+                    'Merci d\'avoir choisi le Pack Supporter! Votre commande sera traitée prochainement.' :
+                    language === 'de' ? 
+                    'Vielen Dank, dass Sie sich für das Unterstützer-Paket entschieden haben! Ihre Bestellung wird in Kürze bearbeitet.' :
+                    'Thank you for choosing the Supporter Pack! Your order will be processed soon.');
+                }}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  backgroundColor: '#E31837',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                {language === "fr" ? "Sélectionner" : 
+                 language === "de" ? "Auswählen" : 
+                 "Select"}
               </button>
             </div>
             
@@ -961,16 +999,27 @@ export default function MinimalAppSimplified() {
               }}>
                 100€
               </div>
-              <button style={{
-                width: '100%',
-                padding: '0.75rem',
-                backgroundColor: '#f0f0f0',
-                border: 'none',
-                borderRadius: '4px',
-                fontWeight: 'bold',
-                cursor: 'pointer'
-              }}>
-                Sélectionner
+              <button 
+                onClick={() => {
+                  alert(language === 'fr' ? 
+                    'Merci pour votre intérêt pour notre offre premium! Votre commande sera traitée bientôt.' :
+                    language === 'de' ? 
+                    'Vielen Dank für Ihr Interesse an unserem Premium-Angebot! Ihre Bestellung wird in Kürze bearbeitet.' :
+                    'Thank you for your interest in our premium offer! Your order will be processed soon.');
+                }}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  backgroundColor: '#f0f0f0',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                {language === "fr" ? "Sélectionner" : 
+                 language === "de" ? "Auswählen" : 
+                 "Select"}
               </button>
             </div>
           </div>
