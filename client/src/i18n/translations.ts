@@ -16,7 +16,8 @@ export const translations = {
     
     // Hero Section
     heroTitle: "Entdecken Sie Luxemburg ohne Ihr Budget zu sprengen",
-    heroSubtitle: "Ihr umfassender Leitfaden für erschwingliche Erlebnisse im Herzen Europas",
+    heroSubtitle: "Ihr umfassender Leitfaden für erschwingliche Erlebnisse im Herzen Europas. Präsentiert von Luxembourg Pas Cher.",
+    heroDescription: "Prékommandez le guide 2025 et recevez-le dès sa sortie",
     getStarted: "Jetzt starten",
     learnMore: "Mehr erfahren",
     
@@ -78,7 +79,8 @@ export const translations = {
     
     // Hero Section
     heroTitle: "Découvrez le Luxembourg sans vous ruiner",
-    heroSubtitle: "Votre guide complet pour des expériences abordables au cœur de l'Europe",
+    heroSubtitle: "Votre guide complet pour des expériences abordables au cœur de l'Europe. Présenté par Luxembourg Pas Cher.",
+    heroDescription: "Précommandez le guide 2025 et recevez-le dès sa sortie",
     getStarted: "Commencer",
     learnMore: "En savoir plus",
     
@@ -140,7 +142,8 @@ export const translations = {
     
     // Hero Section
     heroTitle: "Discover Luxembourg without breaking the bank",
-    heroSubtitle: "Your comprehensive guide to affordable experiences in the heart of Europe",
+    heroSubtitle: "Your comprehensive guide to affordable experiences in the heart of Europe. Presented by Luxembourg Pas Cher.",
+    heroDescription: "Pre-order the 2025 guide and receive it as soon as it's released",
     getStarted: "Get Started",
     learnMore: "Learn More",
     
