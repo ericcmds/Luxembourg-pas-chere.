@@ -18,11 +18,13 @@ const translations = {
     aboutTitle: 'À propos',
     aboutSubtitle: 'Découvrez l\'histoire derrière Luxembourg Pas Chère et notre mission pour rendre la vie au Luxembourg plus abordable pour tous.',
     missionTitle: 'Notre Mission',
+    crowdfundingTitle: 'Aidez-nous - CROWDFUNDING',
+    crowdfundingDescription: 'Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Cher.',
+    crowdfundingButton: 'Participer au crowdfunding',
     missionText1: 'Luxembourg Pas Chère est né d\'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.',
     missionText2: 'Notre équipe de passionnés explore chaque recoin du pays pour dénicher les bons plans, les offres exclusives et les conseils pratiques qui vous permettront d\'économiser au quotidien.',
     statsSold: 'Exemplaires vendus',
     statsTips: 'Astuces et bons plans',
-    crowdfundingTitle: 'Aidez-nous - CROWDFUNDING',
     pressTitle: 'On parle de nous',
     discoverTitle: 'Découvrir',
   },
@@ -45,6 +47,8 @@ const translations = {
     statsSold: 'Verkaufte Exemplare',
     statsTips: 'Tipps und Angebote',
     crowdfundingTitle: 'Helfen Sie uns - CROWDFUNDING',
+    crowdfundingDescription: 'Nehmen Sie an unserer Crowdfunding-Kampagne teil und unterstützen Sie die Entwicklung von Luxembourg Pas Cher.',
+    crowdfundingButton: 'Am Crowdfunding teilnehmen',
     pressTitle: 'Pressestimmen',
     discoverTitle: 'Entdecken',
   },
@@ -67,6 +71,8 @@ const translations = {
     statsSold: 'Copies sold',
     statsTips: 'Tips and deals',
     crowdfundingTitle: 'Help Us - CROWDFUNDING',
+    crowdfundingDescription: 'Participate in our crowdfunding campaign and support the development of Luxembourg Pas Cher.',
+    crowdfundingButton: 'Join the crowdfunding',
     pressTitle: 'Press Coverage',
     discoverTitle: 'Discover',
   }
@@ -597,7 +603,9 @@ export default function MinimalAppSimplified() {
               marginBottom: '1rem',
               textTransform: 'uppercase'
             }}>
-              Aidez-nous - CROWDFUNDING
+              {language === 'fr' ? 'Aidez-nous - CROWDFUNDING' : 
+               language === 'de' ? 'Helfen Sie uns - CROWDFUNDING' : 
+               'Help Us - CROWDFUNDING'}
             </h2>
             <p style={{ 
               fontSize: '1.1rem',
@@ -605,7 +613,9 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Chère.
+              {language === 'fr' ? 'Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Cher.' : 
+               language === 'de' ? 'Nehmen Sie an unserer Crowdfunding-Kampagne teil und unterstützen Sie die Entwicklung von Luxembourg Pas Cher.' : 
+               'Participate in our crowdfunding campaign and support the development of Luxembourg Pas Cher.'}
             </p>
           </div>
           
@@ -708,7 +718,9 @@ export default function MinimalAppSimplified() {
               boxShadow: '0 5px 15px rgba(227, 24, 55, 0.3)',
               transition: 'all 0.3s ease'
             }}>
-              Participer au crowdfunding
+              {language === 'fr' ? 'Participer au crowdfunding' : 
+               language === 'de' ? 'Am Crowdfunding teilnehmen' : 
+               'Join the crowdfunding'}
             </button>
           </div>
           

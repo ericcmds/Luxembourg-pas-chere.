@@ -36,6 +36,11 @@ export const translations = {
     bookDescription: "Unser Buch bietet umfassende Tipps und Tricks, um Luxemburg zu genießen, ohne Ihr Budget zu überlasten.",
     buyNow: "Jetzt kaufen",
     
+    // Crowdfunding Section
+    crowdfundingTitle: "Helfen Sie uns - CROWDFUNDING",
+    crowdfundingDescription: "Nehmen Sie an unserer Crowdfunding-Kampagne teil und unterstützen Sie die Weiterentwicklung von Luxembourg Pas Cher.",
+    crowdfundingButton: "Am Crowdfunding teilnehmen",
+    
     // Offers Section
     offersTitle: "Unsere top Angebote",
     offersDescription: "Entdecken Sie unsere sorgfältig ausgewählten Angebote für ein unvergessliches Luxemburg-Erlebnis.",
@@ -93,6 +98,11 @@ export const translations = {
     bookDescription: "Notre livre offre des conseils complets pour profiter du Luxembourg sans dépasser votre budget.",
     buyNow: "Acheter maintenant",
     
+    // Crowdfunding Section
+    crowdfundingTitle: "Aidez-nous - CROWDFUNDING",
+    crowdfundingDescription: "Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Cher.",
+    crowdfundingButton: "Participer au crowdfunding",
+    
     // Offers Section
     offersTitle: "Nos meilleures offres",
     offersDescription: "Découvrez nos offres soigneusement sélectionnées pour une expérience luxembourgeoise inoubliable.",
@@ -149,6 +159,11 @@ export const translations = {
     bookTitle: "Luxembourg Pas Chère: The Ultimate Savings Guide",
     bookDescription: "Our book offers comprehensive tips and tricks to enjoy Luxembourg without straining your budget.",
     buyNow: "Buy Now",
+    
+    // Crowdfunding Section
+    crowdfundingTitle: "Help us - CROWDFUNDING",
+    crowdfundingDescription: "Participate in our crowdfunding campaign and support the development of Luxembourg Pas Cher.",
+    crowdfundingButton: "Join the crowdfunding",
     
     // Offers Section
     offersTitle: "Our Top Offers",
