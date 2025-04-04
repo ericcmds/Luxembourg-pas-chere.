@@ -808,9 +808,9 @@ export default function MinimalAppSimplified() {
                 color: '#666',
                 marginBottom: '1rem'
               }}>
-                {language === 'fr' ? 'Précommandez le guide 2025 et recevez-le dès sa sortie avec une dédicace personnalisée.' : 
-                 language === 'de' ? 'Bestellen Sie den 2025-Führer vor und erhalten Sie ihn direkt nach Erscheinen mit einer persönlichen Widmung.' : 
-                 'Pre-order the 2025 guide and receive it at launch with a personalized dedication.'}
+                {language === 'fr' ? 'Précommandez le guide 2025 et recevez-le dès sa sortie.' : 
+                 language === 'de' ? 'Bestellen Sie den 2025-Führer vor und erhalten Sie ihn direkt nach Erscheinen.' : 
+                 'Pre-order the 2025 guide and receive it at launch.'}
               </p>
               <div style={{
                 fontSize: '1.5rem',
