@@ -62,7 +62,21 @@ export const translations = {
     terms: "AGB",
     privacy: "Datenschutz",
     cookies: "Cookies",
-    backToTop: "Zurück nach oben"
+    backToTop: "Zurück nach oben",
+    followUs: "Folgen Sie uns",
+    newsletter: "Newsletter",
+    subscribeToNewsletter: "Abonnieren Sie unseren Newsletter, um über die neuesten Angebote und Tipps informiert zu bleiben",
+    subscribe: "Abonnieren",
+    yourEmailAddress: "Ihre E-Mail-Adresse",
+    usefulLinks: "Nützliche Links",
+    contactUs: "Kontaktieren Sie uns",
+    address: "Adresse",
+    phone: "Telefon",
+    email: "E-Mail",
+    copyright: "© 2024 Luxembourg Pas Cher",
+    imprint: "Impressum",
+    faq: "FAQ",
+    legalNotice: "Rechtliche Hinweise"
   },
   
   // French translations
@@ -126,7 +140,21 @@ export const translations = {
     terms: "Conditions générales",
     privacy: "Politique de confidentialité",
     cookies: "Cookies",
-    backToTop: "Retour en haut"
+    backToTop: "Retour en haut",
+    followUs: "Suivez-nous",
+    newsletter: "Newsletter",
+    subscribeToNewsletter: "Abonnez-vous à notre newsletter pour rester informé des dernières offres et astuces",
+    subscribe: "S'abonner",
+    yourEmailAddress: "Votre adresse e-mail",
+    usefulLinks: "Liens utiles",
+    contactUs: "Contactez-nous",
+    address: "Adresse",
+    phone: "Téléphone",
+    email: "E-mail",
+    copyright: "© 2024 Luxembourg Pas Cher",
+    imprint: "Mentions légales",
+    faq: "FAQ",
+    legalNotice: "Informations légales"
   },
   
   // English translations
@@ -190,6 +218,20 @@ export const translations = {
     terms: "Terms & Conditions",
     privacy: "Privacy Policy",
     cookies: "Cookies",
-    backToTop: "Back to Top"
+    backToTop: "Back to Top",
+    followUs: "Follow Us",
+    newsletter: "Newsletter",
+    subscribeToNewsletter: "Subscribe to our newsletter to stay informed about the latest offers and tips",
+    subscribe: "Subscribe",
+    yourEmailAddress: "Your email address",
+    usefulLinks: "Useful Links",
+    contactUs: "Contact Us",
+    address: "Address",
+    phone: "Phone",
+    email: "Email",
+    copyright: "© 2024 Luxembourg Pas Cher",
+    imprint: "Imprint",
+    faq: "FAQ",
+    legalNotice: "Legal Notice"
   }
 };

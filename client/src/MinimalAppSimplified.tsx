@@ -1664,6 +1664,712 @@ export default function MinimalAppSimplified() {
         </div>
       </section>
 
+      {/* Footer */}
+      <footer style={{
+        backgroundColor: '#2a2a2a',
+        color: '#fff',
+        padding: '5rem 0 2rem',
+        borderTop: '5px solid #38b6ff'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem'
+        }}>
+          {/* Main Footer */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            {/* Logo & About */}
+            <div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <div style={{
+                  fontWeight: 'bold',
+                  fontSize: '1.8rem',
+                  color: '#fff',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ color: '#38b6ff' }}>Luxembourg</span>
+                  <span style={{ marginLeft: '0.5rem' }}>Pas Cher</span>
+                </div>
+              </div>
+              <p style={{
+                fontSize: '0.95rem',
+                lineHeight: '1.6',
+                color: '#aaa',
+                marginBottom: '1.5rem'
+              }}>
+                {language === 'fr' ? 'Guide complet pour découvrir et profiter du Luxembourg sans se ruiner. Conseils, bons plans et astuces pour tous.' :
+                 language === 'de' ? 'Umfassender Leitfaden zum Entdecken und Genießen von Luxemburg, ohne sich zu ruinieren. Ratschläge, Angebote und Tipps für jeden.' :
+                 'Comprehensive guide to discover and enjoy Luxembourg without breaking the bank. Advice, deals, and tips for everyone.'}
+              </p>
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                marginBottom: '1.5rem'
+              }}>
+                {/* Facebook */}
+                <a 
+                  href="#" 
+                  aria-label="Facebook"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(language === 'fr' ? 'Redirection vers Facebook' :
+                          language === 'de' ? 'Weiterleitung zu Facebook' :
+                          'Redirecting to Facebook');
+                  }}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: '#38b6ff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1a9cf0';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#38b6ff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                  </svg>
+                </a>
+                {/* X (Twitter) */}
+                <a 
+                  href="#" 
+                  aria-label="Twitter"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(language === 'fr' ? 'Redirection vers X (Twitter)' :
+                          language === 'de' ? 'Weiterleitung zu X (Twitter)' :
+                          'Redirecting to X (Twitter)');
+                  }}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: '#38b6ff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1a9cf0';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#38b6ff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                  </svg>
+                </a>
+                {/* Instagram */}
+                <a 
+                  href="#" 
+                  aria-label="Instagram"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(language === 'fr' ? 'Redirection vers Instagram' :
+                          language === 'de' ? 'Weiterleitung zu Instagram' :
+                          'Redirecting to Instagram');
+                  }}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: '#38b6ff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1a9cf0';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#38b6ff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                  </svg>
+                </a>
+                {/* LinkedIn */}
+                <a 
+                  href="#" 
+                  aria-label="LinkedIn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(language === 'fr' ? 'Redirection vers LinkedIn' :
+                          language === 'de' ? 'Weiterleitung zu LinkedIn' :
+                          'Redirecting to LinkedIn');
+                  }}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: '#38b6ff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1a9cf0';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#38b6ff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            {/* Useful Links */}
+            <div>
+              <h4 style={{
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                marginBottom: '1.5rem',
+                color: '#fff',
+                position: 'relative',
+                paddingBottom: '0.5rem'
+              }}>
+                {language === 'fr' ? t.usefulLinks : 
+                 language === 'de' ? t.usefulLinks : 
+                 t.usefulLinks}
+                <span style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  width: '50px',
+                  height: '2px',
+                  backgroundColor: '#38b6ff'
+                }}></span>
+              </h4>
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0
+              }}>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <a 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    style={{
+                      color: '#aaa',
+                      textDecoration: 'none',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#38b6ff';
+                      e.currentTarget.style.paddingLeft = '5px';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#aaa';
+                      e.currentTarget.style.paddingLeft = '0px';
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '0.5rem' }}>
+                      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    {language === 'fr' ? 'Accueil' : 
+                     language === 'de' ? 'Startseite' : 
+                     'Home'}
+                  </a>
+                </li>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <a 
+                    href="#about" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const aboutSection = document.getElementById('about');
+                      if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    style={{
+                      color: '#aaa',
+                      textDecoration: 'none',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#38b6ff';
+                      e.currentTarget.style.paddingLeft = '5px';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#aaa';
+                      e.currentTarget.style.paddingLeft = '0px';
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '0.5rem' }}>
+                      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    {language === 'fr' ? 'À propos' : 
+                     language === 'de' ? 'Über uns' : 
+                     'About Us'}
+                  </a>
+                </li>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <a 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert(language === 'fr' ? 'Redirection vers la page FAQ' :
+                            language === 'de' ? 'Weiterleitung zur FAQ-Seite' :
+                            'Redirecting to FAQ page');
+                    }}
+                    style={{
+                      color: '#aaa',
+                      textDecoration: 'none',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#38b6ff';
+                      e.currentTarget.style.paddingLeft = '5px';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#aaa';
+                      e.currentTarget.style.paddingLeft = '0px';
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '0.5rem' }}>
+                      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    {t.faq}
+                  </a>
+                </li>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <a 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert(language === 'fr' ? 'Redirection vers la page Blog' :
+                            language === 'de' ? 'Weiterleitung zur Blog-Seite' :
+                            'Redirecting to Blog page');
+                    }}
+                    style={{
+                      color: '#aaa',
+                      textDecoration: 'none',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#38b6ff';
+                      e.currentTarget.style.paddingLeft = '5px';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#aaa';
+                      e.currentTarget.style.paddingLeft = '0px';
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '0.5rem' }}>
+                      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert(language === 'fr' ? 'Redirection vers la page Offres' :
+                            language === 'de' ? 'Weiterleitung zur Angebote-Seite' :
+                            'Redirecting to Offers page');
+                    }}
+                    style={{
+                      color: '#aaa',
+                      textDecoration: 'none',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#38b6ff';
+                      e.currentTarget.style.paddingLeft = '5px';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#aaa';
+                      e.currentTarget.style.paddingLeft = '0px';
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '0.5rem' }}>
+                      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    {language === 'fr' ? 'Offres' : 
+                     language === 'de' ? 'Angebote' : 
+                     'Offers'}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Contact */}
+            <div>
+              <h4 style={{
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                marginBottom: '1.5rem',
+                color: '#fff',
+                position: 'relative',
+                paddingBottom: '0.5rem'
+              }}>
+                {t.contactUs}
+                <span style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  width: '50px',
+                  height: '2px',
+                  backgroundColor: '#38b6ff'
+                }}></span>
+              </h4>
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0
+              }}>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    color: '#aaa',
+                    fontSize: '0.95rem'
+                  }}>
+                    <div style={{
+                      marginRight: '1rem',
+                      marginTop: '0.3rem'
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#38b6ff" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <strong style={{ display: 'block', color: '#fff', marginBottom: '0.3rem' }}>{t.address}:</strong>
+                      15, Rue de Luxembourg<br />L-1234 Luxembourg
+                    </div>
+                  </div>
+                </li>
+                <li style={{ marginBottom: '0.8rem' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    color: '#aaa',
+                    fontSize: '0.95rem'
+                  }}>
+                    <div style={{
+                      marginRight: '1rem',
+                      marginTop: '0.3rem'
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#38b6ff" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <strong style={{ display: 'block', color: '#fff', marginBottom: '0.3rem' }}>{t.phone}:</strong>
+                      +352 12 34 56 78
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    color: '#aaa',
+                    fontSize: '0.95rem'
+                  }}>
+                    <div style={{
+                      marginRight: '1rem',
+                      marginTop: '0.3rem'
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#38b6ff" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <strong style={{ display: 'block', color: '#fff', marginBottom: '0.3rem' }}>{t.email}:</strong>
+                      info@luxembourgpascher.lu
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Newsletter */}
+            <div>
+              <h4 style={{
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                marginBottom: '1.5rem',
+                color: '#fff',
+                position: 'relative',
+                paddingBottom: '0.5rem'
+              }}>
+                {t.newsletter}
+                <span style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  width: '50px',
+                  height: '2px',
+                  backgroundColor: '#38b6ff'
+                }}></span>
+              </h4>
+              <p style={{
+                fontSize: '0.95rem',
+                lineHeight: '1.6',
+                color: '#aaa',
+                marginBottom: '1.5rem'
+              }}>
+                {t.subscribeToNewsletter}
+              </p>
+              <form style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem'
+              }}>
+                <input 
+                  type="email" 
+                  placeholder={t.yourEmailAddress}
+                  style={{
+                    padding: '0.8rem 1rem',
+                    borderRadius: '4px',
+                    border: 'none',
+                    fontSize: '0.9rem',
+                    backgroundColor: '#3a3a3a',
+                    color: '#fff',
+                    outline: 'none'
+                  }}
+                />
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert(language === 'fr' ? 
+                      'Merci de vous être inscrit à notre newsletter ! Vous recevrez bientôt nos dernières offres et conseils.' :
+                      language === 'de' ? 
+                      'Vielen Dank für Ihre Anmeldung zu unserem Newsletter! Sie erhalten in Kürze unsere neuesten Angebote und Tipps.' :
+                      'Thank you for subscribing to our newsletter! You will soon receive our latest offers and tips.');
+                  }}
+                  style={{
+                    backgroundColor: '#38b6ff',
+                    color: 'white',
+                    padding: '0.8rem',
+                    borderRadius: '4px',
+                    border: 'none',
+                    fontSize: '0.9rem',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1a9cf0';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#38b6ff';
+                  }}
+                >
+                  {t.subscribe}
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          {/* Copyright and Legal */}
+          <div style={{
+            borderTop: '1px solid #3a3a3a',
+            paddingTop: '2rem',
+            marginTop: '1rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            fontSize: '0.9rem',
+            color: '#888'
+          }}>
+            <div style={{ marginBottom: '1rem' }}>
+              {t.copyright} - {t.allRightsReserved}
+            </div>
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '1.5rem',
+              marginBottom: '1rem'
+            }}>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert(language === 'fr' ? 'Redirection vers les conditions générales' :
+                        language === 'de' ? 'Weiterleitung zu den AGB' :
+                        'Redirecting to Terms & Conditions');
+                }}
+                style={{
+                  color: '#888',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#38b6ff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                {t.terms}
+              </a>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert(language === 'fr' ? 'Redirection vers la politique de confidentialité' :
+                        language === 'de' ? 'Weiterleitung zur Datenschutzrichtlinie' :
+                        'Redirecting to Privacy Policy');
+                }}
+                style={{
+                  color: '#888',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#38b6ff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                {t.privacy}
+              </a>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert(language === 'fr' ? 'Redirection vers la politique des cookies' :
+                        language === 'de' ? 'Weiterleitung zur Cookie-Richtlinie' :
+                        'Redirecting to Cookie Policy');
+                }}
+                style={{
+                  color: '#888',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#38b6ff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                {t.cookies}
+              </a>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert(language === 'fr' ? 'Redirection vers les mentions légales' :
+                        language === 'de' ? 'Weiterleitung zum Impressum' :
+                        'Redirecting to Imprint');
+                }}
+                style={{
+                  color: '#888',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#38b6ff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                {language === 'fr' ? t.imprint : 
+                 language === 'de' ? t.imprint : 
+                 t.imprint}
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        {/* Back to Top Button */}
+        <button 
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          style={{
+            position: 'absolute',
+            right: '30px',
+            bottom: '30px',
+            width: '50px',
+            height: '50px',
+            borderRadius: '50%',
+            backgroundColor: '#38b6ff',
+            color: 'white',
+            border: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#1a9cf0';
+            e.currentTarget.style.transform = 'translateY(-5px)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#38b6ff';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+          </svg>
+        </button>
+      </footer>
 
     </div>
   );
