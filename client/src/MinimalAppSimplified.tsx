@@ -429,10 +429,7 @@ export default function MinimalAppSimplified() {
                 }}
               />
               
-              {/* Price Badge */}
-              <div className="price-badge">
-                €24.99
-              </div>
+
             </div>
           </div>
           
