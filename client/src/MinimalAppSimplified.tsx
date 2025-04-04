@@ -486,6 +486,30 @@ export default function MinimalAppSimplified() {
                   'Vielen Dank für Ihr Interesse! Sie werden zu unserer Bestellseite weitergeleitet.' :
                   'Thank you for your interest! You will be redirected to our order page.');
               }}
+              style={{
+                backgroundColor: '#E31837',
+                color: 'white',
+                border: 'none',
+                borderRadius: '50px',
+                padding: '0.8rem 2rem',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: '0 4px 10px rgba(227, 24, 55, 0.3)',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#c51027';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(227, 24, 55, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#E31837';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 10px rgba(227, 24, 55, 0.3)';
+              }}
             >
               {t.order}
             </button>
@@ -775,7 +799,19 @@ export default function MinimalAppSimplified() {
                 fontWeight: 'bold',
                 cursor: 'pointer',
                 boxShadow: '0 5px 15px rgba(227, 24, 55, 0.3)',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#c51027';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(227, 24, 55, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#E31837';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 5px 15px rgba(227, 24, 55, 0.3)';
               }}
             >
               {language === 'fr' ? 'Participer au crowdfunding' : 
@@ -943,7 +979,17 @@ export default function MinimalAppSimplified() {
                   border: 'none',
                   borderRadius: '4px',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 6px rgba(227, 24, 55, 0.3)'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#c51027';
+                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(227, 24, 55, 0.4)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = '#E31837';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(227, 24, 55, 0.3)';
                 }}
               >
                 {language === "fr" ? "Sélectionner" : 
@@ -1388,20 +1434,44 @@ export default function MinimalAppSimplified() {
                   color: '#555',
                   marginBottom: '1.5rem'
                 }}>
-                  Découvrez nos sélections de restaurants offrant un excellent rapport qualité-prix dans tout le Luxembourg.
+                  {language === 'fr' ? 'Découvrez nos sélections de restaurants offrant un excellent rapport qualité-prix dans tout le Luxembourg.' :
+                   language === 'de' ? 'Entdecken Sie unsere Auswahl an Restaurants mit ausgezeichnetem Preis-Leistungs-Verhältnis in ganz Luxemburg.' :
+                   'Discover our selection of restaurants offering excellent value for money throughout Luxembourg.'}
                 </p>
-                <button style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'transparent',
-                  color: '#E31837',
-                  border: 'none',
-                  padding: 0,
-                  fontSize: '0.95rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer'
-                }}>
-                  Découvrir
+                <button 
+                  onClick={() => {
+                    alert(language === 'fr' ? 
+                      'Vous allez être redirigé vers notre page de gastronomie.' :
+                      language === 'de' ? 
+                      'Sie werden zu unserer Gastronomieseite weitergeleitet.' :
+                      'You will be redirected to our gastronomy page.');
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'transparent',
+                    color: '#E31837',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.5rem 0.75rem',
+                    marginLeft: '-0.75rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(227, 24, 55, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(5px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  {language === 'fr' ? 'Découvrir' : 
+                   language === 'de' ? 'Entdecken' : 
+                   'Discover'}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -1455,20 +1525,44 @@ export default function MinimalAppSimplified() {
                   color: '#555',
                   marginBottom: '1.5rem'
                 }}>
-                  Profitez des activités culturelles, sportives et de loisirs à prix réduits grâce à nos conseils et bons plans.
+                  {language === 'fr' ? 'Profitez des activités culturelles, sportives et de loisirs à prix réduits grâce à nos conseils et bons plans.' :
+                   language === 'de' ? 'Genießen Sie kulturelle, sportliche und Freizeitaktivitäten zu reduzierten Preisen dank unserer Tipps und Angebote.' :
+                   'Enjoy cultural, sports and leisure activities at reduced prices thanks to our tips and special offers.'}
                 </p>
-                <button style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'transparent',
-                  color: '#E31837',
-                  border: 'none',
-                  padding: 0,
-                  fontSize: '0.95rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer'
-                }}>
-                  Découvrir
+                <button 
+                  onClick={() => {
+                    alert(language === 'fr' ? 
+                      'Vous allez être redirigé vers notre page de loisirs et culture.' :
+                      language === 'de' ? 
+                      'Sie werden zu unserer Freizeit- und Kulturseite weitergeleitet.' :
+                      'You will be redirected to our leisure and culture page.');
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'transparent',
+                    color: '#E31837',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.5rem 0.75rem',
+                    marginLeft: '-0.75rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(227, 24, 55, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(5px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  {language === 'fr' ? 'Découvrir' : 
+                   language === 'de' ? 'Entdecken' : 
+                   'Discover'}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -1522,20 +1616,44 @@ export default function MinimalAppSimplified() {
                   color: '#555',
                   marginBottom: '1.5rem'
                 }}>
-                  Nos meilleures adresses pour faire du shopping malin et économique au Luxembourg, des vêtements à l'électronique.
+                  {language === 'fr' ? 'Nos meilleures adresses pour faire du shopping malin et économique au Luxembourg, des vêtements à l\'électronique.' :
+                   language === 'de' ? 'Unsere besten Adressen für intelligentes und wirtschaftliches Einkaufen in Luxemburg, von Kleidung bis Elektronik.' :
+                   'Our best addresses for smart and economical shopping in Luxembourg, from clothing to electronics.'}
                 </p>
-                <button style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'transparent',
-                  color: '#E31837',
-                  border: 'none',
-                  padding: 0,
-                  fontSize: '0.95rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer'
-                }}>
-                  Découvrir
+                <button 
+                  onClick={() => {
+                    alert(language === 'fr' ? 
+                      'Vous allez être redirigé vers notre page de shopping.' :
+                      language === 'de' ? 
+                      'Sie werden zu unserer Shopping-Seite weitergeleitet.' :
+                      'You will be redirected to our shopping page.');
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'transparent',
+                    color: '#E31837',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.5rem 0.75rem',
+                    marginLeft: '-0.75rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(227, 24, 55, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(5px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  {language === 'fr' ? 'Découvrir' : 
+                   language === 'de' ? 'Entdecken' : 
+                   'Discover'}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '0.5rem' }}>
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
