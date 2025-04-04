@@ -24,6 +24,13 @@ export const translations = {
     aboutTitle: "Über Luxembourg Pas Chère",
     aboutDescription: "Unser Ziel ist es, Ihnen zu zeigen, dass Luxemburg trotz seines Rufs als teures Reiseziel auch für preisbewusste Reisende zugänglich ist.",
     
+    // Mission Section
+    missionTitle: "Unsere Mission",
+    missionText1: "Luxembourg Pas Cher entstand aus einer einfachen Idee: die besten Tipps zu teilen, um das Leben in Luxemburg in vollen Zügen zu genießen, ohne sich zu ruinieren.",
+    missionText2: "Unser leidenschaftliches Team erkundet jeden Winkel des Landes, um die besten Angebote, exklusive Deals und praktische Ratschläge zu finden, die Ihnen helfen, im Alltag zu sparen.",
+    statsSold: "Verkaufte Exemplare",
+    statsTips: "Tipps und Angebote",
+    
     // Book Section
     bookTitle: "Luxembourg Pas Chère: Der ultimative Sparguide",
     bookDescription: "Unser Buch bietet umfassende Tipps und Tricks, um Luxemburg zu genießen, ohne Ihr Budget zu überlasten.",
@@ -74,6 +81,13 @@ export const translations = {
     aboutTitle: "À propos de Luxembourg Pas Chère",
     aboutDescription: "Notre objectif est de vous montrer que malgré sa réputation de destination coûteuse, le Luxembourg reste accessible aux voyageurs soucieux de leur budget.",
     
+    // Mission Section
+    missionTitle: "Notre Mission",
+    missionText1: "Luxembourg Pas Cher est né d'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.",
+    missionText2: "Notre équipe de passionnés explore chaque recoin du pays pour dénicher les bons plans, les offres exclusives et les conseils pratiques qui vous permettront d'économiser au quotidien.",
+    statsSold: "Exemplaires vendus",
+    statsTips: "Astuces et bons plans",
+    
     // Book Section
     bookTitle: "Luxembourg Pas Chère: Le guide ultime des économies",
     bookDescription: "Notre livre offre des conseils complets pour profiter du Luxembourg sans dépasser votre budget.",
@@ -123,6 +137,13 @@ export const translations = {
     // About Section
     aboutTitle: "About Luxembourg Pas Chère",
     aboutDescription: "Our goal is to show you that despite its reputation as an expensive destination, Luxembourg remains accessible to budget-conscious travelers.",
+    
+    // Mission Section
+    missionTitle: "Our Mission",
+    missionText1: "Luxembourg Pas Cher was born from a simple idea: sharing the best tips to fully enjoy life in Luxembourg without breaking the bank.",
+    missionText2: "Our passionate team explores every corner of the country to uncover the best deals, exclusive offers, and practical advice that will help you save money everyday.",
+    statsSold: "Copies sold",
+    statsTips: "Tips and deals",
     
     // Book Section
     bookTitle: "Luxembourg Pas Chère: The Ultimate Savings Guide",

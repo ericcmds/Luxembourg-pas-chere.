@@ -393,7 +393,7 @@ export default function MinimalAppSimplified() {
             </div>
             
             <h1 className="hero-title">
-              Luxembourg Pas Chère
+              {t.heroTitle}
             </h1>
             
             <p className="hero-subtitle" style={{ 
@@ -441,20 +441,20 @@ export default function MinimalAppSimplified() {
                 <path d="M19 22C19.5523 22 20 21.5523 20 21C20 20.4477 19.5523 20 19 20C18.4477 20 18 20.4477 18 21C18 21.5523 18.4477 22 19 22Z" fill="#E31837"/>
                 <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H18.4C18.8693 16.009 19.3268 15.8526 19.6925 15.5583C20.0581 15.264 20.3086 14.8504 20.4 14.39L22 6H6" stroke="#E31837" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              COMMANDER
+              {t.order}
             </button>
           </div>
           
           {/* Feature Tags */}
           <div className="feature-tags">
             <span className="tag">
-              Secrets locaux
+              {t.featureTag1}
             </span>
             <span className="tag">
-              Offres exclusives
+              {t.featureTag2}
             </span>
             <span className="tag">
-              Budget intelligent
+              {t.featureTag3}
             </span>
           </div>
         </div>
@@ -476,7 +476,7 @@ export default function MinimalAppSimplified() {
               color: '#333',
               marginBottom: '1rem'
             }}>
-              À propos
+              {t.aboutTitle}
             </h2>
             <p style={{ 
               fontSize: '1.1rem',
@@ -484,7 +484,7 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              Découvrez l'histoire derrière Luxembourg Pas Chère et notre mission pour rendre la vie au Luxembourg plus abordable pour tous.
+              {t.aboutSubtitle}
             </p>
           </div>
           
@@ -511,7 +511,7 @@ export default function MinimalAppSimplified() {
                 marginBottom: '1.5rem',
                 color: '#333'
               }}>
-                Notre Mission
+                {t.missionTitle}
               </h3>
               <p style={{ 
                 fontSize: '1.05rem',
@@ -519,7 +519,7 @@ export default function MinimalAppSimplified() {
                 color: '#555',
                 marginBottom: '1.5rem'
               }}>
-                Luxembourg Pas Chère est né d'une idée simple : partager les meilleures astuces pour profiter pleinement de la vie au Luxembourg sans se ruiner.
+                {t.missionText1}
               </p>
               <p style={{ 
                 fontSize: '1.05rem',
@@ -527,7 +527,7 @@ export default function MinimalAppSimplified() {
                 color: '#555',
                 marginBottom: '1.5rem'
               }}>
-                Notre équipe de passionnés explore chaque recoin du pays pour dénicher les bons plans, les offres exclusives et les conseils pratiques qui vous permettront d'économiser au quotidien.
+                {t.missionText2}
               </p>
               <div style={{ 
                 display: 'flex',
@@ -551,7 +551,7 @@ export default function MinimalAppSimplified() {
                     1500+
                   </div>
                   <div style={{ color: '#666' }}>
-                    Exemplaires vendus
+                    {t.statsSold}
                   </div>
                 </div>
                 <div style={{ 
@@ -571,7 +571,7 @@ export default function MinimalAppSimplified() {
                     200+
                   </div>
                   <div style={{ color: '#666' }}>
-                    Astuces et bons plans
+                    {t.statsTips}
                   </div>
                 </div>
               </div>
