@@ -1,22 +1,24 @@
 /* Luxembourg Pas Chere Styles - Optimized Version */
 
 :root {
-  /* Brand Colors */
-  --primary: #E31837; /* Luxembourg Red */
-  --primary-light: rgba(227, 24, 55, 0.1);
-  --primary-dark: #b9132c;
-  --secondary: #00A4E0; /* Luxembourg Blue */
-  --secondary-light: rgba(0, 164, 224, 0.1);
-  --secondary-dark: #0083b3;
+  /* Brand Colors - Updated based on requirements */
+  --main-blue: #38b6ff; /* Main Blue for headers, navigation, UI elements */
+  --accent-red: #e81414; /* Accent Red for CTAs and highlights */
+  --primary: var(--main-blue); /* Primary color is now Main Blue */
+  --primary-light: rgba(56, 182, 255, 0.1);
+  --primary-dark: #2298da;
+  --secondary: var(--accent-red); /* Secondary color is now Accent Red */
+  --secondary-light: rgba(232, 20, 20, 0.1);
+  --secondary-dark: #c51212;
   --accent: #37ba68; /* Success Color */
   --accent-light: rgba(55, 186, 104, 0.1);
   
-  /* Neutral Colors */
-  --dark: #2c3e50;
-  --light: #f8f9fa;
-  --text: #4a4a4a;
-  --text-light: #6c7a89;
-  --white: #fff;
+  /* Neutral Colors - Updated based on requirements */
+  --dark: #333333; /* Dark Gray for text content */
+  --light: #f5f5dc; /* Soft Beige to soften secondary content areas */
+  --text: var(--dark);
+  --text-light: #555555;
+  --white: #ffffff; /* White for backgrounds and content areas */
   --gray-100: #f9f9f9;
   --gray-200: #f0f0f0;
   --gray-300: #e0e0e0;
@@ -215,7 +217,7 @@ body {
   width: 100%;
   z-index: 1000;
   padding: 1.2rem 0;
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: var(--main-blue);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(8px);
@@ -224,8 +226,8 @@ body {
 
 .header.scrolled {
   padding: 0.8rem 0;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  background-color: var(--main-blue);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header .container {
@@ -260,7 +262,7 @@ body {
 .logo-primary {
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--white);
   letter-spacing: -0.02em;
   transition: var(--transition);
 }
@@ -268,7 +270,7 @@ body {
 .logo-secondary {
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--secondary);
+  color: var(--white);
   margin-left: 4px;
   letter-spacing: -0.02em;
   transition: var(--transition);
@@ -337,7 +339,7 @@ body {
 }
 
 .nav-link {
-  color: var(--dark);
+  color: var(--white);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -348,12 +350,12 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--primary);
-  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link.active {
-  color: var(--primary);
+  color: var(--white);
   font-weight: 600;
 }
 
@@ -365,7 +367,7 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--primary);
+  background-color: var(--accent-red);
   transition: var(--transition);
 }
 
@@ -396,31 +398,32 @@ body {
 .lang-button {
   display: flex;
   align-items: center;
-  background: none;
-  border: 1px solid #dddddd;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.5rem 0.85rem;
   border-radius: 24px;
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--dark);
+  color: var(--white);
   transition: var(--transition);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .lang-button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-color: #cccccc;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .lang-button-active {
-  color: var(--primary);
+  color: var(--white);
   font-weight: 600;
 }
 
 .chevron-icon {
   margin-left: 4px;
-  color: #777;
+  color: var(--white);
   transition: transform 0.2s ease;
   font-size: 0.8rem;
 }
@@ -473,9 +476,9 @@ body {
 
 .mobile-nav-button {
   display: none;
-  background: none;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  color: var(--dark);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
   cursor: pointer;
   padding: 0.65rem;
   z-index: 2000;
@@ -484,16 +487,16 @@ body {
   height: 50px;
   border-radius: 50%;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-nav-button:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .mobile-nav-button:active {
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(255, 255, 255, 0.15);
   transform: scale(0.98);
 }
 
@@ -588,7 +591,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(227, 24, 55, 0.85) 0%, rgba(0, 164, 224, 0.75) 100%);
+  background: linear-gradient(135deg, rgba(56, 182, 255, 0.85) 0%, rgba(56, 182, 255, 0.75) 100%);
   z-index: -1;
 }
 
@@ -794,35 +797,35 @@ p {
 .btn-primary {
   background: var(--primary);
   color: var(--white);
-  box-shadow: 0 6px 12px rgba(227, 24, 55, 0.2);
+  box-shadow: 0 6px 12px rgba(56, 182, 255, 0.2);
 }
 
 .btn-primary:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(227, 24, 55, 0.3);
+  box-shadow: 0 8px 16px rgba(56, 182, 255, 0.3);
 }
 
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 4px 8px rgba(227, 24, 55, 0.15);
+  box-shadow: 0 4px 8px rgba(56, 182, 255, 0.15);
 }
 
 .btn-secondary {
   background: var(--secondary);
   color: var(--white);
-  box-shadow: 0 6px 12px rgba(0, 164, 224, 0.2);
+  box-shadow: 0 6px 12px rgba(232, 20, 20, 0.2);
 }
 
 .btn-secondary:hover {
   background: var(--secondary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 164, 224, 0.3);
+  box-shadow: 0 8px 16px rgba(232, 20, 20, 0.3);
 }
 
 .btn-secondary:active {
   transform: translateY(0);
-  box-shadow: 0 4px 8px rgba(0, 164, 224, 0.15);
+  box-shadow: 0 4px 8px rgba(232, 20, 20, 0.15);
 }
 
 .btn-outline {
@@ -1266,7 +1269,7 @@ p {
     background-color: var(--primary);
     color: var(--white);
     border-color: var(--primary);
-    box-shadow: 0 3px 8px rgba(227, 24, 55, 0.25);
+    box-shadow: 0 3px 8px rgba(56, 182, 255, 0.25);
   }
   
   .mobile-social {
