@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,24 +14,36 @@ export default function Footer() {
             <Link href="/" className="flex items-center mb-4 hover:opacity-80 transition-opacity">
               <div className="position-relative">
                 <span className="font-montserrat fw-bold fs-4 text-lux-red">Luxembourg</span>
-                <span className="font-montserrat fw-bold fs-4 text-lux-blue ms-2">Pas Chère</span>
+                <span className="font-montserrat fw-bold fs-4 text-lux-blue ms-2">Pas Cher</span>
               </div>
             </Link>
             <p className="text-light-gray mb-4">
               Votre guide pour une vie abordable au Luxembourg sans pression financière.
             </p>
-            {/* Hervorgehobenes Instagram-Icon für mobile Geräte */}
-            <div className="flex space-x-3 mb-6 d-block d-lg-none">
+            {/* Social Media Icons */}
+            <div className="flex space-x-3 mb-6">
               <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" 
-                className="instagram-gradient w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+                className="instagram-gradient w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
                 style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}
                 aria-label="Suivez-nous sur Instagram">
-                <Instagram size={22} color="white" />
+                <Instagram size={18} color="white" />
+              </a>
+              <a href="https://www.facebook.com/luxembourgpascher" target="_blank" rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+                style={{ background: "#1877F2" }}
+                aria-label="Suivez-nous sur Facebook">
+                <Facebook size={18} color="white" />
+              </a>
+              <a href="https://www.linkedin.com/company/luxembourg-pas-cher" target="_blank" rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+                style={{ background: "#0A66C2" }}
+                aria-label="Suivez-nous sur LinkedIn">
+                <Linkedin size={18} color="white" />
               </a>
             </div>
           </div>
 
-          {/* Main Navigation - an den Header angepasst */}
+          {/* Main Navigation */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Navigation</h3>
             <ul className="space-y-2">
@@ -57,7 +69,7 @@ export default function Footer() {
 
           {/* Legal & Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contact & Mentions légales</h3>
+            <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={16} className="mr-2 mt-1 text-lux-red" />
@@ -69,13 +81,18 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail size={16} className="mr-2 text-lux-red" />
-                <a href="mailto:info@lux-pas-chere.com" className="text-light-gray hover:text-white transition-colors">info@lux-pas-chere.com</a>
+                <a href="mailto:info@lux-pas-cher.com" className="text-light-gray hover:text-white transition-colors">info@lux-pas-cher.com</a>
+              </li>
+              <li className="flex items-center">
+                <Clock size={16} className="mr-2 text-lux-red" />
+                <span className="text-light-gray">Lun-Ven: 9h-17h</span>
               </li>
             </ul>
             <div className="mt-6 space-y-2">
+              <h3 className="font-semibold text-lg mb-2">Mentions légales</h3>
               <a href="#" className="block text-light-gray hover:text-white transition-colors">Politique de confidentialité</a>
               <a href="#" className="block text-light-gray hover:text-white transition-colors">Mentions légales</a>
-              <a href="#" className="block text-light-gray hover:text-white transition-colors">CGV</a>
+              <a href="#" className="block text-light-gray hover:text-white transition-colors">Conditions générales</a>
             </div>
           </div>
         </div>
@@ -84,7 +101,7 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-light-gray text-sm mb-4 md:mb-0">
-              © {currentYear} Luxembourg Pas Chère. Tous droits réservés.
+              © {currentYear} Luxembourg Pas Cher. Tous droits réservés.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-light-gray hover:text-white text-sm transition-colors">FAQ</a>

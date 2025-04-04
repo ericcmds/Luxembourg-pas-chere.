@@ -80,7 +80,7 @@ export default function BookSection() {
         <div className="row justify-content-center mb-5">
           <div className="col-lg-10 text-center">
             <h2 className="display-4 fw-bold font-montserrat mb-3 section-title"> 
-              <span className="text-[#E31837] highlight-text">Luxembourg Pas Chère</span>
+              <span className="text-[#E31837] highlight-text">Luxembourg Pas Cher</span>
             </h2>
             <p className="lead mb-4 fs-4">
               Der einzige umfassende Ratgeber für kostengünstiges Leben in Luxemburg
@@ -163,7 +163,6 @@ export default function BookSection() {
                       transform: "translateX(-100%)",
                       animation: "shine 3s infinite"
                     }}></span>
-                  <ShoppingCart className="me-2" />
                   JETZT BESTELLEN
                 </button>
                 
@@ -297,7 +296,7 @@ export default function BookSection() {
                     data-bs-toggle="modal" 
                     data-bs-target="#orderModal"
                   >
-                    <ShoppingCart className="me-2" />
+                    
                     JETZT BESTELLEN
                   </button>
                 </div>

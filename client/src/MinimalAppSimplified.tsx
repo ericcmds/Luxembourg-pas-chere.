@@ -1202,7 +1202,7 @@ export default function MinimalAppSimplified() {
               color: '#333',
               marginBottom: '1rem'
             }}>
-              Discover
+              Découvrir
             </h2>
             <p style={{ 
               fontSize: '1.1rem',

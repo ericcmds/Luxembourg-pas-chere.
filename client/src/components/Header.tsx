@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MobileMenu from './ui/MobileMenu';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Instagram } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,19 +49,13 @@ export default function Header() {
                   </span>
                   <span className="font-montserrat fw-bold text-lux-dark"
                         style={{ fontSize: "clamp(1.2rem, 3vw, 1.5rem)" }}>
-                    Pas Chère
+                    Pas Cher
                   </span>
                 </div>
               </a>
             </div>
 
-            {/* Autor Info - responsive optimiert */}
-            <div className="col d-none d-md-flex align-items-center justify-content-start">
-              <div className="text-muted small ms-4">
-                <div className="fw-medium">PASCAL ZADRUK</div>
-                <div className="opacity-75">02/03/22</div>
-              </div>
-            </div>
+            {/* Removed author info as requested */}
 
             {/* Hamburger Button für Mobile Geräte */}
             <div className="col-auto d-lg-none">
@@ -114,10 +108,10 @@ export default function Header() {
                     </a>
                   </li>
                   
-                  {/* Instagram Icon */}
+                  {/* Social Media Icons */}
                   <li className="nav-item">
                     <a 
-                      className="nav-link px-3" 
+                      className="nav-link px-2" 
                       href="https://www.instagram.com/luxembourgpaschere/" 
                       target="_blank" 
                       rel="noopener noreferrer" 
@@ -132,6 +126,46 @@ export default function Header() {
                         }}
                       >
                         <Instagram size={18} color="white" />
+                      </div>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a 
+                      className="nav-link px-2" 
+                      href="https://www.facebook.com/luxembourgpascher" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label="Facebook"
+                    >
+                      <div 
+                        className="rounded-circle d-flex align-items-center justify-content-center"
+                        style={{ 
+                          width: "36px", 
+                          height: "36px", 
+                          background: "#1877F2",
+                        }}
+                      >
+                        <Facebook size={18} color="white" />
+                      </div>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a 
+                      className="nav-link px-2" 
+                      href="https://www.linkedin.com/company/luxembourg-pas-cher" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label="LinkedIn"
+                    >
+                      <div 
+                        className="rounded-circle d-flex align-items-center justify-content-center"
+                        style={{ 
+                          width: "36px", 
+                          height: "36px", 
+                          background: "#0A66C2",
+                        }}
+                      >
+                        <Linkedin size={18} color="white" />
                       </div>
                     </a>
                   </li>
