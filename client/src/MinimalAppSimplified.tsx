@@ -396,11 +396,15 @@ export default function MinimalAppSimplified() {
               Luxembourg Pas Chère
             </h1>
             
-            <p className="hero-subtitle">
-              {t.heroDescription.split('. ')[0]}.
-              <span style={{ display: 'block', marginTop: '0.5rem' }}>
-                {t.heroDescription.split('. ')[1]}
-              </span>
+            <p className="hero-subtitle" style={{ 
+              fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
+              lineHeight: '1.5',
+              maxWidth: '100%',
+              padding: '0 1rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>
+              {t.heroDescription}
             </p>
           </div>
           
