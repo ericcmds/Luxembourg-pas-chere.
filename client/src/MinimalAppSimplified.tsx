@@ -640,7 +640,9 @@ export default function MinimalAppSimplified() {
               fontSize: '0.9rem',
               zIndex: 2
             }}>
-              En cours
+              {language === 'fr' ? 'En cours' : 
+               language === 'de' ? 'Aktuell' : 
+               'In progress'}
             </div>
             
             <h3 style={{ 
@@ -648,7 +650,9 @@ export default function MinimalAppSimplified() {
               marginBottom: '1.5rem',
               color: '#333'
             }}>
-              Notre nouvelle édition 2025
+              {language === 'fr' ? 'Notre nouvelle édition 2025' : 
+               language === 'de' ? 'Unsere neue Ausgabe 2025' : 
+               'Our new 2025 edition'}
             </h3>
             
             <p style={{ 
@@ -659,7 +663,9 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto 2rem'
             }}>
-              Nous préparons une édition enrichie avec encore plus de conseils, d'astuces et de bons plans pour vivre au Luxembourg sans se ruiner. Votre participation nous aidera à financer l'impression et la distribution de ce nouveau guide.
+              {language === 'fr' ? 'Nous préparons une édition enrichie avec encore plus de conseils, d\'astuces et de bons plans pour vivre au Luxembourg sans se ruiner. Votre participation nous aidera à financer l\'impression et la distribution de ce nouveau guide.' : 
+               language === 'de' ? 'Wir bereiten eine erweiterte Ausgabe mit noch mehr Tipps, Tricks und günstigen Angeboten für ein Leben in Luxemburg ohne sich zu ruinieren vor. Ihre Unterstützung hilft uns, den Druck und die Verteilung dieses neuen Führers zu finanzieren.' : 
+               'We are preparing an enhanced edition with even more advice, tips, and deals for living in Luxembourg without breaking the bank. Your participation will help us finance the printing and distribution of this new guide.'}
             </p>
             
             <div style={{
@@ -675,8 +681,16 @@ export default function MinimalAppSimplified() {
                 alignItems: 'center',
                 marginBottom: '1rem'
               }}>
-                <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>Objectif: 10,000€</span>
-                <span style={{ color: '#E31837', fontWeight: 'bold' }}>60% atteint</span>
+                <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+                  {language === 'fr' ? 'Objectif: 10,000€' : 
+                   language === 'de' ? 'Ziel: 10.000€' : 
+                   'Goal: €10,000'}
+                </span>
+                <span style={{ color: '#E31837', fontWeight: 'bold' }}>
+                  {language === 'fr' ? '60% atteint' : 
+                   language === 'de' ? '60% erreicht' : 
+                   '60% reached'}
+                </span>
               </div>
               
               <div style={{
@@ -701,8 +715,16 @@ export default function MinimalAppSimplified() {
                 fontSize: '0.9rem',
                 color: '#666'
               }}>
-                <span>6,000€ collectés</span>
-                <span>123 contributeurs</span>
+                <span>
+                  {language === 'fr' ? '6,000€ collectés' : 
+                   language === 'de' ? '6.000€ gesammelt' : 
+                   '€6,000 collected'}
+                </span>
+                <span>
+                  {language === 'fr' ? '123 contributeurs' : 
+                   language === 'de' ? '123 Unterstützer' : 
+                   '123 contributors'}
+                </span>
               </div>
             </div>
             
@@ -756,14 +778,18 @@ export default function MinimalAppSimplified() {
                   fontSize: '0.9rem',
                   lineHeight: '24px'
                 }}>1</span>
-                Contribution de base
+                {language === 'fr' ? 'Contribution de base' : 
+                 language === 'de' ? 'Basisbeitrag' : 
+                 'Basic Contribution'}
               </h4>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 marginBottom: '1rem'
               }}>
-                Précommandez le guide 2025 et recevez-le dès sa sortie avec une dédicace personnalisée.
+                {language === 'fr' ? 'Précommandez le guide 2025 et recevez-le dès sa sortie avec une dédicace personnalisée.' : 
+                 language === 'de' ? 'Bestellen Sie den 2025-Führer vor und erhalten Sie ihn direkt nach Erscheinen mit einer persönlichen Widmung.' : 
+                 'Pre-order the 2025 guide and receive it at launch with a personalized dedication.'}
               </p>
               <div style={{
                 fontSize: '1.5rem',
@@ -782,7 +808,9 @@ export default function MinimalAppSimplified() {
                 fontWeight: 'bold',
                 cursor: 'pointer'
               }}>
-                Sélectionner
+                {language === "fr" ? "Sélectionner" : 
+                 language === "de" ? "Auswählen" : 
+                 "Select"}
               </button>
             </div>
             
@@ -806,7 +834,9 @@ export default function MinimalAppSimplified() {
                 fontSize: '0.8rem',
                 fontWeight: 'bold'
               }}>
-                Populaire
+                {language === 'fr' ? 'Populaire' : 
+                 language === 'de' ? 'Beliebt' : 
+                 'Popular'}
               </div>
               
               <h4 style={{
@@ -829,14 +859,18 @@ export default function MinimalAppSimplified() {
                   fontSize: '0.9rem',
                   lineHeight: '24px'
                 }}>2</span>
-                Pack Supporter
+                {language === 'fr' ? 'Pack Supporter' : 
+                 language === 'de' ? 'Unterstützer-Paket' : 
+                 'Supporter Pack'}
               </h4>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 marginBottom: '1rem'
               }}>
-                Le guide + un tote bag exclusif + accès à notre communauté privée avec des conseils mensuels.
+                {language === 'fr' ? 'Le guide + un tote bag exclusif + accès à notre communauté privée avec des conseils mensuels.' : 
+                 language === 'de' ? 'Der Führer + eine exklusive Tragetasche + Zugang zu unserer privaten Community mit monatlichen Tipps.' : 
+                 'The guide + an exclusive tote bag + access to our private community with monthly tips.'}
               </p>
               <div style={{
                 fontSize: '1.5rem',
@@ -886,14 +920,18 @@ export default function MinimalAppSimplified() {
                   fontSize: '0.9rem',
                   lineHeight: '24px'
                 }}>3</span>
-                Mécène Premium
+                {language === 'fr' ? 'Mécène Premium' : 
+                 language === 'de' ? 'Premium-Unterstützer' : 
+                 'Premium Patron'}
               </h4>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 marginBottom: '1rem'
               }}>
-                Pack Supporter + votre nom dans les remerciements + une visite guidée personnalisée de Luxembourg.
+                {language === 'fr' ? 'Pack Supporter + votre nom dans les remerciements + une visite guidée personnalisée de Luxembourg.' : 
+                 language === 'de' ? 'Unterstützer-Paket + Ihr Name in der Danksagung + eine personalisierte Führung durch Luxemburg.' : 
+                 'Supporter Pack + your name in the acknowledgements + a personalized guided tour of Luxembourg.'}
               </p>
               <div style={{
                 fontSize: '1.5rem',
@@ -935,7 +973,9 @@ export default function MinimalAppSimplified() {
               color: '#333',
               marginBottom: '1rem'
             }}>
-              On parle de nous
+              {language === 'fr' ? 'On parle de nous' : 
+               language === 'de' ? 'Man spricht über uns' : 
+               'Media coverage'}
             </h2>
             <p style={{ 
               fontSize: '1.1rem',
@@ -943,7 +983,9 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              Découvrez ce que les médias luxembourgeois et internationaux disent de notre guide.
+              {language === 'fr' ? 'Découvrez ce que les médias luxembourgeois et internationaux disent de notre guide.' : 
+               language === 'de' ? 'Entdecken Sie, was luxemburgische und internationale Medien über unseren Führer sagen.' : 
+               'Discover what Luxembourg and international media say about our guide.'}
             </p>
           </div>
           
@@ -1210,7 +1252,9 @@ export default function MinimalAppSimplified() {
               color: '#333',
               marginBottom: '1rem'
             }}>
-              Découvrir
+              {language === 'fr' ? 'Découvrir' : 
+               language === 'de' ? 'Entdecken' : 
+               'Discover'}
             </h2>
             <p style={{ 
               fontSize: '1.1rem',
@@ -1218,7 +1262,9 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              Explorez Luxembourg à travers nos sélections thématiques et découvrez les meilleurs plans économiques.
+              {language === 'fr' ? 'Explorez Luxembourg à travers nos sélections thématiques et découvrez les meilleurs plans économiques.' : 
+               language === 'de' ? 'Entdecken Sie Luxemburg durch unsere thematischen Auswahlen und finden Sie die besten wirtschaftlichen Angebote.' : 
+               'Explore Luxembourg through our thematic selections and discover the best budget-friendly opportunities.'}
             </p>
           </div>
           
