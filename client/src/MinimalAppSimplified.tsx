@@ -117,7 +117,7 @@ export default function MinimalAppSimplified() {
   
   // Handler for order button
   const handleOrderClick = () => {
-    alert(`Merci de votre intérêt pour le livre "Luxembourg Pas Cher"! Le processus de commande sera bientôt disponible.`);
+    alert(`Merci de votre intérêt pour le guide! Le processus de commande sera bientôt disponible.`);
   };
   
   // Scroll to top function
@@ -196,8 +196,8 @@ export default function MinimalAppSimplified() {
           {/* Logo */}
           <a href="#home" className="site-logo">
             <div className="logo-text">
-              <span className="logo-primary">Luxembourg</span>
-              <span className="logo-secondary">Pas Cher</span>
+              <span className="logo-primary">Le Guide</span>
+              <span className="logo-secondary">2025</span>
               <div className="logo-badge">€</div>
             </div>
             
@@ -424,9 +424,7 @@ export default function MinimalAppSimplified() {
               {new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit' })}
             </div>
             
-            <h1 className="hero-title">
-              {t.heroTitle}
-            </h1>
+
             
             <p className="hero-subtitle" style={{ 
               fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
@@ -446,7 +444,7 @@ export default function MinimalAppSimplified() {
               {/* Book Cover */}
               <img 
                 src="/assets/cover.png" 
-                alt="Luxembourg Pas Cher - Guide Pratique" 
+                alt="Guide Pratique" 
                 className="book-cover"
                 onError={(e) => {
                   console.error('Image error:', e);
@@ -457,7 +455,7 @@ export default function MinimalAppSimplified() {
                   target.style.display = 'flex';
                   target.style.alignItems = 'center';
                   target.style.justifyContent = 'center';
-                  target.alt = 'LUXEMBOURG PAS CHER';
+                  target.alt = 'Guide Pratique';
                 }}
               />
               
@@ -623,9 +621,9 @@ export default function MinimalAppSimplified() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              {language === 'fr' ? 'Participez à notre campagne de financement participatif et soutenez le développement de Luxembourg Pas Cher.' : 
-               language === 'de' ? 'Nehmen Sie an unserer Crowdfunding-Kampagne teil und unterstützen Sie die Entwicklung von Luxembourg Pas Cher.' : 
-               'Participate in our crowdfunding campaign and support the development of Luxembourg Pas Cher.'}
+              {language === 'fr' ? 'Participez à notre campagne de financement participatif et soutenez le développement du guide.' : 
+               language === 'de' ? 'Nehmen Sie an unserer Crowdfunding-Kampagne teil und unterstützen Sie die Entwicklung des Führers.' : 
+               'Participate in our crowdfunding campaign and support the development of the guide.'}
             </p>
           </div>
           
