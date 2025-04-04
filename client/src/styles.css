@@ -375,24 +375,51 @@ body {
   width: 30%;
 }
 
-.instagram-button {
+.social-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   width: 36px;
   height: 36px;
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 3px 8px rgba(225, 48, 108, 0.35);
   border: 2px solid white;
   color: white;
   margin-right: 0.5rem;
 }
 
-.instagram-button:hover {
+.social-button:hover {
   transform: translateY(-2px) scale(1.05);
+}
+
+/* Instagram */
+.social-button:has(svg[aria-label="Instagram"]) {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 3px 8px rgba(225, 48, 108, 0.35);
+}
+
+.social-button:has(svg[aria-label="Instagram"]):hover {
   box-shadow: 0 5px 12px rgba(225, 48, 108, 0.5);
+}
+
+/* Facebook */
+.social-button:has(svg[aria-label="Facebook"]) {
+  background-color: #1877f2;
+  box-shadow: 0 3px 8px rgba(24, 119, 242, 0.35);
+}
+
+.social-button:has(svg[aria-label="Facebook"]):hover {
+  box-shadow: 0 5px 12px rgba(24, 119, 242, 0.5);
+}
+
+/* LinkedIn */
+.social-button:has(svg[aria-label="LinkedIn"]) {
+  background-color: #0077b5;
+  box-shadow: 0 3px 8px rgba(0, 119, 181, 0.35);
+}
+
+.social-button:has(svg[aria-label="LinkedIn"]):hover {
+  box-shadow: 0 5px 12px rgba(0, 119, 181, 0.5);
 }
 
 .lang-button {

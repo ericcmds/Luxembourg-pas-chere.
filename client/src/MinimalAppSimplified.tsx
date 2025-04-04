@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart } from 'lucide-react';
+import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart, Facebook, Linkedin } from 'lucide-react';
 import './styles.css';
 
 // Definiere Übersetzungsobjekte
@@ -249,8 +249,18 @@ export default function MinimalAppSimplified() {
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="instagram-button">
-                  <Instagram size={18} />
+                <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" className="social-button">
+                  <Instagram size={18} aria-label="Instagram" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" className="social-button">
+                  <Facebook size={18} aria-label="Facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" className="social-button">
+                  <Linkedin size={18} aria-label="LinkedIn" />
                 </a>
               </li>
               <li>
@@ -368,9 +378,25 @@ export default function MinimalAppSimplified() {
                 href="https://www.instagram.com/luxembourgpaschere/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="instagram-button"
+                className="social-button"
               >
-                <Instagram size={18} />
+                <Instagram size={18} aria-label="Instagram" />
+              </a>
+              <a 
+                href="https://www.facebook.com/luxembourgpaschere/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-button"
+              >
+                <Facebook size={18} aria-label="Facebook" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/luxembourgpaschere/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-button"
+              >
+                <Linkedin size={18} aria-label="LinkedIn" />
               </a>
             </div>
           </div>
