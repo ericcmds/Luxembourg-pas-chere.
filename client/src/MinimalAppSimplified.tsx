@@ -1720,8 +1720,8 @@ export default function MinimalAppSimplified() {
                 marginBottom: '1.5rem'
               }}>
                 <img 
-                  src="/images/logo.png" 
-                  alt="Luxembourg Pas Cher Logo" 
+                  src="/images/logo.jpg" 
+                  alt="Voix Solidaires Logo" 
                   style={{
                     height: '60px',
                     maxWidth: '100%'
