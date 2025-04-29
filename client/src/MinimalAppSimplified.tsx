@@ -195,13 +195,14 @@ export default function MinimalAppSimplified() {
         <div className="container">
           {/* Logo */}
           <a href="#home" className="site-logo">
-            <div className="logo-text">
-              <span className="logo-primary">Luxembourg</span>
-              <span className="logo-secondary">Pas Cher</span>
-              <div className="logo-badge">€</div>
-            </div>
-            
-
+            <img 
+              src="/images/logo.png" 
+              alt="Luxembourg Pas Cher Logo" 
+              style={{
+                height: '50px',
+                maxWidth: '100%'
+              }}
+            />
           </a>
           
           {/* Mobile Menu Button */}
@@ -341,7 +342,20 @@ export default function MinimalAppSimplified() {
           </ul>
           
           <div className="site-info">
-
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              marginBottom: '1.5rem' 
+            }}>
+              <img 
+                src="/images/logo.png" 
+                alt="Luxembourg Pas Cher Logo" 
+                style={{
+                  height: '60px',
+                  maxWidth: '100%'
+                }}
+              />
+            </div>
             
             <div className="mobile-lang-options">
               <button 
@@ -424,7 +438,22 @@ export default function MinimalAppSimplified() {
               {new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit' })}
             </div>
             
-
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              marginBottom: '1.5rem',
+              marginTop: '1rem'
+            }}>
+              <img 
+                src="/images/logo.png" 
+                alt="Luxembourg Pas Cher Logo" 
+                style={{
+                  height: '80px',
+                  maxWidth: '90%',
+                  filter: 'drop-shadow(0px 2px 5px rgba(0,0,0,0.2))'
+                }}
+              />
+            </div>
             
             <p className="hero-subtitle" style={{ 
               fontSize: 'clamp(1rem, calc(0.95rem + 1vw), 1.3rem)',
@@ -1690,16 +1719,14 @@ export default function MinimalAppSimplified() {
                 alignItems: 'center',
                 marginBottom: '1.5rem'
               }}>
-                <div style={{
-                  fontWeight: 'bold',
-                  fontSize: '1.8rem',
-                  color: '#fff',
-                  display: 'flex',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ color: '#38b6ff' }}>Luxembourg</span>
-                  <span style={{ marginLeft: '0.5rem' }}>Pas Cher</span>
-                </div>
+                <img 
+                  src="/images/logo.png" 
+                  alt="Luxembourg Pas Cher Logo" 
+                  style={{
+                    height: '60px',
+                    maxWidth: '100%'
+                  }}
+                />
               </div>
               <p style={{
                 fontSize: '0.95rem',
