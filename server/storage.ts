@@ -101,9 +101,9 @@ export class DatabaseStorage implements IStorage {
         .values(insertNewsletter)
         .returning();
       return newsletter;
-    } catch (error) {
+    } catch (error: any) {
       // Prüfen, ob es ein Duplicate-Key-Error ist (Email existiert bereits)
-      if (error.code === '23505') {
+      if (error && error.code === '23505') {
         throw new Error('Diese E-Mail-Adresse ist bereits für den Newsletter registriert.');
       }
       throw error;
@@ -263,7 +263,7 @@ export class DatabaseStorage implements IStorage {
       // Aktualisiere die Anzahl der Unterstützer für diese Option
       await tx.update(crowdfundingOptions)
         .set({
-          currentBackers: (t) => `${t.currentBackers} + 1`,
+          currentBackers: tx.sql`${crowdfundingOptions.currentBackers} + 1`,
         })
         .where(eq(crowdfundingOptions.id, insertPledge.optionId));
       
@@ -295,12 +295,12 @@ export class DatabaseStorage implements IStorage {
     const bookPrice = 24.99; // Fest definierter Preis für das Buch
     const totalPrice = bookPrice * (insertOrder.quantity || 1);
     
-    const orderWithPrice = {
+    // Wir müssen das Objekt als Array für db.insert wrappen
+    const [order] = await db.insert(bookOrders).values({
       ...insertOrder,
       totalPrice
-    };
+    }).returning();
     
-    const [order] = await db.insert(bookOrders).values(orderWithPrice).returning();
     return order;
   }
   

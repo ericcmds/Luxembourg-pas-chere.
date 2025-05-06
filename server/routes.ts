@@ -60,6 +60,12 @@ const searchLimiter = rateLimit({
 
 export async function registerRoutes(app: Express): Promise<Server> {
   /**
+   * Hauptroute zur statischen Seite
+   */
+  app.get("/", (_req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, "../static-index.html"));
+  });
+  /**
    * Kontaktformular-API
    */
   app.post("/api/contact", contactLimiter, async (req: Request, res: Response) => {
