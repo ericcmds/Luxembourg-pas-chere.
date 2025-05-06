@@ -1,0 +1,45 @@
+Optimize the technical aspects of the Luxembourg Pas Cher website to improve functionality, navigation, and overall performance. I've noticed several technical issues including non-functional buttons and navigation problems. Make the following improvements:
+
+1. Fix navigation functionality:
+   - Repair the anchor link system so clicking on menu items smoothly scrolls to the correct sections
+   - Implement proper URL hash management so direct links to sections work correctly
+   - Add active states to navigation items to indicate current section
+   - Make the logo link back to the homepage
+   - Create a persistent navigation bar that remains visible when scrolling
+
+2. Fix non-functional buttons and interactive elements:
+   - Implement proper functionality for the "COMMANDER" button to open a purchase modal or link to purchase page
+   - Add click handlers to "Sélectionner" buttons in the crowdfunding section to capture selection
+   - Make "Participer au crowdfunding" button functional with a form submission or external link
+   - Ensure "Découvrir" buttons under thematic sections link to appropriate content pages
+   - Fix social media icon links to open in new tabs
+
+3. Ensure complete mobile responsiveness:
+   - Replace the current basic responsive setup with a comprehensive mobile-first approach
+   - Create a proper mobile navigation menu with hamburger toggle for smaller screens
+   - Ensure all clickable elements are minimum 44×44px on mobile for touch accessibility
+   - Test and optimize for a variety of devices (iPhone, Android, tablets) and orientations
+   - Prevent horizontal overflow issues on mobile devices
+
+4. Optimize page load speed and performance:
+   - Implement lazy loading for images below the fold
+   - Minify and concatenate CSS and JavaScript files
+   - Optimize image file sizes and formats (use WebP with JPEG fallbacks)
+   - Implement proper browser caching with appropriate headers
+   - Add preload directives for critical resources
+   - Ensure Core Web Vitals compliance (LCP, CLS, FID)
+
+5. Add proper hover states and transitions:
+   - Create consistent hover effects for all interactive elements
+   - Implement focus states for keyboard navigation
+   - Add transition effects for state changes (hover, active, focus)
+   - Ensure hover states provide clear visual feedback on desktop
+   - Add touch feedback effects for mobile users
+
+6. Implement proper language switching functionality:
+   - Fix the language toggle in the navigation
+   - Ensure content changes appropriately when language is switched
+   - Store language preference in localStorage for returning visitors
+   - Implement proper hreflang tags for SEO
+
+Additionally, add appropriate error handling for any interactive elements, ensure cross-browser compatibility (Chrome, Firefox, Safari, Edge), and implement proper semantic HTML throughout the site for accessibility and SEO benefits.
