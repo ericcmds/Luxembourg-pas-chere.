@@ -1497,6 +1497,1037 @@ export default function MinimalAppSimplified() {
         </div>
       </section>
       
+      {/* Target Groups Section */}
+      <section id="target-groups" style={{ 
+        padding: '5rem 0',
+        backgroundColor: 'var(--gray-100)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              {t.targetGroupsTitle}
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem',
+              color: '#666',
+              maxWidth: '800px',
+              margin: '0 auto',
+              lineHeight: '1.7'
+            }}>
+              {t.targetGroupsDescription}
+            </p>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            {/* Student Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--primary-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--primary-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4L3 7V7.5L12 10.5L21 7.5V7L12 4Z" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M21 7.5V12M3 7.5V16.5L12 19.5L21 16.5V7.5M16 9.5V14.5" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.student}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.studentDescription}
+              </p>
+            </div>
+            
+            {/* Entrepreneur Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--secondary-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--secondary-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 6V12M8 12V18M12 3V21M5 9H3M5 15H3M21 9H19M21 15H19" stroke="var(--secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.entrepreneur}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.entrepreneurDescription}
+              </p>
+            </div>
+            
+            {/* Families Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--accent-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--accent-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="#37ba68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.families}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.familiesDescription}
+              </p>
+            </div>
+            
+            {/* Newcomer Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--primary-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--primary-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.5523 5.44772 21 6 21H9M19 10L21 12M19 10V20C19 20.5523 18.5523 21 18 21H15M9 21C9.55228 21 10 20.5523 10 20V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V20C14 20.5523 14.4477 21 15 21M9 21H15" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.newcomer}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.newcomerDescription}
+              </p>
+            </div>
+            
+            {/* Workers Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--secondary-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--secondary-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 10H16.01M12 10H12.01M8 10H8.01M3 10C3 4.64706 5.11765 3 12 3C18.8824 3 21 4.64706 21 10C21 15.3529 18.8824 17 12 17C11.6592 17 11.3301 16.996 11.0124 16.9876L7 21V16.4939C4.0328 15.6692 3 13.7383 3 10Z" stroke="var(--secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.worker}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.workerDescription}
+              </p>
+            </div>
+            
+            {/* Seniors Profile Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '100px',
+                height: '100px',
+                background: 'var(--accent-light)',
+                borderRadius: '0 0 0 100%',
+                zIndex: 0
+              }}></div>
+              
+              <div style={{
+                backgroundColor: 'var(--accent-light)',
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+                position: 'relative'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 3C10.1716 3 9.5 3.67157 9.5 4.5C9.5 5.32843 10.1716 6 11 6C11.8284 6 12.5 5.32843 12.5 4.5C12.5 3.67157 11.8284 3 11 3Z" fill="#37ba68"/>
+                  <path d="M14 14.5C14 14.5 13 19 15 21C15 21 8.5 23 7 18L9 8.5" stroke="#37ba68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10 9.5C10 9.5 8.5 8.5 7.5 9.5C6.5 10.5 5 11 5 11C5 11 9.5 13 10.5 13C11.5 13 14 14.5 14 14.5" stroke="#37ba68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M19 8.5C19 8.5 17 15.5 14 14.5" stroke="#37ba68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
+                color: '#333',
+                position: 'relative'
+              }}>
+                {t.senior}
+              </h3>
+              
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                position: 'relative'
+              }}>
+                {t.seniorDescription}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section id="testimonials" style={{ 
+        padding: '5rem 0',
+        backgroundColor: '#fff',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              {t.testimonialsTitle}
+            </h2>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            {/* Testimonial Card 1 */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '20px',
+                left: '20px',
+                fontSize: '4rem',
+                color: 'var(--primary-light)',
+                fontFamily: 'Georgia, serif',
+                lineHeight: '0.8',
+                zIndex: 0
+              }}>
+                "
+              </div>
+              
+              <p style={{
+                fontSize: '1.1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic',
+                position: 'relative',
+                zIndex: 1,
+                paddingTop: '2rem'
+              }}>
+                Tout d'abord j'aimerais vous féliciter pour votre courage et votre superbe initiative de publier un tel livre qui peut être très pratique pour de nombreuses personnes.
+              </p>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--primary)',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem',
+                  marginRight: '1rem'
+                }}>M</div>
+                
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    color: '#333',
+                    fontSize: '1rem'
+                  }}>Michèle</div>
+                  <div style={{
+                    color: '#666',
+                    fontSize: '0.9rem'
+                  }}>Directrice générale Solina Solidarité Asbl</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial Card 2 */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '20px',
+                left: '20px',
+                fontSize: '4rem',
+                color: 'var(--secondary-light)',
+                fontFamily: 'Georgia, serif',
+                lineHeight: '0.8',
+                zIndex: 0
+              }}>
+                "
+              </div>
+              
+              <p style={{
+                fontSize: '1.1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic',
+                position: 'relative',
+                zIndex: 1,
+                paddingTop: '2rem'
+              }}>
+                C'est un guide bien fait où les bonnes adresses sont regroupées par thème. Facile à consulter pour trouver rapidement ce que l'on cherche. Je conseille vivement.
+              </p>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--secondary)',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem',
+                  marginRight: '1rem'
+                }}>S</div>
+                
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    color: '#333',
+                    fontSize: '1rem'
+                  }}>Sarah</div>
+                  <div style={{
+                    color: '#666',
+                    fontSize: '0.9rem'
+                  }}>Étudiante à l'Université du Luxembourg</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial Card 3 */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '20px',
+                left: '20px',
+                fontSize: '4rem',
+                color: 'var(--accent-light)',
+                fontFamily: 'Georgia, serif',
+                lineHeight: '0.8',
+                zIndex: 0
+              }}>
+                "
+              </div>
+              
+              <p style={{
+                fontSize: '1.1rem',
+                lineHeight: '1.7',
+                color: '#666',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic',
+                position: 'relative',
+                zIndex: 1,
+                paddingTop: '2rem'
+              }}>
+                Als Neuankömmling in Luxemburg war dieser Leitfaden unglaublich hilfreich. Er hat mir geholfen, die besten erschwinglichen Orte zu finden und mich in meiner neuen Heimat zurechtzufinden.
+              </p>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--accent)',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem',
+                  marginRight: '1rem'
+                }}>T</div>
+                
+                <div>
+                  <div style={{
+                    fontWeight: 'bold',
+                    color: '#333',
+                    fontSize: '1rem'
+                  }}>Thomas</div>
+                  <div style={{
+                    color: '#666',
+                    fontSize: '0.9rem'
+                  }}>Neuankömmling aus Deutschland</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style={{
+            backgroundColor: 'var(--gray-100)',
+            borderRadius: '12px',
+            padding: '3rem',
+            marginTop: '3rem',
+            boxShadow: '0 5px 20px rgba(0, 0, 0, 0.03)'
+          }}>
+            <h3 style={{
+              fontSize: '1.8rem',
+              color: '#333',
+              marginBottom: '1.5rem',
+              textAlign: 'center'
+            }}>
+              {t.institutionalSupportTitle}
+            </h3>
+            
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.7',
+              color: '#666',
+              marginBottom: '2rem',
+              textAlign: 'center',
+              maxWidth: '800px',
+              margin: '0 auto 2rem'
+            }}>
+              {t.institutionalSupportDescription}
+            </p>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: '1.5rem',
+              marginTop: '2rem'
+            }}>
+              <div style={{
+                backgroundColor: 'white',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                boxShadow: '0 3px 10px rgba(0, 0, 0, 0.04)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '80px',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.08)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.04)';
+              }}>
+                <span style={{
+                  fontWeight: '500',
+                  color: '#555',
+                  textAlign: 'center'
+                }}>Office Social Differdange</span>
+              </div>
+              
+              <div style={{
+                backgroundColor: 'white',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                boxShadow: '0 3px 10px rgba(0, 0, 0, 0.04)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '80px',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.08)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.04)';
+              }}>
+                <span style={{
+                  fontWeight: '500',
+                  color: '#555',
+                  textAlign: 'center'
+                }}>Ville de Luxembourg</span>
+              </div>
+              
+              <div style={{
+                backgroundColor: 'white',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                boxShadow: '0 3px 10px rgba(0, 0, 0, 0.04)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '80px',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.08)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.04)';
+              }}>
+                <span style={{
+                  fontWeight: '500',
+                  color: '#555',
+                  textAlign: 'center'
+                }}>Commune d'Esch-sur-Alzette</span>
+              </div>
+              
+              <div style={{
+                backgroundColor: 'white',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                boxShadow: '0 3px 10px rgba(0, 0, 0, 0.04)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '80px',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.08)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.04)';
+              }}>
+                <span style={{
+                  fontWeight: '500',
+                  color: '#555',
+                  textAlign: 'center'
+                }}>Office Social Dudelange</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Values Section */}
+      <section id="values" style={{ 
+        padding: '5rem 0',
+        backgroundColor: 'var(--gray-100)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2.5rem',
+              color: '#333',
+              marginBottom: '1rem'
+            }}>
+              {t.valuesTitle}
+            </h2>
+            <p style={{ 
+              fontSize: '1.1rem',
+              color: '#666',
+              maxWidth: '800px',
+              margin: '0 auto',
+              lineHeight: '1.7'
+            }}>
+              {t.valuesDescription}
+            </p>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            {/* Transparency Value Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2.5rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                backgroundColor: 'var(--primary-light)',
+                width: '70px',
+                height: '70px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.2 8.4C20.5 9.1 19.8 9.7 19 10C18.2 9.7 17.5 9.1 16.8 8.4C16.1 7.7 15.5 7 15.2 6.2C15.5 5.4 16.1 4.7 16.8 4C17.5 3.3 18.2 2.7 19 2.4C19.8 2.7 20.5 3.3 21.2 4C21.9 4.7 22.5 5.4 22.8 6.2C22.5 7 21.9 7.7 21.2 8.4V8.4ZM19 12C17.8956 12 16.8148 11.5785 15.9965 10.8284C15.1782 10.0783 14.6667 9.05653 14.5 7.9C14.4335 7.45021 14.4666 6.99323 14.598 6.558C13.6464 7.37483 12.8844 8.39356 12.369 9.539L12 10.3L11.1 12C10.3 14 11.1 16.3 13.1 17.1C14.8263 17.9342 16.7744 17.7023 18.3 16.5L19 16L20 15.2C20.8 14.6 20.9 13.6 20.4 12.9L20.1 12.6C19.8 12.2 19.4 12 19 12ZM10 2.2C7.4 2.2 5.2 4.4 5.2 7C5.2 8.5 5.8 9.9 6.9 10.8C4.4 12.2 2.9 14.7 2.9 17.4C2.9 18.3 3.6 19 4.5 19H12.5C12.2 18.1 12.2 17.1 12.4 16.2L12.9 15.1L13.6 13.7C14.3 12.1 15.4 10.9 16.7 10C16 9.4 15.4 8.6 15 7.7C14.6 6.8 14.4 5.9 14.4 5C14.4 3.8 14.7 2.6 15.3 1.6C13.7 1.2 11.8 2.2 10 2.2V2.2ZM15.4 11.3C16.3 10.6 16.9 9.6 17.1 8.5C17 8.6 16.9 8.8 16.8 8.9C16.3 9.5 15.7 10.1 15 10.5C15.1 10.9 15.2 11.1 15.4 11.3ZM10 4.2C9.3 4.2 8.7 4.9 8.7 5.7V5.9C8.7 7.3 8.3 8.6 7.5 9.6L7.2 9.9C6.9 10.3 6.9 10.9 7.3 11.2C7.7 11.5 8.2 11.5 8.6 11.1L8.9 10.9C10 9.5 10.5 7.9 10.6 6.2H11.4C11.7 6.2 12 5.9 12 5.7C12 5.4 11.7 5.2 11.4 5.2H10.5C10.3 4.6 10.2 4.2 10 4.2Z" fill="var(--primary)"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.6rem',
+                marginBottom: '1rem',
+                color: '#333'
+              }}>
+                {t.transparency}
+              </h3>
+              
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#666'
+              }}>
+                {t.transparencyDescription}
+              </p>
+            </div>
+            
+            {/* Social Responsibility Value Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2.5rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                backgroundColor: 'var(--secondary-light)',
+                width: '70px',
+                height: '70px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="var(--secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9C15 10.6569 13.6569 12 12 12" stroke="var(--secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 17V16" stroke="var(--secondary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.6rem',
+                marginBottom: '1rem',
+                color: '#333'
+              }}>
+                {t.socialResponsibility}
+              </h3>
+              
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#666'
+              }}>
+                {t.socialResponsibilityDescription}
+              </p>
+            </div>
+            
+            {/* Local Engagement Value Card */}
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2.5rem',
+              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            }}>
+              <div style={{
+                backgroundColor: 'var(--accent-light)',
+                width: '70px',
+                height: '70px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 21H21M6 18V9.99998M10 18V9.99998M14 18V9.99998M18 18V9.99998M20 7L12 3L4 7" stroke="#37ba68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                fontSize: '1.6rem',
+                marginBottom: '1rem',
+                color: '#333'
+              }}>
+                {t.localEngagement}
+              </h3>
+              
+              <p style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.7',
+                color: '#666'
+              }}>
+                {t.localEngagementDescription}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Discover Section */}
       <section style={{ 
         padding: '5rem 0',
