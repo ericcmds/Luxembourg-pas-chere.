@@ -1726,7 +1726,7 @@ export default function SimpleApp() {
                 {t.contactUs}
               </h3>
               <div style={{ color: '#aaa', marginBottom: '10px' }}>
-                <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{t.addressLabel}</div>
+                <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{t.address}</div>
                 <div>1 Rue de Luxembourg, L-1234 Luxembourg</div>
               </div>
               <div style={{ color: '#aaa', marginBottom: '10px' }}>
@@ -1778,9 +1778,9 @@ export default function SimpleApp() {
             borderTop: '1px solid rgba(255, 255, 255, 0.1)',
             paddingTop: '20px',
             display: 'flex',
-            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            flexDirection: isMobile ? 'column' : 'row',
             justifyContent: 'space-between',
-            alignItems: window.innerWidth < 768 ? 'center' : 'flex-start',
+            alignItems: isMobile ? 'center' : 'flex-start',
             gap: '20px',
           }}>
             <div style={{ color: '#aaa' }}>
