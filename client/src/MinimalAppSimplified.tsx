@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart, Facebook, Linkedin } from 'lucide-react';
 import './styles.css';
+import FAQSection from './components/FAQSection';
 
 // Definiere Übersetzungsobjekte
 const translations = {
