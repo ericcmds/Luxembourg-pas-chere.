@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxembourg Pas Cher - Budget-Tipps für Luxemburg</title>
+  <meta name="description" content="Entdecken Sie Luxemburg ohne Ihr Budget zu sprengen! Tipps und Angebote für ein günstiges Leben in Luxemburg.">
+  <meta name="keywords" content="Luxembourg Pas Cher, Luxemburg, Budget, Sparen, Tipps, Angebote, Günstiges Leben">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Inline CSS für schnelleres Rendering -->
+  <style>
+    /* Basis-Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styling */
+    header {
+      background-color: #38b6ff;
+      padding: 15px 0;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 20px;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    nav ul li a:hover {
+      opacity: 0.8;
+    }
+    
+    /* Sprach-Auswahl */
+    .language-selector {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .language-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 5px 10px;
+      transition: background-color 0.3s;
+    }
+    
+    .language-btn.active {
+      background-color: white;
+      color: #38b6ff;
+      border-radius: 4px;
+    }
+    
+    /* Hero-Bereich */
+    .hero {
+      background-color: #f5f5dc;
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      color: #38b6ff;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Sektionen */
+    .section {
+      padding: 60px 0;
+      background-color: white;
+    }
+    
+    .section:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+    
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-heading h2 {
+      color: #38b6ff;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    /* Über uns */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    /* Buch-Bereich */
+    .book-section {
+      background-color: white;
+      padding: 60px 0;
+    }
+    
+    .book-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .book-cover {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .book-cover img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .book-details {
+      flex: 1;
+    }
+    
+    .book-details h2 {
+      color: #e81414;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    .book-details p {
+      margin-bottom: 20px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #e81414;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      background-color: #d01010;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .social-media {
+      margin-bottom: 20px;
+    }
+    
+    .social-icon {
+      display: inline-block;
+      margin: 0 10px;
+      color: white;
+      font-size: 20px;
+      transition: opacity 0.3s;
+    }
+    
+    .social-icon:hover {
+      opacity: 0.8;
+    }
+    
+    .copyright {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    /* Mobile Anpassungen */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      nav {
+        margin-top: 15px;
+        width: 100%;
+      }
+      
+      nav ul {
+        flex-direction: column;
+      }
+      
+      nav ul li {
+        margin: 5px 0;
+        margin-left: 0;
+      }
+      
+      .language-selector {
+        margin-top: 15px;
+      }
+      
+      .about-content,
+      .book-container {
+        flex-direction: column;
+      }
+      
+      .section {
+        padding: 40px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Luxembourg Pas Cher</div>
+      
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#book">Unser Buch</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      
+      <div class="language-selector">
+        <button class="language-btn active" data-lang="de">DE</button>
+        <button class="language-btn" data-lang="fr">FR</button>
+        <button class="language-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+  
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Luxembourg Pas Cher</h1>
+      <p>Entdecken Sie Luxemburg ohne Ihr Budget zu sprengen!</p>
+    </div>
+  </section>
+  
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Über uns</h2>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>Luxembourg Pas Cher ist eine Initiative, die Ihnen hilft, Luxemburg günstiger zu erleben. Wir teilen Tipps und Angebote, um das Leben in Luxemburg erschwinglich zu machen.</p>
+          <p>Unser Ziel ist es, Menschen mit begrenztem Budget zu helfen, alle Vorteile des Lebens in Luxemburg zu genießen, ohne zu viel auszugeben.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="book" class="book-section">
+    <div class="container">
+      <div class="book-container">
+        <div class="book-cover">
+          <!-- Platzhalter für Buchcover -->
+          <div style="width: 250px; height: 350px; background-color: #e81414; display: inline-block; position: relative;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: bold;">BUCHCOVER</div>
+          </div>
+        </div>
+        
+        <div class="book-details">
+          <h2>Unser Buch</h2>
+          <p>Entdecken Sie unser Buch, das über 500 Tipps und Deals enthält, um in Luxemburg Geld zu sparen und trotzdem voll zu genießen.</p>
+          <p>Von günstigen Restaurants bis hin zu versteckten Freizeitaktivitäten - unser Buch ist Ihr ultimativer Leitfaden für ein budgetfreundliches Leben in Luxemburg.</p>
+          <button class="cta-button">COMMANDER</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Kontakt</h2>
+      </div>
+      
+      <div style="text-align: center;">
+        <p>Haben Sie Fragen? Kontaktieren Sie uns gerne!</p>
+        <p>Email: info@luxembourgpascher.lu</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">Über uns</a>
+        <a href="#book">Unser Buch</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      
+      <div class="social-media">
+        <!-- Social Media Icons -->
+        <a href="#" class="social-icon">FB</a>
+        <a href="#" class="social-icon">IG</a>
+        <a href="#" class="social-icon">TW</a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Luxembourg Pas Cher. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Einfaches JavaScript für die Sprachumschaltung
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sprachauswahl
+      const langButtons = document.querySelectorAll('.language-btn');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          langButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Sprache in localStorage speichern
+          try {
+            localStorage.setItem('preferredLanguage', this.dataset.lang);
+          } catch (e) {
+            console.log('Could not save language preference');
+          }
+          
+          // Hier könnten wir Inhalte entsprechend der gewählten Sprache ändern
+          // Für diese einfache Demonstration ändern wir nur die Sprachelemente
+          
+          const lang = this.dataset.lang;
+          
+          // Beispiel für Übersetzungen (vereinfacht)
+          const translations = {
+            de: {
+              home: 'Home',
+              about: 'Über uns',
+              book: 'Unser Buch',
+              contact: 'Kontakt',
+              heroTitle: 'Luxembourg Pas Cher',
+              heroDesc: 'Entdecken Sie Luxemburg ohne Ihr Budget zu sprengen!',
+              orderButton: 'COMMANDER'
+            },
+            fr: {
+              home: 'Accueil',
+              about: 'À propos',
+              book: 'Notre livre',
+              contact: 'Contact',
+              heroTitle: 'Luxembourg Pas Cher',
+              heroDesc: 'Découvrez Luxembourg sans casser votre budget!',
+              orderButton: 'COMMANDER'
+            },
+            en: {
+              home: 'Home',
+              about: 'About Us',
+              book: 'Our Book',
+              contact: 'Contact',
+              heroTitle: 'Luxembourg On A Budget',
+              heroDesc: 'Discover Luxembourg without breaking your budget!',
+              orderButton: 'ORDER NOW'
+            }
+          };
+          
+          // Navigationsmenü übersetzen
+          document.querySelectorAll('nav ul li a')[0].textContent = translations[lang].home;
+          document.querySelectorAll('nav ul li a')[1].textContent = translations[lang].about;
+          document.querySelectorAll('nav ul li a')[2].textContent = translations[lang].book;
+          document.querySelectorAll('nav ul li a')[3].textContent = translations[lang].contact;
+          
+          // Weitere Übersetzungen...
+          document.querySelector('.hero h1').textContent = translations[lang].heroTitle;
+          document.querySelector('.hero p').textContent = translations[lang].heroDesc;
+          document.querySelector('.cta-button').textContent = translations[lang].orderButton;
+          
+          // Footerlinks übersetzen
+          document.querySelectorAll('.footer-links a')[0].textContent = translations[lang].home;
+          document.querySelectorAll('.footer-links a')[1].textContent = translations[lang].about;
+          document.querySelectorAll('.footer-links a')[2].textContent = translations[lang].book;
+          document.querySelectorAll('.footer-links a')[3].textContent = translations[lang].contact;
+        });
+      });
+      
+      // Smooth Scrolling für Ankerlinks
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70, // Header-Höhe berücksichtigen
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Button-Klick-Effekt
+      document.querySelector('.cta-button').addEventListener('click', function() {
+        alert('Vielen Dank für Ihr Interesse! Bestellen Sie das Buch über unser Formular, das in Kürze angezeigt wird.');
+      });
+      
+      // Gespeicherte Spracheinstellung laden
+      try {
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+          const langBtn = document.querySelector(`.language-btn[data-lang="${savedLang}"]`);
+          if (langBtn) {
+            langBtn.click();
+          }
+        }
+      } catch (e) {
+        console.log('Could not load language preference');
+      }
+    });
+  </script>
+</body>
+</html>
