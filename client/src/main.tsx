@@ -5,8 +5,8 @@ import { createRoot } from "react-dom/client";
 import React from 'react';
 import "./index.css";
 
-// Direkt die einfache App importieren (kein Lazy-Loading)
-import SimpleApp from "./SimpleApp";
+// Importiere die minimalste Version der App
+import MinimalAppSimplified from "./MinimalAppSimplified";
 
 // Initialisiere den Bypass
 (window as any).VITE_ALLOWED_HOSTS = '*';
@@ -19,9 +19,9 @@ try {
   console.log("🚀 Anwendung wird gestartet...");
   const root = createRoot(document.getElementById("root")!);
   
-  // Einfache App ohne komplexe CSS-in-JS Probleme rendern
-  root.render(<SimpleApp />);
-  console.log("✅ Vereinfachte Anwendung erfolgreich gerendert!");
+  // Extrem vereinfachte App ohne Flackern rendern
+  root.render(<MinimalAppSimplified />);
+  console.log("✅ Minimale Anwendung erfolgreich gerendert!");
   
 } catch (error) {
   console.error("❌ Kritischer Fehler beim Starten der Anwendung:", error);
