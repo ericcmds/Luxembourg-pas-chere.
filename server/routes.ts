@@ -1,6 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import path from 'path';
 import { 
   contactSchema, 
   newsletterSchema, 
@@ -367,11 +368,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       // Empfehlung in Datenbank speichern
+      const responseText = typeof response.content[0] === 'object' && 'text' in response.content[0] 
+        ? response.content[0].text 
+        : JSON.stringify(response.content[0]);
+        
       const recommendation = await storage.saveAiRecommendation({
         sessionId,
         userId: req.body.userId,
         prompt,
-        response: response.content[0].text,
+        response: responseText,
         category,
         languageCode
       });
@@ -380,7 +385,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({
         success: true,
         data: {
-          recommendation: response.content[0].text,
+          recommendation: responseText,
           id: recommendation.id
         }
       });
