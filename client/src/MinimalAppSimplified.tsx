@@ -10,6 +10,7 @@ const translations = {
     about: 'À propos',
     book: 'Livre',
     contact: 'Contact',
+    faq: 'FAQ',
     order: 'COMMANDER',
     heroTitle: 'Luxembourg Pas Cher',
     heroDescription: 'Les meilleurs conseils et offres exclusives pour vivre au Luxembourg. Découvrez comment profiter pleinement de ce magnifique pays sans vider votre portefeuille.',
@@ -28,12 +29,36 @@ const translations = {
     statsTips: 'Astuces et bons plans',
     pressTitle: 'On parle de nous',
     discoverTitle: 'Découvrir',
+    faqTitle: 'Questions Fréquentes',
+    faqSubtitle: 'Trouvez des réponses aux questions les plus fréquemment posées sur Luxembourg Pas Cher.',
+    faqDescription: 'Nos réponses aux questions que vous vous posez sur la vie économique au Luxembourg.',
+    faqQuestion1: 'Comment le livre "Luxembourg Pas Cher" peut-il m\'aider à économiser?',
+    faqAnswer1: 'Notre livre compile les meilleurs conseils, offres et astuces pour vivre à Luxembourg sans vous ruiner, des restaurants abordables aux activités gratuites, en passant par les transports économiques.',
+    faqQuestion2: 'Les bons plans sont-ils régulièrement mis à jour?',
+    faqAnswer2: 'Oui! Notre site web complète le livre avec des mises à jour régulières. Inscrivez-vous à notre newsletter pour recevoir les derniers bons plans.',
+    faqQuestion3: 'Puis-je contribuer en partageant mes propres astuces pour économiser?',
+    faqAnswer3: 'Absolument! Nous encourageons notre communauté à partager. Contactez-nous par email ou via nos réseaux sociaux pour nous faire part de vos découvertes.',
+    faqQuestion4: 'Le livre est-il disponible en plusieurs langues?',
+    faqAnswer4: 'Oui, le livre "Luxembourg Pas Cher" est disponible en français, allemand et anglais pour servir la communauté diverse du Luxembourg.',
+    faqQuestion5: 'Y a-t-il des réductions pour les commandes en groupe?',
+    faqAnswer5: 'Oui, nous proposons des tarifs spéciaux pour les commandes de 10 exemplaires ou plus. Contactez-nous directement pour plus d\'informations.',
+    contactUs: 'Contactez-nous',
+    address: 'Adresse',
+    phone: 'Téléphone',
+    email: 'Email',
+    subscribe: 'S\'abonner à la newsletter',
+    terms: 'Conditions d\'utilisation',
+    privacy: 'Politique de confidentialité',
+    cookies: 'Politique des cookies',
+    imprint: 'Mentions légales',
+    faqSectionTitle: 'Foire Aux Questions'
   },
   de: {
     home: 'Startseite',
     about: 'Über uns',
     book: 'Buch',
     contact: 'Kontakt',
+    faq: 'FAQ',
     order: 'BESTELLEN',
     heroTitle: 'Günstiges Luxemburg',
     heroDescription: 'Die besten Tipps und Angebote für ein erschwingliches Leben in Luxemburg. Entdecken Sie, wie Sie dieses wunderschöne Land genießen können, ohne Ihr Portemonnaie zu leeren.',
@@ -52,12 +77,36 @@ const translations = {
     crowdfundingButton: 'Am Crowdfunding teilnehmen',
     pressTitle: 'Pressestimmen',
     discoverTitle: 'Entdecken',
+    faqTitle: 'Häufig gestellte Fragen',
+    faqSubtitle: 'Finden Sie Antworten auf die am häufigsten gestellten Fragen zu Luxembourg Pas Cher.',
+    faqDescription: 'Unsere Antworten auf Ihre Fragen zum wirtschaftlichen Leben in Luxemburg.',
+    faqQuestion1: 'Wie kann mir das Buch "Luxembourg Pas Cher" beim Sparen helfen?',
+    faqAnswer1: 'Unser Buch fasst die besten Tipps, Angebote und Ratschläge für ein Leben in Luxemburg zusammen, ohne sich zu ruinieren – von erschwinglichen Restaurants bis hin zu kostenlosen Aktivitäten und günstigen Transportmöglichkeiten.',
+    faqQuestion2: 'Werden die Angebote regelmäßig aktualisiert?',
+    faqAnswer2: 'Ja! Unsere Website ergänzt das Buch mit regelmäßigen Updates. Melden Sie sich für unseren Newsletter an, um die neuesten Angebote zu erhalten.',
+    faqQuestion3: 'Kann ich eigene Spartipps teilen?',
+    faqAnswer3: 'Auf jeden Fall! Wir ermutigen unsere Community zum Teilen. Kontaktieren Sie uns per E-Mail oder über soziale Medien, um uns Ihre Entdeckungen mitzuteilen.',
+    faqQuestion4: 'Ist das Buch in mehreren Sprachen erhältlich?',
+    faqAnswer4: 'Ja, das Buch "Luxembourg Pas Cher" ist auf Französisch, Deutsch und Englisch erhältlich, um der vielfältigen Gemeinschaft Luxemburgs zu dienen.',
+    faqQuestion5: 'Gibt es Rabatte für Gruppenbestellungen?',
+    faqAnswer5: 'Ja, wir bieten Sonderpreise für Bestellungen von 10 oder mehr Exemplaren an. Kontaktieren Sie uns direkt für weitere Informationen.',
+    contactUs: 'Kontaktieren Sie uns',
+    address: 'Adresse',
+    phone: 'Telefon',
+    email: 'E-Mail',
+    subscribe: 'Newsletter abonnieren',
+    terms: 'Nutzungsbedingungen',
+    privacy: 'Datenschutzrichtlinie',
+    cookies: 'Cookie-Richtlinie',
+    imprint: 'Impressum',
+    faqSectionTitle: 'Häufig gestellte Fragen'
   },
   en: {
     home: 'Home',
     about: 'About',
     book: 'Book',
     contact: 'Contact',
+    faq: 'FAQ',
     order: 'ORDER NOW',
     heroTitle: 'Affordable Luxembourg',
     heroDescription: 'The best tips and offers for affordable living in Luxembourg. Discover how to enjoy this beautiful country without emptying your wallet.',
@@ -76,6 +125,29 @@ const translations = {
     crowdfundingButton: 'Join the crowdfunding',
     pressTitle: 'Press Coverage',
     discoverTitle: 'Discover',
+    faqTitle: 'Frequently Asked Questions',
+    faqSubtitle: 'Find answers to the most frequently asked questions about Luxembourg Pas Cher.',
+    faqDescription: 'Our answers to your questions about economic life in Luxembourg.',
+    faqQuestion1: 'How can the "Luxembourg Pas Cher" book help me save money?',
+    faqAnswer1: 'Our book compiles the best tips, offers, and advice for living in Luxembourg without breaking the bank, from affordable restaurants to free activities and economical transportation options.',
+    faqQuestion2: 'Are the deals regularly updated?',
+    faqAnswer2: 'Yes! Our website complements the book with regular updates. Sign up for our newsletter to receive the latest deals.',
+    faqQuestion3: 'Can I contribute by sharing my own money-saving tips?',
+    faqAnswer3: 'Absolutely! We encourage our community to share. Contact us via email or through our social media to let us know about your discoveries.',
+    faqQuestion4: 'Is the book available in multiple languages?',
+    faqAnswer4: 'Yes, the "Luxembourg Pas Cher" book is available in French, German, and English to serve Luxembourg\'s diverse community.',
+    faqQuestion5: 'Are there discounts for bulk orders?',
+    faqAnswer5: 'Yes, we offer special rates for orders of 10 copies or more. Contact us directly for more information.',
+    contactUs: 'Contact Us',
+    address: 'Address',
+    phone: 'Phone',
+    email: 'Email',
+    subscribe: 'Subscribe to newsletter',
+    terms: 'Terms of Use',
+    privacy: 'Privacy Policy',
+    cookies: 'Cookie Policy',
+    imprint: 'Imprint',
+    faqSectionTitle: 'Frequently Asked Questions'
   }
 };
 
@@ -147,7 +219,7 @@ export default function MinimalAppSimplified() {
       }
       
       // Detect current section for navigation highlighting
-      const sections = ['home', 'about', 'book', 'contact'];
+      const sections = ['home', 'about', 'book', 'contact', 'faq'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -251,6 +323,14 @@ export default function MinimalAppSimplified() {
                 </a>
               </li>
               <li>
+                <a 
+                  href="#faq" 
+                  className={`nav-link ${activeSection === 'faq' ? 'active' : ''}`}
+                >
+                  {t.faq}
+                </a>
+              </li>
+              <li>
                 <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" className="social-button">
                   <Instagram size={18} aria-label="Instagram" />
                 </a>
@@ -338,6 +418,15 @@ export default function MinimalAppSimplified() {
                 onClick={toggleMobileMenu}
               >
                 {t.contact}
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#faq" 
+                className={`nav-link ${activeSection === 'faq' ? 'active' : ''}`}
+                onClick={toggleMobileMenu}
+              >
+                {t.faq}
               </a>
             </li>
           </ul>
