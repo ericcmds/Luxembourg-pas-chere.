@@ -76,7 +76,21 @@ export const translations = {
     copyright: "© 2024 Luxembourg Pas Cher",
     imprint: "Impressum",
     faq: "FAQ",
-    legalNotice: "Rechtliche Hinweise"
+    legalNotice: "Rechtliche Hinweise",
+    
+    // FAQ Section
+    faqTitle: "Häufig gestellte Fragen",
+    faqDescription: "Hier finden Sie Antworten auf die häufigsten Fragen zu Luxembourg Pas Cher.",
+    faqQuestion1: "Was ist Luxembourg Pas Cher?",
+    faqAnswer1: "Luxembourg Pas Cher ist ein umfassender Leitfaden, der Ihnen zeigt, wie Sie Luxemburg genießen können, ohne ein Vermögen auszugeben. Unser Buch bietet eine Sammlung von Tipps, Angeboten und Geheimnissen, um dieses schöne Land kostengünstig zu erleben.",
+    faqQuestion2: "Wie kann ich das Buch kaufen?",
+    faqAnswer2: "Sie können unser Buch direkt über unsere Website bestellen, indem Sie auf die Schaltfläche 'Bestellen' klicken. Wir bieten auch eine Vorbestellungsoption für unseren kommenden Leitfaden 2025 an.",
+    faqQuestion3: "Gibt es einen digitalen Guide zum Download?",
+    faqAnswer3: "Ja, wir bieten eine digitale Version unseres Guides an. Nach dem Kauf erhalten Sie einen Download-Link per E-Mail zugesandt.",
+    faqQuestion4: "Wie oft wird der Guide aktualisiert?",
+    faqAnswer4: "Wir aktualisieren unseren Guide jährlich, um sicherzustellen, dass all unsere Informationen und Angebote aktuell sind. Jedes Jahr gibt es eine neue Edition mit frischen Tipps und Angeboten.",
+    faqQuestion5: "Kann ich an eurem Crowdfunding teilnehmen?",
+    faqAnswer5: "Absolut! Wir freuen uns über Ihre Unterstützung bei unserer Crowdfunding-Kampagne. Klicken Sie einfach auf die Schaltfläche 'Am Crowdfunding teilnehmen' im entsprechenden Abschnitt unserer Website."
   },
   
   // French translations
@@ -154,7 +168,21 @@ export const translations = {
     copyright: "© 2024 Luxembourg Pas Cher",
     imprint: "Mentions légales",
     faq: "FAQ",
-    legalNotice: "Informations légales"
+    legalNotice: "Informations légales",
+    
+    // FAQ Section
+    faqTitle: "Questions fréquemment posées",
+    faqDescription: "Trouvez ici les réponses aux questions les plus fréquentes sur Luxembourg Pas Cher.",
+    faqQuestion1: "Qu'est-ce que Luxembourg Pas Cher ?",
+    faqAnswer1: "Luxembourg Pas Cher est un guide complet qui vous montre comment profiter du Luxembourg sans dépenser une fortune. Notre livre offre une collection de conseils, d'offres et de secrets pour vivre ce beau pays de façon économique.",
+    faqQuestion2: "Comment puis-je acheter le livre ?",
+    faqAnswer2: "Vous pouvez commander notre livre directement sur notre site en cliquant sur le bouton 'Commander'. Nous proposons également une option de précommande pour notre prochain guide 2025.",
+    faqQuestion3: "Existe-t-il une version numérique du guide à télécharger ?",
+    faqAnswer3: "Oui, nous proposons une version numérique de notre guide. Après l'achat, vous recevrez un lien de téléchargement par e-mail.",
+    faqQuestion4: "À quelle fréquence le guide est-il mis à jour ?",
+    faqAnswer4: "Nous mettons à jour notre guide annuellement pour garantir que toutes nos informations et offres sont actuelles. Chaque année, une nouvelle édition est publiée avec des conseils et des offres actualisés.",
+    faqQuestion5: "Puis-je participer à votre campagne de crowdfunding ?",
+    faqAnswer5: "Absolument ! Nous apprécions votre soutien à notre campagne de crowdfunding. Il vous suffit de cliquer sur le bouton 'Participer au crowdfunding' dans la section correspondante de notre site web."
   },
   
   // English translations
@@ -232,6 +260,20 @@ export const translations = {
     copyright: "© 2024 Luxembourg Pas Cher",
     imprint: "Imprint",
     faq: "FAQ",
-    legalNotice: "Legal Notice"
+    legalNotice: "Legal Notice",
+    
+    // FAQ Section
+    faqTitle: "Frequently Asked Questions",
+    faqDescription: "Find answers to the most common questions about Luxembourg Pas Cher.",
+    faqQuestion1: "What is Luxembourg Pas Cher?",
+    faqAnswer1: "Luxembourg Pas Cher is a comprehensive guide that shows you how to enjoy Luxembourg without spending a fortune. Our book offers a collection of tips, deals, and secrets to experience this beautiful country affordably.",
+    faqQuestion2: "How can I purchase the book?",
+    faqAnswer2: "You can order our book directly through our website by clicking on the 'Order Now' button. We also offer a pre-order option for our upcoming 2025 guide.",
+    faqQuestion3: "Is there a digital guide available for download?",
+    faqAnswer3: "Yes, we offer a digital version of our guide. After purchase, you will receive a download link via email.",
+    faqQuestion4: "How often is the guide updated?",
+    faqAnswer4: "We update our guide annually to ensure all our information and offers are current. Each year, a new edition is published with fresh tips and deals.",
+    faqQuestion5: "Can I participate in your crowdfunding?",
+    faqAnswer5: "Absolutely! We appreciate your support for our crowdfunding campaign. Simply click on the 'Join the crowdfunding' button in the corresponding section of our website."
   }
 };
