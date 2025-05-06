@@ -20,7 +20,39 @@ try {
   const root = createRoot(document.getElementById("root")!);
   
   // Vereinfachte App ohne komplexe CSS-in-JS Probleme rendern
-  root.render(<MinimalAppSimplified />);
+  // Mit Suspense umschließen, um einen Fallback während des Ladens anzuzeigen
+  root.render(
+    <Suspense fallback={
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: '100vh',
+        flexDirection: 'column',
+        backgroundColor: '#f5f5f5'
+      }}>
+        <div style={{
+          width: '50px',
+          height: '50px',
+          border: '5px solid #38b6ff',
+          borderRadius: '50%',
+          borderTopColor: 'transparent',
+          animation: 'spin 1s linear infinite',
+          marginBottom: '20px'
+        }}></div>
+        <style>
+          {`
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+          `}
+        </style>
+        <p style={{ fontFamily: 'sans-serif', color: '#333' }}>Luxembourg Pas Cher wird geladen...</p>
+      </div>
+    }>
+      <MinimalAppSimplified />
+    </Suspense>
+  );
   console.log("✅ Vereinfachte Anwendung erfolgreich gerendert!");
   
 } catch (error) {
