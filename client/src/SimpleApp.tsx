@@ -101,7 +101,7 @@ const translations = {
     purchaseDesc: 'Füllen Sie das folgende Formular aus, um Ihr Exemplar des Buches Luxembourg Pas Cher zu bestellen.',
     name: 'Vollständiger Name',
     email: 'E-Mail-Adresse',
-    address: 'Lieferadresse',
+    shippingAddress: 'Lieferadresse',
     quantity: 'Anzahl',
     submit: 'Jetzt bestellen',
     close: 'Schließen',
@@ -167,7 +167,7 @@ const translations = {
     purchaseDesc: 'Fill out the form below to order your copy of the Luxembourg Pas Cher book.',
     name: 'Full name',
     email: 'Email address',
-    address: 'Shipping address',
+    shippingAddress: 'Shipping address',
     quantity: 'Quantity',
     submit: 'Order now',
     close: 'Close',
@@ -228,7 +228,7 @@ export default function SimpleApp() {
   const [purchaseForm, setPurchaseForm] = useState({
     name: '',
     email: '',
-    address: '',
+    shippingAddress: '',
     quantity: 1
   });
 
@@ -1037,20 +1037,20 @@ export default function SimpleApp() {
               
               <div style={{ marginBottom: '15px' }}>
                 <label
-                  htmlFor="address"
+                  htmlFor="shippingAddress"
                   style={{
                     display: 'block',
                     marginBottom: '5px',
                     fontWeight: 'bold',
                   }}
                 >
-                  {t.address}
+                  {t.shippingAddress}
                 </label>
                 <input
                   type="text"
-                  id="address"
-                  name="address"
-                  value={purchaseForm.address}
+                  id="shippingAddress"
+                  name="shippingAddress"
+                  value={purchaseForm.shippingAddress}
                   onChange={handleInputChange}
                   required
                   style={{
