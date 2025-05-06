@@ -2,25 +2,26 @@
 import "./lib/bypassHostRestriction";
 
 import { createRoot } from "react-dom/client";
-import React from 'react';
+// Vereinfachte Version der App verwenden
+import { lazy, Suspense } from 'react';
 import "./index.css";
 
-// Importiere die vollständig statische Version der App
-import StaticApp from "./StaticApp";
+const MinimalAppSimplified = lazy(() => import("./MinimalAppSimplified"));
 
-// Deaktivieren des Hot-Module-Reloadings, da dies zu Flackern führen kann
-if ((import.meta as any).hot) {
-  (import.meta as any).hot.accept(() => {});
-}
+// Initialisiere den Bypass
+(window as any).VITE_ALLOWED_HOSTS = '*';
+(window as any).VITE_DISABLE_HOST_CHECK = true;
+(window as any).VITE_HOST_CHECK = false;
+(window as any).VITE_ALLOW_ALL_HOSTS = true;
 
 // Render-Funktion mit Fehlerbehandlung
 try {
   console.log("🚀 Anwendung wird gestartet...");
   const root = createRoot(document.getElementById("root")!);
   
-  // Statische App ohne jegliches responsives Design rendern
-  root.render(<StaticApp />);
-  console.log("✅ Statische Anwendung erfolgreich gerendert!");
+  // Vereinfachte App ohne komplexe CSS-in-JS Probleme rendern
+  root.render(<MinimalAppSimplified />);
+  console.log("✅ Vereinfachte Anwendung erfolgreich gerendert!");
   
 } catch (error) {
   console.error("❌ Kritischer Fehler beim Starten der Anwendung:", error);

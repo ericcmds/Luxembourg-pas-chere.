@@ -1,5 +1,0 @@
-1173:            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-1319:            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-1423:            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-1781:            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-1783:            alignItems: window.innerWidth < 768 ? 'center' : 'flex-start',
