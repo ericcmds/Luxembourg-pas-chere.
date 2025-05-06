@@ -1783,6 +1783,9 @@ export default function MinimalAppSimplified() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <FAQSection language={language as 'fr' | 'de' | 'en'} t={t} />
+
       {/* Footer */}
       <footer style={{
         backgroundColor: '#1f2937',
