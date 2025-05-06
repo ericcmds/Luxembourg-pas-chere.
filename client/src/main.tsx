@@ -3,8 +3,10 @@ import "./lib/bypassHostRestriction";
 
 import { createRoot } from "react-dom/client";
 // Vereinfachte Version der App verwenden
-import MinimalAppSimplified from "./MinimalAppSimplified";
+import { lazy, Suspense } from 'react';
 import "./index.css";
+
+const MinimalAppSimplified = lazy(() => import("./MinimalAppSimplified"));
 
 // Initialisiere den Bypass
 (window as any).VITE_ALLOWED_HOSTS = '*';
