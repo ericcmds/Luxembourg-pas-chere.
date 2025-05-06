@@ -1702,7 +1702,7 @@ export default function SimpleApp() {
                 {t.contactUs}
               </h3>
               <div style={{ color: '#aaa', marginBottom: '10px' }}>
-                <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{t.address}</div>
+                <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{t.addressLabel}</div>
                 <div>1 Rue de Luxembourg, L-1234 Luxembourg</div>
               </div>
               <div style={{ color: '#aaa', marginBottom: '10px' }}>
