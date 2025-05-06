@@ -215,7 +215,31 @@ const OptimizedImage = ({ src, alt, style }: { src: string, alt: string, style?:
   />
 )
 
+// Hook für Responsivität
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    
+    const listener = () => {
+      setMatches(media.matches);
+    };
+    
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
+
+  return matches;
+}
+
 export default function SimpleApp() {
+  // Media queries
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
   // State variables
   const [language, setLanguage] = useState<'fr' | 'de' | 'en'>('de');
   const [scrolled, setScrolled] = useState(false);
@@ -1146,7 +1170,7 @@ export default function SimpleApp() {
             padding: '40px',
             marginBottom: '40px',
             display: 'flex',
-            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            flexDirection: isMobile ? 'column' : 'row',
             alignItems: 'center',
             gap: '40px',
           }}>
@@ -1292,7 +1316,7 @@ export default function SimpleApp() {
             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
             overflow: 'hidden',
             display: 'flex',
-            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            flexDirection: isMobile ? 'column' : 'row',
           }}>
             <div style={{
               flex: '1 1 50%',
@@ -1396,7 +1420,7 @@ export default function SimpleApp() {
             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
             padding: '40px',
             display: 'flex',
-            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            flexDirection: isMobile ? 'column' : 'row',
             gap: '40px',
             alignItems: 'center',
           }}>
