@@ -323,14 +323,6 @@ export default function MinimalAppSimplified() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#faq" 
-                  className={`nav-link ${activeSection === 'faq' ? 'active' : ''}`}
-                >
-                  {t.faq}
-                </a>
-              </li>
-              <li>
                 <a href="https://www.instagram.com/luxembourgpaschere/" target="_blank" rel="noopener noreferrer" className="social-button">
                   <Instagram size={18} aria-label="Instagram" />
                 </a>
@@ -418,15 +410,6 @@ export default function MinimalAppSimplified() {
                 onClick={toggleMobileMenu}
               >
                 {t.contact}
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#faq" 
-                className={`nav-link ${activeSection === 'faq' ? 'active' : ''}`}
-                onClick={toggleMobileMenu}
-              >
-                {t.faq}
               </a>
             </li>
           </ul>
