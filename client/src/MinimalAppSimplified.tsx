@@ -161,6 +161,13 @@ export default function MinimalAppSimplified() {
   const [activeSection, setActiveSection] = useState('home');
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   
+  // State to track selected crowdfunding package
+  const [selectedPackage, setSelectedPackage] = useState<null | {
+    name: string;
+    price: number;
+    description: string;
+  }>(null);
+  
   // Ref for outside click detection
   const langDropdownRef = useRef<HTMLDivElement>(null);
   
@@ -192,8 +199,21 @@ export default function MinimalAppSimplified() {
   
   // Handler for order button
   const handleOrderClick = () => {
+    // Reset any previously selected package
+    setSelectedPackage(null);
     setShowCheckoutModal(true);
     // When the checkout modal is shown, prevent scrolling
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Handler for crowdfunding package selection
+  const handleCrowdfundingSelect = (packageName: string, price: number, description: string) => {
+    setSelectedPackage({
+      name: packageName,
+      price: price,
+      description: description
+    });
+    setShowCheckoutModal(true);
     document.body.style.overflow = 'hidden';
   };
   

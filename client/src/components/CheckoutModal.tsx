@@ -5,11 +5,16 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   language: 'fr' | 'de' | 'en';
+  selectedPackage?: {
+    name: string;
+    price: number;
+    description: string;
+  } | null;
 }
 
 type CheckoutStep = 'cart' | 'info' | 'payment' | 'confirmation';
 
-const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language }) => {
+const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language, selectedPackage }) => {
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [promoCode, setPromoCode] = useState<string>('');
   const [promoApplied, setPromoApplied] = useState<boolean>(false);
@@ -145,8 +150,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
     next: language === 'fr' ? 'Suivant' : language === 'de' ? 'Weiter' : 'Next',
   };
 
-  // Product details
-  const productPrice = 19.99;
+  // Product details - use the selected package price or default
+  const productPrice = selectedPackage ? selectedPackage.price : 19.99;
+  const productName = selectedPackage 
+    ? selectedPackage.name 
+    : (language === 'fr' ? 'Luxembourg Pas Cher - Guide Pratique' 
+      : language === 'de' ? 'Luxembourg Pas Cher - Praktischer Führer' 
+      : 'Luxembourg Pas Cher - Practical Guide');
+  const productDesc = selectedPackage ? selectedPackage.description : t.digital;
+  
   const vatRate = 0.17;
   const vatAmount = productPrice * vatRate;
   const totalPrice = productPrice + vatAmount;
