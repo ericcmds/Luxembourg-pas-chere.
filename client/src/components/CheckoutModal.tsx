@@ -440,6 +440,24 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             <div>{t.subtotal}</div>
             <div>{productPrice.toFixed(2)}€</div>
           </div>
+          
+          {promoApplied && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '0.5rem',
+              color: '#4caf50',
+              fontSize: '0.9rem'
+            }}>
+              <div>
+                {language === 'fr' ? 'Réduction' :
+                 language === 'de' ? 'Rabatt' :
+                 'Discount'} ({promoCode})
+              </div>
+              <div>-{promoDiscount.toFixed(2)}€</div>
+            </div>
+          )}
+          
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -460,14 +478,14 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             borderTop: '1px solid #eee'
           }}>
             <div>{t.total}</div>
-            <div>{totalPrice.toFixed(2)}€</div>
+            <div>{finalTotalPrice.toFixed(2)}€</div>
           </div>
         </div>
         
         <button 
           onClick={handleNextStep}
           style={{
-            backgroundColor: '#38b6ff',
+            backgroundColor: '#E31837',
             color: 'white',
             border: 'none',
             borderRadius: '4px',
@@ -480,12 +498,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            boxShadow: '0 4px 10px rgba(227, 24, 55, 0.2)'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#2095e0';
+            e.currentTarget.style.backgroundColor = '#c51027';
+            e.currentTarget.style.boxShadow = '0 6px 12px rgba(227, 24, 55, 0.3)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#38b6ff';
+            e.currentTarget.style.backgroundColor = '#E31837';
+            e.currentTarget.style.boxShadow = '0 4px 10px rgba(227, 24, 55, 0.2)';
           }}
         >
           {t.proceedToCheckout}
@@ -685,7 +706,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
           <button 
             onClick={handleNextStep}
             style={{
-              backgroundColor: '#38b6ff',
+              backgroundColor: '#E31837',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
@@ -695,13 +716,17 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              flex: '2'
+              flex: '2',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 10px rgba(227, 24, 55, 0.2)'
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#2095e0';
+              e.currentTarget.style.backgroundColor = '#c51027';
+              e.currentTarget.style.boxShadow = '0 6px 12px rgba(227, 24, 55, 0.3)';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#38b6ff';
+              e.currentTarget.style.backgroundColor = '#E31837';
+              e.currentTarget.style.boxShadow = '0 4px 10px rgba(227, 24, 55, 0.2)';
             }}
           >
             {t.continueToPayment}
