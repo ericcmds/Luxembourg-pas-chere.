@@ -1,0 +1,45 @@
+Perform a comprehensive quality assurance review of the e-commerce checkout process for our digital guide product. Please verify both the logical flow and functional integrity of the entire purchase journey, focusing on the following critical areas:
+
+1. STRUCTURAL ASSESSMENT:
+   - Evaluate if the user flow follows a logical sequence from "Commander" button to purchase confirmation
+   - Verify each step naturally leads to the next with clear directional cues
+   - Confirm that the progress indicator accurately reflects the user's position in the checkout flow
+   - Assess if important information is presented in a logical hierarchy on each screen
+
+2. FUNCTIONAL VERIFICATION:
+   - Test each interactive element (buttons, form fields, dropdowns) to confirm proper functionality
+   - Verify all payment method options are selectable and lead to appropriate payment flows
+   - Confirm that discount codes apply correctly and update pricing in real-time
+   - Test form validation for proper error handling and user feedback
+   - Verify the final submission process correctly processes the order
+
+3. RESPONSIVE DESIGN TESTING:
+   - Check functionality across different screen sizes (mobile, tablet, desktop)
+   - Confirm that all elements remain clickable and properly sized on mobile devices
+   - Verify that text remains readable at all breakpoints
+
+4. EDGE CASES TO TEST:
+   - User attempts to navigate backward/forward during checkout
+   - Session timeout behavior
+   - Form submission with invalid data
+   - Network interruption during payment processing
+   - Multiple rapid clicks on submission buttons
+
+5. SECURITY VERIFICATION:
+   - Confirm that secure connection indicators are present
+   - Verify that sensitive form fields (credit card information) have appropriate security measures
+   - Check that payment processing follows standard security protocols
+
+Please document any issues discovered using the following severity classifications:
+- Critical: Prevents purchase completion
+- Major: Causes significant user frustration but purchase is possible
+- Minor: Cosmetic or small usability concerns
+
+For each issue, please provide:
+1. Specific location/step where the issue occurs
+2. Expected behavior
+3. Actual behavior
+4. Screenshots or specific descriptions
+5. Recommended solution
+
+Conclude with an overall assessment of the checkout process quality and its readiness for production use.

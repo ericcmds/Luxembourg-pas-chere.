@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, ShoppingCart, CreditCard, CheckCircle, ChevronLeft, ChevronRight, Truck, Shield } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ShoppingCart, CreditCard, CheckCircle, ChevronLeft, ChevronRight, Truck, Shield, AlertCircle } from 'lucide-react';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -12,12 +12,75 @@ type CheckoutStep = 'cart' | 'info' | 'payment' | 'confirmation';
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language }) => {
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [promoCode, setPromoCode] = useState<string>('');
+  const [promoApplied, setPromoApplied] = useState<boolean>(false);
+  const [promoDiscount, setPromoDiscount] = useState<number>(0);
   const [email, setEmail] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [acceptTerms, setAcceptTerms] = useState<boolean>(false);
+  const [termsError, setTermsError] = useState<string>('');
   const [acceptNewsletter, setAcceptNewsletter] = useState<boolean>(false);
   const [selectedPayment, setSelectedPayment] = useState<string>('card');
-
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [sessionTimeoutWarning, setSessionTimeoutWarning] = useState<boolean>(false);
+  
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+    
+    window.addEventListener('keydown', handleEscKey);
+    
+    // Set a timeout for session warning
+    const sessionTimeout = setTimeout(() => {
+      setSessionTimeoutWarning(true);
+    }, 300000); // 5 minutes
+    
+    return () => {
+      window.removeEventListener('keydown', handleEscKey);
+      clearTimeout(sessionTimeout);
+    };
+  }, [onClose]);
+  
+  // Reset state when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setStep('cart');
+      setPromoCode('');
+      setPromoApplied(false);
+      setPromoDiscount(0);
+      setEmail('');
+      setEmailError('');
+      setName('');
+      setAcceptTerms(false);
+      setTermsError('');
+      setAcceptNewsletter(false);
+      setSelectedPayment('card');
+      setIsProcessing(false);
+      setSessionTimeoutWarning(false);
+    }
+  }, [isOpen]);
+  
+  // Validate email in real-time
+  useEffect(() => {
+    if (email) {
+      if (!email.includes('@') || !email.includes('.')) {
+        setEmailError(
+          language === 'fr' ? 'Adresse e-mail invalide' :
+          language === 'de' ? 'Ungültige E-Mail-Adresse' :
+          'Invalid email address'
+        );
+      } else {
+        setEmailError('');
+      }
+    } else {
+      setEmailError('');
+    }
+  }, [email, language]);
+  
   if (!isOpen) return null;
 
   // Translations
@@ -87,45 +150,108 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
   const vatRate = 0.17;
   const vatAmount = productPrice * vatRate;
   const totalPrice = productPrice + vatAmount;
+  
+  // Calculate final price with any discounts
+  const finalTotalPrice = totalPrice - promoDiscount;
 
+  // Simulate promo code validation and apply discount
   const handlePromoCodeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement promo code logic here
-    alert(language === 'fr' ? `Code promo "${promoCode}" appliqué!` : 
-          language === 'de' ? `Gutscheincode "${promoCode}" angewendet!` : 
-          `Promo code "${promoCode}" applied!`);
+    
+    // Prevent empty code submission
+    if (!promoCode.trim()) return;
+    
+    // Simple validation: code must be at least 4 characters
+    if (promoCode.trim().length < 4) {
+      alert(
+        language === 'fr' ? 'Code promo invalide. Veuillez réessayer.' : 
+        language === 'de' ? 'Ungültiger Gutscheincode. Bitte versuchen Sie es erneut.' : 
+        'Invalid promo code. Please try again.'
+      );
+      return;
+    }
+    
+    // Simulate successful promo code application
+    const discount = 2.50; // Example discount
+    setPromoDiscount(discount);
+    setPromoApplied(true);
+    
+    // Success message
+    alert(
+      language === 'fr' ? `Code promo "${promoCode}" appliqué! -${discount.toFixed(2)}€` : 
+      language === 'de' ? `Gutscheincode "${promoCode}" angewendet! -${discount.toFixed(2)}€` : 
+      `Promo code "${promoCode}" applied! -${discount.toFixed(2)}€`
+    );
   };
 
+  // Navigation between checkout steps with validation
   const handleNextStep = () => {
-    if (step === 'cart') setStep('info');
+    if (step === 'cart') {
+      setStep('info');
+    }
     else if (step === 'info') {
+      // Reset previous errors
+      setEmailError('');
+      setTermsError('');
+      
       // Validate email
-      if (!email || !email.includes('@')) {
-        alert(language === 'fr' ? 'Veuillez entrer une adresse e-mail valide.' : 
-              language === 'de' ? 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' : 
-              'Please enter a valid email address.');
+      if (!email) {
+        setEmailError(
+          language === 'fr' ? 'L\'email est requis' : 
+          language === 'de' ? 'E-Mail ist erforderlich' : 
+          'Email is required'
+        );
         return;
       }
+      
+      if (!email.includes('@') || !email.includes('.')) {
+        setEmailError(
+          language === 'fr' ? 'Adresse e-mail invalide' : 
+          language === 'de' ? 'Ungültige E-Mail-Adresse' : 
+          'Invalid email address'
+        );
+        return;
+      }
+      
       // Validate terms acceptance
       if (!acceptTerms) {
-        alert(language === 'fr' ? 'Veuillez accepter les conditions générales.' : 
-              language === 'de' ? 'Bitte akzeptieren Sie die Allgemeinen Geschäftsbedingungen.' : 
-              'Please accept the terms and conditions.');
+        setTermsError(
+          language === 'fr' ? 'Vous devez accepter les conditions générales' : 
+          language === 'de' ? 'Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren' : 
+          'You must accept the terms and conditions'
+        );
         return;
       }
+      
+      // If validation passes, proceed to payment
       setStep('payment');
     }
-    else if (step === 'payment') setStep('confirmation');
+    else if (step === 'payment') {
+      // Redirect to confirmation step after successful payment processing
+      completeOrder();
+    }
   };
 
+  // Handle going back to previous steps
   const handlePreviousStep = () => {
-    if (step === 'info') setStep('cart');
-    else if (step === 'payment') setStep('info');
+    if (step === 'info') {
+      setStep('cart');
+    }
+    else if (step === 'payment') {
+      setStep('info');
+    }
   };
 
+  // Simulate payment processing with loading state
   const completeOrder = () => {
-    // Here you would normally process the payment
-    setStep('confirmation');
+    // Show processing state
+    setIsProcessing(true);
+    
+    // Simulate network request with a timeout
+    setTimeout(() => {
+      setIsProcessing(false);
+      setStep('confirmation');
+    }, 1500);
   };
 
   const formatDate = (date: Date) => {
@@ -391,12 +517,27 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             style={{
               width: '100%',
               padding: '0.75rem',
-              border: '1px solid #ddd',
+              border: emailError ? '1px solid #e53935' : '1px solid #ddd',
               borderRadius: '4px',
-              fontSize: '0.9rem'
+              fontSize: '0.9rem',
+              backgroundColor: emailError ? 'rgba(229, 57, 53, 0.05)' : 'white'
             }}
             required
+            aria-invalid={!!emailError}
+            aria-describedby="email-error"
           />
+          {emailError && (
+            <div id="email-error" style={{
+              color: '#e53935',
+              fontSize: '0.8rem',
+              marginTop: '0.5rem',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <AlertCircle size={14} style={{ marginRight: '0.5rem' }} />
+              {emailError}
+            </div>
+          )}
         </div>
         
         <div style={{ marginBottom: '1.5rem' }}>
@@ -441,16 +582,40 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
           <label style={{
             display: 'flex',
             alignItems: 'flex-start',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            padding: termsError ? '0.5rem' : '0',
+            backgroundColor: termsError ? 'rgba(229, 57, 53, 0.05)' : 'transparent',
+            borderRadius: '4px',
+            border: termsError ? '1px solid #e53935' : 'none',
           }}>
             <input 
               type="checkbox"
               checked={acceptTerms}
-              onChange={(e) => setAcceptTerms(e.target.checked)}
+              onChange={(e) => {
+                setAcceptTerms(e.target.checked);
+                if (e.target.checked) setTermsError('');
+              }}
               style={{ marginRight: '0.5rem', marginTop: '0.3rem' }}
+              aria-invalid={!!termsError}
+              aria-describedby="terms-error"
             />
             <span style={{ fontSize: '0.9rem' }}>{t.termsCheckbox}</span>
           </label>
+          
+          {termsError && (
+            <div id="terms-error" style={{
+              color: '#e53935',
+              fontSize: '0.8rem',
+              marginTop: '0.5rem',
+              marginBottom: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              marginLeft: '1.5rem'
+            }}>
+              <AlertCircle size={14} style={{ marginRight: '0.5rem' }} />
+              {termsError}
+            </div>
+          )}
         </div>
         
         <div style={{ marginBottom: '2rem' }}>
@@ -468,6 +633,29 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             <span style={{ fontSize: '0.9rem' }}>{t.newsletterCheckbox}</span>
           </label>
         </div>
+        
+        {/* Session timeout warning */}
+        {sessionTimeoutWarning && (
+          <div style={{
+            backgroundColor: 'rgba(255, 152, 0, 0.1)',
+            border: '1px solid #ff9800',
+            borderRadius: '4px',
+            padding: '0.75rem',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem'
+          }}>
+            <AlertCircle size={20} color="#ff9800" />
+            <p style={{ margin: 0, fontSize: '0.9rem' }}>
+              {language === 'fr' 
+                ? 'Votre session expirera bientôt. Veuillez compléter votre achat.' 
+                : language === 'de'
+                ? 'Ihre Sitzung läuft bald ab. Bitte schließen Sie Ihren Kauf ab.'
+                : 'Your session will expire soon. Please complete your purchase.'}
+            </p>
+          </div>
+        )}
         
         <div style={{
           display: 'flex',
@@ -752,28 +940,61 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
           
           <button 
             onClick={completeOrder}
+            disabled={isProcessing}
             style={{
-              backgroundColor: '#38b6ff',
+              backgroundColor: isProcessing ? '#cccccc' : '#E31837',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
               padding: '1rem',
               fontWeight: 'bold',
-              cursor: 'pointer',
+              cursor: isProcessing ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              flex: '2'
+              flex: '2',
+              transition: 'background-color 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#2095e0';
+              if (!isProcessing) e.currentTarget.style.backgroundColor = '#c51027';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#38b6ff';
+              if (!isProcessing) e.currentTarget.style.backgroundColor = '#E31837';
             }}
           >
-            {t.purchaseButton}
-            <ChevronRight size={18} style={{ marginLeft: '0.5rem' }} />
+            {isProcessing ? (
+              <>
+                <span style={{ 
+                  display: 'inline-block', 
+                  width: '16px', 
+                  height: '16px', 
+                  borderRadius: '50%',
+                  border: '2px solid rgba(255,255,255,0.3)',
+                  borderTopColor: 'white',
+                  animation: 'spin 1s linear infinite',
+                  marginRight: '0.5rem'
+                }}></span>
+                {language === 'fr' ? 'Traitement...' : 
+                 language === 'de' ? 'Wird bearbeitet...' : 
+                 'Processing...'}
+              </>
+            ) : (
+              <>
+                {t.purchaseButton}
+                <Shield size={16} style={{ marginLeft: '0.5rem' }} />
+              </>
+            )}
+            
+            {/* Add global styles for the spinner animation */}
+            <style>
+              {`
+                @keyframes spin {
+                  to { transform: rotate(360deg); }
+                }
+              `}
+            </style>
           </button>
         </div>
       </div>
@@ -784,6 +1005,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
     // Generate a random order number
     const orderNumber = `LPC-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
     const orderDate = new Date();
+    const finalPrice = totalPrice - promoDiscount;
     
     return (
       <div>
@@ -831,7 +1053,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
           marginBottom: '2rem'
         }}>
           <button style={{
-            backgroundColor: '#38b6ff',
+            backgroundColor: '#E31837',
             color: 'white',
             border: 'none',
             borderRadius: '4px',
@@ -841,13 +1063,14 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '0 auto'
+            margin: '0 auto',
+            transition: 'background-color 0.3s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#2095e0';
+            e.currentTarget.style.backgroundColor = '#c51027';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#38b6ff';
+            e.currentTarget.style.backgroundColor = '#E31837';
           }}
           >
             {t.downloadGuide}
@@ -890,9 +1113,74 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             fontSize: '0.9rem',
             marginBottom: '0.75rem'
           }}>
-            <div style={{ flex: '1', color: '#666' }}>{t.total}:</div>
-            <div style={{ flex: '2', fontWeight: '500' }}>{totalPrice.toFixed(2)}€</div>
+            <div style={{ flex: '1', color: '#666' }}>{t.product}:</div>
+            <div style={{ flex: '2', fontWeight: '500' }}>{t.guide}</div>
           </div>
+          
+          <div style={{
+            display: 'flex',
+            fontSize: '0.9rem',
+            marginBottom: '0.75rem'
+          }}>
+            <div style={{ flex: '1', color: '#666' }}>{t.subtotal}:</div>
+            <div style={{ flex: '2', fontWeight: '500' }}>{productPrice.toFixed(2)}€</div>
+          </div>
+          
+          {promoApplied && (
+            <div style={{
+              display: 'flex',
+              fontSize: '0.9rem',
+              marginBottom: '0.75rem',
+              color: '#4caf50'
+            }}>
+              <div style={{ flex: '1' }}>{t.promo}:</div>
+              <div style={{ flex: '2', fontWeight: '500' }}>-{promoDiscount.toFixed(2)}€</div>
+            </div>
+          )}
+          
+          <div style={{
+            display: 'flex',
+            fontSize: '0.9rem',
+            marginBottom: '0.75rem'
+          }}>
+            <div style={{ flex: '1', color: '#666' }}>{t.vat}:</div>
+            <div style={{ flex: '2', fontWeight: '500' }}>{vatAmount.toFixed(2)}€</div>
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            fontSize: '1rem',
+            marginTop: '0.75rem',
+            paddingTop: '0.75rem',
+            borderTop: '1px solid #eee'
+          }}>
+            <div style={{ flex: '1', color: '#333', fontWeight: 'bold' }}>{t.total}:</div>
+            <div style={{ flex: '2', fontWeight: 'bold' }}>{finalPrice.toFixed(2)}€</div>
+          </div>
+        </div>
+
+        {/* Add secure transaction message */}
+        <div style={{
+          backgroundColor: '#f1f8e9',
+          borderRadius: '8px',
+          padding: '1rem',
+          marginBottom: '1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem'
+        }}>
+          <Shield size={20} color="#4caf50" />
+          <p style={{ 
+            margin: 0, 
+            fontSize: '0.85rem', 
+            color: '#666' 
+          }}>
+            {language === 'fr' 
+              ? 'Votre transaction a été traitée en toute sécurité. Une confirmation a été envoyée à votre adresse email.' 
+              : language === 'de' 
+              ? 'Ihre Transaktion wurde sicher verarbeitet. Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.' 
+              : 'Your transaction has been securely processed. A confirmation has been sent to your email address.'}
+          </p>
         </div>
         
         <button 
@@ -905,7 +1193,14 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
             padding: '1rem',
             width: '100%',
             fontWeight: 'bold',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#e0e0e0';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#f0f0f0';
           }}
         >
           {t.close}
