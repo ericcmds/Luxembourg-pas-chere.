@@ -347,8 +347,15 @@ export default function MinimalAppSimplified() {
               </li>
               <li>
                 <a 
-                  href="#contact" 
+                  href="#contactSection" 
                   className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const contactSection = document.getElementById('contactSection');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   {t.contact}
                 </a>
@@ -436,9 +443,18 @@ export default function MinimalAppSimplified() {
             </li>
             <li>
               <a 
-                href="#contact" 
+                href="#contactSection" 
                 className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-                onClick={toggleMobileMenu}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleMobileMenu();
+                  setTimeout(() => {
+                    const contactSection = document.getElementById('contactSection');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 300); // Delay scrolling slightly to allow menu to close
+                }}
               >
                 {t.contact}
               </a>
@@ -2251,7 +2267,7 @@ export default function MinimalAppSimplified() {
             </div>
             
             {/* Contact */}
-            <div>
+            <div id="contactSection">
               <h4 style={{
                 fontSize: '1.2rem',
                 fontWeight: 'bold',
