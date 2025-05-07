@@ -339,8 +339,15 @@ export default function MinimalAppSimplified() {
               </li>
               <li>
                 <a 
-                  href="#book" 
+                  href="#bookSection" 
                   className={`nav-link ${activeSection === 'book' ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const bookSection = document.getElementById('bookSection');
+                    if (bookSection) {
+                      bookSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   {t.book}
                 </a>
@@ -434,9 +441,18 @@ export default function MinimalAppSimplified() {
             </li>
             <li>
               <a 
-                href="#book" 
+                href="#bookSection" 
                 className={`nav-link ${activeSection === 'book' ? 'active' : ''}`}
-                onClick={toggleMobileMenu}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleMobileMenu();
+                  setTimeout(() => {
+                    const bookSection = document.getElementById('bookSection');
+                    if (bookSection) {
+                      bookSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 300); // Delay scrolling slightly to allow menu to close
+                }}
               >
                 {t.book}
               </a>
@@ -822,7 +838,7 @@ export default function MinimalAppSimplified() {
       </section>
       
       {/* Crowdfunding Section */}
-      <section style={{ 
+      <section id="bookSection" style={{ 
         padding: '5rem 0',
         backgroundColor: '#fff'
       }}>
