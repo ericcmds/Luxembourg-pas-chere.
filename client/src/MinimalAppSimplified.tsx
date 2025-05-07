@@ -556,22 +556,48 @@ export default function MinimalAppSimplified() {
           <div className="book-display">
             <div className="book-container">
               {/* Book Cover */}
-              <img 
-                src="/assets/cover.png" 
-                alt="Luxembourg Pas Cher - Guide Pratique" 
-                className="book-cover"
-                onError={(e) => {
-                  console.error('Image error:', e);
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null; 
-                  target.style.background = 'linear-gradient(45deg, #E31837, #00A4E0)';
-                  target.style.aspectRatio = '0.7/1';
-                  target.style.display = 'flex';
-                  target.style.alignItems = 'center';
-                  target.style.justifyContent = 'center';
-                  target.alt = 'LUXEMBOURG PAS CHER';
+              <div 
+                style={{
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  overflow: 'hidden',
+                  borderRadius: '8px',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
                 }}
-              />
+                onMouseOver={(e) => {
+                  const target = e.currentTarget;
+                  target.style.transform = 'scale(1.03)';
+                  target.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget;
+                  target.style.transform = 'scale(1)';
+                  target.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+                }}
+              >
+                <img 
+                  src="/assets/cover.png" 
+                  alt="Luxembourg Pas Cher - Guide Pratique" 
+                  className="book-cover"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    height: 'auto',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onError={(e) => {
+                    console.error('Image error:', e);
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null; 
+                    target.style.background = 'linear-gradient(45deg, #E31837, #00A4E0)';
+                    target.style.aspectRatio = '0.7/1';
+                    target.style.display = 'flex';
+                    target.style.alignItems = 'center';
+                    target.style.justifyContent = 'center';
+                    target.alt = 'LUXEMBOURG PAS CHER';
+                  }}
+                />
+              </div>
               
 
             </div>
