@@ -388,8 +388,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, language
                 />
               </div>
               <div>
-                <div style={{ fontWeight: 'bold', marginBottom: '0.3rem' }}>{t.guide}</div>
-                <div style={{ fontSize: '0.9rem', color: '#666' }}>{t.digital}</div>
+                <div style={{ fontWeight: 'bold', marginBottom: '0.3rem' }}>{productName}</div>
+                <div style={{ fontSize: '0.9rem', color: '#666' }}>{productDesc}</div>
               </div>
             </div>
             <div style={{ 
