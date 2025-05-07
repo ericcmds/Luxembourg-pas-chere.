@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart, Facebook, Linkedin } from 'lucide-react';
 import './styles.css';
 import FAQSection from './components/FAQSection';
+import CheckoutModal from './components/CheckoutModal';
 
 // Definiere Übersetzungsobjekte
 const translations = {
@@ -158,6 +159,7 @@ export default function MinimalAppSimplified() {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   
   // Ref for outside click detection
   const langDropdownRef = useRef<HTMLDivElement>(null);
@@ -190,7 +192,16 @@ export default function MinimalAppSimplified() {
   
   // Handler for order button
   const handleOrderClick = () => {
-    alert(`Merci de votre intérêt pour le livre "Luxembourg Pas Cher"! Le processus de commande sera bientôt disponible.`);
+    setShowCheckoutModal(true);
+    // When the checkout modal is shown, prevent scrolling
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Handler to close checkout modal
+  const handleCloseCheckoutModal = () => {
+    setShowCheckoutModal(false);
+    // Restore scrolling when the checkout modal is closed
+    document.body.style.overflow = 'visible';
   };
   
   // Scroll to top function
@@ -2558,6 +2569,13 @@ export default function MinimalAppSimplified() {
         )}
       </footer>
 
+      
+      {/* Checkout Modal */}
+      <CheckoutModal 
+        isOpen={showCheckoutModal} 
+        onClose={handleCloseCheckoutModal} 
+        language={language as 'fr' | 'de' | 'en'} 
+      />
     </div>
   );
 }

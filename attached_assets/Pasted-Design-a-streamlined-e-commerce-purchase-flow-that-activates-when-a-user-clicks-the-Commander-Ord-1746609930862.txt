@@ -1,0 +1,43 @@
+Design a streamlined e-commerce purchase flow that activates when a user clicks the "Commander" (Order) button for our digital guide product. Create a logical, user-friendly checkout process with the following requirements:
+
+1. CART OVERVIEW PHASE:
+   - Clear display of the selected guide(s) with cover thumbnail, title, and price
+   - Option to apply discount/promo codes with immediate price update
+   - Transparent breakdown of costs (base price, taxes, any applicable fees)
+   - Prominent "Proceed to Checkout" CTA with appealing design
+
+2. CUSTOMER INFORMATION PHASE:
+   - Simplified account options: guest checkout, quick registration, or login
+   - Essential information collection only (email required, name optional)
+   - Clear explanation of how the guide will be delivered (email, download link, etc.)
+   - GDPR-compliant consent checkboxes with minimalist design
+
+3. PAYMENT SELECTION:
+   - Multiple payment options clearly displayed with recognizable icons
+   - Secure payment messaging with trust indicators (SSL badges, secure payment icons)
+   - Price confirmation before final submission
+   - Support for digital wallets (Apple Pay, Google Pay) for one-click purchasing
+
+4. CONFIRMATION & DELIVERY:
+   - Clear purchase confirmation screen with order summary
+   - Immediate delivery mechanism for the digital guide (download button, email delivery confirmation)
+   - Follow-up instructions for accessing the content
+   - Suggestions for complementary guides or resources (upsell opportunity)
+
+TECHNICAL & UX REQUIREMENTS:
+   - Mobile-first design with responsive elements
+   - Maximum 3 steps to complete purchase (minimize friction)
+   - Progress indicator showing position in checkout flow
+   - Persistent cart summary visible throughout the process
+   - Immediate form validation with helpful error messages
+   - Ability to return to previous steps without data loss
+   - Page load time under 1.5 seconds per step
+
+For each phase, provide specific recommendations on:
+1. Visual hierarchy of information
+2. Button placement and wording
+3. Form field design to maximize completion
+4. Security elements to increase trust
+5. Microcopy suggestions that address common concerns when purchasing digital products
+
+The final design should prioritize conversion while maintaining a premium feel appropriate for educational content.
