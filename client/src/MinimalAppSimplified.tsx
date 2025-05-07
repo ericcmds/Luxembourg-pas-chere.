@@ -618,13 +618,7 @@ export default function MinimalAppSimplified() {
           <div className="btn-wrapper">
             <button 
               className="btn-primary"
-              onClick={() => {
-                alert(language === 'fr' ? 
-                  'Merci de votre intérêt ! Vous allez être redirigé vers notre page de commande.' :
-                  language === 'de' ? 
-                  'Vielen Dank für Ihr Interesse! Sie werden zu unserer Bestellseite weitergeleitet.' :
-                  'Thank you for your interest! You will be redirected to our order page.');
-              }}
+              onClick={handleOrderClick}
               style={{
                 backgroundColor: '#E31837',
                 color: 'white',
