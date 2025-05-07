@@ -1041,11 +1041,13 @@ export default function MinimalAppSimplified() {
               </div>
               <button 
                 onClick={() => {
-                  alert(language === 'fr' ? 
-                    'Merci pour votre intérêt pour notre contribution de base! Votre commande sera traitée bientôt.' :
-                    language === 'de' ? 
-                    'Vielen Dank für Ihr Interesse an unserem Basisbeitrag! Ihre Bestellung wird in Kürze bearbeitet.' :
-                    'Thank you for your interest in our basic contribution! Your order will be processed soon.');
+                  const packageName = language === 'fr' ? 'Contribution de base' : 
+                    language === 'de' ? 'Basisbeitrag' : 
+                    'Basic Contribution';
+                  const packageDesc = language === 'fr' ? 'Précommande du guide 2025' : 
+                    language === 'de' ? 'Vorbestellung des 2025-Führers' : 
+                    'Pre-order of the 2025 guide';
+                  handleCrowdfundingSelect(packageName, 25, packageDesc);
                 }}
                 style={{
                   width: '100%',
@@ -1054,7 +1056,14 @@ export default function MinimalAppSimplified() {
                   border: 'none',
                   borderRadius: '4px',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#e0e0e0';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f0f0f0';
                 }}
               >
                 {language === "fr" ? "Sélectionner" : 
@@ -1131,11 +1140,13 @@ export default function MinimalAppSimplified() {
               </div>
               <button 
                 onClick={() => {
-                  alert(language === 'fr' ? 
-                    'Merci d\'avoir choisi le Pack Supporter! Votre commande sera traitée prochainement.' :
-                    language === 'de' ? 
-                    'Vielen Dank, dass Sie sich für das Unterstützer-Paket entschieden haben! Ihre Bestellung wird in Kürze bearbeitet.' :
-                    'Thank you for choosing the Supporter Pack! Your order will be processed soon.');
+                  const packageName = language === 'fr' ? 'Pack Supporter' : 
+                    language === 'de' ? 'Unterstützer-Paket' : 
+                    'Supporter Pack';
+                  const packageDesc = language === 'fr' ? 'Le guide + un tote bag exclusif + accès communauté' : 
+                    language === 'de' ? 'Der Führer + Tragetasche + Community-Zugang' : 
+                    'The guide + tote bag + community access';
+                  handleCrowdfundingSelect(packageName, 45, packageDesc);
                 }}
                 style={{
                   width: '100%',
@@ -1213,11 +1224,13 @@ export default function MinimalAppSimplified() {
               </div>
               <button 
                 onClick={() => {
-                  alert(language === 'fr' ? 
-                    'Merci pour votre intérêt pour notre offre premium! Votre commande sera traitée bientôt.' :
-                    language === 'de' ? 
-                    'Vielen Dank für Ihr Interesse an unserem Premium-Angebot! Ihre Bestellung wird in Kürze bearbeitet.' :
-                    'Thank you for your interest in our premium offer! Your order will be processed soon.');
+                  const packageName = language === 'fr' ? 'Mécène Premium' : 
+                    language === 'de' ? 'Premium-Unterstützer' : 
+                    'Premium Patron';
+                  const packageDesc = language === 'fr' ? 'Pack Supporter + nom dans les remerciements + visite guidée' : 
+                    language === 'de' ? 'Unterstützer-Paket + Name in Danksagung + Führung' : 
+                    'Supporter Pack + name in acknowledgements + guided tour';
+                  handleCrowdfundingSelect(packageName, 100, packageDesc);
                 }}
                 style={{
                   width: '100%',
@@ -1226,7 +1239,14 @@ export default function MinimalAppSimplified() {
                   border: 'none',
                   borderRadius: '4px',
                   fontWeight: 'bold',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#e0e0e0';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f0f0f0';
                 }}
               >
                 {language === "fr" ? "Sélectionner" : 
@@ -2602,6 +2622,7 @@ export default function MinimalAppSimplified() {
         isOpen={showCheckoutModal} 
         onClose={handleCloseCheckoutModal} 
         language={language as 'fr' | 'de' | 'en'} 
+        selectedPackage={selectedPackage}
       />
     </div>
   );
