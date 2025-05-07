@@ -518,7 +518,20 @@ export default function MinimalAppSimplified() {
         {/* Content */}
         <div className="hero-content">
           <div className="hero-header">
-            <div className="date-badge">
+            <div 
+              className="date-badge"
+              style={{
+                backgroundColor: '#38b6ff',
+                color: 'white',
+                padding: '6px 12px',
+                borderRadius: '4px',
+                fontWeight: 'bold',
+                fontSize: '0.9rem',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                display: 'inline-block',
+                marginBottom: '1rem'
+              }}
+            >
               {new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit' })}
             </div>
             
