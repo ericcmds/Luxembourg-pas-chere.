@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, ShoppingCart, CreditCard, CheckCircle, ChevronLeft, ChevronRight, Truck, Shield, AlertCircle } from 'lucide-react';
+import { paymentValidation, sanitizeInput, pciCompliance, fraudDetection, paymentRateLimiter } from '../utils/securityUtils';
 
 interface CheckoutModalProps {
   isOpen: boolean;

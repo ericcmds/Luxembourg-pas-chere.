@@ -3,6 +3,8 @@ import { Instagram, ChevronDown, Menu, X, ArrowUp, ShoppingCart, Facebook, Linke
 import './styles.css';
 import FAQSection from './components/FAQSection';
 import CheckoutModal from './components/CheckoutModal';
+import { performanceMonitor, trackWebVitals, usePerformanceMonitor } from './utils/performanceMonitor';
+import { initializeMobileOptimizations, deviceDetection, mobilePerformance } from './utils/mobileOptimization';
 
 // Definiere Übersetzungsobjekte
 const translations = {
@@ -174,6 +176,7 @@ const translations = {
 };
 
 export default function MinimalAppSimplified() {
+  const perfMonitor = usePerformanceMonitor('MinimalAppSimplified');
   const [language, setLanguage] = useState('fr');
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -390,6 +393,24 @@ export default function MinimalAppSimplified() {
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && ['fr', 'de', 'en'].includes(savedLanguage)) {
       setLanguage(savedLanguage);
+    }
+  }, []);
+  
+  // Initialize performance monitoring and web vitals tracking
+  useEffect(() => {
+    // Track Web Vitals
+    trackWebVitals();
+    
+    // End component measurement when component is mounted
+    perfMonitor.endMeasurement();
+    
+    // Initialize mobile optimizations
+    initializeMobileOptimizations();
+    
+    // Log performance metrics in development
+    if (import.meta.env.DEV) {
+      console.log('Performance monitoring initialized for Luxembourg Pas Chère');
+      console.log('Device type:', deviceDetection.getDeviceType());
     }
   }, []);
   
