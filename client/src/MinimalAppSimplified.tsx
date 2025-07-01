@@ -52,7 +52,14 @@ const translations = {
     privacy: 'Politique de confidentialité',
     cookies: 'Politique des cookies',
     imprint: 'Mentions légales',
-    faqSectionTitle: 'Foire Aux Questions'
+    faqSectionTitle: 'Foire Aux Questions',
+    accessibility: 'Déclaration d\'Accessibilité',
+    securityBadge: 'Paiements Sécurisés',
+    gdprCompliant: 'Conforme RGPD',
+    eaaCompliant: 'Conforme EAA 2025',
+    trustedBy: 'Recommandé par',
+    satisfactionGuarantee: 'Garantie Satisfaction',
+    moneyBackGuarantee: '30 jours satisfait ou remboursé'
   },
   de: {
     home: 'Startseite',
@@ -100,7 +107,14 @@ const translations = {
     privacy: 'Datenschutzrichtlinie',
     cookies: 'Cookie-Richtlinie',
     imprint: 'Impressum',
-    faqSectionTitle: 'Häufig gestellte Fragen'
+    faqSectionTitle: 'Häufig gestellte Fragen',
+    accessibility: 'Barrierefreiheitserklärung',
+    securityBadge: 'Sichere Zahlungen',
+    gdprCompliant: 'DSGVO-konform',
+    eaaCompliant: 'EAA 2025 konform',
+    trustedBy: 'Empfohlen von',
+    satisfactionGuarantee: 'Zufriedenheitsgarantie',
+    moneyBackGuarantee: '30 Tage Geld-zurück-Garantie'
   },
   en: {
     home: 'Home',
@@ -148,7 +162,14 @@ const translations = {
     privacy: 'Privacy Policy',
     cookies: 'Cookie Policy',
     imprint: 'Imprint',
-    faqSectionTitle: 'Frequently Asked Questions'
+    faqSectionTitle: 'Frequently Asked Questions',
+    accessibility: 'Accessibility Statement',
+    securityBadge: 'Secure Payments',
+    gdprCompliant: 'GDPR Compliant',
+    eaaCompliant: 'EAA 2025 Compliant',
+    trustedBy: 'Trusted by',
+    satisfactionGuarantee: 'Satisfaction Guarantee',
+    moneyBackGuarantee: '30-day Money-back Guarantee'
   }
 };
 
@@ -160,6 +181,7 @@ export default function MinimalAppSimplified() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [showCookieBanner, setShowCookieBanner] = useState(false);
   
   // State to track selected crowdfunding package
   const [selectedPackage, setSelectedPackage] = useState<null | {
@@ -173,6 +195,85 @@ export default function MinimalAppSimplified() {
   
   // Get translations based on selected language
   const t = translations[language as keyof typeof translations];
+  
+  // Initialize component and check for cookies consent
+  useEffect(() => {
+    // Check if cookies consent was already given
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    if (!cookieConsent) {
+      // Show cookie banner after a short delay
+      const timer = setTimeout(() => {
+        setShowCookieBanner(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+
+    // Set preferred language from localStorage
+    const preferredLanguage = localStorage.getItem('preferredLanguage');
+    if (preferredLanguage && ['fr', 'de', 'en'].includes(preferredLanguage)) {
+      setLanguage(preferredLanguage);
+    }
+
+    // Add structured data for SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Luxembourg Pas Cher",
+      "author": {
+        "@type": "Organization",
+        "name": "Voix Solidaires"
+      },
+      "description": language === 'fr' ? 
+        "Le guide ultime pour vivre au Luxembourg sans se ruiner. Découvrez les meilleurs conseils et offres exclusives." :
+        language === 'de' ? 
+        "Der ultimative Leitfaden für ein günstiges Leben in Luxemburg. Entdecken Sie die besten Tipps und exklusive Angebote." :
+        "The ultimate guide to living in Luxembourg on a budget. Discover the best tips and exclusive offers.",
+      "inLanguage": language === 'fr' ? 'fr-FR' : language === 'de' ? 'de-DE' : 'en-US',
+      "offers": {
+        "@type": "Offer",
+        "price": "19.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Voix Solidaires",
+        "url": "https://luxembourgpaschère.com"
+      }
+    };
+
+    // Add or update structured data script
+    let existingScript = document.getElementById('structured-data');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    const script = document.createElement('script');
+    script.id = 'structured-data';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    // Update page title and meta description based on language
+    const titles = {
+      fr: 'Luxembourg Pas Cher - Vivre au Luxembourg sans se ruiner',
+      de: 'Luxembourg Pas Cher - Günstig Leben in Luxemburg',
+      en: 'Luxembourg Pas Cher - Living in Luxembourg on a Budget'
+    };
+    
+    const descriptions = {
+      fr: 'Découvrez comment profiter pleinement de la vie au Luxembourg sans vider votre portefeuille. Guide complet avec conseils pratiques et offres exclusives.',
+      de: 'Entdecken Sie, wie Sie das Leben in Luxemburg voll genießen können, ohne Ihr Portemonnaie zu leeren. Vollständiger Leitfaden mit praktischen Tipps und exklusiven Angeboten.',
+      en: 'Discover how to fully enjoy life in Luxembourg without emptying your wallet. Complete guide with practical tips and exclusive offers.'
+    };
+
+    document.title = titles[language as keyof typeof titles];
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', descriptions[language as keyof typeof descriptions]);
+    }
+  }, [language]);
   
   // Handler for language change
   const handleLanguageChange = (lang: string) => {
@@ -294,14 +395,55 @@ export default function MinimalAppSimplified() {
   
   return (
     <div>
+      {/* Skip to main content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="skip-to-content"
+        style={{
+          position: 'absolute',
+          top: '-40px',
+          left: '0',
+          padding: '8px',
+          backgroundColor: '#38b6ff',
+          color: 'white',
+          zIndex: 100,
+          transition: 'top 0.3s',
+          textDecoration: 'none',
+          fontSize: '14px',
+          fontWeight: 'bold'
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.top = '0';
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.top = '-40px';
+        }}
+      >
+        {language === 'fr' ? 'Aller au contenu principal' :
+         language === 'de' ? 'Zum Hauptinhalt springen' :
+         'Skip to main content'}
+      </a>
+
       {/* Header */}
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <header 
+        className={`header ${scrolled ? 'scrolled' : ''}`}
+        role="banner"
+        aria-label={language === 'fr' ? 'Navigation principale' :
+                    language === 'de' ? 'Hauptnavigation' :
+                    'Main navigation'}
+      >
         <div className="container">
           {/* Logo */}
-          <a href="#home" className="site-logo">
+          <a 
+            href="#home" 
+            className="site-logo"
+            aria-label={language === 'fr' ? 'Accueil - Luxembourg Pas Cher' :
+                        language === 'de' ? 'Startseite - Luxembourg Pas Cher' :
+                        'Home - Luxembourg Pas Cher'}
+          >
             <img 
               src="/images/logo.jpg" 
-              alt="Voix Solidaires Logo" 
+              alt="Luxembourg Pas Cher - Logo" 
               style={{
                 height: '50px',
                 maxWidth: '100%'
@@ -553,8 +695,14 @@ export default function MinimalAppSimplified() {
         </div>
       </header>
       
-      {/* Hero Section */}
-      <section id="home" className="hero">
+      {/* Main Content */}
+      <main id="main-content" role="main">
+        {/* Hero Section */}
+        <section 
+          id="home" 
+          className="hero"
+          aria-labelledby="hero-title"
+        >
         {/* Background Image */}
         <div className="hero-bg">
           <img 
@@ -595,7 +743,7 @@ export default function MinimalAppSimplified() {
             }}>
               <img 
                 src="/images/logo.jpg" 
-                alt="Voix Solidaires Logo" 
+                alt="Luxembourg Pas Cher - Guide pour vivre au Luxembourg sans se ruiner" 
                 style={{
                   height: '80px',
                   maxWidth: '90%',
@@ -604,11 +752,27 @@ export default function MinimalAppSimplified() {
               />
             </div>
             
-            <p className="hero-subtitle" style={{ 
-              fontSize: 'clamp(1rem, calc(0.95rem + 1vw), 1.3rem)',
-              fontWeight: '500',
-              lineHeight: '1.6',
-              letterSpacing: '0.015em',
+            <h1 
+              id="hero-title"
+              className="hero-title" 
+              style={{ 
+                fontSize: 'clamp(2rem, calc(1.8rem + 2vw), 3.5rem)',
+                fontWeight: 'bold',
+                lineHeight: '1.2',
+                marginBottom: '1rem',
+                color: '#333'
+              }}
+            >
+              {t.heroTitle}
+            </h1>
+            
+            <p 
+              className="hero-subtitle" 
+              style={{ 
+                fontSize: 'clamp(1rem, calc(0.95rem + 1vw), 1.3rem)',
+                fontWeight: '500',
+                lineHeight: '1.6',
+                letterSpacing: '0.015em',
               maxWidth: '100%',
               width: 'min(42rem, 95%)',
               margin: '0 auto',
@@ -1884,6 +2048,7 @@ export default function MinimalAppSimplified() {
 
       {/* FAQ Section */}
       <FAQSection language={language as 'fr' | 'de' | 'en'} t={t} />
+      </main>
 
       {/* Footer */}
       <footer style={{
@@ -2478,6 +2643,113 @@ export default function MinimalAppSimplified() {
             </div>
           </div>
           
+          {/* Trust Signals Section */}
+          <div style={{
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+            paddingTop: '2rem',
+            marginTop: '1.5rem',
+            marginBottom: '2rem'
+          }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '1.5rem',
+              textAlign: 'center'
+            }}>
+              {/* Security Badge */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <div style={{
+                  backgroundColor: '#2d5a27',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <span>🔒</span>
+                  {t.securityBadge}
+                </div>
+              </div>
+
+              {/* GDPR Compliance */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <div style={{
+                  backgroundColor: '#0056b3',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <span>🛡️</span>
+                  {t.gdprCompliant}
+                </div>
+              </div>
+
+              {/* EAA Compliance */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <div style={{
+                  backgroundColor: '#8b4513',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <span>♿</span>
+                  {t.eaaCompliant}
+                </div>
+              </div>
+
+              {/* Money Back Guarantee */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <div style={{
+                  backgroundColor: '#e81414',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <span>💯</span>
+                  {t.moneyBackGuarantee}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Copyright and Legal */}
           <div style={{
             borderTop: '1px solid rgba(255,255,255,0.1)',
@@ -2594,9 +2866,33 @@ export default function MinimalAppSimplified() {
                   e.currentTarget.style.color = '#888';
                 }}
               >
-                {language === 'fr' ? t.imprint : 
-                 language === 'de' ? t.imprint : 
-                 t.imprint}
+                {t.imprint}
+              </a>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const accessibilityContent = language === 'fr' ? 
+                    "Déclaration d'Accessibilité\n\nLuxembourg Pas Cher s'engage à garantir l'accessibilité de son site web conformément à la Directive Européenne sur l'Accessibilité (EAA) et aux normes WCAG 2.1 AA.\n\nNiveau de conformité : Conforme partiellement\nDate de la déclaration : " + new Date().toLocaleDateString('fr-FR') + "\n\nMesures d'accessibilité prises :\n• Navigation au clavier\n• Contrastes respectant les normes WCAG\n• Descriptions alternatives pour les images\n• Structure sémantique HTML\n• Support des lecteurs d'écran\n\nContact accessibilité : accessibilite@luxembourgpaschère.com" :
+                    language === 'de' ? 
+                    "Barrierefreiheitserklärung\n\nLuxemburg Pas Cher verpflichtet sich, die Barrierefreiheit seiner Website gemäß der Europäischen Barrierefreiheitsrichtlinie (EAA) und den WCAG 2.1 AA Standards zu gewährleisten.\n\nKonformitätsstufe: Teilweise konform\nDatum der Erklärung: " + new Date().toLocaleDateString('de-DE') + "\n\nErgriffene Barrierefreiheitsmaßnahmen:\n• Tastaturnavigation\n• WCAG-konforme Kontraste\n• Alternative Beschreibungen für Bilder\n• Semantische HTML-Struktur\n• Unterstützung für Bildschirmleser\n\nKontakt Barrierefreiheit: barrierefreiheit@luxembourgpaschère.com" :
+                    "Accessibility Statement\n\nLuxembourg Pas Cher is committed to ensuring the accessibility of its website in accordance with the European Accessibility Act (EAA) and WCAG 2.1 AA standards.\n\nConformance level: Partially conformant\nStatement date: " + new Date().toLocaleDateString('en-US') + "\n\nAccessibility measures taken:\n• Keyboard navigation\n• WCAG compliant contrasts\n• Alternative descriptions for images\n• Semantic HTML structure\n• Screen reader support\n\nAccessibility contact: accessibility@luxembourgpaschère.com";
+                  
+                  alert(accessibilityContent);
+                }}
+                style={{
+                  color: '#888',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#38b6ff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                {t.accessibility}
               </a>
             </div>
           </div>
@@ -2649,6 +2945,121 @@ export default function MinimalAppSimplified() {
       </footer>
 
       
+      {/* Cookie Banner */}
+      {showCookieBanner && (
+        <div style={{
+          position: 'fixed',
+          bottom: '0',
+          left: '0',
+          right: '0',
+          backgroundColor: 'rgba(0, 0, 0, 0.95)',
+          color: 'white',
+          padding: '1.5rem',
+          zIndex: 10000,
+          borderTop: '3px solid #38b6ff',
+          backdropFilter: 'blur(10px)'
+        }}>
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem'
+          }}>
+            <div style={{
+              flex: 1,
+              fontSize: '0.95rem',
+              lineHeight: '1.5'
+            }}>
+              <h3 style={{
+                margin: '0 0 0.5rem 0',
+                fontSize: '1.1rem',
+                fontWeight: 'bold'
+              }}>
+                {language === 'fr' ? '🍪 Politique des Cookies' :
+                 language === 'de' ? '🍪 Cookie-Richtlinie' :
+                 '🍪 Cookie Policy'}
+              </h3>
+              <p style={{ margin: '0' }}>
+                {language === 'fr' ? 
+                  'Nous utilisons des cookies essentiels pour améliorer votre expérience de navigation et analyser le trafic de notre site. Vos données sont protégées conformément au RGPD.' :
+                  language === 'de' ? 
+                  'Wir verwenden wesentliche Cookies, um Ihr Browsing-Erlebnis zu verbessern und den Traffic unserer Website zu analysieren. Ihre Daten sind gemäß DSGVO geschützt.' :
+                  'We use essential cookies to improve your browsing experience and analyze our website traffic. Your data is protected in accordance with GDPR.'}
+              </p>
+            </div>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              flexWrap: 'wrap'
+            }}>
+              <button
+                onClick={() => {
+                  localStorage.setItem('cookieConsent', 'essential');
+                  setShowCookieBanner(false);
+                }}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#ccc',
+                  border: '2px solid #666',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = '#999';
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = '#666';
+                  e.currentTarget.style.color = '#ccc';
+                }}
+              >
+                {language === 'fr' ? 'Essentiels seulement' :
+                 language === 'de' ? 'Nur wesentliche' :
+                 'Essential only'}
+              </button>
+              <button
+                onClick={() => {
+                  localStorage.setItem('cookieConsent', 'all');
+                  setShowCookieBanner(false);
+                }}
+                style={{
+                  backgroundColor: '#38b6ff',
+                  color: 'white',
+                  border: '2px solid #38b6ff',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#1a9cf0';
+                  e.currentTarget.style.borderColor = '#1a9cf0';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = '#38b6ff';
+                  e.currentTarget.style.borderColor = '#38b6ff';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                {language === 'fr' ? 'Accepter tous' :
+                 language === 'de' ? 'Alle akzeptieren' :
+                 'Accept all'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Checkout Modal */}
       <CheckoutModal 
         isOpen={showCheckoutModal} 

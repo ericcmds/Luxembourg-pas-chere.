@@ -16,10 +16,24 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
-    <!-- Meta Tags for SEO -->
+    <!-- Enhanced Meta Tags for SEO -->
     <meta name="description" content="Entdecken Sie Luxemburg ohne viel Geld auszugeben. Finden Sie günstige Restaurants, Unterhaltung, Shopping und mehr mit Luxembourg Pas Chère." />
-    <meta name="keywords" content="luxemburg günstig, sparen in luxemburg, budget luxemburg, luxemburg pas chère, günstige restaurants luxemburg, günstiges shopping luxemburg" />
+    <meta name="keywords" content="luxemburg günstig, sparen in luxemburg, budget luxemburg, luxemburg pas chère, günstige restaurants luxemburg, günstiges shopping luxemburg, crowdfunding luxemburg, nachhaltiges leben luxemburg" />
     <meta name="author" content="Luxembourg Pas Chère" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="LU" />
+    <meta name="geo.country" content="Luxembourg" />
+    <meta name="geo.placename" content="Luxembourg" />
+    <meta name="language" content="DE" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <!-- Business Information for Local SEO -->
+    <meta name="business:contact_data:locality" content="Luxembourg" />
+    <meta name="business:contact_data:region" content="Luxembourg" />
+    <meta name="business:contact_data:country_name" content="Luxembourg" />
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Luxembourg Pas Chère - Günstig Leben in Luxemburg" />
@@ -34,20 +48,72 @@
     <meta name="twitter:description" content="Entdecken Sie Luxemburg ohne viel Geld auszugeben. Finden Sie günstige Restaurants, Unterhaltung, Shopping und mehr." />
     <meta name="twitter:image" content="https://luxembourgpaschère.com/twitter-image.jpg" />
     
-    <!-- Structured Data for rich search results -->
+    <!-- Enhanced Structured Data for rich search results -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Luxembourg Pas Chère",
-        "url": "https://luxembourgpaschère.com",
-        "description": "Entdecken Sie Luxemburg ohne viel Geld auszugeben",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://luxembourgpaschère.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Luxembourg Pas Chère",
+          "alternateName": "Luxembourg Pas Cher",
+          "url": "https://luxembourgpaschère.com",
+          "description": "Entdecken Sie Luxemburg ohne viel Geld auszugeben",
+          "inLanguage": ["de-DE", "fr-FR", "en-US"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://luxembourgpaschère.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://luxembourgpaschère.com/#organization"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://luxembourgpaschère.com/#organization",
+          "name": "Luxembourg Pas Chère",
+          "url": "https://luxembourgpaschère.com",
+          "logo": "https://luxembourgpaschère.com/images/logo.jpg",
+          "description": "Ihr Experte für günstiges Leben in Luxemburg",
+          "sameAs": [
+            "https://www.instagram.com/luxembourgpaschere/",
+            "https://www.facebook.com/luxembourgpaschere/",
+            "https://www.linkedin.com/company/luxembourgpaschere/"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "info@luxembourgpaschère.com",
+            "availableLanguage": ["German", "French", "English"]
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": "Luxembourg Pas Chère - Der ultimative Sparguide",
+          "author": {
+            "@type": "Organization",
+            "name": "Luxembourg Pas Chère"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Luxembourg Pas Chère"
+          },
+          "description": "Der komplette Leitfaden für ein günstiges Leben in Luxemburg mit exklusiven Tipps und Angeboten.",
+          "inLanguage": ["de-DE", "fr-FR", "en-US"],
+          "offers": {
+            "@type": "Offer",
+            "price": "19.99",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/PreOrder",
+            "validFrom": "2025-01-01"
+          },
+          "genre": "Lifestyle, Reiseführer, Ratgeber",
+          "bookFormat": "https://schema.org/Paperback"
         }
-      }
+      ]
     </script>
     
     <!-- Favicon & PWA Assets -->
